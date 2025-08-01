@@ -110,7 +110,7 @@ const FoodDelivery = () => {
       category: "breakfast",
       description: "Healthy oats cooked with milk, topped with nuts",
     },
-  
+
     // LUNCH (10)
     {
       id: "l1",
@@ -196,7 +196,7 @@ const FoodDelivery = () => {
       category: "lunch",
       description: "Spicy fenugreek flatbreads served with cool yogurt",
     },
-  
+
     // EVENING SNACKS (10)
     {
       id: "s1",
@@ -280,7 +280,7 @@ const FoodDelivery = () => {
       category: "evening-snacks",
       description: "Sweet corn kernels tossed in butter, lime and masala",
     },
-  
+
     // SIDES (10)
     {
       id: "si1",
@@ -363,10 +363,10 @@ const FoodDelivery = () => {
       description: "Fresh homemade set yogurt",
     },
   ];
-  
-  
 
-  
+
+
+
 
   const filteredItems = foodItems.filter(item => item.category === activeCategory);
 
@@ -399,46 +399,46 @@ const FoodDelivery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-md mx-auto bg-background shadow-lg">
+    <div className="max-h-screen min-h-screen h-full flex overflow-hidden bg-background">
+      <div className="max-w-md mx-auto bg-background shadow-lg flex-1 flex flex-col overflow-hidden">
         <Header onMenuClick={() => setIsMenuModalOpen(true)} />
-        
-        <main className="pb-6">
-        <CategoryTabs 
-          activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
-        />
-        
-        <PromoBar />
-        
-        {/* Food Items List */}
-        <div className="p-4 space-y-2 bg-gray-100 w-full">
-          {filteredItems.map((item) => (
-            <FoodCard
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              price={item.price}
-              image={item.image}
-              description={item.description}
-              available={item.available}
-              unavailableReason={item.unavailableReason}
-              onAdd={handleAddItem}
-              onToggleFavorite={handleToggleFavorite}
-              isFavorite={favorites.has(item.id)}
-            />
-          ))}
-        </div>
+
+        <main className="flex flex-col overflow-y-hidden flex-1">
+          <CategoryTabs
+            activeCategory={activeCategory}
+            onCategoryChange={setActiveCategory}
+          />
+
+          <PromoBar />
+
+          {/* Food Items List */}
+          <div className="p-4 space-y-2 bg-gray-100 w-full flex-1 overflow-y-auto scrollbar-hide">
+            {filteredItems.map((item) => (
+              <FoodCard
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                price={item.price}
+                image={item.image}
+                description={item.description}
+                available={item.available}
+                unavailableReason={item.unavailableReason}
+                onAdd={handleAddItem}
+                onToggleFavorite={handleToggleFavorite}
+                isFavorite={favorites.has(item.id)}
+              />
+            ))}
+          </div>
 
         </main>
       </div>
 
       {/* Modals */}
-      <MenuModal 
+      <MenuModal
         isOpen={isMenuModalOpen}
         onClose={() => setIsMenuModalOpen(false)}
       />
-      
+
       <NotificationModal
         isOpen={isNotificationModalOpen}
         onClose={() => setIsNotificationModalOpen(false)}

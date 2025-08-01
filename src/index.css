@@ -109,3 +109,10 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
