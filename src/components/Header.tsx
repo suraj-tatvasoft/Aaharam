@@ -1,0 +1,76 @@
+import { useState } from "react";
+import { Search, Bell, QrCode, Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import NotificationModal from "@/components/modals/NotificationModal";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+
+export interface HeaderProps {
+  onMenuClick?: () => void;
+}
+
+const Header = ({ onMenuClick }: HeaderProps) => {
+  const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
+
+  return (
+    <>
+      <TooltipProvider>
+        <header className="bg-white p-4 border-b border-border/50 shadow-sm">
+          <div className="flex items-center gap-3">
+            {/* User Avatar */}
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 flex-shrink-0 md:w-12 md:h-12">
+              <img 
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
+                alt="User profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Search Bar - Center */}
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Input 
+                placeholder="Search" 
+                className="pl-10 rounded-full border border-[#E5E7EB] bg-white shadow-sm h-10 focus:border-[#E5E7EB] focus:ring-0"
+              />
+            </div>
+
+            {/* Action Buttons - Right Side */}
+            <div className="flex gap-2 items-center">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="w-10 h-10 rounded-full bg-success/10 border-success/20 hover:bg-success/20"
+                    onClick={onMenuClick}
+                    aria-label="Open Today's Menu"
+                  >
+                    <Menu className="w-4 h-4 text-success" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="top" align="center" className="bg-black text-white">Today's Menu</TooltipContent>
+              </Tooltip>
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="w-10 h-10 rounded-full bg-success/10 border-success/20 hover:bg-success/20 relative"
+                onClick={() => setIsNotificationModalOpen(true)}
+              >
+                <Bell className="w-4 h-4 text-success" />
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full text-[8px] text-white flex items-center justify-center">•</span>
+              </Button>
+            </div>
+          </div>
+        </header>
+      </TooltipProvider>
+
+      <NotificationModal 
+        isOpen={isNotificationModalOpen} 
+        onClose={() => setIsNotificationModalOpen(false)} 
+      />
+    </>
+  );
+};
+
+export default Header;
