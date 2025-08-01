@@ -19,8 +19,8 @@ const Header = ({ onMenuClick }: HeaderProps) => {
           <div className="flex items-center gap-3">
             {/* User Avatar */}
             <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 flex-shrink-0 md:w-12 md:h-12">
-              <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
                 alt="User profile"
                 className="w-full h-full object-cover"
               />
@@ -29,8 +29,8 @@ const Header = ({ onMenuClick }: HeaderProps) => {
             {/* Search Bar - Center */}
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input 
-                placeholder="Search" 
+              <Input
+                placeholder="Search"
                 className="pl-10 rounded-full border border-[#E5E7EB] bg-white shadow-sm h-10 focus:border-[#E5E7EB] focus:ring-0"
               />
             </div>
@@ -51,9 +51,9 @@ const Header = ({ onMenuClick }: HeaderProps) => {
                 </TooltipTrigger>
                 <TooltipContent side="top" align="center" className="bg-black text-white">Today's Menu</TooltipContent>
               </Tooltip>
-              <Button 
-                variant="outline" 
-                size="icon" 
+              <Button
+                variant="outline"
+                size="icon"
                 className="w-10 h-10 rounded-full bg-success/10 border-success/20 hover:bg-success/20 relative"
                 onClick={() => setIsNotificationModalOpen(true)}
               >
@@ -65,9 +65,9 @@ const Header = ({ onMenuClick }: HeaderProps) => {
         </header>
       </TooltipProvider>
 
-      <NotificationModal 
-        isOpen={isNotificationModalOpen} 
-        onClose={() => setIsNotificationModalOpen(false)} 
+      <NotificationModal
+        isOpen={isNotificationModalOpen}
+        onClose={() => setIsNotificationModalOpen(false)}
       />
     </>
   );
