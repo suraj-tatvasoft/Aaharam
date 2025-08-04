@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import FoodDelivery from "./pages/FoodDelivery";
 import SplashScreen from "./components/SplashScreen";
+import OnBoarding from "./components/OnBoarding";
 
 const App = () => (
   <TooltipProvider>
@@ -18,6 +19,7 @@ const App = () => (
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/login" element={<Login />} />
         <Route path="/splash" element={<SplashScreen />} />
+        <Route path="/onboarding" element={<OnBoarding />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
