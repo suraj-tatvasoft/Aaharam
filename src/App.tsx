@@ -6,6 +6,7 @@ import Analytics from "./pages/Analytics";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import FoodDelivery from "./pages/FoodDelivery";
+import SplashScreen from "./components/SplashScreen";
 
 const App = () => (
   <TooltipProvider>
@@ -16,6 +17,7 @@ const App = () => (
         <Route path="/" element={<FoodDelivery />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/splash" element={<SplashScreen />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
