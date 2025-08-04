@@ -1,12 +1,20 @@
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
+import breakfastIcon from "@/assets/breakfast.svg";
+import lunchIcon from "@/assets/lunch.svg";
+import eveningSnacksIcon from "@/assets/evening-snacks.svg";
+import sidesIcon from "@/assets/sides.svg";
+console.log(breakfastIcon);
+console.log(lunchIcon);
+console.log(eveningSnacksIcon);
+console.log(sidesIcon);
+
 const categories = [
-  { id: "breakfast", name: "Breakfast", emoji: "🥐", description: "Delicious morning options" },
-  { id: "lunch", name: "Lunch", emoji: "🍛", description: "Hearty midday meals" },
-  { id: "evening-snacks", name: "Evening Snacks", emoji: "🥪", description: "Light bites for evening" },
-  { id: "sides", name: "Sides", emoji: "🍟", description: "Perfect accompaniments" },
+  { id: "breakfast", name: "Breakfast", icon: breakfastIcon, description: "Delicious morning options" },
+  { id: "lunch", name: "Lunch", icon: lunchIcon, description: "Hearty midday meals" },
+  { id: "evening-snacks", name: "Evening Snacks", icon: eveningSnacksIcon, description: "Light bites for evening" },
+  { id: "sides", name: "Sides", icon: sidesIcon, description: "Perfect accompaniments" },
 ];
 
 interface CategoryTabsProps {
@@ -33,9 +41,7 @@ const CategoryTabs = ({ activeCategory, onCategoryChange }: CategoryTabsProps) =
                       : "text-muted-foreground"
                   )}
                 >
-                  <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center text-lg md:w-12 md:h-12 md:text-xl">
-                    {category.emoji}
-                  </div>
+                  <img src={category.icon} alt={category.name + ' icon'} className=" object-contain" />
                   <span className="text-xs font-medium md:text-sm truncate">{category.name}</span>
                 </button>
               </TooltipTrigger>
@@ -45,7 +51,6 @@ const CategoryTabs = ({ activeCategory, onCategoryChange }: CategoryTabsProps) =
             </Tooltip>
           ))}
         </div>
-        
       </div>
     </TooltipProvider>
   );

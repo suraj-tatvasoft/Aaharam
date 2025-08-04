@@ -8,7 +8,7 @@ const PromoBar = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-success/30 h-8 px-4 flex items-center justify-between">
+    <div className="h-8 px-4 flex items-center justify-between" style={{ backgroundColor: '#ADE2A5' }}>
       <div className="flex items-center gap-2">
         <span className="text-sm font-medium text-foreground">
           Buy Bulk Meal Pass on Discounted Rates

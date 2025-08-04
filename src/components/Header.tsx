@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Search, Bell, QrCode, Menu } from "lucide-react";
+import { Search, QrCode, Menu } from "lucide-react";
+import headerMenuIcon from "@/assets/header-menu.svg";
+import headerAlarmIcon from "@/assets/header-alarm.svg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import NotificationModal from "@/components/modals/NotificationModal";
@@ -42,11 +44,11 @@ const Header = ({ onMenuClick }: HeaderProps) => {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="w-10 h-10 rounded-full bg-success/10 border-success/20 hover:bg-success/20"
+                    className="w-10 h-10 rounded-full" style={{ backgroundColor: '#E9FFE4' }}
                     onClick={onMenuClick}
                     aria-label="Open Today's Menu"
                   >
-                    <Menu className="w-4 h-4 text-success" />
+                    <img src={headerMenuIcon} alt="Menu" className="w-4 h-4" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="top" align="center" className="bg-black text-white">Today's Menu</TooltipContent>
@@ -54,10 +56,10 @@ const Header = ({ onMenuClick }: HeaderProps) => {
               <Button
                 variant="outline"
                 size="icon"
-                className="w-10 h-10 rounded-full bg-success/10 border-success/20 hover:bg-success/20 relative"
+                className="w-10 h-10 rounded-full relative" style={{ backgroundColor: '#E9FFE4' }}
                 onClick={() => setIsNotificationModalOpen(true)}
               >
-                <Bell className="w-4 h-4 text-success" />
+                <img src={headerAlarmIcon} alt="Alarm" className="w-4 h-4" />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full text-[8px] text-white flex items-center justify-center">•</span>
               </Button>
             </div>
