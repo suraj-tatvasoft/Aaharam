@@ -1,6 +1,8 @@
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import MonthlyPassSummary from "@/pages/MonthlyPassSummary";
 import Navigation from "./components/Navigation";
 import Analytics from "./pages/Analytics";
 import Login from "./pages/Login";
@@ -8,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import FoodDelivery from "./pages/FoodDelivery";
 import SplashScreen from "./components/SplashScreen";
 import OnBoarding from "./components/OnBoarding";
+import BulkPass from "./pages/BulkPass";
 
 const App = () => (
   <TooltipProvider>
@@ -20,6 +23,8 @@ const App = () => (
         <Route path="/login" element={<Login />} />
         <Route path="/splash" element={<SplashScreen />} />
         <Route path="/onboarding" element={<OnBoarding />} />
+        <Route path="/bulk-pass" element={<BulkPass />} />
+        <Route path="/monthly-pass-summary" element={<MonthlyPassSummary />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
