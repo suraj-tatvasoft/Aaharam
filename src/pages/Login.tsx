@@ -14,7 +14,6 @@ const Login = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login attempt:", { username, password, rememberMe });
   };
 
   return (
@@ -25,14 +24,14 @@ const Login = () => {
           <div className="w-40 h-40 mx-auto mb-6 relative md:w-48 md:h-48 md:mb-8">
             {/* Main illustration background */}
             <div className="absolute inset-0 bg-gradient-to-br from-success/20 to-success/10 rounded-full"></div>
-            
+
             {/* Person illustration */}
             <div className="absolute top-12 left-12 w-24 h-24">
               <div className="w-8 h-8 bg-foreground rounded-full mb-2"></div>
               <div className="w-16 h-12 bg-success rounded-t-lg"></div>
               <div className="w-20 h-8 bg-muted rounded-b-lg"></div>
             </div>
-            
+
             {/* Phone illustration */}
             <div className="absolute top-8 right-8 w-20 h-32 bg-background rounded-xl border-2 border-border shadow-lg">
               <div className="w-6 h-6 bg-muted rounded-full mx-auto mt-3"></div>
@@ -42,12 +41,12 @@ const Login = () => {
                 LOGIN
               </div>
             </div>
-            
+
             {/* Security badge */}
             <div className="absolute top-4 right-4 w-8 h-8 bg-success rounded-lg flex items-center justify-center">
               <div className="w-3 h-3 bg-background rounded-sm"></div>
             </div>
-            
+
             {/* Checkmark */}
             <div className="absolute bottom-8 left-8 w-8 h-8 bg-success rounded-full flex items-center justify-center">
               <div className="w-3 h-3 border-2 border-background border-l-0 border-t-0 rotate-45"></div>
@@ -60,7 +59,7 @@ const Login = () => {
           <CardHeader>
             <h1 className="text-3xl font-bold text-center">Login</h1>
           </CardHeader>
-          
+
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-6">
               {/* Username */}
@@ -115,7 +114,7 @@ const Login = () => {
               </div>
 
               {/* Login Button */}
-              <Button 
+              <Button
                 type="submit"
                 className="w-full h-12 text-lg bg-foreground text-background hover:bg-foreground/90"
                 size="lg"

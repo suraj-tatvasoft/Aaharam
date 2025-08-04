@@ -5,10 +5,6 @@ import breakfastIcon from "@/assets/breakfast.svg";
 import lunchIcon from "@/assets/lunch.svg";
 import eveningSnacksIcon from "@/assets/evening-snacks.svg";
 import sidesIcon from "@/assets/sides.svg";
-console.log(breakfastIcon);
-console.log(lunchIcon);
-console.log(eveningSnacksIcon);
-console.log(sidesIcon);
 
 const categories = [
   { id: "breakfast", name: "Breakfast", icon: breakfastIcon, description: "Delicious morning options" },
