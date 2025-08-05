@@ -25,7 +25,7 @@ const Analytics = () => {
       <div className="min-h-screen flex flex-col bg-[#DFFFEA]">
         {/* Top section with avatar and welcome */}
         <div className="w-full bg-[#DFFFEA] rounded-b-[40px] flex flex-col items-center pt-8 pb-6">
-          <Avatar className="w-16 h-16 mb-3 shadow-lg border-2 border-white">
+          <Avatar className="w-16 h-16 mb-3 shadow-lg border-1 border-white">
             <AvatarImage
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
               alt="Dhiren Devganiya"
@@ -37,16 +37,15 @@ const Analytics = () => {
           </Avatar>
           <h1 className="text-lg font-bold md:text-xl text-center px-3 py-1 mt-1">Welcome Dhiren Devganiya</h1>
         </div>
-        <div className="flex-1 flex flex-col justify-end items-center pb-0 mt-[-28px]">
-          <div className="w-full max-w-md mx-auto flex flex-col flex-1 justify-end items-center">
-
-            {/* Card container */}
-            <div className="bg-white rounded-t-3xl shadow-xl px-5 pt-8 pb-6 w-full relative z-10 mt-[-10px]">
+        <div className="flex-1 flex flex-col justify-end items-center pb-0">
+          <div className="w-full flex flex-col flex-1 justify-end items-center">
+            {/* Card container fills available space, button pinned to bottom */}
+            <div className="bg-white rounded-t-3xl shadow-xl px-5 pt-8 pb-0 w-full relative z-10 mt-[-10px] flex flex-col flex-1">
               <div className="text-center mb-5">
                 <div className="text-base font-medium mb-1">Let’s check how crowded it gets during lunch hours.</div>
                 <div className="text-sm text-gray-500">Select your preferred lunch time before using Aaharam.</div>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center flex-1 justify-start">
                 {/* Donut Chart */}
                 <div className="w-64 h-64 flex items-center justify-center mb-2">
                   <ResponsiveContainer width="100%" height="100%">
@@ -82,14 +81,16 @@ const Analytics = () => {
                   ))}
                 </div>
               </div>
-              {/* Action Button */}
-              <Button
-                className="w-full h-12 text-lg bg-foreground text-background hover:bg-foreground/90 mt-4"
-                size="lg"
-                onClick={() => navigate('/preference-selection')}
-              >
-                Select Your Preferred Lunch Time
-              </Button>
+              {/* Action Button pinned to bottom of card */}
+              <div className="mt-auto pb-6 pt-4">
+                <Button
+                  className="w-full h-12 text-lg bg-foreground text-background hover:bg-foreground/90"
+                  size="lg"
+                  onClick={() => navigate('/preference-selection')}
+                >
+                  Select Your Preferred Lunch Time
+                </Button>
+              </div>
               {/* Bottom Indicator Bar */}
               {/* <IndicatorBar className="mt-6 mb-2" /> */}
             </div>

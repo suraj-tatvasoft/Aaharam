@@ -34,7 +34,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
               aria-label="Back"
               type="button"
             >
-              <img src={profileBack} alt="Back" className="w-6 h-6" />
+              <img src={profileBack} alt="Back" className="w-4 h-4" />
             </button>
           )}
           <span className="text-base text-[#222] font-medium">{title}</span>
