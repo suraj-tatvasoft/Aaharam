@@ -56,18 +56,37 @@ const OnBoarding: React.FC = () => {
             <div className="flex flex-1 flex-col items-center bg-white">
                 <div className="flex-1 flex flex-col justify-between max-w-md w-full mx-auto pt-4 pb-2">
                     {/* Heading and Illustration */}
-                    <h1 className="font-semibold px-3 text-3xl sm:text-4xl md:text-5xl text-black text-left w-full mt-8 mb-8 leading-tight">
+                    <h1
+                        key={step}
+                        className="font-semibold px-3 text-3xl sm:text-4xl md:text-5xl text-black text-left w-full mt-8 mb-8 leading-tight animate-fade-in-up"
+                    >
                         {heading.map((line, i) => (
                             <span className="block" key={i}>{line}</span>
                         ))}
                     </h1>
                     <div className="flex flex-1 items-center justify-center mb-1">
                         <img
+                            key={step}
                             src={illustration}
                             alt={alt}
-                            className="w-full max-w-full mx-auto mb-2"
+                            className="w-full max-w-full mx-auto mb-2 animate-fade-in-up delay-300"
                         />
                     </div>
+                    {/* Animations: fade-in-up for heading and illustration */}
+                    <style>
+                        {`
+                          @keyframes fade-in-up {
+                            0% { opacity: 0; transform: translateY(30px); }
+                            100% { opacity: 1; transform: translateY(0); }
+                          }
+                          .animate-fade-in-up {
+                            animation: fade-in-up 0.8s cubic-bezier(0.4,0,0.2,1) both;
+                          }
+                          .delay-300 {
+                            animation-delay: 0.3s;
+                          }
+                        `}
+                    </style>
                 </div>
                 {/* Bottom Section: Pagination, Description, Button, Indicator */}
                 <div className="max-w-md w-full mx-auto flex flex-col items-center bg-white pb-6 z-30">
@@ -102,7 +121,7 @@ const OnBoarding: React.FC = () => {
                         <img src={nextArrow} alt="Next" className="w-6 h-6" />
                     </button>
                     {/* Indicator Bar */}
-                    <div className="w-24 h-1.5 rounded-full bg-black mx-auto" />
+                    <IndicatorBar />
                 </div>
             </div>
         </Container>
@@ -110,5 +129,6 @@ const OnBoarding: React.FC = () => {
 };
 
 import Container from "@/components/Container";
+import IndicatorBar from "@/components/IndicatorBar";
 
 export default OnBoarding;

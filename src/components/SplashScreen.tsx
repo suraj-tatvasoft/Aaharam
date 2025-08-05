@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "@/components/Container";
+import IndicatorBar from "@/components/IndicatorBar";
 
 // Asset imports
 import logo from "@/assets/main-logo.svg";
@@ -16,11 +17,26 @@ const SplashScreen: React.FC = () => {
           <img
             src={logo}
             alt="Aaharam Logo"
-            className="w-48 h-auto mx-auto mb-6"
+            className="w-48 h-auto mx-auto mb-6 animate-fade-in-up"
           />
           <div className="flex flex-col items-center">
-            <img src={tatvaSoftLogo} alt="TatvaSoft Logo" className="w-auto h-auto mb-1" />
+            <img src={tatvaSoftLogo} alt="TatvaSoft Logo" className="w-auto h-auto mb-1 animate-fade-in-up delay-300" />
           </div>
+          {/* Animations: fade-in-up for logo and TatvaSoft logo */}
+          <style>
+            {`
+              @keyframes fade-in-up {
+                0% { opacity: 0; transform: translateY(30px); }
+                100% { opacity: 1; transform: translateY(0); }
+              }
+              .animate-fade-in-up {
+                animation: fade-in-up 0.8s cubic-bezier(0.4,0,0.2,1) both;
+              }
+              .delay-300 {
+                animation-delay: 0.3s;
+              }
+            `}
+          </style>
         </div>
         {/* Bottom Section: Illustration & Wave */}
         <div className="relative w-full">
@@ -33,7 +49,7 @@ const SplashScreen: React.FC = () => {
             />
           </div>
           <div className="absolute left-1/2 -translate-x-1/2 bottom-2 z-20">
-            <div className="w-24 h-1.5 rounded-full bg-black" />
+            <IndicatorBar />
           </div>
         </div>
       </div>

@@ -93,7 +93,7 @@ const Login = () => {
             </Button>
           </form>
           {/* Bottom Indicator Bar */}
-          <div className="w-24 h-1.5 bg-black rounded-full mx-auto mt-6 mb-2" />
+          <IndicatorBar className="mt-6 mb-2" />
         </div>
       </div>
     </Container>
@@ -101,5 +101,6 @@ const Login = () => {
 };
 
 import Container from "@/components/Container";
+import IndicatorBar from "@/components/IndicatorBar";
 
 export default Login;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Container from "@/components/Container";
+import IndicatorBar from "@/components/IndicatorBar";
 import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
@@ -61,7 +62,7 @@ const PreferenceSelection = () => {
                         </button>
                     </div>
                 </form>
-                <div className="w-24 h-1.5 bg-black rounded-full mx-auto mt-4 mb-2" />
+                <IndicatorBar className="mt-4 mb-2" />
             </div>
             </div>
         </Container>
