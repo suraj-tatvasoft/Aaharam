@@ -100,7 +100,7 @@ const Profile: React.FC = () => {
                                 <img src={notificationIcon} alt="Notifications" className="w-6 h-6" />
                             </button>
                         </div>
-                        <Avatar className="w-20 h-20 border-4 border-white bg-white shadow-md mt-10 z-10">
+                        <Avatar className="w-20 h-20 border-1 border-white bg-white shadow-md mt-5 z-10">
                             <AvatarImage src={user.avatar} alt={user.name} />
                         </Avatar>
                         <div className="pt-3 pb-2 text-lg font-bold text-[#222]">{user.name}</div>

@@ -18,7 +18,7 @@ const UpdatePreferenceSelection = () => {
     const navigate = useNavigate();
     return (
         <PageLayout title="My Preferred Lunch Time Slot">
-            <div className="w-full bg-[#F7F7F7] flex flex-col flex-1 px-0" style={{ fontFamily: 'system-ui, sans-serif', background: '#fff' }}>
+            <div className="w-full flex flex-col flex-1 px-0" style={{ fontFamily: 'system-ui, sans-serif' }}>
                 {/* Card pinned to top */}
                 <div className="flex flex-col rounded-2xl px-0 pt-2 pb-2 mx-2 flex-1">
                     <div className="font-semibold text-base px-5 pt-2 pb-2 text-[#222] flex-none" style={{ letterSpacing: 0 }}>Select Your Time Slot</div>
