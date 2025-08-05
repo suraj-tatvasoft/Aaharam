@@ -50,10 +50,10 @@ const OrderHistory: React.FC = () => {
         <div>
           <div className="flex items-center px-4 pt-6 pb-4 bg-white">
             <button
-              className="w-9 h-9 rounded-full bg-[#EAF6E6] flex items-center justify-center mr-3"
+              className="w-9 h-9 rounded-full bg-[#E9FFE5] flex items-center justify-center mr-2"
               onClick={() => navigate(-1)}
             >
-              <img src={profileBack} alt="Back" className="w-5 h-5" />
+              <img src={profileBack} alt="Back" className="w-4 h-4" />
             </button>
             <span className="text-lg font-semibold text-black">
               Order History
@@ -66,17 +66,15 @@ const OrderHistory: React.FC = () => {
                 <button
                   key={tab.label}
                   ref={(el) => (tabRefs.current[idx] = el)}
-                  className={`px-4 flex flex-col items-center pt-2 pb-3 transition-colors duration-150 ${
-                    activeTab === idx ? "border-b-2 border-[#2B9E76]" : ""
-                  }`}
+                  className={`px-4 flex flex-col items-center pt-2 pb-3 transition-colors duration-150 ${activeTab === idx ? "border-b-2 border-[#2B9E76]" : ""
+                    }`}
                   onClick={() => setActiveTab(idx)}
                 >
                   <div
-                    className={`relative px-2 text-sm font-medium duration-150 ${
-                      activeTab === idx
-                        ? "text-[#2B9E76] font-medium"
-                        : "text-[#232323] font-medium"
-                    }`}
+                    className={`relative px-2 text-sm font-medium duration-150 ${activeTab === idx
+                      ? "text-[#2B9E76] font-medium"
+                      : "text-[#232323] font-medium"
+                      }`}
                     style={{ display: "inline-block" }}
                   >
                     {tab.label}{" "}

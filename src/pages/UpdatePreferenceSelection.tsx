@@ -26,10 +26,6 @@ const UpdatePreferenceSelection = () => {
                     <div className="font-semibold text-base px-5 pt-2 pb-2 text-[#222] flex-none" style={{ letterSpacing: 0 }}>Select Your Time Slot</div>
                     <form className="flex-1 flex flex-col gap-0 px-2 overflow-y-auto scrollbar-hide" onSubmit={e => {
                         e.preventDefault();
-                        toast({
-                            title: "My Preferred Lunch Time Slot",
-                            description: "Your lunch time slot has been updated successfully.",
-                        });
                     }}>
 
                         {TIME_SLOTS.map((slot, idx) => {
@@ -83,6 +79,12 @@ const UpdatePreferenceSelection = () => {
                     <div className="flex flex-col gap-3">
                         <button
                             type="submit"
+                            onClick={() => {
+                                toast({
+                                    title: "My Preferred Lunch Time Slot",
+                                    description: "Your lunch time slot has been updated successfully.",
+                                });
+                            }}
                             className="w-full h-12 text-base bg-[#43A047] text-white rounded-xl font-semibold shadow-sm hover:bg-[#388E3C] transition-colors"
                             disabled={!selected}
                             style={{ letterSpacing: 0.2 }}
