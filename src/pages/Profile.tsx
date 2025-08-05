@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "@/components/Container";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ import feedback from "@/assets/feed-back.svg";
 import rules from "@/assets/rule.svg";
 import logout from "@/assets/logout.svg";
 import profileAccordion from "@/assets/profile-accordion.svg";
-import IndicatorBar from "@/components/IndicatorBar";
+import LogoutModal from "@/components/modals/LogoutModal";
 
 // --- Types ---
 type User = {
@@ -49,7 +49,13 @@ const MENU_ITEMS: MenuItemConfig[] = [
     { icon: pantryHours, label: "Food Pantry Hours", color: "bg-[#F2F8FF]", iconBg: "bg-[#D6E9FF]" },
     { icon: feedback, label: "Feedback / Suggestions", color: "bg-[#FFFFF2]", iconBg: "bg-[#FFFCD6]" },
     { icon: rules, label: "Rules & Regulations", color: "bg-[#F7F2FF]", iconBg: "bg-[#EAD6FF]" },
-    { icon: logout, label: "Logout", color: "bg-[#FFF2F2]", iconBg: "bg-[#FFD6D6]", textColor: "text-[#F04438]" },
+    { 
+      icon: logout, 
+      label: "Logout", 
+      color: "bg-[#FFF2F2]", 
+      iconBg: "bg-[#FFD6D6]", 
+      textColor: "text-red-500"
+    },
 ];
 
 // --- Components ---
@@ -70,9 +76,23 @@ export const MenuItem: React.FC<MenuItemConfig> = ({ icon, label, color, iconBg,
 );
 
 // --- Main Profile Page ---
-const Profile: React.FC = () => {
+const Profile = () => {
     const navigate = useNavigate();
-    const user = USER;
+    const [user] = React.useState<User>(USER);
+    const [isLogoutModalOpen, setIsLogoutModalOpen] = React.useState(false);
+
+    const handleLogout = () => {
+        // Add your logout logic here
+        console.log('User logged out');
+        // For example: Clear auth tokens, redirect to login, etc.
+        navigate('/login');
+    };
+
+    const handleLogoutClick = (label: string) => {
+        if (label === 'Logout') {
+            setIsLogoutModalOpen(true);
+        }
+    };
 
     return (
         <Container>
@@ -139,7 +159,7 @@ const Profile: React.FC = () => {
                         };
                         const handleClick = navigationMap[item.label]
                             ? () => navigate(navigationMap[item.label])
-                            : item.onClick;
+                            : () => handleLogoutClick(item.label);
                         return (
                             <MenuItem
                                 key={item.label}
@@ -153,6 +173,12 @@ const Profile: React.FC = () => {
                     <IndicatorBar />
                 </div> */}
             </div>
+            
+            <LogoutModal 
+                isOpen={isLogoutModalOpen}
+                onClose={() => setIsLogoutModalOpen(false)}
+                onLogout={handleLogout}
+            />
         </Container>
     );
 };
