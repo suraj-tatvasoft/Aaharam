@@ -122,6 +122,7 @@ const Profile: React.FC = () => {
                         const navigationMap: Record<string, string> = {
                             "Payment QR": "/payment-qr",
                             "My Favorites": "/favorites",
+                            "My Preferred Lunch Time Slot": "/update-preference-selection",
                             // Add more mappings here as needed
                         };
                         const handleClick = navigationMap[item.label]
