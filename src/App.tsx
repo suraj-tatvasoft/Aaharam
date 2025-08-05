@@ -11,6 +11,7 @@ import FoodDelivery from "./pages/FoodDelivery";
 import SplashScreen from "./components/SplashScreen";
 import OnBoarding from "./components/OnBoarding";
 import BulkPass from "./pages/BulkPass";
+import Home from "./pages/Home";
 
 const App = () => (
   <TooltipProvider>
@@ -18,13 +19,14 @@ const App = () => (
     <BrowserRouter>
       <Navigation />
       <Routes>
-        <Route path="/" element={<FoodDelivery />} />
+        <Route path="/" element={<Home />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/login" element={<Login />} />
         <Route path="/splash" element={<SplashScreen />} />
         <Route path="/onboarding" element={<OnBoarding />} />
         <Route path="/bulk-pass" element={<BulkPass />} />
         <Route path="/monthly-pass-summary" element={<MonthlyPassSummary />} />
+        <Route path="/food-delivery" element={<FoodDelivery />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
