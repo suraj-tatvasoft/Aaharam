@@ -5,6 +5,7 @@ import React from "react";
 import MonthlyPassSummary from "@/pages/MonthlyPassSummary";
 import Navigation from "./components/Navigation";
 import Analytics from "./pages/Analytics";
+import PreferenceSelection from "./pages/PreferenceSelection";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import FoodDelivery from "./pages/FoodDelivery";
@@ -27,6 +28,7 @@ const App = () => (
         <Route path="/bulk-pass" element={<BulkPass />} />
         <Route path="/monthly-pass-summary" element={<MonthlyPassSummary />} />
         <Route path="/food-delivery" element={<FoodDelivery />} />
+        <Route path="/preference-selection" element={<PreferenceSelection />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

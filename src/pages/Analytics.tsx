@@ -1,9 +1,10 @@
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useNavigate } from "react-router-dom";
 
 const Analytics = () => {
+  const navigate = useNavigate();
   const data = [
     { name: "12:00 PM", value: 24, time: "12:00" },
     { name: "12:30 PM", value: 20, time: "12:30" },
@@ -18,23 +19,24 @@ const Analytics = () => {
   const COLORS = ["#22c55e", "#a855f7", "#3b82f6", "#84cc16", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4"];
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="flex-1 flex flex-col justify-end items-center pb-0">
+    <div className="min-h-screen flex flex-col max-w-md w-full mx-auto bg-[#DFFFEA]">
+      {/* Top section with avatar and welcome */}
+      <div className="w-full bg-[#DFFFEA] rounded-b-[40px] flex flex-col items-center pt-8 pb-6">
+        <Avatar className="w-16 h-16 mb-3 shadow-lg border-2 border-white">
+          <AvatarImage
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+            alt="Dhiren Devganiya"
+            className="object-cover"
+          />
+          <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-success font-semibold text-lg md:text-xl">
+            DD
+          </AvatarFallback>
+        </Avatar>
+        <h1 className="text-lg font-bold md:text-xl text-center px-3 py-1 mt-1">Welcome Dhiren Devganiya</h1>
+      </div>
+      <div className="flex-1 flex flex-col justify-end items-center pb-0 mt-[-28px]">
         <div className="w-full max-w-md mx-auto flex flex-col flex-1 justify-end items-center">
-          {/* Avatar and Welcome outside card */}
-          <div className="flex flex-col items-center -mt-10 mb-2 z-20">
-            <Avatar className="w-16 h-16 mb-2 shadow-lg border-1 border-white">
-              <AvatarImage
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
-                alt="Dhiren Devganiya"
-                className="object-cover"
-              />
-              <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-success font-semibold text-lg md:text-xl">
-                DD
-              </AvatarFallback>
-            </Avatar>
-            <h1 className="text-lg font-bold md:text-xl text-center bg-[#DFFFEA] px-3 py-1 rounded-full">Welcome Dhiren Devganiya</h1>
-          </div>
+
           {/* Card container */}
           <div className="bg-white rounded-t-3xl shadow-xl px-5 pt-8 pb-6 w-full relative z-10 mt-[-10px]">
             <div className="text-center mb-5">
@@ -81,6 +83,7 @@ const Analytics = () => {
             <Button
               className="w-full h-12 text-lg bg-foreground text-background hover:bg-foreground/90 mt-4"
               size="lg"
+              onClick={() => navigate('/preference-selection')}
             >
               Select Your Preferred Lunch Time
             </Button>
