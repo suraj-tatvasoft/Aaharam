@@ -1,6 +1,5 @@
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import React from "react";
-import "./fade-transition.css";
 
 interface FadeTransitionProps {
   show: boolean;

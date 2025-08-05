@@ -7,8 +7,8 @@ import tatvaSoftLogo from "@/assets/main-logo-tatvasoft.svg";
 
 const SplashScreen: React.FC = () => {
   return (
-    <div className="w-full h-screen bg-white flex flex-col justify-between">
-      <div className="max-w-md w-full mx-auto h-full flex flex-col justify-between">
+    <div className="w-full min-h-screen flex flex-col items-center bg-white">
+      <div className="flex-1 flex flex-col justify-between max-w-md w-full mx-auto pt-4 pb-2">
         {/* Top Section: Logo & Branding */}
         <div className="flex flex-col items-center justify-center flex-1 pt-8">
           <img
