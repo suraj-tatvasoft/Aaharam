@@ -43,7 +43,7 @@ const FeedbackScreen = () => {
 
   return (
     <PageLayout title="Feedback / Suggestions">
-      <div className="flex flex-col p-4 max-w-md mx-auto w-full h-[calc(100vh-120px)] relative">
+      <div className="flex flex-col p-4 max-w-md mx-auto w-full h-[calc(100vh-120px)] relative bg-gray-100">
         <div className="space-y-6 pb-24">
         {/* User Profile Card */}
         <div className="bg-white rounded-2xl p-4 shadow-sm">

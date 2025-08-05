@@ -16,7 +16,7 @@ const FoodPantryHours = () => {
 
   return (
     <PageLayout title="Food Pantry Hours">
-      <div className="space-y-4 p-4 w-full min-w-full">
+      <div className="space-y-4 p-4 w-full min-w-full bg-gray-100 flex-1">
         {mealTimes.map((meal, index) => (
           <Card key={index} className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
             <CardContent className="p-4">

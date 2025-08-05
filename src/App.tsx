@@ -18,6 +18,7 @@ import PaymentQR from "./pages/PaymentQR";
 import Favorites from "./pages/Favorites";
 import FoodPantryHours from "./pages/FoodPantryHours";
 import FeedbackScreen from "./pages/FeedbackScreen";
+import RulesAndRegulations from "./pages/RulesAndRegulations";
 
 const App = () => (
   <TooltipProvider>
@@ -39,6 +40,7 @@ const App = () => (
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/food-pantry-hours" element={<FoodPantryHours />} />
         <Route path="/feedback" element={<FeedbackScreen />} />
+        <Route path="/rules-and-regulations" element={<RulesAndRegulations />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -28,11 +28,11 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         {showBackButton && (
           <button
             onClick={onBack || (() => navigate(-1))}
-            className="w-9 h-9 rounded-full bg-[#E9FFE5] flex items-center justify-center mr-2"
+            className="w-10 h-10 rounded-full bg-[#E9FFE5] flex items-center justify-center mr-2"
             aria-label="Back"
             type="button"
           >
-            <img src={profileBack} alt="Back" className="w-4 h-4" />
+            <img src={profileBack} alt="Back" className="w-5 h-5" />
           </button>
         )}
         <span className="text-base text-[#222] font-medium">{title}</span>

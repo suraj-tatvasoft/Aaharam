@@ -124,6 +124,7 @@ const Profile: React.FC = () => {
                             "My Favorites": "/favorites",
                             "Food Pantry Hours": "/food-pantry-hours",
                             "Feedback / Suggestions": "/feedback",
+                            "Rules & Regulations": "/rules-and-regulations",
                             // Add more mappings here as needed
                         };
                         const handleClick = navigationMap[item.label]
