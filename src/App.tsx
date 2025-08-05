@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import PaymentQR from "./pages/PaymentQR";
 import Favorites from "./pages/Favorites";
 import FoodPantryHours from "./pages/FoodPantryHours";
+import FeedbackScreen from "./pages/FeedbackScreen";
 
 const App = () => (
   <TooltipProvider>
@@ -35,8 +36,9 @@ const App = () => (
         <Route path="/preference-selection" element={<PreferenceSelection />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/payment-qr" element={<PaymentQR />} />
-<Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/food-pantry-hours" element={<FoodPantryHours />} />
+        <Route path="/feedback" element={<FeedbackScreen />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

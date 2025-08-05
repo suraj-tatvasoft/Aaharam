@@ -123,6 +123,7 @@ const Profile: React.FC = () => {
                             "Payment QR": "/payment-qr",
                             "My Favorites": "/favorites",
                             "Food Pantry Hours": "/food-pantry-hours",
+                            "Feedback / Suggestions": "/feedback",
                             // Add more mappings here as needed
                         };
                         const handleClick = navigationMap[item.label]
