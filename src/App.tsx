@@ -13,6 +13,9 @@ import SplashScreen from "./components/SplashScreen";
 import OnBoarding from "./components/OnBoarding";
 import BulkPass from "./pages/BulkPass";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import PaymentQR from "./pages/PaymentQR";
+import Favorites from "./pages/Favorites";
 
 const App = () => (
   <TooltipProvider>
@@ -29,6 +32,9 @@ const App = () => (
         <Route path="/monthly-pass-summary" element={<MonthlyPassSummary />} />
         <Route path="/food-delivery" element={<FoodDelivery />} />
         <Route path="/preference-selection" element={<PreferenceSelection />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/payment-qr" element={<PaymentQR />} />
+<Route path="/favorites" element={<Favorites />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

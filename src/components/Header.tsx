@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import NotificationModal from "@/components/modals/NotificationModal";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+import { useNavigate } from "react-router-dom";
 
 export interface HeaderProps {
   onMenuClick?: () => void;
 }
 
 const Header = ({ onMenuClick }: HeaderProps) => {
+  const navigate = useNavigate();
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
 
   return (
@@ -20,7 +22,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
         <header className="bg-white p-4 border-b border-border/50 shadow-sm">
           <div className="flex items-center gap-3">
             {/* User Avatar */}
-            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 flex-shrink-0 md:w-12 md:h-12">
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 flex-shrink-0 md:w-12 md:h-12 cursor-pointer" onClick={() => navigate('/profile')}>
               <img
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
                 alt="User profile"
