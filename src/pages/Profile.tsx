@@ -87,7 +87,7 @@ const Profile: React.FC = () => {
                                 aria-label="Back"
                                 type="button"
                             >
-                                <img src={profileBack} alt="Back" className="w-6 h-6" />
+                                <img src={profileBack} alt="Back" className="w-4 h-4" />
                             </button>
                         </div>
                         <div className="absolute right-4 top-8">
