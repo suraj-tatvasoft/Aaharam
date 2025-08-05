@@ -121,6 +121,7 @@ const Profile: React.FC = () => {
                         // Map menu labels to navigation paths
                         const navigationMap: Record<string, string> = {
                             "Payment QR": "/payment-qr",
+                            "Order History": "/order-history",
                             "My Favorites": "/favorites",
                             "My Preferred Lunch Time Slot": "/update-preference-selection",
                             // Add more mappings here as needed
