@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import PageLayout from "@/components/PageLayout";
 import fileAddIcon from "@/assets/file-add.svg";
+import { useToast } from "@/components/ui/use-toast";
 
 const FeedbackScreen = () => {
   const [feedback, setFeedback] = useState("");
   const [selectedFiles, setSelectedFiles] = useState<Array<{file: File, preview: string}>>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const user = {
     name: "Dhiren Devganiya",
@@ -31,14 +34,45 @@ const FeedbackScreen = () => {
     setSelectedFiles(newFiles);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission with all files
-    console.log({ 
-      feedback, 
-      files: selectedFiles.map(f => f.file) 
-    });
-    // Add your submission logic here
+    
+    if (!feedback.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter your feedback before submitting.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Clear form
+      setFeedback("");
+      selectedFiles.forEach(file => URL.revokeObjectURL(file.preview));
+      setSelectedFiles([]);
+      
+      // Show success toast
+      toast({
+        title: "Feedback Submitted",
+        description: "Thank you for your feedback! We've received it successfully.",
+        className: "bg-gray-200 text-black border-0",
+      });
+      
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit feedback. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -140,11 +174,12 @@ const FeedbackScreen = () => {
           </div>
 
           {/* Submit Button */}
-          <Button
-            type="submit"
+          <Button 
+            type="submit" 
             className="w-[calc(100%-2rem)] h-12 bg-[#43A047] hover:bg-[#388E3C] text-white text-base font-medium rounded-xl shadow-sm fixed bottom-4 left-1/2 -translate-x-1/2 max-w-md"
+            disabled={isSubmitting}
           >
-            Submit
+            {isSubmitting ? 'Submitting...' : 'Submit'}
           </Button>
         </form>
         </div>
