@@ -32,7 +32,7 @@ export default function LogoutModal({ isOpen, onClose, onLogout }: LogoutModalPr
           </button>
           <button
             onClick={onLogout}
-            className="flex-1 py-3 px-4 bg-red-600 text-white rounded-xl font-medium text-base hover:bg-green-700 transition-colors"
+            className="flex-1 py-3 px-4 text-red-600 rounded-xl font-medium text-base hover:bg-none transition-colors"
           >
             Yes
           </button>
