@@ -43,9 +43,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         <div className={`flex-1 overflow-y-auto scrollbar-hide flex flex-col items-center w-full ${contentClassName}`}>
           {children}
         </div>
-        <div className="mt-2 mb-2">
+        {/* <div className="mt-2 mb-2">
           <IndicatorBar />
-        </div>
+        </div> */}
       </div>
     </Container>
   );

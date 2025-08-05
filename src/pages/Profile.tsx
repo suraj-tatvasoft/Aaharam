@@ -147,9 +147,9 @@ const Profile: React.FC = () => {
                         );
                     })}
                 </div>
-                <div className="mt-2 mb-2">
+                {/* <div className="mt-2 mb-2">
                     <IndicatorBar />
-                </div>
+                </div> */}
             </div>
         </Container>
     );
