@@ -11,18 +11,22 @@ const TABS = [
 ];
 
 const ORDERS = [
-  { id: 27211, amount: 110, date: "18th Apr 25" },
-  { id: 12545, amount: 200, date: "18th Apr 25" },
-  { id: 45575, amount: 10, date: "18th Apr 25" },
-  { id: 78451, amount: 400, date: "18th Apr 25" },
-  { id: 45523, amount: 300, date: "18th Apr 25" },
-  { id: 45878, amount: 200, date: "18th Apr 25" },
-  { id: 27211, amount: 110, date: "18th Apr 25" },
-  { id: 27212, amount: 110, date: "18th Apr 25" },
-  { id: 27213, amount: 110, date: "18th Apr 25" },
-  { id: 27214, amount: 110, date: "18th Apr 25" },
-  { id: 27215, amount: 110, date: "18th Apr 25" },
-  { id: 27216, amount: 110, date: "18th Apr 25" },
+  { id: 27211, amount: 110, date: "18th Apr 25", status: "Completed" },
+  { id: 12545, amount: 200, date: "18th Apr 25", status: "Completed" },
+  { id: 27212, amount: 110, date: "18th Apr 25", status: "Completed" },
+  { id: 12546, amount: 200, date: "18th Apr 25", status: "Completed" },
+  { id: 27213, amount: 110, date: "18th Apr 25", status: "Completed" },
+  { id: 12547, amount: 200, date: "18th Apr 25", status: "Completed" },
+  { id: 45575, amount: 10, date: "18th Apr 25", status: "Rejected" },
+  { id: 78451, amount: 400, date: "18th Apr 25", status: "Completed" },
+  { id: 45523, amount: 300, date: "18th Apr 25", status: "No Show" },
+  { id: 45878, amount: 200, date: "18th Apr 25", status: "Completed" },
+  { id: 27211, amount: 110, date: "18th Apr 25", status: "Completed" },
+  { id: 27212, amount: 110, date: "18th Apr 25", status: "Cancelled" },
+  { id: 27213, amount: 110, date: "18th Apr 25", status: "Completed" },
+  { id: 27214, amount: 110, date: "18th Apr 25", status: "Completed" },
+  { id: 27215, amount: 110, date: "18th Apr 25", status: "No Show" },
+  { id: 27216, amount: 110, date: "18th Apr 25", status: "Rejected" },
 ];
 
 const OrderHistory: React.FC = () => {
@@ -62,7 +66,7 @@ const OrderHistory: React.FC = () => {
                 <button
                   key={tab.label}
                   ref={(el) => (tabRefs.current[idx] = el)}
-                  className={`px-4 flex flex-col items-center py-2 transition-colors duration-150 ${
+                  className={`px-4 flex flex-col items-center pt-2 pb-3 transition-colors duration-150 ${
                     activeTab === idx ? "border-b-2 border-[#2B9E76]" : ""
                   }`}
                   onClick={() => setActiveTab(idx)}
@@ -84,8 +88,8 @@ const OrderHistory: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex-1 bg-[#FAFAFA] px-4 pt-3 pb-4 overflow-y-auto">
-          {ORDERS.map((order, i) => (
+        <div className="flex-1 bg-[#FAFAFA] px-4 pt-3 pb-4 overflow-y-auto scrollbar-hide">
+          {ORDERS.filter(order => order.status === TABS[activeTab].label).map((order, i) => (
             <div
               key={i}
               className="bg-white rounded-2xl px-4 py-3 mb-3 shadow-sm flex items-center justify-between"
