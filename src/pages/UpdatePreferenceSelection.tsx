@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import { useNavigate } from "react-router-dom";
 
 const TIME_SLOTS = [
     "12:00 PM - 12:30 PM",
@@ -14,11 +15,12 @@ const TIME_SLOTS = [
 const UpdatePreferenceSelection = () => {
     const [selected, setSelected] = useState<string | null>(TIME_SLOTS[0]);
 
+    const navigate = useNavigate();
     return (
         <PageLayout title="My Preferred Lunch Time Slot">
-            <div className="w-full max-w-md mx-auto flex flex-col h-[100dvh] px-0" style={{ fontFamily: 'system-ui, sans-serif', background: '#fff' }}>
+            <div className="w-full max-w-md mx-auto flex flex-col flex-1 px-0" style={{ fontFamily: 'system-ui, sans-serif', background: '#fff' }}>
                 {/* Card pinned to top */}
-                <div className="flex flex-col px-0 pt-2 pb-2 mx-2 mt-4 flex-1">
+                <div className="flex flex-col rounded-2xl px-0 pt-2 pb-2 mx-2 mt-4 flex-1">
                     <div className="font-semibold text-base px-5 pt-5 pb-2 text-[#222] flex-none" style={{ letterSpacing: 0 }}>Select Your Time Slot</div>
                     <form className="flex-1 flex flex-col gap-0 px-2 overflow-y-auto scrollbar-hide" onSubmit={e => { e.preventDefault(); }}>
                         {TIME_SLOTS.map((slot, idx) => {
@@ -81,7 +83,7 @@ const UpdatePreferenceSelection = () => {
                         <button
                             type="button"
                             className="w-full h-12 text-base bg-white border border-[#43A047] text-[#43A047] rounded-xl font-semibold shadow-sm hover:bg-[#E9FFE5] transition-colors"
-                            onClick={() => {/* handle view overall time slots */ }}
+                            onClick={() => navigate('/overall-time-slots')}
                             style={{ letterSpacing: 0.2 }}
                         >
                             View Overall Time Slots

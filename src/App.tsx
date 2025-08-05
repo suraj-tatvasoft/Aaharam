@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import PaymentQR from "./pages/PaymentQR";
 import Favorites from "@/pages/Favorites";
 import UpdatePreferenceSelection from "@/pages/UpdatePreferenceSelection";
+import OverallTimeSlots from "@/pages/OverallTimeSlots";
 
 const App = () => (
   <TooltipProvider>
@@ -37,6 +38,7 @@ const App = () => (
         <Route path="/payment-qr" element={<PaymentQR />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/update-preference-selection" element={<UpdatePreferenceSelection />} />
+        <Route path="/overall-time-slots" element={<OverallTimeSlots />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

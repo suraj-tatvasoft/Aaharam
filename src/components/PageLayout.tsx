@@ -22,9 +22,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <div className={`min-h-screen max-h-screen bg-[#FAFAFA] flex flex-col items-center w-full pt-0 ${className}`}>
+    <div className={`min-h-screen max-h-screen bg-[#F7F7F7] flex flex-col items-center w-full pt-0 ${className}`}>
       {/* Top Bar */}
-      <div className="flex items-center w-full max-w-md pt-6 pb-6 px-4">
+      <div className="flex items-center w-full max-w-md pt-6 pb-6 px-4 bg-[#FFFFFF]">
         {showBackButton && (
           <button
             onClick={onBack || (() => navigate(-1))}
