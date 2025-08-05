@@ -91,7 +91,12 @@ const Profile: React.FC = () => {
                             </button>
                         </div>
                         <div className="absolute right-4 top-8">
-                            <button className="w-10 h-10 rounded-full bg-[#E9FFE5] flex items-center justify-center" aria-label="Notifications" type="button">
+                            <button
+                                className="w-10 h-10 rounded-full bg-[#E9FFE5] flex items-center justify-center"
+                                aria-label="Notifications"
+                                type="button"
+                                onClick={() => navigate('/notifications')}
+                            >
                                 <img src={notificationIcon} alt="Notifications" className="w-6 h-6" />
                             </button>
                         </div>
@@ -102,7 +107,10 @@ const Profile: React.FC = () => {
                     </div>
 
                     {/* Pass Info */}
-                    <div className="bg-[#A7E6B9] mx-0 mt-0 px-6 py-2 flex flex-row items-center justify-between w-full">
+                    <div
+                        className="bg-[#A7E6B9] mx-0 mt-0 px-6 py-2 flex flex-row items-center justify-between w-full cursor-pointer hover:bg-[#bdf2c9] transition-colors"
+                        onClick={() => navigate('/bulk-pass')}
+                    >
                         <div className="flex flex-col items-start gap-1">
                             <span className="font-semibold text-xl text-[#222]">Bulk Pass</span>
                             <span className="text-xs text-[#222]">{user.passType}</span>
@@ -123,6 +131,7 @@ const Profile: React.FC = () => {
                             "Payment QR": "/payment-qr",
                             "My Favorites": "/favorites",
                             "My Preferred Lunch Time Slot": "/update-preference-selection",
+                            "Food Pantry Hours": "/food-pantry-hours",
                             // Add more mappings here as needed
                         };
                         const handleClick = navigationMap[item.label]

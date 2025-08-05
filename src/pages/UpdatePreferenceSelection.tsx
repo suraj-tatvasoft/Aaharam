@@ -18,10 +18,10 @@ const UpdatePreferenceSelection = () => {
     const navigate = useNavigate();
     return (
         <PageLayout title="My Preferred Lunch Time Slot">
-            <div className="w-full max-w-md mx-auto flex flex-col flex-1 px-0" style={{ fontFamily: 'system-ui, sans-serif', background: '#fff' }}>
+            <div className="w-full bg-[#F7F7F7] flex flex-col flex-1 px-0" style={{ fontFamily: 'system-ui, sans-serif', background: '#fff' }}>
                 {/* Card pinned to top */}
-                <div className="flex flex-col rounded-2xl px-0 pt-2 pb-2 mx-2 mt-4 flex-1">
-                    <div className="font-semibold text-base px-5 pt-5 pb-2 text-[#222] flex-none" style={{ letterSpacing: 0 }}>Select Your Time Slot</div>
+                <div className="flex flex-col rounded-2xl px-0 pt-2 pb-2 mx-2 flex-1">
+                    <div className="font-semibold text-base px-5 pt-2 pb-2 text-[#222] flex-none" style={{ letterSpacing: 0 }}>Select Your Time Slot</div>
                     <form className="flex-1 flex flex-col gap-0 px-2 overflow-y-auto scrollbar-hide" onSubmit={e => { e.preventDefault(); }}>
                         {TIME_SLOTS.map((slot, idx) => {
                             const checked = selected === slot;
