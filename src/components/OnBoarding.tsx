@@ -121,7 +121,7 @@ const OnBoarding: React.FC = () => {
                         <img src={nextArrow} alt="Next" className="w-6 h-6" />
                     </button>
                     {/* Indicator Bar */}
-                    <IndicatorBar />
+                    {/* <IndicatorBar /> */}
                 </div>
             </div>
         </Container>

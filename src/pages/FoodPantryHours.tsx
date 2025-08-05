@@ -1,32 +1,28 @@
-import { Card, CardContent } from "@/components/ui/card";
 import PageLayout from "@/components/PageLayout";
 
-type MealTime = {
-  name: string;
-  timeRange: string;
-};
+const PANTRY_HOURS = [
+  { label: "Break Fast", time: "08:30 AM - 10:00 AM" },
+  { label: "Lunch", time: "12:00 PM - 03:30 PM" },
+  { label: "Evening Snacks", time: "03:30 PM - 06:30 PM" },
+  { label: "Sides", time: "08:30 AM - 06:30 PM" },
+];
 
 const FoodPantryHours = () => {
-  const mealTimes: MealTime[] = [
-    { name: "Breakfast", timeRange: "08:30 AM - 10:00 AM" },
-    { name: "Lunch", timeRange: "12:30 PM - 02:30 PM" },
-    { name: "Evening Snacks", timeRange: "05:00 PM - 06:30 PM" },
-    { name: "Dinner", timeRange: "08:00 PM - 10:00 PM" },
-  ];
-
   return (
     <PageLayout title="Food Pantry Hours">
-      <div className="space-y-4 p-4 w-full min-w-full bg-gray-100 flex-1">
-        {mealTimes.map((meal, index) => (
-          <Card key={index} className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <CardContent className="p-4">
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[#222]">{meal.name}</span>
-                <span className="text-[#222]">{meal.timeRange}</span>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="w-full max-w-md mx-auto min-h-[100dvh] bg-[#FAFAFA] flex flex-col items-center pt-4">
+        <div className="w-full flex flex-col gap-5 px-2 mt-2">
+          {PANTRY_HOURS.map((item) => (
+            <div
+              key={item.label}
+              className="flex items-center justify-between bg-white rounded-2xl py-5 px-5 text-[17px] font-medium text-[#222] shadow-sm"
+              style={{ fontFamily: 'system-ui, sans-serif' }}
+            >
+              <span>{item.label}</span>
+              <span className="text-right font-normal text-[16px] text-[#222]">{item.time}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </PageLayout>
   );

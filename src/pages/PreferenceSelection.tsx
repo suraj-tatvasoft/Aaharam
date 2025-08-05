@@ -28,42 +28,42 @@ const PreferenceSelection = () => {
     return (
         <Container>
             <div className="min-h-screen flex flex-col bg-white">
-            <div className="max-w-md w-full mx-auto flex flex-col flex-1">
-                <div className="flex items-center gap-3 px-4 pt-8 pb-4">
-                    <Avatar className="w-10 h-10">
-                        <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="User" />
-                    </Avatar>
-                    <span className="font-semibold text-lg">My Preferred Lunch Time Slot</span>
+                <div className="max-w-md w-full mx-auto flex flex-col flex-1">
+                    <div className="flex items-center gap-3 px-4 pt-8 pb-4">
+                        <Avatar className="w-10 h-10">
+                            <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="User" />
+                        </Avatar>
+                        <span className="font-semibold text-lg">My Preferred Lunch Time Slot</span>
+                    </div>
+                    <form className="flex flex-col flex-1 bg-[#FAFAFA] rounded-2xl px-4 pt-4 pb-2 mx-2" onSubmit={handleSubmit}>
+                        <div className="font-semibold text-base mb-3">Select Your Time Slot</div>
+                        <div className="flex-1 overflow-y-auto flex flex-col gap-3">
+                            {TIME_SLOTS.map((slot) => (
+                                <label key={slot} className="flex items-center justify-between py-1 cursor-pointer">
+                                    <span className="text-[15px] font-medium text-black">{slot}</span>
+                                    <input
+                                        type="radio"
+                                        name="timeSlot"
+                                        value={slot}
+                                        checked={selected === slot}
+                                        onChange={() => setSelected(slot)}
+                                        className="form-radio w-5 h-5 accent-black"
+                                    />
+                                </label>
+                            ))}
+                        </div>
+                        <div className="mt-auto pt-8">
+                            <button
+                                type="submit"
+                                className="w-full h-12 text-lg bg-black text-white rounded-xl font-semibold"
+                                disabled={!selected}
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                    {/* <IndicatorBar className="mt-4 mb-2" /> */}
                 </div>
-                <form className="flex flex-col flex-1 bg-[#FAFAFA] rounded-2xl px-4 pt-4 pb-2 mx-2" onSubmit={handleSubmit}>
-                    <div className="font-semibold text-base mb-3">Select Your Time Slot</div>
-                    <div className="flex-1 overflow-y-auto flex flex-col gap-3">
-                        {TIME_SLOTS.map((slot) => (
-                            <label key={slot} className="flex items-center justify-between py-1 cursor-pointer">
-                                <span className="text-[15px] font-medium text-black">{slot}</span>
-                                <input
-                                    type="radio"
-                                    name="timeSlot"
-                                    value={slot}
-                                    checked={selected === slot}
-                                    onChange={() => setSelected(slot)}
-                                    className="form-radio w-5 h-5 accent-black"
-                                />
-                            </label>
-                        ))}
-                    </div>
-                    <div className="mt-auto pt-8">
-                        <button
-                            type="submit"
-                            className="w-full h-12 text-lg bg-black text-white rounded-xl font-semibold"
-                            disabled={!selected}
-                        >
-                            Submit
-                        </button>
-                    </div>
-                </form>
-                <IndicatorBar className="mt-4 mb-2" />
-            </div>
             </div>
         </Container>
     );

@@ -11,20 +11,20 @@ const SplashScreen: React.FC = () => {
   return (
     <Container>
       <div className="w-full min-h-screen flex flex-col items-center bg-white">
-      <div className="flex-1 flex flex-col justify-between max-w-md w-full mx-auto pt-4 pb-2">
-        {/* Top Section: Logo & Branding */}
-        <div className="flex flex-col items-center justify-center flex-1 pt-8">
-          <img
-            src={logo}
-            alt="Aaharam Logo"
-            className="w-48 h-auto mx-auto mb-6 animate-fade-in-up"
-          />
-          <div className="flex flex-col items-center">
-            <img src={tatvaSoftLogo} alt="TatvaSoft Logo" className="w-auto h-auto mb-1 animate-fade-in-up delay-300" />
-          </div>
-          {/* Animations: fade-in-up for logo and TatvaSoft logo */}
-          <style>
-            {`
+        <div className="flex-1 flex flex-col justify-between max-w-md w-full mx-auto pt-4 pb-2">
+          {/* Top Section: Logo & Branding */}
+          <div className="flex flex-col items-center justify-center flex-1 pt-8">
+            <img
+              src={logo}
+              alt="Aaharam Logo"
+              className="w-48 h-auto mx-auto mb-6 animate-fade-in-up"
+            />
+            <div className="flex flex-col items-center">
+              <img src={tatvaSoftLogo} alt="TatvaSoft Logo" className="w-auto h-auto mb-1 animate-fade-in-up delay-300" />
+            </div>
+            {/* Animations: fade-in-up for logo and TatvaSoft logo */}
+            <style>
+              {`
               @keyframes fade-in-up {
                 0% { opacity: 0; transform: translateY(30px); }
                 100% { opacity: 1; transform: translateY(0); }
@@ -36,23 +36,23 @@ const SplashScreen: React.FC = () => {
                 animation-delay: 0.3s;
               }
             `}
-          </style>
-        </div>
-        {/* Bottom Section: Illustration & Wave */}
-        <div className="relative w-full">
-          {/* Illustration */}
-          <div className="relative z-10 flex justify-center items-end h-full">
-            <img
-              src={illustration}
-              alt="Woman Eating"
-              className="w-full h-auto object-contain"
-            />
+            </style>
           </div>
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-2 z-20">
+          {/* Bottom Section: Illustration & Wave */}
+          <div className="relative w-full">
+            {/* Illustration */}
+            <div className="relative z-10 flex justify-center items-end h-full">
+              <img
+                src={illustration}
+                alt="Woman Eating"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            {/* <div className="absolute left-1/2 -translate-x-1/2 bottom-2 z-20">
             <IndicatorBar />
+          </div> */}
           </div>
         </div>
-      </div>
       </div>
     </Container>
   );

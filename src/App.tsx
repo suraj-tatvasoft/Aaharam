@@ -15,10 +15,14 @@ import BulkPass from "./pages/BulkPass";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import PaymentQR from "./pages/PaymentQR";
-import Favorites from "./pages/Favorites";
 import FoodPantryHours from "./pages/FoodPantryHours";
 import FeedbackScreen from "./pages/FeedbackScreen";
 import RulesAndRegulations from "./pages/RulesAndRegulations";
+import UpdatePreferenceSelection from "@/pages/UpdatePreferenceSelection";
+import OverallTimeSlots from "@/pages/OverallTimeSlots";
+import Notifications from "@/pages/Notifications";
+import OrderHistory from "@/pages/OrderHistory";
+import Favorites from "./pages/Favorites";
 
 const App = () => (
   <TooltipProvider>
@@ -41,6 +45,11 @@ const App = () => (
         <Route path="/food-pantry-hours" element={<FoodPantryHours />} />
         <Route path="/feedback" element={<FeedbackScreen />} />
         <Route path="/rules-and-regulations" element={<RulesAndRegulations />} />
+        <Route path="/update-preference-selection" element={<UpdatePreferenceSelection />} />
+        <Route path="/overall-time-slots" element={<OverallTimeSlots />} />
+        <Route path="/food-pantry-hours" element={<FoodPantryHours />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/order-history" element={<OrderHistory />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
