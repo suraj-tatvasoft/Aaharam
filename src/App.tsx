@@ -18,6 +18,7 @@ import PaymentQR from "./pages/PaymentQR";
 import Favorites from "@/pages/Favorites";
 import UpdatePreferenceSelection from "@/pages/UpdatePreferenceSelection";
 import OrderHistory from "@/pages/OrderHistory";
+import OrderHistoryDetail from "@/pages/OrderHistoryDetail";
 
 const App = () => (
   <TooltipProvider>
@@ -39,6 +40,7 @@ const App = () => (
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/update-preference-selection" element={<UpdatePreferenceSelection />} />
         <Route path="/order-history" element={<OrderHistory />} />
+        <Route path="/order-history/:id" element={<OrderHistoryDetail />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

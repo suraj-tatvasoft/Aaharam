@@ -10,7 +10,7 @@ const TABS = [
   { label: "Cancelled", count: 1 },
 ];
 
-const ORDERS = [
+export const ORDERS = [
   { id: 27211, amount: 110, date: "18th Apr 25", status: "Completed" },
   { id: 12545, amount: 200, date: "18th Apr 25", status: "Completed" },
   { id: 27212, amount: 110, date: "18th Apr 25", status: "Completed" },
@@ -22,7 +22,7 @@ const ORDERS = [
   { id: 45523, amount: 300, date: "18th Apr 25", status: "No Show" },
   { id: 45878, amount: 200, date: "18th Apr 25", status: "Completed" },
   { id: 27211, amount: 110, date: "18th Apr 25", status: "Completed" },
-  { id: 27212, amount: 110, date: "18th Apr 25", status: "Cancelled" },
+  { id: 27220, amount: 110, date: "18th Apr 25", status: "Cancelled" },
   { id: 27213, amount: 110, date: "18th Apr 25", status: "Completed" },
   { id: 27214, amount: 110, date: "18th Apr 25", status: "Completed" },
   { id: 27215, amount: 110, date: "18th Apr 25", status: "No Show" },
@@ -92,7 +92,8 @@ const OrderHistory: React.FC = () => {
           {ORDERS.filter(order => order.status === TABS[activeTab].label).map((order, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl px-4 py-3 mb-3 shadow-sm flex items-center justify-between"
+              className="bg-white rounded-2xl px-4 py-3 mb-3 shadow-sm flex items-center justify-between cursor-pointer"
+              onClick={() => navigate(`/order-history/${order.id}`)}
             >
               <div>
                 <div className="text-base font-semibold text-black">
