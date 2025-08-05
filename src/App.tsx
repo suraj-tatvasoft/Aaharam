@@ -20,6 +20,7 @@ import UpdatePreferenceSelection from "@/pages/UpdatePreferenceSelection";
 import OverallTimeSlots from "@/pages/OverallTimeSlots";
 import FoodPantryHours from "@/pages/FoodPantryHours";
 import Notifications from "@/pages/Notifications";
+import OrderHistory from "@/pages/OrderHistory";
 
 const App = () => (
   <TooltipProvider>
@@ -43,6 +44,7 @@ const App = () => (
         <Route path="/overall-time-slots" element={<OverallTimeSlots />} />
         <Route path="/food-pantry-hours" element={<FoodPantryHours />} />
         <Route path="/notifications" element={<Notifications />} />
+        <Route path="/order-history" element={<OrderHistory />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
