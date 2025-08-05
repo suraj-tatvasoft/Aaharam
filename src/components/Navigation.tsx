@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, BarChart3, LogIn } from "lucide-react";
+import { Home, BarChart3, LogIn, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -9,7 +9,7 @@ const Navigation = () => {
   const routes = [
     { path: "/", icon: Home, label: "Food App" },
     { path: "/analytics", icon: BarChart3, label: "Analytics" },
-    { path: "/login", icon: LogIn, label: "Login" },
+    { path: "/food-delivery", icon: Utensils, label: "Food Delivery" },
   ];
 
   return (
@@ -18,7 +18,7 @@ const Navigation = () => {
         {routes.map((route) => {
           const Icon = route.icon;
           const isActive = location.pathname === route.path;
-          
+
           return (
             <Link key={route.path} to={route.path}>
               <Button

@@ -2,6 +2,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useNavigate } from "react-router-dom";
+import Container from "@/components/Container";
 
 const Analytics = () => {
   const navigate = useNavigate();
@@ -19,7 +20,8 @@ const Analytics = () => {
   const COLORS = ["#22c55e", "#a855f7", "#3b82f6", "#84cc16", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4"];
 
   return (
-    <div className="min-h-screen flex flex-col max-w-md w-full mx-auto bg-[#DFFFEA]">
+    <Container>
+      <div className="min-h-screen flex flex-col bg-[#DFFFEA]">
       {/* Top section with avatar and welcome */}
       <div className="w-full bg-[#DFFFEA] rounded-b-[40px] flex flex-col items-center pt-8 pb-6">
         <Avatar className="w-16 h-16 mb-3 shadow-lg border-2 border-white">
@@ -92,7 +94,8 @@ const Analytics = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </Container>
   );
 };
 

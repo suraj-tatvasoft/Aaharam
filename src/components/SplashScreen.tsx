@@ -1,4 +1,5 @@
 import React from "react";
+import Container from "@/components/Container";
 
 // Asset imports
 import logo from "@/assets/main-logo.svg";
@@ -7,7 +8,8 @@ import tatvaSoftLogo from "@/assets/main-logo-tatvasoft.svg";
 
 const SplashScreen: React.FC = () => {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center bg-white">
+    <Container>
+      <div className="w-full min-h-screen flex flex-col items-center bg-white">
       <div className="flex-1 flex flex-col justify-between max-w-md w-full mx-auto pt-4 pb-2">
         {/* Top Section: Logo & Branding */}
         <div className="flex flex-col items-center justify-center flex-1 pt-8">
@@ -35,7 +37,8 @@ const SplashScreen: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </Container>
   );
 };
 

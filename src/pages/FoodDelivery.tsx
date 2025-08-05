@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Container from "@/components/Container";
 import Header from "@/components/Header";
 import CategoryTabs from "@/components/CategoryTabs";
 import PromoBar from "@/components/PromoBar";
@@ -395,51 +396,49 @@ const FoodDelivery = () => {
   };
 
   return (
-    <div className="max-h-screen min-h-screen h-full flex overflow-hidden bg-background">
-      <div className="max-w-md mx-auto bg-background shadow-lg flex-1 flex flex-col overflow-hidden">
-        <Header onMenuClick={() => setIsMenuModalOpen(true)} />
-
-        <main className="flex flex-col overflow-y-hidden flex-1">
-          <CategoryTabs
-            activeCategory={activeCategory}
-            onCategoryChange={setActiveCategory}
-          />
-
-          <PromoBar />
-
-          {/* Food Items List */}
-          <div className="p-4 space-y-2 bg-gray-100 w-full flex-1 overflow-y-auto scrollbar-hide">
-            {filteredItems.map((item) => (
-              <FoodCard
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                price={item.price}
-                image={item.image}
-                description={item.description}
-                available={item.available}
-                unavailableReason={item.unavailableReason}
-                onAdd={handleAddItem}
-                onToggleFavorite={handleToggleFavorite}
-                isFavorite={favorites.has(item.id)}
+    <Container>
+      <div className="min-h-screen flex flex-col bg-white">
+        <div className="max-h-screen min-h-screen h-full flex overflow-hidden bg-background">
+          <div className="max-w-md mx-auto bg-background shadow-lg flex-1 flex flex-col overflow-hidden">
+            <Header onMenuClick={() => setIsMenuModalOpen(true)} />
+            <main className="flex flex-col overflow-y-hidden flex-1">
+              <CategoryTabs
+                activeCategory={activeCategory}
+                onCategoryChange={setActiveCategory}
               />
-            ))}
+              <PromoBar />
+              {/* Food Items List */}
+              <div className="p-4 space-y-2 bg-gray-100 w-full flex-1 overflow-y-auto scrollbar-hide">
+                {filteredItems.map((item) => (
+                  <FoodCard
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    price={item.price}
+                    image={item.image}
+                    description={item.description}
+                    available={item.available}
+                    unavailableReason={item.unavailableReason}
+                    onAdd={handleAddItem}
+                    onToggleFavorite={handleToggleFavorite}
+                    isFavorite={favorites.has(item.id)}
+                  />
+                ))}
+              </div>
+            </main>
           </div>
-
-        </main>
+          {/* Modals */}
+          <MenuModal
+            isOpen={isMenuModalOpen}
+            onClose={() => setIsMenuModalOpen(false)}
+          />
+          <NotificationModal
+            isOpen={isNotificationModalOpen}
+            onClose={() => setIsNotificationModalOpen(false)}
+          />
+        </div>
       </div>
-
-      {/* Modals */}
-      <MenuModal
-        isOpen={isMenuModalOpen}
-        onClose={() => setIsMenuModalOpen(false)}
-      />
-
-      <NotificationModal
-        isOpen={isNotificationModalOpen}
-        onClose={() => setIsNotificationModalOpen(false)}
-      />
-    </div>
+    </Container>
   );
 };
 

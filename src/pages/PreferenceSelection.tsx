@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import Container from "@/components/Container";
 import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
@@ -24,7 +25,8 @@ const PreferenceSelection = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-white">
+        <Container>
+            <div className="min-h-screen flex flex-col bg-white">
             <div className="max-w-md w-full mx-auto flex flex-col flex-1">
                 <div className="flex items-center gap-3 px-4 pt-8 pb-4">
                     <Avatar className="w-10 h-10">
@@ -61,7 +63,8 @@ const PreferenceSelection = () => {
                 </form>
                 <div className="w-24 h-1.5 bg-black rounded-full mx-auto mt-4 mb-2" />
             </div>
-        </div>
+            </div>
+        </Container>
     );
 };
 
