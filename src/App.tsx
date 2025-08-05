@@ -48,7 +48,6 @@ const App = () => (
         <Route path="/rules-and-regulations" element={<RulesAndRegulations />} />
         <Route path="/update-preference-selection" element={<UpdatePreferenceSelection />} />
         <Route path="/overall-time-slots" element={<OverallTimeSlots />} />
-        <Route path="/food-pantry-hours" element={<FoodPantryHours />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/order-history/:id" element={<OrderHistoryDetail />} />
