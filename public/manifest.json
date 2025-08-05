@@ -1,7 +1,7 @@
 {
-  "name": "Food App",
-  "short_name": "FoodApp",
-  "description": "A modern food delivery app",
+  "name": "Aaharam",
+  "short_name": "Aaharam",
+  "description": "Aaharam",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
