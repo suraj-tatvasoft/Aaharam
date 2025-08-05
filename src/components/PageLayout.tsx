@@ -18,8 +18,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   children,
   showBackButton = true,
   onBack,
-  className = '',
-  contentClassName = '',
+  className = "",
+  contentClassName = "",
 }) => {
   const navigate = useNavigate();
   return (
