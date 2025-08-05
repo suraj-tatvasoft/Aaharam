@@ -6,6 +6,8 @@ import PromoBar from "@/components/PromoBar";
 import FoodCard from "@/components/FoodCard";
 import MenuModal from "@/components/modals/MenuModal";
 import NotificationModal from "@/components/modals/NotificationModal";
+import CartModal from "@/components/modals/CartModal";
+import FloatingCartButton from "@/components/FloatingCartButton";
 import { useToast } from "@/hooks/use-toast";
 
 // Import food images
@@ -25,9 +27,10 @@ const FoodDelivery = () => {
   const [activeCategory, setActiveCategory] = useState("breakfast");
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const [cart, setCart] = useState<{ [id: string]: { id: string; name: string; price: number; image: string; quantity: number } }>({});
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const { toast } = useToast();
-
 
   const foodItems: FoodItem[] = [
     // BREAKFAST (10)
@@ -367,14 +370,37 @@ const FoodDelivery = () => {
 
   const filteredItems = foodItems.filter(item => item.category === activeCategory);
 
+  // Cart handlers
   const handleAddItem = (id: string) => {
     const item = foodItems.find(item => item.id === id);
     if (item) {
+      setCart(prev => {
+        if (prev[id]) return prev;
+        return { ...prev, [id]: { id: item.id, name: item.name, price: item.price, image: item.image, quantity: 1 } };
+      });
       toast({
         title: "Added to cart",
         description: `${item.name} has been added to your cart.`,
       });
     }
+  };
+
+  const handleQuantityChange = (id: string, quantity: number) => {
+    setCart(prev => {
+      if (!prev[id]) return prev;
+      if (quantity < 1) {
+        const { [id]: _, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [id]: { ...prev[id], quantity } };
+    });
+  };
+
+  const handleClearCart = () => setCart({});
+  const handleGenerateToken = () => {
+    toast({ title: "Token generated!", description: "Your order has been placed." });
+    setCart({});
+    setIsCartModalOpen(false);
   };
 
   const handleToggleFavorite = (id: string) => {
@@ -422,6 +448,8 @@ const FoodDelivery = () => {
                     onAdd={handleAddItem}
                     onToggleFavorite={handleToggleFavorite}
                     isFavorite={favorites.has(item.id)}
+                    quantity={cart[item.id]?.quantity || 0}
+                    onQuantityChange={handleQuantityChange}
                   />
                 ))}
               </div>
@@ -438,6 +466,17 @@ const FoodDelivery = () => {
           />
         </div>
       </div>
+      {/* Floating Cart Button */}
+      <FloatingCartButton count={Object.values(cart).reduce((sum, item) => sum + item.quantity, 0)} onClick={() => setIsCartModalOpen(true)} />
+      {/* Cart Modal */}
+      <CartModal
+        isOpen={isCartModalOpen}
+        onClose={() => setIsCartModalOpen(false)}
+        cartItems={Object.values(cart)}
+        onQuantityChange={handleQuantityChange}
+        onClearCart={handleClearCart}
+        onGenerateToken={handleGenerateToken}
+      />
     </Container>
   );
 };

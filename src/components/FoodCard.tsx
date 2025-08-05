@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart, Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -13,6 +13,8 @@ interface FoodCardProps {
   onAdd: (id: string) => void;
   onToggleFavorite: (id: string) => void;
   isFavorite?: boolean;
+  quantity?: number;
+  onQuantityChange?: (id: string, quantity: number) => void;
 }
 
 const FoodCard = ({ 
@@ -25,7 +27,9 @@ const FoodCard = ({
   unavailableReason,
   onAdd,
   onToggleFavorite,
-  isFavorite = false
+  isFavorite = false,
+  quantity = 0,
+  onQuantityChange
 }: FoodCardProps) => {
   return (
     <Card className="overflow-hidden bg-card border-border/50 hover:shadow-sm transition-shadow">
@@ -62,15 +66,39 @@ const FoodCard = ({
             <Heart className={`w-4 h-4 md:w-5 md:h-5 ${isFavorite ? 'fill-destructive text-destructive' : ''}`} />
           </Button>
           
-          <Button
-            variant={available ? "default" : "secondary"}
-            size="sm"
-            onClick={() => available && onAdd(id)}
-            disabled={!available}
-            className="min-w-[50px] md:min-w-[60px] bg-success hover:bg-success/90 text-success-foreground border border-success/20 text-xs md:text-sm h-8 md:h-9"
-          >
-            Add
-          </Button>
+          {quantity > 0 && onQuantityChange ? (
+            <div
+              style={{
+                width: 92,
+                height: 36,
+                borderRadius: 8,
+                padding: '4px 10px',
+                background: '#38963B',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                opacity: 1,
+              }}
+            >
+              <button style={{ color: '#fff', fontSize: 18, width: 22, height: 22, border: 'none', background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => onQuantityChange(id, quantity - 1)}>
+                <Minus size={18} color="#fff" />
+              </button>
+              <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{quantity}</span>
+              <button style={{ color: '#fff', fontSize: 18, width: 22, height: 22, border: 'none', background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => onQuantityChange(id, quantity + 1)}>
+                <Plus size={18} color="#fff" />
+              </button>
+            </div>
+          ) : (
+            <Button
+              variant={available ? "default" : "secondary"}
+              size="sm"
+              onClick={() => available && onAdd(id)}
+              disabled={!available}
+              className="min-w-[50px] md:min-w-[60px] bg-success hover:bg-success/90 text-success-foreground border border-success/20 text-xs md:text-sm h-8 md:h-9"
+            >
+              Add
+            </Button>
+          )}
         </div>
       </div>
     </Card>
