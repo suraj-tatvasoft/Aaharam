@@ -62,7 +62,7 @@ const PreferenceSelection = () => {
                             </button>
                         </div>
                     </form>
-                    <IndicatorBar className="mt-4 mb-2" />
+                    {/* <IndicatorBar className="mt-4 mb-2" /> */}
                 </div>
             </div>
         </Container>

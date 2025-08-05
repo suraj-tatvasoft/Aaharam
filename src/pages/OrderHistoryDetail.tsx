@@ -47,7 +47,7 @@ const OrderHistoryDetail: React.FC = () => {
   return (
     <PageLayout title={`Order #${order.id}`}>
       <div className="flex flex-col items-center w-full py-4">
-        <div className="text-base text-[#7C7C7C]">Token no</div>
+        <div className="text-lg font-medium text-[#212121]">Token no</div>
         <div className="text-6xl font-bold text-black mb-2">{order.token}</div>
         <div className="text-base text-[#232323] flex gap-2">
           <span>{order.date}</span>
@@ -99,7 +99,7 @@ const OrderHistoryDetail: React.FC = () => {
             <img src={noShow} alt="No Show" />
           </div>
         ) : order.status === "Cancelled" ? (
-          <div className="mt-3 inline-flex items-center px-3 py-1 rounded-full bg-[#F4F4F4] text-[#232323] text-sm">
+          <div className="mt-3 inline-flex items-center px-3 py-1 rounded-full bg-[#E2E2E2] text-[#212121] text-sm">
             Cancelled
             <svg
               className="ml-1 align-middle"

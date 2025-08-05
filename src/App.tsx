@@ -17,6 +17,9 @@ import Profile from "./pages/Profile";
 import PaymentQR from "./pages/PaymentQR";
 import Favorites from "@/pages/Favorites";
 import UpdatePreferenceSelection from "@/pages/UpdatePreferenceSelection";
+import OverallTimeSlots from "@/pages/OverallTimeSlots";
+import FoodPantryHours from "@/pages/FoodPantryHours";
+import Notifications from "@/pages/Notifications";
 import OrderHistory from "@/pages/OrderHistory";
 import OrderHistoryDetail from "@/pages/OrderHistoryDetail";
 
@@ -39,6 +42,9 @@ const App = () => (
         <Route path="/payment-qr" element={<PaymentQR />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/update-preference-selection" element={<UpdatePreferenceSelection />} />
+        <Route path="/overall-time-slots" element={<OverallTimeSlots />} />
+        <Route path="/food-pantry-hours" element={<FoodPantryHours />} />
+        <Route path="/notifications" element={<Notifications />} />
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/order-history/:id" element={<OrderHistoryDetail />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

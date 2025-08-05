@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import Container from "@/components/Container";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -93,14 +94,13 @@ const Login = () => {
             </Button>
           </form>
           {/* Bottom Indicator Bar */}
-          <IndicatorBar className="mt-6 mb-2" />
+          {/* <IndicatorBar className="mt-6 mb-2" /> */}
         </div>
       </div>
     </Container>
   );
 };
 
-import Container from "@/components/Container";
-import IndicatorBar from "@/components/IndicatorBar";
+// import IndicatorBar from "@/components/IndicatorBar";
 
 export default Login;
