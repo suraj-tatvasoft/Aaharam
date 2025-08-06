@@ -10,16 +10,15 @@ const PANTRY_HOURS = [
 const FoodPantryHours = () => {
   return (
     <PageLayout title="Food Pantry Hours">
-      <div className="w-full max-w-md mx-auto min-h-[100dvh] bg-[#FAFAFA] flex flex-col items-center pt-4">
-        <div className="w-full flex flex-col gap-5 px-2 mt-2">
+      <div className="w-full flex-1 flex flex-col items-center pt-4">
+        <div className="w-full flex flex-col gap-4 px-0 items-center mt-2">
           {PANTRY_HOURS.map((item) => (
             <div
               key={item.label}
-              className="flex items-center justify-between bg-white rounded-2xl py-5 px-5 text-[17px] font-medium text-[#222] shadow-sm"
-              style={{ fontFamily: 'system-ui, sans-serif' }}
+              className="flex flex-row justify-between items-center px-[14px] py-[14px] gap-2 bg-white rounded-[16px] shadow-sm w-[343px]"
             >
-              <span>{item.label}</span>
-              <span className="text-right font-normal text-[16px] text-[#222]">{item.time}</span>
+              <span className="font-outfit font-normal text-[14px] leading-[18px] text-[#212121]">{item.label}</span>
+              <span className="font-outfit font-normal text-[14px] leading-[18px] text-[#212121] text-right">{item.time}</span>
             </div>
           ))}
         </div>

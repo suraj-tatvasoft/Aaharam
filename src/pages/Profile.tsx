@@ -49,12 +49,12 @@ const MENU_ITEMS: MenuItemConfig[] = [
     { icon: pantryHours, label: "Food Pantry Hours", color: "bg-[#F2F8FF]", iconBg: "bg-[#D6E9FF]" },
     { icon: feedback, label: "Feedback / Suggestions", color: "bg-[#FFFFF2]", iconBg: "bg-[#FFFCD6]" },
     { icon: rules, label: "Rules & Regulations", color: "bg-[#F7F2FF]", iconBg: "bg-[#EAD6FF]" },
-    { 
-      icon: logout, 
-      label: "Logout", 
-      color: "bg-[#FFF2F2]", 
-      iconBg: "bg-[#FFD6D6]", 
-      textColor: "text-red-500"
+    {
+        icon: logout,
+        label: "Logout",
+        color: "bg-[#FFF2F2]",
+        iconBg: "bg-[#FFD6D6]",
+        textColor: "text-red-500"
     },
 ];
 
@@ -117,13 +117,13 @@ const Profile = () => {
                                 type="button"
                                 onClick={() => navigate('/notifications')}
                             >
-                                <img src={notificationIcon} alt="Notifications" className="w-6 h-6" />
+                                <img src={notificationIcon} alt="Notifications" className="w-5 h-5" />
                             </button>
                         </div>
                         <Avatar className="w-20 h-20 border-1 border-white bg-white shadow-md mt-5 z-10">
                             <AvatarImage src={user.avatar} alt={user.name} />
                         </Avatar>
-                        <div className="pt-3 pb-2 text-lg font-bold text-[#222]">{user.name}</div>
+                        <div className="pt-3 pb-2 text-lg font-bold text-[#212121]">{user.name}</div>
                     </div>
 
                     {/* Pass Info */}
@@ -132,14 +132,14 @@ const Profile = () => {
                         onClick={() => navigate('/bulk-pass')}
                     >
                         <div className="flex flex-col items-start gap-1">
-                            <span className="font-semibold text-xl text-[#222]">Bulk Pass</span>
-                            <span className="text-xs text-[#222]">{user.passType}</span>
+                            <span className="font-semibold text-xl text-[#212121]">Bulk Pass</span>
+                            <span className="text-xs text-[#212121]">{user.passType}</span>
                         </div>
                         <div className="flex flex-col items-end gap-1">
-                            <button className="text-[#222] text-xs font-semibold flex items-center gap-2" type="button">
+                            <button className="text-[#212121] text-xs font-semibold flex items-center gap-2" type="button">
                                 Renew Pass <img src={bulkPassNext} alt="Next" className="w-4 h-4" />
                             </button>
-                            <span className="text-xs text-[#222]">Expiring on {user.passExpiry}</span>
+                            <span className="text-xs text-[#212121]">Expiring on {user.passExpiry}</span>
                         </div>
                     </div>
                 </div>
@@ -173,8 +173,8 @@ const Profile = () => {
                     <IndicatorBar />
                 </div> */}
             </div>
-            
-            <LogoutModal 
+
+            <LogoutModal
                 isOpen={isLogoutModalOpen}
                 onClose={() => setIsLogoutModalOpen(false)}
                 onLogout={handleLogout}
