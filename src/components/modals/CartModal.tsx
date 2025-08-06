@@ -1,5 +1,7 @@
 import React from "react";
 import { Minus, Plus } from "lucide-react";
+import { useOrder } from "@/context/OrderContext";
+import { useNavigate } from "react-router-dom";
 
 interface CartItem {
   id: string;
@@ -26,6 +28,8 @@ const CartModal: React.FC<CartModalProps> = ({
   onClearCart,
   onGenerateToken,
 }) => {
+  const { setOrder } = useOrder();
+  const navigate = useNavigate();
   if (!isOpen) return null;
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -110,8 +114,25 @@ const CartModal: React.FC<CartModalProps> = ({
         </div>
         {/* Generate Token Button */}
         <button
-          className="w-full py-3 rounded-lg bg-green-600 text-white font-semibold text-lg mt-2"
-          onClick={onGenerateToken}
+          className="w-full bg-green-600 text-white font-semibold py-3 rounded-lg mt-4 shadow-md"
+          onClick={() => {
+            // Demo: generate dummy orderId/token/time
+            const now = new Date();
+            const orderId = String(Math.floor(Math.random() * 100000));
+            const tokenNumber = Math.floor(Math.random() * 100) + 1;
+            const date = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: '2-digit' }).replace(/ /g, ' ');
+            const time = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true });
+            setOrder({
+              orderId,
+              tokenNumber,
+              date: date.replace(',', ''),
+              time,
+              items: cartItems,
+            });
+            onClearCart();
+            onClose();
+            navigate('/order-detail');
+          }}
         >
           Generate Token
         </button>

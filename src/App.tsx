@@ -24,6 +24,7 @@ import Notifications from "@/pages/Notifications";
 import OrderHistory from "@/pages/OrderHistory";
 import Favorites from "./pages/Favorites";
 import OrderHistoryDetail from "@/pages/OrderHistoryDetail";
+import OrderDetailPage from "@/pages/OrderDetailPage";
 
 const App = () => (
   <TooltipProvider>
@@ -51,6 +52,7 @@ const App = () => (
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/order-history/:id" element={<OrderHistoryDetail />} />
+        <Route path="/order-detail" element={<OrderDetailPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -6,67 +6,7 @@
     "image": "https://plus.unsplash.com/premium_photo-1674406481284-43eba097a291?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "category": "breakfast",
     "description": "Aromatic spiced tea with ginger and cardamom",
-    "available": true,
-    "modifiers": [
-      {
-        "id": "sugar",
-        "name": "Sugar Level",
-        "required": true,
-        "min": 1,
-        "max": 1,
-        "options": [
-          {
-            "id": "less",
-            "name": "Less Sugar",
-            "price": 0
-          },
-          {
-            "id": "normal",
-            "name": "Normal Sugar",
-            "price": 0
-          },
-          {
-            "id": "more",
-            "name": "Extra Sugar",
-            "price": 0
-          },
-          {
-            "id": "none",
-            "name": "No Sugar",
-            "price": 0
-          }
-        ]
-      },
-      {
-        "id": "milk",
-        "name": "Milk Type",
-        "required": true,
-        "min": 1,
-        "max": 1,
-        "options": [
-          {
-            "id": "buffalo",
-            "name": "Buffalo Milk",
-            "price": 0
-          },
-          {
-            "id": "cow",
-            "name": "Cow Milk",
-            "price": 0
-          },
-          {
-            "id": "almond",
-            "name": "Almond Milk",
-            "price": 20
-          },
-          {
-            "id": "soy",
-            "name": "Soy Milk",
-            "price": 15
-          }
-        ]
-      }
-    ]
+    "available": true
   },
   {
     "id": "b2",
@@ -112,60 +52,39 @@
     "id": "b7",
     "name": "Vada Pav",
     "price": 30,
-    "image": "https://www.vegrecipesofindia.com/wp-content/uploads/2021/05/vada-pav-1.jpg",
+    "image": "https://media.istockphoto.com/id/1444922691/photo/bombay-vada-pav-isolated-on-wooden-board-side-view-of-indian-food.jpg?s=1024x1024&w=is&k=20&c=9fTH42v-D8aaezuX6C1XXjUn3xQKZIF0orYcTNFlHIU=",
     "category": "evening-snacks",
     "description": "Spicy potato fritter in a bun with chutneys",
     "available": true,
     "modifiers": [
       {
-        "id": "spice_level",
-        "name": "Spice Level",
-        "required": true,
-        "min": 1,
-        "max": 1,
-        "options": [
-          {
-            "id": "mild",
-            "name": "Mild",
-            "price": 0
-          },
-          {
-            "id": "medium",
-            "name": "Medium",
-            "price": 0
-          },
-          {
-            "id": "spicy",
-            "name": "Spicy",
-            "price": 0
-          }
-        ]
+        "id": "chutney_extra",
+        "name": "Oil",
+        "price": 0
       },
       {
-        "id": "extras",
-        "name": "Extras",
-        "required": false,
-        "min": 0,
-        "max": 2,
-        "options": [
-          {
-            "id": "chutney_extra",
-            "name": "Extra Chutney",
-            "price": 5
-          },
-          {
-            "id": "mirchi",
-            "name": "Fried Green Chilli",
-            "price": 10
-          },
-          {
-            "id": "onion",
-            "name": "Chopped Onions",
-            "price": 5
-          }
-        ]
+        "id": "mirchi",
+        "name": "Butter",
+        "price": 5
+      },
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
       }
-    ]
+    ],
+    "availableFor": ["jain", "regular"],
+    "sideTitle": ""
   },
   {
     "id": "b8",
@@ -293,57 +212,7 @@
     "image": "https://www.cookwithmanali.com/wp-content/uploads/2020/06/Samosa-500x500.jpg",
     "category": "evening-snacks",
     "description": "Crispy fried pastry with spicy potato filling",
-    "available": true,
-    "modifiers": [
-      {
-        "id": "chutney",
-        "name": "Chutney",
-        "required": false,
-        "min": 0,
-        "max": 2,
-        "options": [
-          {
-            "id": "mint",
-            "name": "Mint Chutney",
-            "price": 5
-          },
-          {
-            "id": "tamarind",
-            "name": "Tamarind Chutney",
-            "price": 5
-          },
-          {
-            "id": "dhaniya",
-            "name": "Coriander Chutney",
-            "price": 5
-          }
-        ]
-      },
-      {
-        "id": "filling",
-        "name": "Filling",
-        "required": true,
-        "min": 1,
-        "max": 1,
-        "options": [
-          {
-            "id": "aloo",
-            "name": "Potato",
-            "price": 0
-          },
-          {
-            "id": "paneer",
-            "name": "Paneer",
-            "price": 10
-          },
-          {
-            "id": "keema",
-            "name": "Keema",
-            "price": 15
-          }
-        ]
-      }
-    ]
+    "available": true
   },
   {
     "id": "s2",
