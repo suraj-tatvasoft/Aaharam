@@ -79,7 +79,7 @@ const FeedbackScreen = () => {
       <div className="flex flex-col p-4 max-w-md mx-auto w-full h-[calc(100vh-120px)] relative bg-gray-100">
         <div className="space-y-6 pb-24">
         {/* User Profile Card */}
-        <div className="bg-white rounded-2xl p-4 shadow-sm">
+        <div className="bg-white rounded-2xl p-2 shadow-sm">
           <div className="flex items-center space-x-3">
             <Avatar className="h-12 w-12 rounded-lg">
               <AvatarImage src={user.avatar} alt={user.name} />
@@ -91,6 +91,9 @@ const FeedbackScreen = () => {
           </div>
         </div>
 
+        {/* Divider */}
+        <div className="h-[2px] bg-white my-2"></div>
+
         {/* Feedback Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Feedback Textarea */}
@@ -100,7 +103,7 @@ const FeedbackScreen = () => {
             </label>
             <Textarea
               id="feedback"
-              placeholder="Type your feedback or suggestion here..."
+              placeholder="Drop your feedback and suggestion"
               className="min-h-[120px] resize-none bg-white"
               value={feedback}
               onChange={(e) => setFeedback(e.target.value)}
