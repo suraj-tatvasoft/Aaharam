@@ -46,34 +46,34 @@ const OrderHistory: React.FC = () => {
 
   return (
     <Container>
-      <div className="min-h-screen max-h-screen bg-[#fff] flex flex-col">
+      <div className="min-h-screen max-h-screen bg-[#F7F7F7] flex flex-col">
         <div>
-          <div className="flex items-center px-4 pt-6 pb-4 bg-white">
+          <div className="flex items-center px-4 pt-6 pb-4 bg-[#FFFFFF]">
             <button
               className="w-9 h-9 rounded-full bg-[#E9FFE5] flex items-center justify-center mr-2"
               onClick={() => navigate(-1)}
             >
               <img src={profileBack} alt="Back" className="w-4 h-4" />
             </button>
-            <span className="text-lg font-semibold text-black">
+            <span className="text-lg font-normal text-[#212121] font-outfit">
               Order History
             </span>
           </div>
 
-          <div className="flex border-b border-[#ECECEC] bg-white justify-start overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide max-w-full">
+          <div className="flex border-b border-[#ECECEC] bg-[#FFFFFF] justify-start overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide max-w-full">
             {TABS.map((tab, idx) => {
               return (
                 <button
                   key={tab.label}
                   ref={(el) => (tabRefs.current[idx] = el)}
-                  className={`px-4 flex flex-col items-center pt-2 pb-3 transition-colors duration-150 ${activeTab === idx ? "border-b-2 border-[#2B9E76]" : ""
+                  className={`px-4 flex flex-col items-center pt-2 pb-3 transition-colors duration-150 ${activeTab === idx ? "border-b-2 border-[#38963B]" : ""
                     }`}
                   onClick={() => setActiveTab(idx)}
                 >
                   <div
                     className={`relative px-2 text-sm font-medium duration-150 ${activeTab === idx
-                      ? "text-[#2B9E76] font-medium"
-                      : "text-[#232323] font-medium"
+                      ? "text-[#38963B] font-normal"
+                      : "text-[#212121] font-normal"
                       }`}
                     style={{ display: "inline-block" }}
                   >
@@ -86,36 +86,36 @@ const OrderHistory: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex-1 bg-[#FAFAFA] px-4 pt-3 pb-4 overflow-y-auto scrollbar-hide">
+        <div className="flex-1 bg-[#F7F7F7] px-4 pt-3 pb-4 overflow-y-auto scrollbar-hide">
           {ORDERS.filter(order => order.status === TABS[activeTab].label).map((order, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl px-4 py-3 mb-3 shadow-sm flex items-center justify-between cursor-pointer"
+              className="bg-[#FFFFFF] rounded-[16px] px-4 py-3 mb-3 shadow-[0_0_20px_rgba(242,93,70,0.05)] flex items-center justify-between cursor-pointer"
               onClick={() => navigate(`/order-history/${order.id}`)}
             >
               <div>
-                <div className="text-base font-semibold text-black">
+                <div className="text-base font-medium text-[#212121] font-outfit">
                   Order #{order.id}
                 </div>
-                <div className="text-[15px] font-medium text-[#2B9E76] mt-1">
+                <div className="text-[14px] font-medium text-[#212121] mt-1 font-outfit">
                   ₹{order.amount}
                 </div>
               </div>
               <div className="flex flex-col items-end">
-                <span className="text-xs text-[#7C7C7C] font-medium">
+                <span className="text-xs text-[#7C7C7C] font-medium font-outfit">
                   {order.date}
                 </span>
                 <span className="mt-2 w-6 h-6 flex items-center justify-center">
                   <svg
-                    width="18"
-                    height="18"
+                    width="20"
+                    height="20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M7 13l4-4-4-4"
-                      stroke="#A8A8A8"
-                      strokeWidth="2"
+                      d="M7 15l4-4-4-4"
+                      stroke="#212121"
+                      strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />

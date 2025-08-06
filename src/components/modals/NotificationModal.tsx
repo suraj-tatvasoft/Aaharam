@@ -13,94 +13,56 @@ export default function NotificationModal({ isOpen, onClose, onOk }: Notificatio
   if (!isOpen) return null;
 
   return (
-    <div style={{ backdropFilter: "blur(8px)" }} className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl p-6 w-full max-w-sm mx-4">
-        <h3 className="text-lg font-semibold mb-6 text-center text-gray-800">
-          Mute Meal Notification for
-        </h3>
-        {/* Divider below title */}
-        <div className="border-t border-gray-200 mb-6" />
-
-        <div className="space-y-6 mb-8">
-          <label className="flex items-center cursor-pointer">
-            <div className="relative">
-              <input
-                type="radio"
-                name="muteOption"
-                value="1week"
-                checked={selectedOption === "1week"}
-                onChange={(e) => setSelectedOption(e.target.value)}
-                className="sr-only"
-              />
-              <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedOption === "1week"
-                ? "border-green-500 bg-green-500"
-                : "border-gray-300"
-                }`}>
-                {selectedOption === "1week" && (
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                )}
-              </div>
-            </div>
-            <span className="ml-4 text-gray-700 text-base">1 Week</span>
-          </label>
-
-          <label className="flex items-center cursor-pointer">
-            <div className="relative">
-              <input
-                type="radio"
-                name="muteOption"
-                value="15days"
-                checked={selectedOption === "15days"}
-                onChange={(e) => setSelectedOption(e.target.value)}
-                className="sr-only"
-              />
-              <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedOption === "15days"
-                ? "border-green-500 bg-green-500"
-                : "border-gray-300"
-                }`}>
-                {selectedOption === "15days" && (
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                )}
-              </div>
-            </div>
-            <span className="ml-4 text-gray-700 text-base">15 Days</span>
-          </label>
-
-          <label className="flex items-center cursor-pointer">
-            <div className="relative">
-              <input
-                type="radio"
-                name="muteOption"
-                value="1month"
-                checked={selectedOption === "1month"}
-                onChange={(e) => setSelectedOption(e.target.value)}
-                className="sr-only"
-              />
-              <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedOption === "1month"
-                ? "border-green-500 bg-green-500"
-                : "border-gray-300"
-                }`}>
-                {selectedOption === "1month" && (
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                )}
-              </div>
-            </div>
-            <span className="ml-4 text-gray-700 text-base">1 Month</span>
-          </label>
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-2 backdrop-blur-md">
+      <div className="absolute left-1/2 top-1/2 w-[305px] -translate-x-1/2 -translate-y-1/2 bg-[#F5F5F5] rounded-[16px] shadow-[0_-6px_20px_rgba(168,168,168,0.4)] flex flex-col items-center justify-center p-0 gap-0">
+        {/* Header */}
+        <div className="w-full bg-white rounded-t-[16px] flex flex-col items-center px-4 pt-5 pb-2 text-center">
+          <span className="font-outfit font-medium text-[16px] leading-[20px] text-[#212121] w-full text-center">Mute Meal Notification for</span>
         </div>
-
-        {/* Divider above buttons */}
-        <div className="border-t border-gray-200 mb-4" />
-        <div className="flex space-x-4">
+        <div className="w-full h-1 bg-[#F5F5F5] mt-[1px]" />
+        {/* Options */}
+        <div className="w-full bg-white flex flex-col justify-center items-center gap-0">
+          {[
+            { label: "1 Week", value: "1week" },
+            { label: "15 Days", value: "15days" },
+            { label: "1 Month", value: "1month" }
+          ].map((opt, idx, arr) => (
+            <React.Fragment key={opt.value}>
+              <div className="flex flex-row items-center justify-center gap-2 w-full py-4">
+                <label className="flex items-center cursor-pointer w-full justify-center">
+                  <input
+                    type="radio"
+                    name="muteOption"
+                    value={opt.value}
+                    checked={selectedOption === opt.value}
+                    onChange={(e) => setSelectedOption(e.target.value)}
+                    className="sr-only"
+                  />
+                  <span className={`w-[14px] h-[14px] border rounded-full flex items-center justify-center bg-white mr-2 ${selectedOption === opt.value ? 'border-[#38963B] border-[1.5px]' : 'border-[#2121214D] border'}`}>
+                    {selectedOption === opt.value && <span className="w-2 h-2 bg-[#38963B] rounded-full"></span>}
+                  </span>
+                  <span className="font-outfit font-light text-[14px] leading-[18px] text-[#212121] ml-2">{opt.label}</span>
+                </label>
+              </div>
+              {idx !== arr.length - 1 && (
+                <div className="w-full h-px border-b border-[#F5F5F5] my-2" />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+        {/* Divider */}
+        <div className="w-full h-1 bg-[#F5F5F5] mt-[1px]" />
+        {/* Actions */}
+        <div className="w-full bg-white flex flex-row justify-center items-center px-4 py-4 rounded-b-[16px] gap-20">
           <button
             onClick={onClose}
-            className="flex-1 py-3 px-4 text-gray-600 rounded-xl font-medium text-base hover:bg-gray-50 transition-colors"
+            className="font-outfit font-medium text-[14px] leading-[18px] text-[#212121B3] px-0 py-0 bg-transparent shadow-none"
           >
             Cancel
           </button>
           <button
             onClick={() => onOk ? onOk(selectedOption) : onClose()}
-            className="flex-1 py-3 px-4 bg-green-600 text-white rounded-xl font-medium text-base hover:bg-green-700 transition-colors"
+            className="font-outfit font-medium text-[14px] leading-[18px] text-[#38963B] px-0 py-0 bg-transparent shadow-none"
           >
             Ok
           </button>

@@ -8,7 +8,6 @@ const Navigation = () => {
 
   const routes = [
     { path: "/", icon: Home, label: "Home" },
-    { path: "/analytics", icon: BarChart3, label: "Analytics" },
     { path: "/food-delivery", icon: Utensils, label: "Food Delivery" },
   ];
 
