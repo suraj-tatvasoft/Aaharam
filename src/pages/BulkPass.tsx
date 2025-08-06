@@ -26,9 +26,6 @@ const thalis = [
 const BulkPass: React.FC = () => {
   const navigate = useNavigate();
   const [isActivationOpen, setActivationOpen] = useState(false);
-  const handleBack = () => {
-    navigate("/");
-  };
 
   return (
     <Container>
@@ -42,7 +39,7 @@ const BulkPass: React.FC = () => {
           <button
             className="w-[42px] h-[42px] rounded-full flex items-center justify-center bg-white"
             style={{ backgroundColor: "#EEFFED" }}
-            onClick={handleBack}
+            onClick={() => navigate("/")}
             aria-label="Back"
           >
             <img src={backArrow} alt="Back" className="w-4 h-4" />
