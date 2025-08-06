@@ -61,7 +61,7 @@ const MENU_ITEMS: MenuItemConfig[] = [
 // --- Components ---
 export const MenuItem: React.FC<MenuItemConfig> = ({ icon, label, color, iconBg, textColor, onClick }) => (
     <button
-        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl ${color} ${textColor ?? "text-black"} text-base font-medium justify-between shadow-sm`}
+        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl ${color} ${textColor ?? "text-[#212121]"} text-base font-normal justify-between shadow-sm`}
         type="button"
         onClick={onClick}
     >
@@ -123,7 +123,7 @@ const Profile = () => {
                         <Avatar className="w-20 h-20 border-1 border-white bg-white shadow-md mt-5 z-10">
                             <AvatarImage src={user.avatar} alt={user.name} />
                         </Avatar>
-                        <div className="pt-3 pb-2 text-lg font-bold text-[#212121]">{user.name}</div>
+                        <div className="pt-3 pb-2 text-lg font-medium text-[#212121]">{user.name}</div>
                     </div>
 
                     {/* Pass Info */}
@@ -132,14 +132,14 @@ const Profile = () => {
                         onClick={() => navigate('/bulk-pass')}
                     >
                         <div className="flex flex-col items-start gap-1">
-                            <span className="font-semibold text-xl text-[#212121]">Bulk Pass</span>
-                            <span className="text-xs text-[#212121]">{user.passType}</span>
+                            <span className="font-normal text-base text-[#212121]">Bulk Pass</span>
+                            <span className="text-[12px] text-[#212121]">{user.passType}</span>
                         </div>
                         <div className="flex flex-col items-end gap-1">
-                            <button className="text-[#212121] text-xs font-semibold flex items-center gap-2" type="button">
+                            <button className="text-[#212121] text-[12px] font-normal flex items-center gap-2" type="button">
                                 Renew Pass <img src={bulkPassNext} alt="Next" className="w-4 h-4" />
                             </button>
-                            <span className="text-xs text-[#212121]">Expiring on {user.passExpiry}</span>
+                            <span className="text-[12px] text-[#212121]">Expiring on {user.passExpiry}</span>
                         </div>
                     </div>
                 </div>
