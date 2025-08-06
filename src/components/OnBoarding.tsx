@@ -52,11 +52,11 @@ const OnBoarding: React.FC = () => {
                     slidesPerView={1}
                     onSwiper={(swiper) => (swiperRef.current = swiper)} // 🔥 THIS is key
                     onSlideChange={(swiper) => setStep(swiper.activeIndex)}
-                    className="w-full max-w-md flex-1"
+                    className="w-full flex-1"
                 >
                     {onboardingSteps.map(({ heading, illustration, alt, description }, index) => (
                         <SwiperSlide key={index}>
-                            <div className="flex flex-col h-full max-h-screen min-h-screen w-full">
+                            <div className="flex flex-col h-full w-full">
 
                                 {/* Header (top fixed area) */}
                                 <div className="px-4 pt-8 pb-4">

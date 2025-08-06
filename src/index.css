@@ -139,3 +139,11 @@ All colors MUST be HSL.
   transform: scale(1.02);
   transition: opacity 400ms, transform 400ms;
 }
+
+html,
+body {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}

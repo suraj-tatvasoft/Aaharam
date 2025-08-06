@@ -1,6 +1,5 @@
 import React from "react";
 import Container from "@/components/Container";
-import IndicatorBar from "@/components/IndicatorBar";
 
 // Asset imports
 import logo from "@/assets/main-logo.svg";
@@ -10,8 +9,8 @@ import tatvaSoftLogo from "@/assets/main-logo-tatvasoft.svg";
 const SplashScreen: React.FC = () => {
   return (
     <Container>
-      <div className="w-full min-h-screen flex flex-col items-center bg-white">
-        <div className="flex-1 flex flex-col justify-between max-w-md w-full mx-auto pb-2">
+      <div className="w-full flex-1 flex flex-col items-center bg-white">
+        <div className="flex-1 flex flex-col justify-between w-full">
           {/* Top Section: Logo & Branding */}
           <div className="flex flex-col items-center justify-center flex-1 pt-8">
             <img

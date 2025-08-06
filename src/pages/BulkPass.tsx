@@ -30,7 +30,7 @@ const BulkPass: React.FC = () => {
   return (
     <Container>
       <div
-        className="min-h-screen relative px-4 pt-4 pb-20 flex flex-col"
+        className="flex-1 relative px-4 pt-4 pb-20 flex flex-col"
         style={{
           background: "linear-gradient(180deg, #DAFFD9 0%, #FFFFFF 132.38%)",
         }}

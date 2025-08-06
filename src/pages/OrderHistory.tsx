@@ -46,7 +46,7 @@ const OrderHistory: React.FC = () => {
 
   return (
     <Container>
-      <div className="min-h-screen max-h-screen bg-[#F7F7F7] flex flex-col">
+      <div className="flex-1 overflow-hidden bg-[#F7F7F7] flex flex-col">
         <div>
           <div className="flex items-center px-4 pt-6 pb-4 bg-[#FFFFFF]">
             <button

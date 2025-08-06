@@ -27,7 +27,7 @@ const PreferenceSelection = () => {
 
     return (
         <Container>
-            <div className="min-h-screen flex flex-col bg-[#F7F7F7]">
+            <div className="flex-1 flex flex-col bg-[#F7F7F7]">
                 <div className="w-full mx-auto flex flex-col flex-1">
                     {/* Header Section */}
                     <div className="flex items-center gap-3 px-4 pt-8 pb-4 bg-white">

@@ -13,7 +13,7 @@ const FadeTransition: React.FC<FadeTransitionProps> = ({ show, children }) => (
       addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
       classNames="fade"
     >
-      <div>{children}</div>
+      {children}
     </CSSTransition>
   </SwitchTransition>
 );

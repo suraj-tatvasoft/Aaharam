@@ -30,7 +30,7 @@ const Analytics = () => {
 
   return (
     <Container>
-      <div className="min-h-screen flex flex-col bg-[#E1FFE0]">
+      <div className="flex-1 flex flex-col bg-[#E1FFE0]">
         {/* Top section with avatar and welcome OUTSIDE card */}
         <div className="w-full flex flex-col items-center pt-10 pb-4">
           <Avatar className="w-14 h-14 mb-3 shadow-lg border border-white">

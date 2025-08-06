@@ -96,7 +96,7 @@ const Profile = () => {
 
     return (
         <Container>
-            <div className="min-h-screen max-h-screen bg-[#fff] flex flex-col scrollbar-hide">
+            <div className="flex-1 overflow-hidden bg-[#fff] flex flex-col scrollbar-hide">
                 <div className="flex-shrink-0">
                     {/* Header */}
                     <div className="flex flex-col items-center relative">

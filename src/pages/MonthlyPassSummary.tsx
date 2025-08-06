@@ -13,7 +13,7 @@ const MonthlyPassSummary: React.FC = () => {
   return (
     <Container>
       <div
-        className="min-h-screen px-4 pt-4 pb-8 flex flex-col"
+        className="flex-1 px-4 pt-4 pb-8 flex flex-col"
         style={{
           background: "linear-gradient(180deg, #DAFFD9 0%, #FFFFFF 132.38%)",
         }}

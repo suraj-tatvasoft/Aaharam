@@ -188,9 +188,9 @@ const FoodDelivery = () => {
 
   return (
     <Container>
-      <div className="min-h-screen flex flex-col bg-white">
-        <div className="max-h-screen min-h-screen h-full flex overflow-hidden bg-background">
-          <div className="max-w-md mx-auto bg-background shadow-lg flex-1 flex flex-col overflow-hidden">
+      <div className="max-h-full h-full overflow-hidden flex flex-col bg-white">
+        <div className="flex-1 h-full flex bg-background">
+          <div className="bg-background shadow-lg flex flex-col overflow-hidden">
             <Header onMenuClick={() => setIsMenuModalOpen(true)} />
             <main className="flex flex-col overflow-y-hidden flex-1">
               <CategoryTabs
