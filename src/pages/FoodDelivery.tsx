@@ -7,13 +7,15 @@ import FoodCard from "@/components/FoodCard";
 import MenuModal from "@/components/modals/MenuModal";
 import NotificationModal from "@/components/modals/NotificationModal";
 import CartModal from "@/components/modals/CartModal";
+import ModifierModal from "@/components/modals/ModifierModal";
 import FloatingCartButton from "@/components/FloatingCartButton";
 import { useToast } from "@/hooks/use-toast";
 import foodItemsData from "@/data/foodItems.json";
+import { ModifierGroup } from "@/types/food.types";
 
 // Import food images
 
-interface FoodItem {
+  interface FoodItem {
   id: string;
   name: string;
   price: number;
@@ -22,6 +24,20 @@ interface FoodItem {
   description?: string;
   available?: boolean;
   unavailableReason?: string;
+  availableFor?: string[]; // e.g., ['jain', 'regular']
+  modifiers?: ModifierGroup[];
+}
+
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+  modifiers?: {
+    [groupId: string]: string[];
+    note?: string[];
+  };
 }
 
 const FoodDelivery = () => {
@@ -29,7 +45,15 @@ const FoodDelivery = () => {
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
-  const [cart, setCart] = useState<{ [id: string]: { id: string; name: string; price: number; image: string; quantity: number } }>({});
+  const [isModifierModalOpen, setIsModifierModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<{
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+    modifiers?: ModifierGroup[];
+  } | null>(null);
+  const [cart, setCart] = useState<{ [id: string]: CartItem }>({});
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const { toast } = useToast();
 
@@ -40,16 +64,91 @@ const FoodDelivery = () => {
   // Cart handlers
   const handleAddItem = (id: string) => {
     const item = foodItems.find(item => item.id === id);
-    if (item) {
-      setCart(prev => {
-        if (prev[id]) return prev;
-        return { ...prev, [id]: { id: item.id, name: item.name, price: item.price, image: item.image, quantity: 1 } };
-      });
+    if (!item) return;
+
+    // Check if item is available
+    if (item.available === false) {
       toast({
-        title: "Added to cart",
-        description: `${item.name} has been added to your cart.`,
+        title: "Not available",
+        description: item.unavailableReason || "This item is currently unavailable.",
+        variant: "destructive",
       });
+      return;
     }
+
+    // If item has modifiers, open modifier modal
+    if (item.modifiers && item.modifiers.length > 0) {
+      setSelectedItem({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        image: item.image,
+        modifiers: item.modifiers,
+      });
+      setIsModifierModalOpen(true);
+      return;
+    }
+
+    // Add item to cart directly if no modifiers
+    addToCart(item.id, item.name, item.price, item.image);
+  };
+
+  const handleAddWithModifiers = (selectedModifiers: Record<string, string[]>) => {
+    if (!selectedItem) return;
+    
+    addToCart(
+      selectedItem.id,
+      selectedItem.name,
+      selectedItem.price,
+      selectedItem.image,
+      selectedModifiers
+    );
+    
+    // Reset selected item
+    setSelectedItem(null);
+  };
+
+  const addToCart = (
+    id: string, 
+    name: string, 
+    price: number, 
+    image: string, 
+    modifiers?: Record<string, string[]>
+  ) => {
+    setCart(prev => {
+      const existingItem = prev[id];
+      
+      // If item already exists in cart, just update quantity
+      if (existingItem) {
+        return {
+          ...prev,
+          [id]: {
+            ...existingItem,
+            quantity: existingItem.quantity + 1,
+            // Keep existing modifiers or use new ones if provided
+            modifiers: modifiers || existingItem.modifiers,
+          },
+        };
+      }
+
+      // Add new item to cart
+      return {
+        ...prev,
+        [id]: {
+          id,
+          name,
+          price,
+          image,
+          quantity: 1,
+          modifiers,
+        },
+      };
+    });
+
+    toast({
+      title: "Added to cart",
+      description: `${name} has been added to your cart.`,
+    });
   };
 
   const handleQuantityChange = (id: string, quantity: number) => {
@@ -144,6 +243,22 @@ const FoodDelivery = () => {
         onClearCart={handleClearCart}
         onGenerateToken={handleGenerateToken}
       />
+
+      {/* Modifier Modal */}
+      {selectedItem && (
+        <ModifierModal
+          isOpen={isModifierModalOpen}
+          onClose={() => {
+            setIsModifierModalOpen(false);
+            setSelectedItem(null);
+          }}
+          itemName={selectedItem?.name || ''}
+          modifiers={selectedItem?.modifiers || []}
+          onAddToCart={handleAddWithModifiers}
+          price={selectedItem?.price || 0}
+          image={selectedItem?.image}
+        />
+      )}
     </Container>
   );
 };
