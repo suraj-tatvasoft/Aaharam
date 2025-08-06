@@ -30,15 +30,15 @@ const CartModal: React.FC<CartModalProps> = ({
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div style={{ backdropFilter: "blur(8px)" }} className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center sm:justify-center p-0 sm:p-4">
+    <div style={{ backdropFilter: "blur(2px)" }} className="fixed inset-0 bg-black/10 z-50 flex items-end sm:items-center sm:justify-center p-0 sm:p-4">
       {/* Modal Container */}
-      <div className="w-full max-w-md mx-auto bg-white rounded-t-2xl p-4 pt-2 shadow-lg relative">
+      <div className="w-full max-w-md mx-auto bg-white rounded-t-3xl p-4 pt-2 shadow-lg relative">
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute left-1/2 -translate-x-1/2 -top-6 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md border border-gray-200"
+          className="absolute left-1/2 -translate-x-1/2 -top-12 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md border border-gray-200"
         >
           <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.5 4.5L4.5 13.5" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
@@ -50,6 +50,7 @@ const CartModal: React.FC<CartModalProps> = ({
           <span className="text-lg font-semibold">Cart</span>
           <button className="text-green-600 font-medium text-sm" onClick={onClearCart}>Clear Cart</button>
         </div>
+        <div className="h-px bg-gray-200 my-2"></div>
         {/* Cart Items */}
         <div className="divide-y divide-gray-200 mb-2 max-h-48 overflow-y-auto">
           {cartItems.map(item => (
@@ -85,18 +86,27 @@ const CartModal: React.FC<CartModalProps> = ({
           ))}
         </div>
         {/* Bill Section */}
-        <div className="bg-white rounded-lg p-2 mb-2 border">
-          <div className="font-semibold text-sm mb-1">Bill</div>
-          {cartItems.map(item => (
-            <div className="flex justify-between text-sm py-0.5" key={item.id+"-bill"}>
-              <span>{item.name}</span>
-              <span>₹{item.price * item.quantity}</span>
-            </div>
-          ))}
-          <div className="flex justify-between font-bold text-base border-t mt-1 pt-1">
+        <div className="bg-white rounded-lg py-4 mb-2">
+          <div className="font-semibold text-sm mb-3">Bill</div>
+          <div className="h-[2px] bg-gray-100 my-3"></div>
+          <div className="space-y-3">
+            {cartItems.map((item, index) => (
+              <React.Fragment key={item.id+"-bill"}>
+                <div className="flex justify-between text-sm">
+                  <span>{item.name}</span>
+                  <span>₹{item.price * item.quantity}</span>
+                </div>
+                {index < cartItems.length - 1 && (
+                  <div className="h-[2px] bg-gray-100 w-full"></div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="flex justify-between font-bold text-base border-t border-gray-200 mt-3 pt-3">
             <span>Total</span>
             <span>₹{total}</span>
           </div>
+          <div className="h-[2px] bg-gray-100 mt-3"></div>
         </div>
         {/* Generate Token Button */}
         <button
