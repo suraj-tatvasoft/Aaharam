@@ -37,12 +37,12 @@ const notifications = [
 const Notifications: React.FC = () => {
     return (
         <PageLayout title="Notifications">
-            <div className="flex-1 flex flex-col items-center py-4 px-2">
+            <div className="flex-1 flex w-full flex-col items-center py-4 px-2">
                 <div className="w-full max-w-full flex flex-col gap-4 px-4 items-center">
                     {notifications.map((n, i) => (
                         <div
                             key={i}
-                            className="flex flex-col items-center px-4 py-4 gap-2 bg-white rounded-[16px] shadow-[0_0_20px_rgba(242,93,70,0.05)] w-[343px] min-h-[89px]"
+                            className="flex flex-col items-center px-4 py-4 gap-2 bg-white rounded-[16px] shadow-[0_0_20px_rgba(242,93,70,0.05)] w-full min-h-[89px]"
                         >
                             <div className="w-full flex flex-col gap-1">
                                 <span className="font-outfit font-medium text-[16px] leading-[20px] text-[#212121]">{n.title}</span>

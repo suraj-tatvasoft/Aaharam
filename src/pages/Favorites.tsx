@@ -36,7 +36,7 @@ const Favorites: React.FC = () => {
 
   return (
     <PageLayout title="My Favorites">
-      <div className="w-full mx-auto px-4 pt-6 pb-4 min-h-screen">
+      <div className="w-full mx-auto px-4 pt-6 pb-4 flex-1 overflow-y-auto scrollbar-hide">
         {FAVORITES.map((item, idx) => (
           <div
             key={item.name}
