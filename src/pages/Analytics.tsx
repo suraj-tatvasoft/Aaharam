@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useNavigate } from "react-router-dom";
 import Container from "@/components/Container";
-import IndicatorBar from "@/components/IndicatorBar";
 
 const Analytics = () => {
   const navigate = useNavigate();
@@ -18,7 +17,16 @@ const Analytics = () => {
     { name: "03:30 PM", value: 6, time: "03:30" },
   ];
 
-  const COLORS = ["#22c55e", "#a855f7", "#3b82f6", "#84cc16", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4"];
+  const COLORS = [
+    "#3BCD7C", // 12:00 PM
+    "#B69EDB", // 12:30 PM
+    "#3A92D5", // 01:00 PM
+    "#C8CD99", // 01:30 PM
+    "#D58ED7", // 02:00 PM
+    "#FEA9A6", // 02:30 PM
+    "#FDD35B", // 03:00 PM
+    "#BB9A6F", // 03:30 PM
+  ];
 
   return (
     <Container>
@@ -42,40 +50,68 @@ const Analytics = () => {
           <div className="w-full flex flex-col flex-1 justify-end items-center">
             <div className="bg-white rounded-t-3xl shadow-xl px-5 pt-8 pb-0 w-full relative z-10 mt-[-16px] flex flex-col flex-1">
               <div className="text-center mb-5">
-                <div className="text-base font-normal text-[#141414] mb-1 font-outfit">Let’s check how crowded it gets during lunch hours.</div>
-                <div className="text-base font-normal text-[#141414] font-outfit">Select your preferred lunch time before using Aaharam.</div>
+                <div className="text-[14px] font-normal text-[#141414] font-outfit">Let’s check how crowded it gets during lunch hours.</div>
+                <div className="text-[14px] font-normal text-[#141414] font-outfit">Select your preferred lunch time before using Aaharam.</div>
               </div>
-              <div className="flex flex-col items-center flex-1 justify-start">
-                {/* Donut Chart */}
-                <div className="w-60 h-60 flex items-center justify-center mb-4">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie
-                        data={data}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={65}
-                        outerRadius={100}
-                        paddingAngle={2}
-                        dataKey="value"
-                      >
-                        {data.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                    </PieChart>
-                  </ResponsiveContainer>
+              <div className="flex flex-col items-center flex-1 justify-start bg-white">
+                <div className="w-[360px] h-[360px] flex items-center justify-center mx-auto mb-8">
+                  <PieChart width={360} height={360}>
+                    <Pie
+                      data={data}
+                      dataKey="value"
+                      nameKey="name"
+                      innerRadius={120}
+                      outerRadius={180}
+                      label={({ cx, cy, midAngle, innerRadius, outerRadius, index }) => {
+                        const RADIAN = Math.PI / 180;
+                        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+                        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                        return (
+                          <g>
+                            <text
+                              x={x}
+                              y={y - 8}
+                              textAnchor="middle"
+                              dominantBaseline="central"
+                              fontSize="14"
+                              fontWeight="400"
+                              fill="#212121"
+                            >
+                              {`${data[index].value}%`}
+                            </text>
+                            <text
+                              x={x}
+                              y={y + 8}
+                              textAnchor="middle"
+                              dominantBaseline="central"
+                              fontSize="10"
+                              fontWeight="400"
+                              fill="#212121"
+                            >
+                              {data[index].time}
+                            </text>
+                          </g>
+                        );
+                      }}
+                      labelLine={false}
+                    >
+                      {data.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                  </PieChart>
                 </div>
-                {/* Legend */}
-                <div className="grid grid-cols-2 gap-3 text-base font-outfit mt-2">
+                {/* Screenshot-style Legend: 2 columns, 4 rows */}
+                <div className="grid grid-cols-2 gap-y-3 gap-x-8 w-[311px] mx-auto mb-2">
                   {data.map((entry, index) => (
-                    <div key={entry.name} className="flex items-center gap-2">
-                      <div
-                        className="w-3 h-3 rounded-full"
+                    <div key={entry.name} className="flex flex-row items-center gap-2">
+                      <span
+                        className="inline-block w-2 h-2 rounded-full"
                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                       />
-                      <span className="text-[#212121] font-normal">
-                        {entry.name} <span className="text-[#7C7C7C]">({entry.value}%)</span>
+                      <span className="font-outfit font-normal text-[12px] leading-5 text-[#141414]">
+                        {entry.name} ({entry.value}%)
                       </span>
                     </div>
                   ))}
