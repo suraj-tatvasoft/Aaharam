@@ -12,7 +12,7 @@ const PaymentQR: React.FC = () => {
     return (
         <PageLayout title="Payment QR">
 
-            <div className="relative w-full flex justify-center items-center flex-1">
+            <div className="relative w-full flex justify-center items-start pt-[80px] flex-1">
                 <div className="relative isolate flex flex-col items-center px-[30px] pt-[60px] pb-[30px] gap-[30px] rounded-[16px] w-[289px] min-h-[350px] bg-white">
                     {/* Avatar Circle */}
                     <div className="absolute left-1/2 -translate-x-1/2 -top-10 z-10">
