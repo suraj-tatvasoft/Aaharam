@@ -100,7 +100,7 @@ const Profile = () => {
                 <div className="flex-shrink-0">
                     {/* Header */}
                     <div className="flex flex-col items-center relative">
-                        <div className="absolute left-4 top-8">
+                        <div className="absolute left-4 top-6">
                             <button
                                 onClick={() => navigate(-1)}
                                 className="w-10 h-10 rounded-full bg-[#E9FFE5] flex items-center justify-center"
@@ -110,7 +110,7 @@ const Profile = () => {
                                 <img src={profileBack} alt="Back" className="w-4 h-4" />
                             </button>
                         </div>
-                        <div className="absolute right-4 top-8">
+                        <div className="absolute right-4 top-6">
                             <button
                                 className="w-10 h-10 rounded-full bg-[#E9FFE5] flex items-center justify-center"
                                 aria-label="Notifications"
