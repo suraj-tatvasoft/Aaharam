@@ -18,18 +18,18 @@ const PromoBar = () => {
         tabIndex={0}
         onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') navigate('/bulk-pass'); }}
       >
-        <span className="text-sm font-medium text-foreground">
+        <span className="text-xs font-normal text-[#212121]">
           Buy Bulk Meal Pass on Discounted Rates
         </span>
-        <ArrowRight className="w-4 h-4 text-foreground" />
+        <ArrowRight className="w-4 h-4 text-[#212121]" />
       </div>
-      <Button 
-        variant="ghost" 
-        size="sm" 
-        className="text-foreground h-8 w-8 p-0 focus:outline-none hover:bg-transparent"
+      <Button
+        variant="ghost"
+        size="sm"
+        className="text-[#212121] h-8 w-8 p-0 focus:outline-none hover:bg-transparent"
         onClick={() => setIsVisible(false)}
       >
-        <X className="w-4 h-4 text-foreground hover:bg-transparent" />
+        <X className="w-4 h-4 text-[#212121] hover:bg-transparent" />
       </Button>
     </div>
   );
