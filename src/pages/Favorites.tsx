@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import favoriteHeart from "@/assets/favorite-heart.svg";
 import { useToast } from "@/hooks/use-toast";
+import { Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const FAVORITES = [
   { name: "Masala Tea", price: 15, image: "https://plus.unsplash.com/premium_photo-1674406481284-43eba097a291?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
@@ -49,13 +50,14 @@ const Favorites: React.FC = () => {
             </div>
             <span className="font-outfit font-normal text-[14px] leading-[18px] text-[#212121] mr-2">₹{item.price}</span>
             <button className="border border-[#38963B] text-[#38963B] rounded-[8px] px-3 py-[6px] text-[14px] leading-[18px] font-outfit font-medium hover:bg-[#E9FFE5] transition-colors">Add</button>
-            <button
-              className={`ml-2 w-auto h-auto flex items-center justify-center ${favorites.has(item.name) ? '' : 'opacity-40'}`}
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => handleToggleFavorite(item.name)}
-              aria-label={favorites.has(item.name) ? 'Remove from favorites' : 'Add to favorites'}
+              className="text-muted-foreground hover:text-destructive w-8 h-8 md:w-10 md:h-10 hover:bg-transparent"
             >
-              <img src={favoriteHeart} alt="Favorite" className="w-[18.83px] h-[16.13px]" />
-            </button>
+              <Heart className={`w-4 h-4 md:w-5 md:h-5 ${favorites.has(item.name) ? 'fill-destructive text-destructive' : ''}`} />
+            </Button>
           </div>
         ))}
       </div>
