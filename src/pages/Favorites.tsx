@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import favoriteHeart from "@/assets/favorite-heart.svg";
 import { useToast } from "@/hooks/use-toast";
+import { Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const FAVORITES = [
   { name: "Masala Tea", price: 15, image: "https://plus.unsplash.com/premium_photo-1674406481284-43eba097a291?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
@@ -35,27 +36,28 @@ const Favorites: React.FC = () => {
 
   return (
     <PageLayout title="My Favorites">
-      <div className="w-full max-w-md mx-auto px-4 mt-4">
+      <div className="w-full mx-auto px-4 pt-6 pb-4 min-h-screen">
         {FAVORITES.map((item, idx) => (
           <div
             key={item.name}
-            className="flex items-center bg-white rounded-xl mb-4 px-4 py-3 shadow-sm gap-3"
+            className="flex items-center bg-white rounded-2xl mb-4 px-4 py-3 shadow-sm gap-3"
           >
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#FFF7F2]">
-              <img src={item.image} alt={item.name} className="w-10 h-10 object-cover rounded-lg" />
+            <div className="w-[46px] h-[46px] rounded-xl flex items-center justify-center bg-[#E9FFE4] overflow-hidden">
+              <img src={item.image} alt={item.name} className="w-10 h-10 object-cover rounded-[10px]" />
             </div>
             <div className="flex-1 flex flex-col justify-center min-w-0">
-              <span className="text-base font-medium text-[#222] truncate">{item.name}</span>
+              <span className="font-outfit font-normal text-[16px] leading-[20px] text-[#212121] truncate">{item.name}</span>
             </div>
-            <span className="text-base font-semibold text-[#222] mr-2">₹{item.price}</span>
-            <button className="border border-[#43A047] text-[#43A047] rounded-lg px-4 py-1.5 text-sm font-semibold hover:bg-[#E9FFE5] transition-colors">Add</button>
-            <button
-              className={`ml-2 w-auto h-auto flex items-center justify-center ${favorites.has(item.name) ? '' : 'opacity-40'}`}
+            <span className="font-outfit font-normal text-[14px] leading-[18px] text-[#212121] mr-2">₹{item.price}</span>
+            <button className="border border-[#38963B] text-[#38963B] rounded-[8px] px-3 py-[6px] text-[14px] leading-[18px] font-outfit font-medium hover:bg-[#E9FFE5] transition-colors">Add</button>
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => handleToggleFavorite(item.name)}
-              aria-label={favorites.has(item.name) ? 'Remove from favorites' : 'Add to favorites'}
+              className="text-muted-foreground hover:text-destructive w-8 h-8 md:w-10 md:h-10 hover:bg-transparent"
             >
-              <img src={favoriteHeart} alt="Favorite" className="w-5 h-5" />
-            </button>
+              <Heart className={`w-4 h-4 md:w-5 md:h-5 ${favorites.has(item.name) ? 'fill-destructive text-destructive' : ''}`} />
+            </Button>
           </div>
         ))}
       </div>

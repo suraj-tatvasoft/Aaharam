@@ -37,7 +37,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
               <img src={profileBack} alt="Back" className="w-4 h-4" />
             </button>
           )}
-          <span className="text-base text-[#222] font-medium">{title}</span>
+          <span className="font-normal text-[18px] leading-[23px] text-[#212121]">{title}</span>
         </div>
         {/* Main Content */}
         <div className={`flex-1 overflow-y-auto scrollbar-hide flex flex-col items-center w-full ${contentClassName}`}>

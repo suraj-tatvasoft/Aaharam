@@ -37,21 +37,21 @@ const notifications = [
 const Notifications: React.FC = () => {
     return (
         <PageLayout title="Notifications">
-            <div className="flex-1 bg-[#F7F7F7] flex flex-col items-center pt-4 px-2">
-                <div className="w-full max-w-md flex flex-col gap-3">
+            <div className="flex-1 flex flex-col items-center py-4 px-2">
+                <div className="w-full max-w-full flex flex-col gap-4 px-4 items-center">
                     {notifications.map((n, i) => (
                         <div
                             key={i}
-                            className={`rounded-2xl bg-white px-5 py-4 flex flex-col gap-1 shadow-sm ${i === 0 ? 'border-2 border-[#F4F4F4]' : ''}`}
+                            className="flex flex-col items-center px-4 py-4 gap-2 bg-white rounded-[16px] shadow-[0_0_20px_rgba(242,93,70,0.05)] w-[343px] min-h-[89px]"
                         >
-                            <div className="flex items-center gap-2">
-                                <span className="font-bold text-[17px] text-[#222]">{n.title}</span>
-                                {n.unread && <span className="ml-1 w-2 h-2 rounded-full bg-[#FF9100] inline-block" />}
+                            <div className="w-full flex flex-col gap-1">
+                                <span className="font-outfit font-medium text-[16px] leading-[20px] text-[#212121]">{n.title}</span>
+                                <span className="font-outfit font-normal text-[14px] leading-[18px] text-[#4D4D4D]">{n.message}</span>
                             </div>
-                            <span className="text-[15px] text-[#6B6B6B] font-normal leading-snug">{n.message}</span>
-                            <span className="text-xs text-[#8B8B8B] mt-1 flex items-center gap-1">
-                                {n.unread && <span className="w-2 h-2 rounded-full bg-[#FF9100] inline-block" />} {n.time}
-                            </span>
+                            <div className="w-full flex flex-row items-center gap-1 mt-2">
+                                {n.unread && <span className="w-[6px] h-[6px] rounded-full bg-[#FF8025] inline-block" />}
+                                <span className="font-outfit font-light text-[12px] leading-[15px] text-[#494949]">{n.time}</span>
+                            </div>
                         </div>
                     ))}
                 </div>

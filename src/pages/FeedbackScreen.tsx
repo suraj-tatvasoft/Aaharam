@@ -61,7 +61,6 @@ const FeedbackScreen = () => {
       toast({
         title: "Feedback Submitted",
         description: "Thank you for your feedback! We've received it successfully.",
-        className: "bg-gray-200 text-black border-0",
       });
       
     } catch (error) {

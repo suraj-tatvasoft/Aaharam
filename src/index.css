@@ -1,3 +1,4 @@
+@import url("./fonts/outfit.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -107,6 +108,8 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
   }
 }
 
