@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 
 interface LogoutModalProps {
@@ -11,28 +10,27 @@ export default function LogoutModal({ isOpen, onClose, onLogout }: LogoutModalPr
   if (!isOpen) return null;
 
   return (
-    <div style={{ backdropFilter: "blur(8px)" }} className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl p-6 w-full max-w-sm mx-4">
-        <h3 className="text-lg font-semibold mb-6 text-center text-gray-800">
-          Logout
-        </h3>
-        <div className="border-t border-gray-200 mb-6" />
-        
-        <p className="text-sm text-gray-600 text-center mb-8">
-          Are you sure you want to logout?
-        </p>
-        
-        <div className="border-t border-gray-200 mb-4" />
-        <div className="flex space-x-4">
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-2 backdrop-blur-md">
+      <div className="w-[305px] h-[171px] bg-[#F5F5F5] rounded-[16px] shadow-[0_-6px_20px_rgba(168,168,168,0.4)] flex flex-col items-center justify-center p-0 gap-0">
+        {/* Header */}
+        <div className="w-full bg-white rounded-t-[16px] flex flex-col items-center px-4 pt-5 pb-4">
+          <span className="font-outfit font-medium text-[16px] leading-[20px] text-[#212121] text-center">Log out</span>
+        </div>
+        {/* Message */}
+        <div className="w-full bg-white flex flex-col items-center px-4 py-4 font-outfit font-light text-[14px] leading-[20px] text-[#212121] text-center">
+          Are you sure you want to log out of Aaharam?
+        </div>
+        {/* Actions */}
+        <div className="w-full bg-white flex flex-row justify-center items-center px-4 py-2 gap-4 rounded-b-[16px]">
           <button
             onClick={onClose}
-            className="flex-1 py-3 px-4 text-gray-600 rounded-xl font-medium text-base hover:bg-gray-50 transition-colors"
+            className="font-outfit flex-1 font-medium text-[14px] leading-[18px] text-[#212121B3] px-0 py-0 bg-transparent shadow-none"
           >
-            Cancel
+            No
           </button>
           <button
             onClick={onLogout}
-            className="flex-1 py-3 px-4 text-red-600 rounded-xl font-medium text-base hover:bg-none transition-colors"
+            className="font-outfit flex-1 font-medium text-[14px] leading-[18px] text-[#38963B] px-0 py-0 bg-transparent shadow-none"
           >
             Yes
           </button>
