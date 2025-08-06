@@ -11,11 +11,15 @@ import ModifierModal from "@/components/modals/ModifierModal";
 import FloatingCartButton from "@/components/FloatingCartButton";
 import { useToast } from "@/hooks/use-toast";
 import foodItemsData from "@/data/foodItems.json";
-import { ModifierGroup } from "@/types/food.types";
-
 // Import food images
 
-  interface FoodItem {
+interface ModifierOption {
+  id: string;
+  name: string;
+  price: number;
+}
+
+interface FoodItem {
   id: string;
   name: string;
   price: number;
@@ -25,7 +29,8 @@ import { ModifierGroup } from "@/types/food.types";
   available?: boolean;
   unavailableReason?: string;
   availableFor?: string[]; // e.g., ['jain', 'regular']
-  modifiers?: ModifierGroup[];
+  modifiers?: ModifierOption[];
+  sideTitle?: string;
 }
 
 interface CartItem {
@@ -51,7 +56,7 @@ const FoodDelivery = () => {
     name: string;
     price: number;
     image: string;
-    modifiers?: ModifierGroup[];
+    modifiers?: ModifierOption[];
   } | null>(null);
   const [cart, setCart] = useState<{ [id: string]: CartItem }>({});
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -78,13 +83,7 @@ const FoodDelivery = () => {
 
     // If item has modifiers, open modifier modal
     if (item.modifiers && item.modifiers.length > 0) {
-      setSelectedItem({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        image: item.image,
-        modifiers: item.modifiers,
-      });
+      setSelectedItem(item);
       setIsModifierModalOpen(true);
       return;
     }
@@ -95,7 +94,7 @@ const FoodDelivery = () => {
 
   const handleAddWithModifiers = (selectedModifiers: Record<string, string[]>) => {
     if (!selectedItem) return;
-    
+
     addToCart(
       selectedItem.id,
       selectedItem.name,
@@ -103,21 +102,21 @@ const FoodDelivery = () => {
       selectedItem.image,
       selectedModifiers
     );
-    
+
     // Reset selected item
     setSelectedItem(null);
   };
 
   const addToCart = (
-    id: string, 
-    name: string, 
-    price: number, 
-    image: string, 
+    id: string,
+    name: string,
+    price: number,
+    image: string,
     modifiers?: Record<string, string[]>
   ) => {
     setCart(prev => {
       const existingItem = prev[id];
-      
+
       // If item already exists in cart, just update quantity
       if (existingItem) {
         return {
@@ -252,11 +251,8 @@ const FoodDelivery = () => {
             setIsModifierModalOpen(false);
             setSelectedItem(null);
           }}
-          itemName={selectedItem?.name || ''}
-          modifiers={selectedItem?.modifiers || []}
+          item={selectedItem}
           onAddToCart={handleAddWithModifiers}
-          price={selectedItem?.price || 0}
-          image={selectedItem?.image}
         />
       )}
     </Container>

@@ -1,309 +1,231 @@
 import React, { useState, useEffect } from "react";
-import { Minus, Plus, X, Check } from "lucide-react";
+import { Minus, Plus, X } from "lucide-react";
 
 interface ModifierOption {
   id: string;
   name: string;
   price: number;
-  selected?: boolean;
-}
-
-interface ModifierGroup {
-  id: string;
-  name: string;
-  required: boolean;
-  min: number;
-  max: number;
-  options: ModifierOption[];
 }
 
 interface ModifierModalProps {
   isOpen: boolean;
   onClose: () => void;
-  itemName: string;
-  price: number;
-  image?: string;
-  modifiers: ModifierGroup[];
+  item: FoodItem | null;
   onAddToCart: (selectedModifiers: Record<string, string[]>) => void;
 }
 
-interface SelectedOption {
-  groupId: string;
-  optionId: string;
+interface FoodItem {
+  id: string;
   name: string;
   price: number;
+  image?: string;
+  category?: string;
+  description?: string;
+  modifiers?: ModifierOption[];
+  availableFor?: string[];
+  sideTitle?: string;
 }
+
+
 
 const ModifierModal: React.FC<ModifierModalProps> = ({
   isOpen,
   onClose,
-  itemName,
-  price: basePrice,
-  image,
-  modifiers,
+  item,
   onAddToCart,
 }) => {
-  const [selectedOptions, setSelectedOptions] = useState<SelectedOption[]>([]);
+  if (!item) return null;
+  const { name: itemName, price: basePrice, image, modifiers = [], availableFor = [] } = item;
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [quantity, setQuantity] = useState(1);
-  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(
-    {}
-  );
+  const [cookingNote, setCookingNote] = useState("");
+  const [selectedPrepType, setSelectedPrepType] = useState<string>("");
 
-  // Initialize expanded groups state
   useEffect(() => {
-    const initialExpandedState: Record<string, boolean> = {};
-    modifiers.forEach((group) => {
-      initialExpandedState[group.id] = true; // Start with all groups expanded
-    });
-    setExpandedGroups(initialExpandedState);
-  }, [modifiers]);
+    setSelectedOptions([]);
+    setQuantity(1);
+    setCookingNote("");
+    if (availableFor && availableFor.length > 0) {
+      setSelectedPrepType(availableFor.includes("regular") ? "regular" : availableFor[0]);
+    }
+  }, [availableFor]);
 
-  // Initialize default selections for required modifiers
-  useEffect(() => {
-    const defaultSelections: SelectedOption[] = [];
-
-    modifiers.forEach((group) => {
-      if (group.required && group.options.length > 0) {
-        // Select the first option by default for required groups
-        const defaultOption = group.options[0];
-        defaultSelections.push({
-          groupId: group.id,
-          optionId: defaultOption.id,
-          name: defaultOption.name,
-          price: defaultOption.price,
-        });
-      }
-    });
-
-    setSelectedOptions(defaultSelections);
-  }, [modifiers]);
-
-  const toggleGroup = (groupId: string) => {
-    setExpandedGroups((prev) => ({
-      ...prev,
-      [groupId]: !prev[groupId],
-    }));
-  };
-
-  const handleOptionSelect = (groupId: string, option: ModifierOption) => {
-    setSelectedOptions((prev) => {
-      const group = modifiers.find((g) => g.id === groupId);
-      if (!group) return prev;
-
-      // For single-select groups, replace any existing selection for this group
-      if (group.max === 1) {
-        return [
-          ...prev.filter((opt) => opt.groupId !== groupId),
-          {
-            groupId,
-            optionId: option.id,
-            name: option.name,
-            price: option.price,
-          },
-        ];
-      }
-
-      // For multi-select groups, toggle the selection
-      const existingIndex = prev.findIndex(
-        (opt) => opt.groupId === groupId && opt.optionId === option.id
-      );
-
-      if (existingIndex >= 0) {
-        // Remove if already selected
-        return prev.filter((_, i) => i !== existingIndex);
-      } else {
-        // Add new selection, respecting max limit
-        const groupSelections = prev.filter((opt) => opt.groupId === groupId);
-        if (groupSelections.length >= (group.max || Infinity)) {
-          // If max selections reached, replace the first one
-          return [
-            ...prev.filter((opt) => opt.groupId !== groupId),
-            {
-              groupId,
-              optionId: option.id,
-              name: option.name,
-              price: option.price,
-            },
-            ...groupSelections.slice(1),
-          ];
-        } else {
-          // Add new selection
-          return [
-            ...prev,
-            {
-              groupId,
-              optionId: option.id,
-              name: option.name,
-              price: option.price,
-            },
-          ];
-        }
-      }
-    });
-  };
-
-  const isOptionSelected = (groupId: string, optionId: string) => {
-    return selectedOptions.some(
-      (opt) => opt.groupId === groupId && opt.optionId === optionId
+  const handleOptionToggle = (optionId: string) => {
+    setSelectedOptions((prev) =>
+      prev.includes(optionId)
+        ? prev.filter((id) => id !== optionId)
+        : [...prev, optionId]
     );
+  };
+
+  const handlePrepTypeChange = (type: string) => {
+    setSelectedPrepType(type);
   };
 
   const calculateTotalPrice = () => {
-    const optionsTotal = selectedOptions.reduce(
-      (sum, option) => sum + option.price,
-      0
-    );
-    return (basePrice + optionsTotal) * quantity;
+    const modsPrice = modifiers
+      .filter((mod) => selectedOptions.includes(mod.id))
+      .reduce((sum, mod) => sum + (mod.price || 0), 0);
+    return (basePrice + modsPrice) * quantity;
   };
 
   const handleAddToCart = () => {
-    // Group selected options by modifier group
-    const selectedModifiers: Record<string, string[]> = {};
-
-    selectedOptions.forEach((option) => {
-      if (!selectedModifiers[option.groupId]) {
-        selectedModifiers[option.groupId] = [];
-      }
-      selectedModifiers[option.groupId].push(option.optionId);
-    });
-
-    onAddToCart(selectedModifiers);
+    const grouped: Record<string, string[]> = {};
+    if (selectedPrepType) {
+      grouped["preparationType"] = [selectedPrepType];
+    }
+    if (selectedOptions.length > 0) {
+      grouped["modifiers"] = selectedOptions;
+    }
+    if (cookingNote.trim()) {
+      grouped["note"] = [cookingNote.trim()];
+    }
+    for (let i = 0; i < quantity; i++) {
+      onAddToCart(grouped);
+    }
+    onClose();
   };
+
 
   if (!isOpen) return null;
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${
-        isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
-      }`}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-    >
-      <div className="relative w-full max-w-md max-h-[90vh] overflow-y-auto bg-white rounded-t-3xl rounded-b-lg shadow-xl">
-        {/* Close button */}
-        <div className="sticky top-0 z-10 flex justify-center p-2 bg-white">
-          <button
-            onClick={onClose}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200"
-          >
-            <X size={20} />
-          </button>
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center sm:justify-center bg-black/50" style={{ backdropFilter: "blur(8px)" }}>
+      {/* Floating Close Button */}
+      {/* Modal Container */}
+      <div className="relative bg-white rounded-tl-[16px] rounded-tr-[16px] shadow-xl w-full max-w-md mx-auto flex flex-col">
+        {/* Floating Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute left-1/2 -translate-x-1/2 rounded-full shadow-md p-2 border border-gray-200 hover:bg-gray-100 focus:outline-none z-10"
+          style={{ top: '-58px', background: '#F5F5F5' }}
+          aria-label="Close"
+        >
+          <X className="w-6 h-6 text-gray-700" />
+        </button>
+        {/* Header */}
+        <div className="flex items-center pt-4 pr-4 pb-3 pl-4">
+          {image && (
+            <img src={image} alt={itemName} className="w-16 h-16 object-cover rounded-xl mr-4 border" />
+          )}
+          <div className="flex-1">
+            <div className="font-medium text-base">{itemName}</div>
+          </div>
+          <div className="text-base text-gray-800 font-normal">₹{basePrice}</div>
         </div>
-
-        {/* Content */}
-        <div className="p-4">
-          {/* Item header */}
-          <div className="flex items-start mb-4">
-            {image && (
-              <div className="w-16 h-16 mr-3 overflow-hidden rounded-lg">
-                <img
-                  src={image}
-                  alt={itemName}
-                  className="object-cover w-full h-full"
-                />
+        {/* Preparation Type */}
+        {availableFor && availableFor.length > 0 && (
+          <>
+            <div className="w-full" style={{ background: '#F3F4F6', height: '4px', borderRadius: '2px' }} />
+            <div className="p-4">
+              <div className="font-semibold text-sm mb-2">Choice Of Preparation Type</div>
+              <div className="border-b border-gray-200 mb-3"></div>
+              <div className="flex flex-col gap-1">
+                {availableFor.map((type) => (
+                  <label
+                    key={type}
+                    className="flex items-center justify-between py-2 cursor-pointer group"
+                  >
+                    <span className="text-gray-900 text-sm capitalize">{type}</span>
+                    <span className="relative flex items-center">
+                      <input
+                        type="radio"
+                        name="prepType"
+                        value={type}
+                        checked={selectedPrepType === type}
+                        onChange={() => handlePrepTypeChange(type)}
+                        className="appearance-none h-5 w-5 border border-gray-300 rounded-full checked:border-green-600 checked:bg-white focus:outline-none transition-colors"
+                      />
+                      {selectedPrepType === type && (
+                        <span className="absolute left-1/2 top-1/2 w-3 h-3 bg-green-600 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"></span>
+                      )}
+                    </span>
+                  </label>
+                ))}
               </div>
-            )}
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold text-gray-900">{itemName}</h3>
-              <p className="text-sm text-gray-500">Customize your order</p>
             </div>
-            <div className="text-lg font-semibold">₹{basePrice}</div>
-          </div>
-
-          {/* Modifier groups */}
-          <div className="space-y-6">
-            {modifiers.map((group) => (
-              <div key={group.id} className="mb-6">
-                <button
-                  onClick={() => toggleGroup(group.id)}
-                  className="flex items-center justify-between w-full mb-2 text-sm font-medium text-gray-700"
-                >
-                  <span>{group.name}</span>
-                  {group.required && (
-                    <span className="text-xs text-gray-500">Required</span>
-                  )}
-                </button>
-
-                {expandedGroups[group.id] && (
-                  <div className="space-y-2">
-                    {group.options.map((option) => (
-                      <div
-                        key={option.id}
-                        onClick={() => handleOptionSelect(group.id, option)}
-                        className={`flex items-center justify-between p-3 text-left border rounded-lg cursor-pointer ${
-                          isOptionSelected(group.id, option.id)
-                            ? 'border-green-500 bg-green-50'
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}
-                      >
-                        <div className="flex items-center">
-                          {group.max > 1 ? (
-                            <div
-                              className={`flex items-center justify-center w-5 h-5 border rounded ${
-                                isOptionSelected(group.id, option.id)
-                                  ? 'bg-green-500 border-green-500 text-white'
-                                  : 'border-gray-300'
-                              }`}
-                            >
-                              {isOptionSelected(group.id, option.id) && (
-                                <Check size={14} />
-                              )}
-                            </div>
-                          ) : (
-                            <div
-                              className={`flex items-center justify-center w-5 h-5 border rounded-full ${
-                                isOptionSelected(group.id, option.id)
-                                  ? 'border-green-500 border-4'
-                                  : 'border-gray-300'
-                              }`}
-                            >
-                              {isOptionSelected(group.id, option.id) && (
-                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                              )}
-                            </div>
-                          )}
-                          <span className="ml-3 text-sm">{option.name}</span>
-                        </div>
-                        {option.price > 0 && (
-                          <span className="text-sm text-gray-600">
-                            +₹{option.price}
-                          </span>
+          </>
+        )}
+        {/* Extras */}
+        {modifiers.length > 0 && (
+          <>
+            <div className="w-full" style={{ background: '#F3F4F6', height: '4px', borderRadius: '2px' }} />
+            <div className="p-4">
+              <div className="font-semibold text-sm mb-4">Extra</div>
+              <div className="border-b border-gray-200 mb-4"></div>
+              <div className="flex flex-col gap-4">
+                {modifiers.map((mod) => (
+                  <label
+                    key={mod.id}
+                    className="flex items-center cursor-pointer group"
+                  >
+                    <span className="flex-1 text-sm" style={{ color: '#212121' }}>{mod.name}</span>
+                    <span className="ml-2 text-sm" style={{ color: '#212121' }}>₹{mod.price}</span>
+                    <span className="relative flex items-center ml-3">
+                      <input
+                        type="checkbox"
+                        checked={selectedOptions.includes(mod.id)}
+                        onChange={() => handleOptionToggle(mod.id)}
+                        className="peer appearance-none h-5 w-5 border border-gray-300 rounded-[4px] transition-colors bg-white checked:bg-green-600 checked:border-green-600 focus:outline-none"
+                        aria-checked={selectedOptions.includes(mod.id)}
+                      />
+                      <span className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                        {selectedOptions.includes(mod.id) && (
+                          <svg className="w-3 h-3 text-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 8.5L7 11.5L12 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
                         )}
-                      </div>
-                    ))}
-                  </div>
-                )}
+                      </span>
+                    </span>
+                  </label>
+                ))}
               </div>
-            ))}
-          </div>
-
-          {/* Quantity */}
-          <div className="flex items-center justify-between p-3 my-6 bg-gray-50 rounded-lg">
-            <span className="text-sm font-medium text-gray-700">Quantity</span>
-            <div className="flex items-center space-x-3">
+            </div>
+          </>
+        )}
+        {/* Cooking Note */}
+        <div className="w-full" style={{ background: '#F3F4F6', height: '4px', borderRadius: '2px' }} />
+        <div className="p-4">
+          <label className="block text-sm font-medium mb-2">Add a cooking note (optional)</label>
+          <textarea
+            className="w-full rounded-lg border border-gray-200 bg-gray-50 p-2 text-sm focus:outline-green-500"
+            style={{ minHeight: '80px' }}
+            rows={2}
+            placeholder="Add any special instructions..."
+            value={cookingNote}
+            onChange={(e) => setCookingNote(e.target.value)}
+          />
+        </div>
+        {/* Footer */}
+        <div className="sticky bottom-0 left-0 bg-white p-4 flex flex-col gap-3">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex w-full gap-3">
+              <div className="flex items-center border justify-between rounded-lg overflow-hidden h-12 flex-1" style={{ boxSizing: 'border-box', borderColor: '#38963B' }} >
+                <button
+                  className="px-4 py-0 text-green-600 text-2xl font-bold disabled:opacity-40 h-full flex items-center justify-center"
+                  style={{ minWidth: '32px' }}
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  disabled={quantity === 1}
+                >
+                  <Minus />
+                </button>
+                <span className="px-4 py-0 text-lg font-semibold bg-white h-full flex items-center justify-center" style={{ minWidth: '28px', color: '#38963B' }}>{quantity}</span>
+                <button
+                  className="px-4 py-0 text-green-600 text-2xl font-bold h-full flex items-center justify-center"
+                  style={{ minWidth: '32px' }}
+                  onClick={() => setQuantity((q) => q + 1)}
+                >
+                  <Plus />
+                </button>
+              </div>
               <button
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="flex items-center justify-center w-8 h-8 text-gray-500 bg-white border border-gray-300 rounded-full hover:bg-gray-100"
+                className="bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg text-base shadow-md transition-colors h-12 flex-1 flex items-center justify-center whitespace-nowrap"
+                onClick={handleAddToCart}
               >
-                <Minus size={16} />
-              </button>
-              <span className="w-6 text-center">{quantity}</span>
-              <button
-                onClick={() => setQuantity(quantity + 1)}
-                className="flex items-center justify-center w-8 h-8 text-gray-500 bg-white border border-gray-300 rounded-full hover:bg-gray-100"
-              >
-                <Plus size={16} />
+                Add Item - ₹{calculateTotalPrice()}
               </button>
             </div>
           </div>
-
-          {/* Add to cart button */}
-          <button
-            onClick={handleAddToCart}
-            className="w-full py-3 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-          >
-            Add Item - ₹{calculateTotalPrice()}
-          </button>
         </div>
       </div>
     </div>
