@@ -434,7 +434,7 @@ const FoodDelivery = () => {
               />
               <PromoBar />
               {/* Food Items List */}
-              <div className="p-4 space-y-2 bg-gray-100 w-full flex-1 overflow-y-auto scrollbar-hide">
+              <div className="p-4 space-y-2 bg-[#F7F7F7] w-full flex-1 overflow-y-auto scrollbar-hide">
                 {filteredItems.map((item) => (
                   <FoodCard
                     key={item.id}
