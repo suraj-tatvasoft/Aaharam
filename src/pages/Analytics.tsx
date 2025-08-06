@@ -22,10 +22,10 @@ const Analytics = () => {
 
   return (
     <Container>
-      <div className="min-h-screen flex flex-col bg-[#DFFFEA]">
-        {/* Top section with avatar and welcome */}
-        <div className="w-full bg-[#DFFFEA] rounded-b-[40px] flex flex-col items-center pt-8 pb-6">
-          <Avatar className="w-16 h-16 mb-3 shadow-lg border-1 border-white">
+      <div className="min-h-screen flex flex-col bg-[#E1FFE0]">
+        {/* Top section with avatar and welcome OUTSIDE card */}
+        <div className="w-full flex flex-col items-center pt-10 pb-4">
+          <Avatar className="w-14 h-14 mb-3 shadow-lg border border-white">
             <AvatarImage
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
               alt="Dhiren Devganiya"
@@ -35,19 +35,19 @@ const Analytics = () => {
               DD
             </AvatarFallback>
           </Avatar>
-          <h1 className="text-lg font-bold md:text-xl text-center px-3 py-1 mt-1">Welcome Dhiren Devganiya</h1>
+          <h1 className="text-xl font-normal text-center px-3 py-1 mt-1 text-[#212121] font-outfit">Welcome Dhiren Devganiya</h1>
         </div>
+        {/* Card container */}
         <div className="flex-1 flex flex-col justify-end items-center pb-0">
           <div className="w-full flex flex-col flex-1 justify-end items-center">
-            {/* Card container fills available space, button pinned to bottom */}
-            <div className="bg-white rounded-t-3xl shadow-xl px-5 pt-8 pb-0 w-full relative z-10 mt-[-10px] flex flex-col flex-1">
+            <div className="bg-white rounded-t-3xl shadow-xl px-5 pt-8 pb-0 w-full relative z-10 mt-[-16px] flex flex-col flex-1">
               <div className="text-center mb-5">
-                <div className="text-base font-medium mb-1">Let’s check how crowded it gets during lunch hours.</div>
-                <div className="text-sm text-gray-500">Select your preferred lunch time before using Aaharam.</div>
+                <div className="text-base font-normal text-[#141414] mb-1 font-outfit">Let’s check how crowded it gets during lunch hours.</div>
+                <div className="text-base font-normal text-[#141414] font-outfit">Select your preferred lunch time before using Aaharam.</div>
               </div>
               <div className="flex flex-col items-center flex-1 justify-start">
                 {/* Donut Chart */}
-                <div className="w-64 h-64 flex items-center justify-center mb-2">
+                <div className="w-60 h-60 flex items-center justify-center mb-4">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
@@ -67,24 +67,24 @@ const Analytics = () => {
                   </ResponsiveContainer>
                 </div>
                 {/* Legend */}
-                <div className="grid grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-2 gap-3 text-base font-outfit mt-2">
                   {data.map((entry, index) => (
                     <div key={entry.name} className="flex items-center gap-2">
                       <div
                         className="w-3 h-3 rounded-full"
                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                       />
-                      <span className="text-gray-500">
-                        {entry.name} ({entry.value}%)
+                      <span className="text-[#212121] font-normal">
+                        {entry.name} <span className="text-[#7C7C7C]">({entry.value}%)</span>
                       </span>
                     </div>
                   ))}
                 </div>
               </div>
               {/* Action Button pinned to bottom of card */}
-              <div className="mt-auto pb-6 pt-4">
+              <div className="mt-auto pb-7 pt-4">
                 <Button
-                  className="w-full h-12 text-lg bg-foreground text-background hover:bg-foreground/90"
+                  className="w-full h-11 font-medium text-base bg-[#212121] text-white rounded-lg font-outfit shadow-sm hover:bg-[#181818] transition-colors"
                   size="lg"
                   onClick={() => navigate('/preference-selection')}
                 >

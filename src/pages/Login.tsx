@@ -34,11 +34,11 @@ const Login = () => {
         </div>
         {/* Bottom Section: Login Form */}
         <div className="bg-white rounded-t-3xl min-h-[420px] z-10 relative px-6 pt-8 pb-4 mt-[-10px]">
-          <h1 className="text-2xl font-bold text-center text-black mb-6">Login</h1>
+          <h1 className="text-center text-2xl font-normal text-[#212121] mb-6">Login</h1>
           <form onSubmit={handleLogin} className="space-y-5">
             {/* Username */}
             <div>
-              <Label htmlFor="username" className="block text-sm font-medium text-black mb-1">Username</Label>
+              <Label htmlFor="username" className="block text-sm font-regular text-[#212121] mb-1">Username</Label>
               <Input
                 id="username"
                 type="text"
@@ -51,7 +51,7 @@ const Login = () => {
             </div>
             {/* Password */}
             <div>
-              <Label htmlFor="password" className="block text-sm font-medium text-black mb-1">Password</Label>
+              <Label htmlFor="password" className="block text-sm font-regular text-[#212121] mb-1">Password</Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -82,12 +82,12 @@ const Login = () => {
                 checked={rememberMe}
                 onCheckedChange={(checked) => setRememberMe(checked as boolean)}
               />
-              <Label htmlFor="remember" className="ml-2 text-sm text-black">Remember me</Label>
+              <Label htmlFor="remember" className="ml-2 text-sm font-regular text-[#212121]">Remember me</Label>
             </div>
             {/* Login Button */}
             <Button
               type="submit"
-              className="w-full h-12 text-lg bg-foreground text-background hover:bg-foreground/90"
+              className="w-full h-11 font-medium text-lg bg-foreground text-background hover:bg-foreground/90"
               size="lg"
             >
               Login

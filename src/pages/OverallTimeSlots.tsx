@@ -63,7 +63,7 @@ const OverallTimeSlots = () => {
             {LEGEND.map((item, idx) => (
               <div key={item.label} className="flex items-center min-w-[140px] mb-1">
                 <span className="w-3 h-3 rounded-full mr-2" style={{ background: item.color }}></span>
-                <span className="text-[15px] text-[#222] font-medium" style={{ fontFamily: 'system-ui, sans-serif' }}>{item.label}</span>
+                <span className="text-[15px] text-[#222] font-medium">{item.label}</span>
               </div>
             ))}
           </div>

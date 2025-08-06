@@ -27,27 +27,32 @@ const PreferenceSelection = () => {
 
     return (
         <Container>
-            <div className="min-h-screen flex flex-col bg-white">
-                <div className="max-w-md w-full mx-auto flex flex-col flex-1">
-                    <div className="flex items-center gap-3 px-4 pt-8 pb-4">
-                        <Avatar className="w-10 h-10">
+            <div className="min-h-screen flex flex-col bg-[#F7F7F7]">
+                <div className="w-full mx-auto flex flex-col flex-1">
+                    {/* Header Section */}
+                    <div className="flex items-center gap-3 px-4 pt-8 pb-4 bg-white">
+                        <Avatar className="w-[42px] h-[42px] border border-[#E5EEE3]">
                             <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="User" />
                         </Avatar>
-                        <span className="font-semibold text-lg">My Preferred Lunch Time Slot</span>
+                        <span className="font-normal text-[18px] leading-[23px] text-[#212121]">My Preferred Lunch Time Slot</span>
                     </div>
-                    <form className="flex flex-col flex-1 bg-[#FAFAFA] rounded-2xl px-4 pt-4 pb-2 mx-2" onSubmit={handleSubmit}>
-                        <div className="font-semibold text-base mb-3">Select Your Time Slot</div>
+                    {/* Card Section */}
+                    <form className="flex flex-col flex-1 rounded-t-2xl px-4 pt-5 pb-2 mx-2 shadow-sm" onSubmit={handleSubmit}>
+                        <div className="font-medium text-[16px] leading-[20px] mb-3 text-[#212121]">Select Your Time Slot</div>
                         <div className="flex-1 overflow-y-auto flex flex-col gap-3">
                             {TIME_SLOTS.map((slot) => (
-                                <label key={slot} className="flex items-center justify-between py-1 cursor-pointer">
-                                    <span className="text-[15px] font-medium text-black">{slot}</span>
+                                <label
+                                    key={slot}
+                                    className="flex items-center justify-between py-[6px] cursor-pointer"
+                                >
+                                    <span className="text-[14px] font-light text-[#212121]">{slot}</span>
                                     <input
                                         type="radio"
                                         name="timeSlot"
                                         value={slot}
                                         checked={selected === slot}
                                         onChange={() => setSelected(slot)}
-                                        className="form-radio w-5 h-5 accent-black"
+                                        className="form-radio w-[18px] h-[18px] accent-[#212121] border border-[#2121214D] bg-white"
                                     />
                                 </label>
                             ))}
@@ -55,7 +60,7 @@ const PreferenceSelection = () => {
                         <div className="mt-auto pt-8">
                             <button
                                 type="submit"
-                                className="w-full h-12 text-lg bg-black text-white rounded-xl font-semibold"
+                                className="w-full h-11 text-[16px] font-medium bg-[#212121] text-white rounded-xl disabled:opacity-50"
                                 disabled={!selected}
                             >
                                 Submit

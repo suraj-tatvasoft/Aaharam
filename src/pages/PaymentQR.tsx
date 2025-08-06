@@ -12,22 +12,24 @@ const PaymentQR: React.FC = () => {
     return (
         <PageLayout title="Payment QR">
 
-            <div className="relative w-full flex justify-center mt-20">
-                <div className="bg-white rounded-2xl shadow-lg pt-14 pb-10 px-0 max-w-[340px] w-full flex flex-col items-center" style={{ minHeight: 400 }}>
+            <div className="relative w-full flex justify-center items-center flex-1">
+                <div className="relative isolate flex flex-col items-center px-[30px] pt-[60px] pb-[30px] gap-[30px] rounded-[16px] w-[289px] min-h-[350px] bg-white">
                     {/* Avatar Circle */}
                     <div className="absolute left-1/2 -translate-x-1/2 -top-10 z-10">
-                        <div className="w-20 h-20 rounded-full bg-[#43A047] border-4 border-white flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                        <div className="w-[80px] h-[80px] rounded-full bg-[#38963B] border-[6px] border-white flex items-center justify-center text-white text-[20px] font-medium leading-[25px]">
                             {user.initials}
                         </div>
                     </div>
-                    <div className="mt-6 flex flex-col items-center">
-                        <span className="text-base font-semibold text-[#222]">{user.name}</span>
-                        <span className="text-xs text-[#555] mt-1">UPI ID - {user.upi}</span>
+                    {/* Name & UPI */}
+                    <div className="flex flex-col items-center gap-[10px] mt-0">
+                        <span className="font-outfit font-medium text-[16px] leading-[20px] text-[#212121] text-center">{user.name}</span>
+                        <span className="font-outfit font-normal text-[13px] leading-[16px] text-[#212121] text-center mt-1">UPI ID - {user.upi}</span>
                     </div>
+                    {/* QR Code */}
                     <img
                         src={user.qr}
                         alt="QR Code"
-                        className="mt-7 mb-2 w-44 h-44 rounded"
+                        className="w-[200px] h-[200px] mt-[18px] rounded"
                     />
                 </div>
             </div>
