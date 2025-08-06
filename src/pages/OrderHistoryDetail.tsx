@@ -33,48 +33,46 @@ const MOCK_DETAILS = {
 
 const OrderHistoryDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  // Find the order by id from ORDERS
   const orderSummary = ORDERS.find((o) => String(o.id) === String(id));
 
-  // Compose the order details
   const order = orderSummary
     ? {
         ...MOCK_DETAILS,
-        ...orderSummary, // id, status, amount, date (if present)
+        ...orderSummary,
       }
     : { ...MOCK_DETAILS, id: id || "-", status: "Completed" };
 
   return (
     <PageLayout title={`Order #${order.id}`}>
-      <div className="flex flex-col items-center w-full py-4">
-        <div className="text-lg font-medium text-[#212121]">Token no</div>
-        <div className="text-6xl font-bold text-black mb-2">{order.token}</div>
-        <div className="text-base text-[#232323] flex gap-2">
+      <div className="flex flex-col items-center w-full py-8 bg-[#F7F7F7] font-outfit">
+        <div className="text-[20px] font-normal text-[#212121]">Token no</div>
+        <div className="text-[50px] font-semibold text-[#212121] uppercase">{order.token}</div>
+        <div className="text-[14px] font-light text-[#232323] flex gap-2">
           <span>{order.date}</span>
           <span>{order.time}</span>
         </div>
         {order.status === "Completed" ? (
-          <div className="mt-3 px-4 py-1 rounded-full bg-[#E9FFE4] text-[#38963B] flex items-center text-sm">
+          <div className="mt-3 px-4 py-1 rounded-full bg-[#E9FFE4] text-[#38963B] flex items-center text-[12px]">
             Completed
             <svg
               className="ml-1"
-              width="18"
-              height="18"
+              width="14"
+              height="14"
               fill="none"
-              viewBox="0 0 18 18"
+              viewBox="0 0 14 14"
             >
-              <circle cx="9" cy="9" r="9" fill="#38963B" />
+              <circle cx="7" cy="7" r="7" fill="#38963B" />
               <path
-                d="M5 9l3 3 5-5"
+                d="M4 7l2 2 4-4"
                 stroke="#fff"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
           </div>
         ) : order.status === "Rejected" ? (
-          <div className="mt-3 px-4 py-1 rounded-full bg-[#FFE9E9] text-[#E74C3C] flex items-center text-sm">
+          <div className="mt-3 px-4 py-1 rounded-full bg-[#FFE9E9] text-[#E74C3C] flex items-center text-[12px] font-medium">
             Rejected
             <svg
               className="ml-1"
@@ -83,10 +81,9 @@ const OrderHistoryDetail: React.FC = () => {
               fill="none"
               viewBox="0 0 18 18"
             >
-              <circle cx="9" cy="9" r="9" fill="#E74C3C" />
               <path
                 d="M6 6l6 6M12 6l-6 6"
-                stroke="#fff"
+                stroke="#E74C3C"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -94,12 +91,12 @@ const OrderHistoryDetail: React.FC = () => {
             </svg>
           </div>
         ) : order.status === "No Show" ? (
-          <div className="mt-3 px-4 py-1 rounded-full flex items-center gap-2 text-sm bg-[#F4EDFF] text-[#A259FF]">
+          <div className="mt-3 px-4 py-1 rounded-full flex items-center gap-2 text-[12px] font-medium bg-[#F4EDFF] text-[#A259FF]">
             No Show
             <img src={noShow} alt="No Show" />
           </div>
         ) : order.status === "Cancelled" ? (
-          <div className="mt-3 inline-flex items-center px-3 py-1 rounded-full bg-[#E2E2E2] text-[#212121] text-sm">
+          <div className="mt-3 inline-flex items-center px-3 py-1 rounded-full bg-[#E2E2E2] text-[#212121] text-[12px] font-medium">
             Cancelled
             <svg
               className="ml-1 align-middle"
@@ -121,34 +118,34 @@ const OrderHistoryDetail: React.FC = () => {
         ) : null}
       </div>
       <div className="px-4 w-full">
-        <div className="text-base font-semibold mb-2">Items</div>
-        <div className="flex flex-col gap-3 mb-4">
+        <div className="text-[16px] font-medium text-[#212121] mb-2">Items</div>
+        <div className="flex flex-col gap-4 mb-4">
           {order.items.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl px-3 py-2 shadow-sm flex flex-col"
+              className="bg-white rounded-[16px] px-4 py-3 shadow-[0_2px_8px_0_rgba(33,33,33,0.04)] flex flex-col"
             >
               <div className="flex items-center">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-12 h-12 rounded-xl object-cover mr-3 border border-[#ECECEC]"
+                  className="w-[46px] h-[46px] rounded-[12px] object-cover mr-4 border border-[#ECECEC]"
                 />
                 <div className="flex-1">
                   <div className="flex justify-between items-center">
-                    <span className="font-medium text-base text-black">
+                    <span className="font-normal text-[16px] text-[#212121]">
                       {item.name}
                     </span>
-                    <span className="text-base font-semibold text-[#232323]">
+                    <span className="text-[16px] font-normal text-[#232323]">
                       {item.qty}
                     </span>
                   </div>
                 </div>
               </div>
               {item.details && item.details.length > 0 && (
-                <div className="text-sm text-[#7C7C7C] mt-2 ml-0 pl-0 flex flex-col">
+                <div className="flex flex-col mt-2">
                   {item.details.map((d, i) => (
-                    <p key={i}>- {d}</p>
+                    <span key={i} className="text-[14px] font-normal text-[#494949]">- {d}</span>
                   ))}
                 </div>
               )}
@@ -156,16 +153,16 @@ const OrderHistoryDetail: React.FC = () => {
           ))}
         </div>
 
-        <div className="text-base font-semibold mb-2">Bill</div>
-        <div className="bg-white rounded-2xl px-3 py-2 mb-4">
+        <div className="text-[16px] font-medium text-[#212121] mb-2">Bill</div>
+        <div className="bg-white rounded-[16px] px-4 py-4 mb-4">
           {order.bill.map((b, i) => (
-            <div key={i} className="flex justify-between py-1 text-base">
+            <div key={i} className="flex justify-between py-1 text-[14px] font-light text-[#212121]">
               <span>{b.name}</span>
               <span>₹{b.amount}</span>
             </div>
           ))}
-          <div className="border-t border-[#ECECEC] my-2"></div>
-          <div className="flex justify-between text-lg font-semibold">
+          <div className="border-t border-[rgba(33,33,33,0.10)] my-2"></div>
+          <div className="flex justify-between text-[14px] font-medium text-[#212121]">
             <span>Total</span>
             <span>₹{order.total}</span>
           </div>
