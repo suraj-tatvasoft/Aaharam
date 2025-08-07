@@ -1,6 +1,7 @@
 import React from "react";
 import { Home, Bell } from "lucide-react";
 import Container from "@/components/Container";
+import { useNavigate } from "react-router-dom";
 
 interface OrderItem {
   id: string;
@@ -27,24 +28,25 @@ const OrderDetail: React.FC<OrderDetailProps> = ({
   items,
   onCancel,
 }) => {
+  const navigate = useNavigate();
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   return (
     <Container>
-      <div className="h-full bg-[#F7F7F7] pb-6 flex flex-col">
+      <div className="h-full bg-[#F7F7F7] flex flex-col">
         {/* Top Navigation Bar */}
         <div className="bg-white px-4 pt-4 pb-3 flex items-center sticky top-0 z-10">
-          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shadow">
+          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shadow" onClick={() => navigate("/")}>
             <Home className="text-green-600 w-5 h-5" />
           </div>
           <span className="ml-2 font-medium text-gray-700">Order #{orderId}</span>
-          <div className="ml-auto w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+          <div className="ml-auto w-10 h-10 bg-green-100 rounded-full flex items-center justify-center" onClick={() => navigate("/notifications")}>
             <Bell className="text-green-600 w-5 h-5" />
           </div>
         </div>
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col p-4">
           <div className="flex-1 overflow-y-auto scrollbar-hide">
             {/* Token Section */}
-            <div className="px-4 mt-4 text-center">
+            <div className="text-center">
               <div className="text-sm text-gray-500">Token no</div>
               <div className="text-5xl font-bold my-2">{tokenNumber}</div>
               <div className="flex justify-center gap-6 text-gray-400 text-sm mt-2">
@@ -53,7 +55,7 @@ const OrderDetail: React.FC<OrderDetailProps> = ({
               </div>
             </div>
             {/* Items */}
-            <div className="px-4">
+            <div className="">
               <div className="font-semibold text-lg mt-6 mb-2 text-black">Items</div>
               {items.map(item => (
                 <div key={item.id} className="bg-white rounded-xl py-1 pl-1 pr-2 flex items-center justify-between mb-2">
@@ -84,14 +86,12 @@ const OrderDetail: React.FC<OrderDetailProps> = ({
             </div>
           </div>
           {/* Cancel Button */}
-          <div className="px-4 pt-4">
-            <button
-              className="w-full border border-green-600 text-green-600 font-medium p-3 rounded-lg"
-              onClick={onCancel}
-            >
-              Cancel your Order
-            </button>
-          </div>
+          <button
+            className="w-full border border-green-600 text-green-600 font-medium p-3 rounded-lg"
+            onClick={onCancel}
+          >
+            Cancel your Order
+          </button>
         </div>
       </div>
     </Container>

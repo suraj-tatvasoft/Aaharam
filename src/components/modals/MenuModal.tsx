@@ -84,7 +84,7 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
             <X className="w-6 h-6 text-gray-700" />
           </button>
         </div>
-        <div className="bg-white rounded-t-2xl pt-3 pb-6 px-4 shadow-2xl">
+        <div className="bg-white rounded-t-2xl pt-3 pb-4 px-4 shadow-2xl">
 
           {/* Heading and date */}
           <div className="flex items-center justify-between mb-3 mt-2">

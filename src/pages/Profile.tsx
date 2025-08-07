@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "@/components/Container";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { useNavigate } from "react-router-dom";
@@ -100,19 +100,19 @@ const Profile = () => {
                 <div className="flex-shrink-0">
                     {/* Header */}
                     <div className="flex flex-col items-center relative">
-                        <div className="absolute left-4 top-6">
+                        <div className="absolute left-4 top-4">
                             <button
                                 onClick={() => navigate(-1)}
-                                className="w-10 h-10 rounded-full bg-[#E9FFE5] flex items-center justify-center"
+                                className="w-[42px] h-[42px] rounded-full bg-[#E9FFE5] flex items-center justify-center"
                                 aria-label="Back"
                                 type="button"
                             >
                                 <img src={profileBack} alt="Back" className="w-4 h-4" />
                             </button>
                         </div>
-                        <div className="absolute right-4 top-6">
+                        <div className="absolute right-4 top-4">
                             <button
-                                className="w-10 h-10 rounded-full bg-[#E9FFE5] flex items-center justify-center"
+                                className="w-[42px] h-[42px] rounded-full bg-[#E9FFE5] flex items-center justify-center"
                                 aria-label="Notifications"
                                 type="button"
                                 onClick={() => navigate('/notifications')}
@@ -120,7 +120,7 @@ const Profile = () => {
                                 <img src={notificationIcon} alt="Notifications" className="w-5 h-5" />
                             </button>
                         </div>
-                        <Avatar className="w-20 h-20 border-1 border-white bg-white shadow-md mt-5 z-10">
+                        <Avatar className="w-[50px] h-[50px] border-1 border-[#E5E7EB] mt-6 z-10">
                             <AvatarImage src={user.avatar} alt={user.name} />
                         </Avatar>
                         <div className="pt-3 pb-2 text-lg font-medium text-[#212121]">{user.name}</div>
@@ -144,7 +144,7 @@ const Profile = () => {
                     </div>
                 </div>
                 {/* Menu List - sticky/scrollable */}
-                <div className="flex-1 overflow-y-auto flex flex-col gap-3 px-4 py-6 max-w-md w-full mx-auto scrollbar-hide">
+                <div className="flex-1 overflow-y-auto flex flex-col gap-3 px-4 py-4 max-w-md w-full mx-auto scrollbar-hide">
                     {MENU_ITEMS.map((item, idx) => {
                         // Map menu labels to navigation paths
                         const navigationMap: Record<string, string> = {

@@ -37,7 +37,7 @@ const PreferenceSelection = () => {
                         <span className="font-normal text-[18px] leading-[23px] text-[#212121]">My Preferred Lunch Time Slot</span>
                     </div>
                     {/* Card Section */}
-                    <form className="flex flex-col flex-1 rounded-t-2xl px-4 pt-5 pb-2 mx-2 shadow-sm" onSubmit={handleSubmit}>
+                    <form className="flex flex-col flex-1 rounded-t-2xl px-4 pt-5 pb-4 mx-2 shadow-sm" onSubmit={handleSubmit}>
                         <div className="font-medium text-[16px] leading-[20px] mb-3 text-[#212121]">Select Your Time Slot</div>
                         <div className="flex-1 overflow-y-auto flex flex-col gap-3">
                             {TIME_SLOTS.map((slot) => (
@@ -52,7 +52,7 @@ const PreferenceSelection = () => {
                                         value={slot}
                                         checked={selected === slot}
                                         onChange={() => setSelected(slot)}
-                                        className="form-radio w-[18px] h-[18px] accent-[#212121] border border-[#2121214D] bg-white"
+                                        className="form-radio w-[14px] h-[14px] accent-[#212121] border border-[#212121] bg-white"
                                     />
                                 </label>
                             ))}

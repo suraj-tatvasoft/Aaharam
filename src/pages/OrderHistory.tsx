@@ -48,7 +48,7 @@ const OrderHistory: React.FC = () => {
     <Container>
       <div className="flex-1 overflow-hidden bg-[#F7F7F7] flex flex-col">
         <div>
-          <div className="flex items-center px-4 pt-6 pb-4 bg-[#FFFFFF]">
+          <div className="flex items-center px-4 pt-4 pb-4 bg-[#FFFFFF]">
             <button
               className="w-9 h-9 rounded-full bg-[#E9FFE5] flex items-center justify-center mr-2"
               onClick={() => navigate(-1)}
@@ -86,7 +86,7 @@ const OrderHistory: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex-1 bg-[#F7F7F7] px-4 pt-3 pb-4 overflow-y-auto scrollbar-hide">
+        <div className="flex-1 bg-[#F7F7F7] px-4 pt-4 pb-4 overflow-y-auto scrollbar-hide">
           {ORDERS.filter(order => order.status === TABS[activeTab].label).map((order, i) => (
             <div
               key={i}

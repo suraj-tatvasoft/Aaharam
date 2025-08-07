@@ -26,7 +26,7 @@ const COLORS = [
 const OverallTimeSlots = () => {
   return (
     <PageLayout title="Overall Time Slots">
-      <div className="flex flex-col items-center flex-1 mt-4">
+      <div className="flex flex-col items-center flex-1 p-4 w-full">
         <div className="w-[360px] h-[360px] flex items-center justify-center mx-auto mb-8">
           <PieChart width={360} height={360}>
             <Pie

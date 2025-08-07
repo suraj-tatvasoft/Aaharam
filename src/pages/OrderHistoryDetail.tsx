@@ -37,9 +37,9 @@ const OrderHistoryDetail: React.FC = () => {
 
   const order = orderSummary
     ? {
-        ...MOCK_DETAILS,
-        ...orderSummary,
-      }
+      ...MOCK_DETAILS,
+      ...orderSummary,
+    }
     : { ...MOCK_DETAILS, id: id || "-", status: "Completed" };
 
   return (
@@ -117,7 +117,7 @@ const OrderHistoryDetail: React.FC = () => {
           </div>
         ) : null}
       </div>
-      <div className="px-4 w-full">
+      <div className="px-4 w-full pb-4">
         <div className="text-[16px] font-medium text-[#212121] mb-2">Items</div>
         <div className="flex flex-col gap-4 mb-4">
           {order.items.map((item, idx) => (
