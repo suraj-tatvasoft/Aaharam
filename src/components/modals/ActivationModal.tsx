@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import CongratulationsModal from "./CongratulationsModal";
+import React, { useState } from 'react';
+import CongratulationsModal from './CongratulationsModal';
 
 interface ActivationModalProps {
   isOpen: boolean;
@@ -19,36 +19,29 @@ const ActivationModal: React.FC<ActivationModalProps> = ({ isOpen, onClose }) =>
 
   return (
     <>
-      <div style={{ backdropFilter: "blur(8px)" }} className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-        <div className="bg-white rounded-xl w-11/12 max-w-sm" style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
+      <div style={{ backdropFilter: 'blur(8px)' }} className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+        <div className="w-11/12 max-w-sm rounded-xl bg-white" style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
           <div className="py-5">
-            <h3 className="text-lg font-semibold text-center mb-3 px-6">Activation</h3>
-            <div className="w-full h-1 mb-4" style={{ background: '#E5E7EB', height: '4px', borderRadius: '2px' }} />
-            <div className="text-sm text-center text-gray-700 leading-relaxed mb-4 px-6">
-              Your request has been received.<br />
-              Make payment directly on Billing Desk<br />
+            <h3 className="mb-3 px-6 text-center text-lg font-semibold">Activation</h3>
+            <div className="mb-4 h-1 w-full" style={{ background: '#E5E7EB', height: '4px', borderRadius: '2px' }} />
+            <div className="mb-4 px-6 text-center text-sm leading-relaxed text-gray-700">
+              Your request has been received.
+              <br />
+              Make payment directly on Billing Desk
+              <br />
               and get it activated.
             </div>
-            <div className="w-full h-1 mb-4" style={{ background: '#E5E7EB', height: '4px', borderRadius: '2px' }} />
-            <button
-              className="block mx-auto text-green-500 font-medium mt-2 cursor-pointer focus:outline-none"
-              onClick={onClose}
-            >
+            <div className="mb-4 h-1 w-full" style={{ background: '#E5E7EB', height: '4px', borderRadius: '2px' }} />
+            <button className="mx-auto mt-2 block cursor-pointer font-medium text-green-500 focus:outline-none" onClick={onClose}>
               Cancel
             </button>
-            <button
-              className="block mx-auto text-blue-500 font-medium mt-2 cursor-pointer focus:outline-none"
-              onClick={handleCongratsOpen}
-            >
+            <button className="mx-auto mt-2 block cursor-pointer font-medium text-blue-500 focus:outline-none" onClick={handleCongratsOpen}>
               Congratulations
             </button>
           </div>
         </div>
       </div>
-      <CongratulationsModal
-        isOpen={isCongratsOpen}
-        onClose={handleCongratsClose}
-      />
+      <CongratulationsModal isOpen={isCongratsOpen} onClose={handleCongratsClose} />
     </>
   );
 };

@@ -1,8 +1,8 @@
-import React from "react";
-import { X } from "lucide-react";
-import { Minus, Plus } from "lucide-react";
-import { useOrder } from "@/context/OrderContext";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { X } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
+import { useOrder } from '@/context/OrderContext';
+import { useNavigate } from 'react-router-dom';
 
 interface CartItem {
   id: string;
@@ -21,45 +21,43 @@ interface CartModalProps {
   onGenerateToken: () => void;
 }
 
-const CartModal: React.FC<CartModalProps> = ({
-  isOpen,
-  onClose,
-  cartItems,
-  onQuantityChange,
-  onClearCart,
-  onGenerateToken,
-}) => {
+const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQuantityChange, onClearCart, onGenerateToken }) => {
   const { setOrder } = useOrder();
   const navigate = useNavigate();
   if (!isOpen) return null;
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div style={{ backdropFilter: "blur(2px)" }} className="fixed inset-0 bg-black/10 z-50 flex items-end sm:items-center sm:justify-center p-0 sm:p-4">
+    <div
+      style={{ backdropFilter: 'blur(2px)' }}
+      className="fixed inset-0 z-50 flex items-end bg-black/10 p-0 sm:items-center sm:justify-center sm:p-4"
+    >
       {/* Modal Container */}
-      <div className="w-full max-w-md mx-auto bg-white rounded-t-3xl p-4 pt-2 shadow-lg relative">
+      <div className="relative mx-auto w-full max-w-md rounded-t-[30px] bg-white shadow-lg">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute left-1/2 -translate-x-1/2 rounded-full shadow-md p-2 border border-gray-200 hover:bg-gray-100 focus:outline-none z-10"
+          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full border border-gray-200 p-2 shadow-md hover:bg-gray-100 focus:outline-none"
           style={{ top: '-58px', background: '#F5F5F5' }}
           aria-label="Close"
         >
-          <X className="w-6 h-6 text-gray-700" />
+          <X className="h-6 w-6 text-gray-700" />
         </button>
         {/* Header */}
-        <div className="flex justify-between items-center mb-2 pt-2">
+        <div className="flex items-center justify-between px-4 pb-4 pt-5">
           <span className="text-lg font-semibold">Cart</span>
-          <button className="text-green-600 font-medium text-sm" onClick={onClearCart}>Clear Cart</button>
+          <button className="text-sm font-medium text-green-600" onClick={onClearCart}>
+            Clear Cart
+          </button>
         </div>
-        <div className="h-px bg-gray-200 my-2"></div>
+        <div className="h-1 bg-gray-200"></div>
         {/* Cart Items */}
-        <div className="divide-y divide-gray-200 mb-2 max-h-48 overflow-y-auto">
-          {cartItems.map(item => (
-            <div key={item.id} className="flex items-center py-2 gap-2">
-              <img src={item.image} alt={item.name} className="w-10 h-10 rounded-lg object-cover" />
+        <div className="mb-2 max-h-48 divide-y divide-gray-200 overflow-y-auto">
+          {cartItems.map((item) => (
+            <div key={item.id} className="flex items-center gap-2 py-2">
+              <img src={item.image} alt={item.name} className="h-10 w-10 rounded-lg object-cover" />
               <div className="flex-1">
-                <div className="font-medium text-sm">{item.name}</div>
+                <div className="text-sm font-medium">{item.name}</div>
                 <div className="text-xs text-gray-500">₹{item.price}</div>
               </div>
               {/* Quantity Selector */}
@@ -73,14 +71,43 @@ const CartModal: React.FC<CartModalProps> = ({
                   display: 'flex',
                   alignItems: 'center',
                   gap: 6,
-                  opacity: 1,
+                  opacity: 1
                 }}
               >
-                <button style={{ color: '#fff', fontSize: 18, width: 22, height: 22, border: 'none', background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => onQuantityChange(item.id, item.quantity - 1)} disabled={item.quantity === 1}>
+                <button
+                  style={{
+                    color: '#fff',
+                    fontSize: 18,
+                    width: 22,
+                    height: 22,
+                    border: 'none',
+                    background: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  onClick={() => onQuantityChange(item.id, item.quantity - 1)}
+                  disabled={item.quantity === 1}
+                >
                   <Minus size={18} color="#fff" />
                 </button>
                 <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{item.quantity}</span>
-                <button style={{ color: '#fff', fontSize: 18, width: 22, height: 22, border: 'none', background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => onQuantityChange(item.id, item.quantity + 1)}>
+                <button
+                  style={{
+                    color: '#fff',
+                    fontSize: 18,
+                    width: 22,
+                    height: 22,
+                    border: 'none',
+                    background: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  onClick={() => onQuantityChange(item.id, item.quantity + 1)}
+                >
                   <Plus size={18} color="#fff" />
                 </button>
               </div>
@@ -88,31 +115,29 @@ const CartModal: React.FC<CartModalProps> = ({
           ))}
         </div>
         {/* Bill Section */}
-        <div className="bg-white rounded-lg py-4 mb-2">
-          <div className="font-semibold text-sm mb-3">Bill</div>
-          <div className="h-[2px] bg-gray-100 my-3"></div>
+        <div className="mb-2 rounded-lg bg-white py-4">
+          <div className="mb-3 text-sm font-semibold">Bill</div>
+          <div className="my-3 h-[2px] bg-gray-100"></div>
           <div className="space-y-3">
             {cartItems.map((item, index) => (
-              <React.Fragment key={item.id+"-bill"}>
+              <React.Fragment key={item.id + '-bill'}>
                 <div className="flex justify-between text-sm">
                   <span>{item.name}</span>
                   <span>₹{item.price * item.quantity}</span>
                 </div>
-                {index < cartItems.length - 1 && (
-                  <div className="h-[2px] bg-gray-100 w-full"></div>
-                )}
+                {index < cartItems.length - 1 && <div className="h-[2px] w-full bg-gray-100"></div>}
               </React.Fragment>
             ))}
           </div>
-          <div className="flex justify-between font-bold text-base border-t border-gray-200 mt-3 pt-3">
+          <div className="mt-3 flex justify-between border-t border-gray-200 pt-3 text-base font-bold">
             <span>Total</span>
             <span>₹{total}</span>
           </div>
-          <div className="h-[2px] bg-gray-100 mt-3"></div>
+          <div className="mt-3 h-[2px] bg-gray-100"></div>
         </div>
         {/* Generate Token Button */}
         <button
-          className="w-full bg-green-600 text-white font-semibold py-3 rounded-lg mt-4 shadow-md"
+          className="mt-4 w-full rounded-lg bg-green-600 py-3 font-semibold text-white shadow-md"
           onClick={() => {
             // Demo: generate dummy orderId/token/time
             const now = new Date();
@@ -125,7 +150,7 @@ const CartModal: React.FC<CartModalProps> = ({
               tokenNumber,
               date: date.replace(',', ''),
               time,
-              items: cartItems,
+              items: cartItems
             });
             onClearCart();
             onClose();

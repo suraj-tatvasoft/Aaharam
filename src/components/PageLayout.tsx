@@ -1,8 +1,8 @@
-import React from "react";
-import Container from "@/components/Container";
-import IndicatorBar from "@/components/IndicatorBar";
-import profileBack from "@/assets/profile-back.svg";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Container from '@/components/Container';
+import IndicatorBar from '@/components/IndicatorBar';
+import profileBack from '@/assets/profile-back.svg';
+import { useNavigate } from 'react-router-dom';
 
 interface PageLayoutProps {
   title: string;
@@ -13,36 +13,27 @@ interface PageLayoutProps {
   contentClassName?: string;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({
-  title,
-  children,
-  showBackButton = true,
-  onBack,
-  className = "",
-  contentClassName = "",
-}) => {
+const PageLayout: React.FC<PageLayoutProps> = ({ title, children, showBackButton = true, onBack, className = '', contentClassName = '' }) => {
   const navigate = useNavigate();
   return (
     <Container>
-      <div className={`overflow-hidden bg-[#F7F7F7] flex flex-1 flex-col items-center w-full ${className}`}>
+      <div className={`flex w-full flex-1 flex-col items-center overflow-hidden bg-[#F7F7F7] ${className}`}>
         {/* Top Bar */}
-        <div className="flex items-center w-full pt-4 pb-4 px-4 bg-[#FFFFFF]">
+        <div className="flex w-full items-center bg-[#FFFFFF] px-4 pb-4 pt-4">
           {showBackButton && (
             <button
               onClick={onBack || (() => navigate(-1))}
-              className="w-9 h-9 rounded-full bg-[#E9FFE5] flex items-center justify-center mr-2"
+              className="mr-2 flex h-9 w-9 items-center justify-center rounded-full bg-[#E9FFE5]"
               aria-label="Back"
               type="button"
             >
-              <img src={profileBack} alt="Back" className="w-4 h-4" />
+              <img src={profileBack} alt="Back" className="h-4 w-4" />
             </button>
           )}
-          <span className="font-normal text-[18px] leading-[23px] text-[#212121]">{title}</span>
+          <span className="text-[18px] font-normal leading-[23px] text-[#212121]">{title}</span>
         </div>
         {/* Main Content */}
-        <div className={`flex-1 overflow-y-auto scrollbar-hide flex flex-col items-center w-full ${contentClassName}`}>
-          {children}
-        </div>
+        <div className={`scrollbar-hide flex w-full flex-1 flex-col items-center overflow-y-auto ${contentClassName}`}>{children}</div>
         {/* <div className="mt-2 mb-2">
           <IndicatorBar />
         </div> */}

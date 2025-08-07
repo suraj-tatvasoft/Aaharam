@@ -131,10 +131,7 @@
         "price": 10
       }
     ],
-    "availableFor": [
-      "jain",
-      "regular"
-    ]
+    "availableFor": ["jain", "regular"]
   },
   {
     "id": "s9",
@@ -169,10 +166,7 @@
         "price": 10
       }
     ],
-    "availableFor": [
-      "jain",
-      "regular"
-    ]
+    "availableFor": ["jain", "regular"]
   },
   {
     "id": "s2",
@@ -198,9 +192,7 @@
         "price": 10
       }
     ],
-    "availableFor": [
-      "regular"
-    ]
+    "availableFor": ["regular"]
   },
   {
     "id": "s1",
@@ -245,10 +237,7 @@
         "price": 10
       }
     ],
-    "availableFor": [
-      "jain",
-      "regular"
-    ]
+    "availableFor": ["jain", "regular"]
   },
   {
     "id": "s6",
@@ -274,10 +263,7 @@
         "price": 10
       }
     ],
-    "availableFor": [
-      "jain",
-      "regular"
-    ]
+    "availableFor": ["jain", "regular"]
   },
   {
     "id": "s8",
@@ -313,10 +299,7 @@
         "price": 10
       }
     ],
-    "availableFor": [
-      "jain",
-      "regular"
-    ]
+    "availableFor": ["jain", "regular"]
   },
   {
     "id": "masala_masti_chips",

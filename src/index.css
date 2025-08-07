@@ -159,7 +159,7 @@ body {
   outline: none;
 }
 
-.recharts-wrapper{
+.recharts-wrapper {
   position: relative !important;
   cursor: default !important;
   width: 100% !important;

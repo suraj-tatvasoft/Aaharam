@@ -1,6 +1,6 @@
-import { Heart, Minus, Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Heart, Minus, Plus } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 interface FoodCardProps {
   id: string;
@@ -32,20 +32,18 @@ const FoodCard = ({
   onQuantityChange
 }: FoodCardProps) => {
   return (
-    <Card className={`overflow-hidden bg-card border-border/50 hover:shadow-sm transition-shadow rounded-[16px] ${!available ? 'opacity-90 pointer-events-none' : ''}`}>
+    <Card
+      className={`overflow-hidden rounded-[16px] border-border/50 bg-card transition-shadow hover:shadow-sm ${!available ? 'pointer-events-none opacity-90' : ''}`}
+    >
       <div className="flex p-1">
         {/* Food Image */}
-        <div className="w-[100px] h-[100px] rounded-[12px] overflow-hidden flex-shrink-0">
-          <img
-            src={image}
-            alt={name}
-            className={`w-full h-full object-cover transition-all ${!available ? 'grayscale opacity-90' : ''}`}
-          />
+        <div className="h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-[12px]">
+          <img src={image} alt={name} className={`h-full w-full object-cover transition-all ${!available ? 'opacity-90 grayscale' : ''}`} />
         </div>
         {/* Food Details */}
-        <div className="flex flex-col p-[10px] flex-1 justify-between">
+        <div className="flex flex-1 flex-col justify-between p-[10px]">
           <div className="flex justify-between">
-            <div className="flex-1 min-w-0">
+            <div className="min-w-0 flex-1">
               <h3
                 className="line-clamp-1"
                 style={{
@@ -57,40 +55,50 @@ const FoodCard = ({
                   letterSpacing: 0,
                   color: 'var(--card-foreground)'
                 }}
-              >{name}</h3>
+              >
+                {name}
+              </h3>
               {description && (
-                <p className="mt-2 line-clamp-2" style={{
-                  fontFamily: 'Outfit',
-                  fontWeight: 300,
-                  fontStyle: 'normal',
-                  fontSize: 12,
-                  lineHeight: '100%',
-                  letterSpacing: 0,
-                  color: '#797979'
-                }}>{description}</p>
+                <p
+                  className="mt-2 line-clamp-2"
+                  style={{
+                    fontFamily: 'Outfit',
+                    fontWeight: 300,
+                    fontStyle: 'normal',
+                    fontSize: 12,
+                    lineHeight: '100%',
+                    letterSpacing: 0,
+                    color: '#797979'
+                  }}
+                >
+                  {description}
+                </p>
               )}
-
             </div>
             {/* Favorite Button - absolutely positioned top right */}
             <button
               type="button"
               onClick={() => onToggleFavorite(id)}
-              className="text-muted-foreground hover:text-destructive w-[22px] h-[22px] hover:bg-transparent z-10 flex items-center justify-center p-0"
+              className="z-10 flex h-[22px] w-[22px] items-center justify-center p-0 text-muted-foreground hover:bg-transparent hover:text-destructive"
             >
               <Heart width={22} height={22} className={`${isFavorite ? 'fill-destructive text-destructive' : ''}`} />
             </button>
           </div>
           {/* Price and Add button row */}
-          <div className="flex items-end justify-between mt-2">
-            <span style={{
-              fontFamily: 'Outfit',
-              fontWeight: 400,
-              fontStyle: 'normal',
-              fontSize: 14,
-              lineHeight: '100%',
-              letterSpacing: 0,
-              color: 'var(--card-foreground)'
-            }}>₹{price}</span>
+          <div className="mt-2 flex items-end justify-between">
+            <span
+              style={{
+                fontFamily: 'Outfit',
+                fontWeight: 400,
+                fontStyle: 'normal',
+                fontSize: 14,
+                lineHeight: '100%',
+                letterSpacing: 0,
+                color: 'var(--card-foreground)'
+              }}
+            >
+              ₹{price}
+            </span>
             {quantity > 0 && onQuantityChange ? (
               <div
                 style={{
@@ -102,14 +110,42 @@ const FoodCard = ({
                   display: 'flex',
                   alignItems: 'center',
                   gap: 6,
-                  opacity: 1,
+                  opacity: 1
                 }}
               >
-                <button style={{ color: '#fff', fontSize: 18, width: 22, height: 22, border: 'none', background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => onQuantityChange(id, quantity - 1)}>
+                <button
+                  style={{
+                    color: '#fff',
+                    fontSize: 18,
+                    width: 22,
+                    height: 22,
+                    border: 'none',
+                    background: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  onClick={() => onQuantityChange(id, quantity - 1)}
+                >
                   <Minus size={18} color="#fff" />
                 </button>
                 <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{quantity}</span>
-                <button style={{ color: '#fff', fontSize: 18, width: 22, height: 22, border: 'none', background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => onQuantityChange(id, quantity + 1)}>
+                <button
+                  style={{
+                    color: '#fff',
+                    fontSize: 18,
+                    width: 22,
+                    height: 22,
+                    border: 'none',
+                    background: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  onClick={() => onQuantityChange(id, quantity + 1)}
+                >
                   <Plus size={18} color="#fff" />
                 </button>
               </div>
@@ -131,12 +167,16 @@ const FoodCard = ({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: 'none',
+                  boxShadow: 'none'
                 }}
-                onMouseOver={e => { if (available) e.currentTarget.style.background = '#E9FFE5'; }}
-                onMouseOut={e => { if (available) e.currentTarget.style.background = '#fff'; }}
+                onMouseOver={(e) => {
+                  if (available) e.currentTarget.style.background = '#E9FFE5';
+                }}
+                onMouseOut={(e) => {
+                  if (available) e.currentTarget.style.background = '#fff';
+                }}
                 onClick={() => available && onAdd(id)}
-              // disabled={!available}
+                // disabled={!available}
               >
                 Add
               </button>

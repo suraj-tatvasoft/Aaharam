@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import SplashScreen from "@/components/SplashScreen";
-import OnBoarding from "@/components/OnBoarding";
-import FadeTransition from "@/components/FadeTransition";
+import { useEffect, useState } from 'react';
+import SplashScreen from '@/components/SplashScreen';
+import OnBoarding from '@/components/OnBoarding';
+import FadeTransition from '@/components/FadeTransition';
 
 const Home = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -11,11 +11,7 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  return (
-    <FadeTransition show={showSplash}>
-      {showSplash ? <SplashScreen /> : <OnBoarding />}
-    </FadeTransition>
-  );
+  return <FadeTransition show={showSplash}>{showSplash ? <SplashScreen /> : <OnBoarding />}</FadeTransition>;
 };
 
 export default Home;

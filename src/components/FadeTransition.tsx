@@ -1,5 +1,5 @@
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import React from "react";
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import React from 'react';
 
 interface FadeTransitionProps {
   show: boolean;
@@ -9,8 +9,8 @@ interface FadeTransitionProps {
 const FadeTransition: React.FC<FadeTransitionProps> = ({ show, children }) => (
   <SwitchTransition mode="out-in">
     <CSSTransition
-      key={show ? "show" : "hide"}
-      addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
+      key={show ? 'show' : 'hide'}
+      addEndListener={(node, done) => node.addEventListener('transitionend', done, false)}
       classNames="fade"
     >
       {children}

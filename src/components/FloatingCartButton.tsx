@@ -1,5 +1,5 @@
-import React from "react";
-import cartIcon from "@/assets/cart-button-white.svg";
+import React from 'react';
+import cartIcon from '@/assets/cart-button-white.svg';
 
 interface FloatingCartButtonProps {
   count: number;
@@ -21,20 +21,31 @@ const FloatingCartButton: React.FC<FloatingCartButtonProps> = ({ count, onClick 
         paddingRight: 6,
         paddingBottom: 6,
         paddingLeft: 16,
-        boxShadow: "0px 0px 16px 0px #546E7A4D",
-        backdropFilter: "blur(20px)",
-        background: "#FFFFFFCC",
-        position: "fixed",
+        boxShadow: '0px 0px 16px 0px #546E7A4D',
+        backdropFilter: 'blur(20px)',
+        background: '#FFFFFFCC',
+        position: 'fixed',
         bottom: 32,
-        left: "50%",
-        transform: "translateX(-50%)",
+        left: '50%',
+        transform: 'translateX(-50%)'
       }}
       onClick={onClick}
     >
-      <span style={{ color: "#1A932E", fontWeight: 500, fontSize: 16, }}>
+      <span style={{ color: '#1A932E', fontWeight: 500, fontSize: 16 }}>
         {count} Item{count > 1 ? 's' : ''}
       </span>
-      <span style={{ marginLeft: 8, display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, borderRadius: "50%", background: "#1A932E" }}>
+      <span
+        style={{
+          marginLeft: 8,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 36,
+          height: 36,
+          borderRadius: '50%',
+          background: '#1A932E'
+        }}
+      >
         <img src={cartIcon} alt="Cart" style={{ width: 20, height: 20 }} />
       </span>
     </button>

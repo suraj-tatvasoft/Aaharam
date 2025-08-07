@@ -1,11 +1,11 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import backArrow from "@/assets/backArrow.svg";
-import alarmIcon from "@/assets/header-alarm.svg";
-import pass1 from "@/assets/pass1.svg";
-import pass2 from "@/assets/pass2.svg";
-import pass3 from "@/assets/pass3.svg";
-import Container from "@/components/Container";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import backArrow from '@/assets/backArrow.svg';
+import alarmIcon from '@/assets/header-alarm.svg';
+import pass1 from '@/assets/pass1.svg';
+import pass2 from '@/assets/pass2.svg';
+import pass3 from '@/assets/pass3.svg';
+import Container from '@/components/Container';
 
 const MonthlyPassSummary: React.FC = () => {
   const navigate = useNavigate();
@@ -13,38 +13,38 @@ const MonthlyPassSummary: React.FC = () => {
   return (
     <Container>
       <div
-        className="flex-1 px-4 pt-4 pb-8 flex flex-col"
+        className="flex flex-1 flex-col px-4 pb-8 pt-4"
         style={{
-          background: "linear-gradient(180deg, #DAFFD9 0%, #FFFFFF 132.38%)",
+          background: 'linear-gradient(180deg, #DAFFD9 0%, #FFFFFF 132.38%)'
         }}
       >
-        <div className="flex items-center justify-between mb-6">
+        <div className="mb-6 flex items-center justify-between">
           <button
-            className="w-[42px] h-[42px] rounded-full flex items-center justify-center bg-white"
-            style={{ backgroundColor: "#EEFFED" }}
-            onClick={() => navigate("/")}
+            className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white"
+            style={{ backgroundColor: '#EEFFED' }}
+            onClick={() => navigate('/')}
             aria-label="Back"
           >
-            <img src={backArrow} alt="Back" className="w-4 h-4" />
+            <img src={backArrow} alt="Back" className="h-4 w-4" />
           </button>
 
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 flex-shrink-0">
+            <div className="h-10 w-10 flex-shrink-0 overflow-hidden rounded-full border-2 border-primary/20">
               <img
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
                 alt="User profile"
-                className="w-full h-full object-cover"
-                onClick={() => navigate("/profile")}
+                className="h-full w-full object-cover"
+                onClick={() => navigate('/profile')}
               />
             </div>
             <button
-              className="w-[42px] h-[42px] rounded-full relative flex items-center justify-center bg-white"
-              style={{ backgroundColor: "#EEFFED" }}
+              className="relative flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white"
+              style={{ backgroundColor: '#EEFFED' }}
               aria-label="Notifications"
-              onClick={() => navigate("/notifications")}
+              onClick={() => navigate('/notifications')}
             >
-              <img src={alarmIcon} alt="Alarm" className="w-4 h-4" />
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full text-[8px] text-white flex items-center justify-center">
+              <img src={alarmIcon} alt="Alarm" className="h-4 w-4" />
+              <span className="absolute -right-1 -top-1 flex h-3 w-3 items-center justify-center rounded-full bg-destructive text-[8px] text-white">
                 •
               </span>
             </button>
@@ -52,36 +52,30 @@ const MonthlyPassSummary: React.FC = () => {
         </div>
 
         {/* Title Section */}
-        <div className="flex flex-col items-center mb-6">
-          <span className="text-sm text-center text-gray-600">
-            Exclusive discount on
-          </span>
-          <h1 className="text-3xl font-bold text-center">BULK PASS</h1>
-          <span className="text-sm text-gray-600 text-center">
-            Grab ₹220 Discount on Lunch Meal
-          </span>
+        <div className="mb-6 flex flex-col items-center">
+          <span className="text-center text-sm text-gray-600">Exclusive discount on</span>
+          <h1 className="text-center text-3xl font-bold">BULK PASS</h1>
+          <span className="text-center text-sm text-gray-600">Grab ₹220 Discount on Lunch Meal</span>
         </div>
 
         {/* Pass Summary Section */}
         <div className="mt-4">
-          <div className="text-lg font-semibold mb-2">Pass Summary</div>
+          <div className="mb-2 text-lg font-semibold">Pass Summary</div>
           <div className="flex items-center gap-3 py-1 text-base">
             <img src={pass1} alt="Regular Thali" />
-            <span className="font-medium text-gray-900">
-              Regular Thali - without buttermilk
-            </span>
+            <span className="font-medium text-gray-900">Regular Thali - without buttermilk</span>
           </div>
           <div className="flex items-center gap-3 py-1 text-sm text-gray-700">
             <img src={pass2} alt="Calendar" />
             <span>
-              Start From:{" "}
+              Start From:{' '}
               <span className="font-semibold">
                 31<sup>st</sup> Jul 2025
               </span>
             </span>
             <span className="mx-2">|</span>
             <span>
-              Valid Till:{" "}
+              Valid Till:{' '}
               <span className="font-semibold">
                 31<sup>st</sup> Aug 2025
               </span>
@@ -96,10 +90,10 @@ const MonthlyPassSummary: React.FC = () => {
         </div>
 
         {/* What's Included Section */}
-        <div className="h-1 bg-white w-full my-4" />
+        <div className="my-4 h-1 w-full bg-white" />
         <div className="pt-4">
-          <div className="text-lg font-semibold mb-2">What’s Included</div>
-          <ul className="list-disc list-inside text-sm text-gray-800 space-y-1">
+          <div className="mb-2 text-lg font-semibold">What’s Included</div>
+          <ul className="list-inside list-disc space-y-1 text-sm text-gray-800">
             <li>Valid for Lunch only (12:00 PM – 3:30 PM)</li>
             <li>Covers Regular Lunch Dish</li>
             <li>With or Without Buttermilk (based on plan)</li>
@@ -109,13 +103,12 @@ const MonthlyPassSummary: React.FC = () => {
         </div>
 
         {/* Pass Terms Section */}
-        <div className="h-1 bg-white w-full my-4" />
+        <div className="my-4 h-1 w-full bg-white" />
         <div>
-          <div className="text-lg font-semibold mb-2">Pass Terms</div>
-          <p className="text-sm text-gray-800 leading-relaxed">
-            This pass includes one regular lunch per working day. It is
-            non-transferable and applicable only for standard lunch items.
-            Buttermilk is included only if your plan covers it.
+          <div className="mb-2 text-lg font-semibold">Pass Terms</div>
+          <p className="text-sm leading-relaxed text-gray-800">
+            This pass includes one regular lunch per working day. It is non-transferable and applicable only for standard lunch items. Buttermilk is
+            included only if your plan covers it.
           </p>
         </div>
       </div>

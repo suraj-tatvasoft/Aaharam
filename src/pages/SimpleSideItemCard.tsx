@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface SimpleSideItemCardProps {
   id: string;
@@ -11,28 +11,14 @@ interface SimpleSideItemCardProps {
   disabled?: boolean;
 }
 
-const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
-  id,
-  name,
-  price,
-  image,
-  quantity,
-  onAdd,
-  onQuantityChange,
-  disabled = false,
-}) => {
+const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ id, name, price, image, quantity, onAdd, onQuantityChange, disabled = false }) => {
   return (
-    <div className="flex items-center bg-white rounded-2xl p-2 pr-4 shadow-sm min-h-[64px]" style={{ borderRadius: '16px' }}>
-      <img
-        src={image}
-        alt={name}
-        className="w-12 h-12 object-cover rounded-xl mr-3"
-        style={{ borderRadius: '12px' }}
-      />
-      <div className="flex-1 flex flex-col justify-center min-w-0">
-        <span className="text-[16px] font-medium text-[#212121] truncate">{name}</span>
+    <div className="flex min-h-[64px] items-center rounded-2xl bg-white p-2 pr-4 shadow-sm" style={{ borderRadius: '16px' }}>
+      <img src={image} alt={name} className="mr-3 h-12 w-12 rounded-xl object-cover" style={{ borderRadius: '12px' }} />
+      <div className="flex min-w-0 flex-1 flex-col justify-center">
+        <span className="truncate text-[16px] font-medium text-[#212121]">{name}</span>
       </div>
-      <div className="flex items-center ml-2 gap-2">
+      <div className="ml-2 flex items-center gap-2">
         <span className="text-[16px] font-medium text-[#212121]">₹{price}</span>
         {quantity > 0 ? (
           <div
@@ -45,11 +31,22 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
               display: 'flex',
               alignItems: 'center',
               gap: 6,
-              opacity: 1,
+              opacity: 1
             }}
           >
             <button
-              style={{ color: '#fff', fontSize: 18, width: 22, height: 22, border: 'none', background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{
+                color: '#fff',
+                fontSize: 18,
+                width: 22,
+                height: 22,
+                border: 'none',
+                background: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
               onClick={() => onQuantityChange(id, quantity - 1)}
               disabled={quantity === 0 || disabled}
             >
@@ -60,7 +57,18 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
             </button>
             <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{quantity}</span>
             <button
-              style={{ color: '#fff', fontSize: 18, width: 22, height: 22, border: 'none', background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{
+                color: '#fff',
+                fontSize: 18,
+                width: 22,
+                height: 22,
+                border: 'none',
+                background: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
               onClick={() => onQuantityChange(id, quantity + 1)}
               disabled={disabled}
             >
@@ -89,10 +97,10 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: 'none',
+              boxShadow: 'none'
             }}
-            onMouseOver={e => (e.currentTarget.style.background = '#E9FFE5')}
-            onMouseOut={e => (e.currentTarget.style.background = '#fff')}
+            onMouseOver={(e) => (e.currentTarget.style.background = '#E9FFE5')}
+            onMouseOut={(e) => (e.currentTarget.style.background = '#fff')}
             onClick={() => onAdd(id)}
             disabled={disabled}
           >

@@ -1,7 +1,7 @@
-import React from "react";
-import { useOrder } from "@/context/OrderContext";
-import OrderDetail from "./OrderDetail";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useOrder } from '@/context/OrderContext';
+import OrderDetail from './OrderDetail';
+import { useNavigate } from 'react-router-dom';
 
 const OrderDetailPage: React.FC = () => {
   const { order, setOrder } = useOrder();
@@ -9,7 +9,7 @@ const OrderDetailPage: React.FC = () => {
 
   if (!order) {
     // If no order, redirect to food delivery
-    navigate("/food-delivery");
+    navigate('/food-delivery');
     return null;
   }
 
@@ -22,7 +22,7 @@ const OrderDetailPage: React.FC = () => {
       items={order.items}
       onCancel={() => {
         setOrder(null);
-        navigate("/food-delivery");
+        navigate('/food-delivery');
       }}
     />
   );
