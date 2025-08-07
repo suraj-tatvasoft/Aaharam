@@ -45,7 +45,7 @@ export default function NotificationModal({ isOpen, onClose, onOk }: Notificatio
                 </label>
               </div>
               {idx !== arr.length - 1 && (
-                <div className="w-full h-px border-b border-[#F5F5F5] my-2" />
+                <div className="w-full h-px border-b border-[#F5F5F5] " />
               )}
             </React.Fragment>
           ))}
