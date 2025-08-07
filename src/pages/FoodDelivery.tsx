@@ -98,10 +98,10 @@ const FoodDelivery = () => {
     addToCart(item.id, item.name, item.price, item.image);
   };
 
-  const handleAddWithModifiers = (selectedModifiers: Record<string, string[]>) => {
+  const handleAddWithModifiers = (selectedModifiers: Record<string, string[]>, price: number) => {
     if (!selectedItem) return;
 
-    addToCart(selectedItem.id, selectedItem.name, selectedItem.price, selectedItem.image, selectedModifiers);
+    addToCart(selectedItem.id, selectedItem.name, price, selectedItem.image, selectedModifiers);
 
     // Reset selected item
     setSelectedItem(null);
@@ -293,7 +293,7 @@ const FoodDelivery = () => {
             setSelectedItem(null);
           }}
           item={selectedItem}
-          onAddToCart={handleAddWithModifiers}
+          onAddToCart={(selectedModifiers, price) => handleAddWithModifiers(selectedModifiers, price)}
         />
       )}
     </Container>

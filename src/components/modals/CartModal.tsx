@@ -10,6 +10,10 @@ interface CartItem {
   price: number;
   image: string;
   quantity: number;
+  modifiers?: {
+    [groupId: string]: string[];
+    note?: string[];
+  };
 }
 
 interface CartModalProps {
@@ -58,6 +62,9 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
               <img src={item.image} alt={item.name} className="h-[46px] w-[46px] rounded-[16px] object-cover" />
               <div className="flex-1">
                 <div className="text-sm font-medium">{item.name}</div>
+                {item.modifiers && item.modifiers.modifiers && item.modifiers.modifiers.length > 0 && (
+                  <div className="text-xs text-gray-500">{item.modifiers.modifiers.join(', ')}</div>
+                )}
               </div>
               <span className="mr-2 text-base font-medium text-[#212121]" style={{ minWidth: 36, textAlign: 'right' }}>
                 ₹{item.price}

@@ -106,12 +106,12 @@
     "available": true,
     "modifiers": [
       {
-        "id": "chutney_extra",
+        "id": "Oil",
         "name": "Oil",
         "price": 0
       },
       {
-        "id": "mirchi",
+        "id": "Butter",
         "name": "Butter",
         "price": 5
       },
@@ -141,12 +141,12 @@
     "category": "evening-snacks",
     "modifiers": [
       {
-        "id": "chutney_extra",
+        "id": "Oil",
         "name": "Oil",
         "price": 0
       },
       {
-        "id": "mirchi",
+        "id": "Butter",
         "name": "Butter",
         "price": 5
       },
@@ -212,12 +212,12 @@
     "description": "Grilled sandwich with fresh vegetables and cheese",
     "modifiers": [
       {
-        "id": "chutney_extra",
+        "id": "Oil",
         "name": "Oil",
         "price": 0
       },
       {
-        "id": "mirchi",
+        "id": "Butter",
         "name": "Butter",
         "price": 5
       },
@@ -274,12 +274,12 @@
     "description": "Steamed dumplings with spicy tomato chutney",
     "modifiers": [
       {
-        "id": "chutney_extra",
+        "id": "Oil",
         "name": "Oil",
         "price": 0
       },
       {
-        "id": "mirchi",
+        "id": "Butter",
         "name": "Butter",
         "price": 5
       },

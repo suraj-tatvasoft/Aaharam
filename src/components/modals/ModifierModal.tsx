@@ -11,7 +11,7 @@ interface ModifierModalProps {
   isOpen: boolean;
   onClose: () => void;
   item: FoodItem | null;
-  onAddToCart: (selectedModifiers: Record<string, string[]>) => void;
+  onAddToCart: (selectedModifiers: Record<string, string[]>, price: number) => void;
 }
 
 interface FoodItem {
@@ -68,7 +68,7 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
       grouped['note'] = [cookingNote.trim()];
     }
     for (let i = 0; i < quantity; i++) {
-      onAddToCart(grouped);
+      onAddToCart(grouped, calculateTotalPrice() / quantity);
     }
     onClose();
   };
