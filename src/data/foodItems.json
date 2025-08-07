@@ -83,7 +83,10 @@
         "price": 10
       }
     ],
-    "availableFor": ["jain", "regular"],
+    "availableFor": [
+      "jain",
+      "regular"
+    ],
     "sideTitle": ""
   },
   {
@@ -110,7 +113,6 @@
     "category": "breakfast",
     "description": "Healthy oats cooked with milk, topped with nuts"
   },
-
   {
     "id": "l1",
     "name": "Idli Sambhar",
@@ -286,85 +288,132 @@
     "category": "evening-snacks",
     "description": "Sweet corn kernels tossed in butter, lime and masala"
   },
-
   {
-    "id": "si1",
-    "name": "French Fries",
-    "price": 40,
-    "image": "https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=400&h=300&fit=crop",
-    "category": "sides",
-    "description": "Golden crispy potato fries with seasoning"
-  },
-  {
-    "id": "si2",
-    "name": "Garlic Bread",
-    "price": 35,
-    "image": "https://plus.unsplash.com/premium_photo-1711752902321-ef7b72b28b26?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8R2FybGljJTIwQnJlYWR8ZW58MHx8MHx8fDA%3D",
-    "category": "sides",
-    "description": "Toasted bread with garlic butter and herbs"
-  },
-  {
-    "id": "si3",
-    "name": "Caesar Salad",
-    "price": 70,
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
-    "category": "sides",
-    "description": "Fresh lettuce with caesar dressing and croutons"
-  },
-  {
-    "id": "si4",
-    "name": "Onion Rings",
-    "price": 45,
-    "image": "https://images.unsplash.com/photo-1639024471283-03518883512d?w=400&h=300&fit=crop",
-    "category": "sides",
-    "description": "Crispy battered onion rings with dipping sauce"
-  },
-  {
-    "id": "si5",
-    "name": "Raita",
-    "price": 25,
-    "image": "https://images.unsplash.com/photo-1630409346699-79481a79db52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnV0dGVybWlsa3xlbnwwfHwwfHx8MA%3D%3D",
-    "category": "sides",
-    "description": "Cooling yogurt with cucumber and mint"
-  },
-  {
-    "id": "si6",
-    "name": "Papad",
-    "price": 15,
-    "image": "https://media.istockphoto.com/id/666595984/photo/indian-snacks-deep-fried-crackers-or-papad-mung-dal-and-urad-dal-papad-an-indian-fried-dish.jpg?s=2048x2048&w=is&k=20&c=S22CnsCtND1qFssEMAFiZ09DYtLy04pK42kkwstSIpI=",
-    "category": "sides",
-    "description": "Crispy lentil wafers with cumin seeds"
-  },
-  {
-    "id": "si7",
-    "name": "Pickle",
+    "id": "masala_masti_chips",
+    "name": "Masala Masti Chips",
     "price": 10,
-    "image": "https://images.unsplash.com/photo-1576020301507-5d5a00982053?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8UGlja2xlfGVufDB8fDB8fHww",
+    "image": "https://images.unsplash.com/photo-1604908812383-97a3f41dc65e?w=400&h=300&fit=crop",
     "category": "sides",
-    "description": "Tangy and spicy mango pickle"
+    "sideTitle": "Packaged Foods"
   },
   {
-    "id": "si8",
-    "name": "Coleslaw",
-    "price": 35,
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
+    "id": "cream_onion",
+    "name": "Cream & Onion",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1585238342028-9668e368ba53?w=400&h=300&fit=crop",
     "category": "sides",
-    "description": "Fresh cabbage and carrot salad with mayo"
+    "sideTitle": "Packaged Foods"
   },
   {
-    "id": "si9",
-    "name": "Green Salad",
-    "price": 30,
-    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop",
+    "id": "aloo_sev",
+    "name": "Aloo Sev",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1619253975033-c38952bb304b?w=400&h=300&fit=crop",
     "category": "sides",
-    "description": "Sliced cucumber, tomato, carrot and onion rings"
+    "sideTitle": "Packaged Foods"
   },
   {
-    "id": "si10",
-    "name": "Curd",
-    "price": 20,
-    "image": "https://plus.unsplash.com/premium_photo-1666275003961-67e497ad41c6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q3VyZHxlbnwwfHwwfHx8MA%3D%3D",
+    "id": "wafers_farali_chevdo",
+    "name": "Wafers Farali Chevdo",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1641811225310-64eb81c13f6f?w=400&h=300&fit=crop",
     "category": "sides",
-    "description": "Fresh homemade set yogurt"
+    "sideTitle": "Packaged Foods"
+  },
+  {
+    "id": "simply_salted",
+    "name": "Simply Salted",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1606755962772-c93404d4c2fd?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Packaged Foods"
+  },
+  {
+    "id": "crunchex_chilli_tadka",
+    "name": "Crunchex Chilli Tadka Wafers",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1551727978-8c8ad2f52ee5?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Packaged Foods"
+  },
+  {
+    "id": "wafers_chataka_pataka",
+    "name": "Wafers Chataka Pataka Masala Masti Chips",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1614436166079-f1011a73b7b4?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Packaged Foods"
+  },
+  {
+    "id": "masala_tea",
+    "name": "Masala Tea",
+    "price": 10,
+    "image": "https://plus.unsplash.com/premium_photo-1674406481284-43eba097a291?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": "sides",
+    "sideTitle": "Beverages"
+  },
+  {
+    "id": "coffee",
+    "name": "Coffee",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1570872622028-7110e1de52a7?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Beverages"
+  },
+  {
+    "id": "campa_cola_can",
+    "name": "Campa Cola Can",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1615491661891-7d4d92253a18?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Beverages"
+  },
+  {
+    "id": "coca_cola_750ml",
+    "name": "Coca Cola 750 ml",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31b?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Beverages"
+  },
+  {
+    "id": "thums_up_750ml",
+    "name": "Thums Up 750 ml",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1624382164010-4b95f7c9b457?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Beverages"
+  },
+  {
+    "id": "munch",
+    "name": "Munch",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1598899134739-24c46f58b8e4?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Sweets/Chocolates"
+  },
+  {
+    "id": "amul_dark_chocolate",
+    "name": "Amul Dark Chocolate",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1628840042765-398550f16adf?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Sweets/Chocolates"
+  },
+  {
+    "id": "kitkat",
+    "name": "Kitkat",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1611565118474-6c2f4b64ccf5?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Sweets/Chocolates"
+  },
+  {
+    "id": "snickers_chocolate",
+    "name": "Snickers Chocolate",
+    "price": 10,
+    "image": "https://images.unsplash.com/photo-1615484477689-8e95825fd732?w=400&h=300&fit=crop",
+    "category": "sides",
+    "sideTitle": "Sweets/Chocolates"
   }
 ]

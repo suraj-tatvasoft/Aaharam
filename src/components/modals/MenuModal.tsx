@@ -1,3 +1,5 @@
+import React from "react";
+import { X } from "lucide-react";
 import regularThaliImage from "@/assets/regular-thali.jpg";
 
 interface MenuModalProps {
@@ -21,15 +23,12 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
       {/* Desktop modal */}
       <div className="hidden sm:block bg-white rounded-2xl p-6 w-full max-w-md mx-auto shadow-lg relative">
         <button
-          type="button"
           onClick={onClose}
+          className="absolute left-1/2 -translate-x-1/2 rounded-full shadow-md p-2 border border-gray-200 hover:bg-gray-100 focus:outline-none z-10"
+          style={{ top: '-58px', background: '#F5F5F5' }}
           aria-label="Close"
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors focus:outline-none"
         >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.5 4.5L4.5 13.5" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M4.5 4.5L13.5 13.5" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
+          <X className="w-6 h-6 text-gray-700" />
         </button>
         <div className="flex items-center justify-between mb-2">
           <div>
@@ -41,8 +40,8 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
           {/* Thali Image and Price */}
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-lg overflow-hidden">
-              <img 
-                src={regularThaliImage} 
+              <img
+                src={regularThaliImage}
                 alt="Regular Thali"
                 className="w-full h-full object-cover"
               />
@@ -75,22 +74,18 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
       {/* Mobile bottom sheet */}
       <div className="block sm:hidden fixed bottom-0 left-0 right-0 z-50">
         {/* Close button above modal, centered */}
-        <div className="flex justify-center -mb-6">
+        <div className="flex justify-center">
           <button
-            type="button"
             onClick={onClose}
+            className="absolute left-1/2 -translate-x-1/2 rounded-full shadow-md p-2 border border-gray-200 hover:bg-gray-100 focus:outline-none z-10"
+            style={{ top: '-58px', background: '#F5F5F5' }}
             aria-label="Close"
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-md border border-gray-200 hover:bg-gray-100 transition-colors focus:outline-none relative z-10"
-            style={{ top: '-28px' }}
           >
-            <svg width="28" height="28" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.5 4.5L4.5 13.5" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M4.5 4.5L13.5 13.5" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
+            <X className="w-6 h-6 text-gray-700" />
           </button>
         </div>
         <div className="bg-white rounded-t-2xl pt-3 pb-6 px-4 shadow-2xl">
-  
+
           {/* Heading and date */}
           <div className="flex items-center justify-between mb-3 mt-2">
             <h3 className="text-base font-semibold">Today's Lunch Menu</h3>

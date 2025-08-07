@@ -11,6 +11,7 @@ import ModifierModal from "@/components/modals/ModifierModal";
 import FloatingCartButton from "@/components/FloatingCartButton";
 import { useToast } from "@/hooks/use-toast";
 import foodItemsData from "@/data/foodItems.json";
+import AccordionSides from "./AccordionSides";
 // Import food images
 
 interface ModifierOption {
@@ -161,7 +162,10 @@ const FoodDelivery = () => {
     });
   };
 
-  const handleClearCart = () => setCart({});
+  const handleClearCart = () => {
+  setCart({});
+  setIsCartModalOpen(false);
+};
   const handleGenerateToken = () => {
     toast({ title: "Token generated!", description: "Your order has been placed." });
     setCart({});
@@ -185,13 +189,13 @@ const FoodDelivery = () => {
     }
     setFavorites(newFavorites);
   };
-
   return (
     <Container>
       <div className="max-h-full h-full overflow-hidden flex flex-col bg-white">
         <div className="flex-1 h-full flex bg-background">
           <div className="bg-background shadow-lg flex flex-col overflow-hidden">
             <Header onMenuClick={() => setIsMenuModalOpen(true)} />
+              
             <main className="flex flex-col overflow-y-hidden flex-1">
               <CategoryTabs
                 activeCategory={activeCategory}
@@ -200,23 +204,35 @@ const FoodDelivery = () => {
               <PromoBar />
               {/* Food Items List */}
               <div className="p-4 space-y-2 bg-[#F7F7F7] w-full flex-1 overflow-y-auto scrollbar-hide">
-                {filteredItems.map((item) => (
-                  <FoodCard
-                    key={item.id}
-                    id={item.id}
-                    name={item.name}
-                    price={item.price}
-                    image={item.image}
-                    description={item.description}
-                    available={item.available}
-                    unavailableReason={item.unavailableReason}
-                    onAdd={handleAddItem}
+                {/* Accordion UI for Sides */}
+                {activeCategory === "sides" ? (
+                  <AccordionSides
+                    items={filteredItems}
+                    onAddItem={handleAddItem}
                     onToggleFavorite={handleToggleFavorite}
-                    isFavorite={favorites.has(item.id)}
-                    quantity={cart[item.id]?.quantity || 0}
+                    favorites={favorites}
+                    cart={cart}
                     onQuantityChange={handleQuantityChange}
                   />
-                ))}
+                ) : (
+                  filteredItems.map((item) => (
+                    <FoodCard
+                      key={item.id}
+                      id={item.id}
+                      name={item.name}
+                      price={item.price}
+                      image={item.image}
+                      description={item.description}
+                      available={item.available}
+                      unavailableReason={item.unavailableReason}
+                      onAdd={handleAddItem}
+                      onToggleFavorite={handleToggleFavorite}
+                      isFavorite={favorites.has(item.id)}
+                      quantity={cart[item.id]?.quantity || 0}
+                      onQuantityChange={handleQuantityChange}
+                    />
+                  ))
+                )}
               </div>
             </main>
           </div>

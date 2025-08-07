@@ -1,4 +1,5 @@
 import React from "react";
+import { X } from "lucide-react";
 import { Minus, Plus } from "lucide-react";
 import { useOrder } from "@/context/OrderContext";
 import { useNavigate } from "react-router-dom";
@@ -39,15 +40,12 @@ const CartModal: React.FC<CartModalProps> = ({
       <div className="w-full max-w-md mx-auto bg-white rounded-t-3xl p-4 pt-2 shadow-lg relative">
         {/* Close Button */}
         <button
-          type="button"
           onClick={onClose}
+          className="absolute left-1/2 -translate-x-1/2 rounded-full shadow-md p-2 border border-gray-200 hover:bg-gray-100 focus:outline-none z-10"
+          style={{ top: '-58px', background: '#F5F5F5' }}
           aria-label="Close"
-          className="absolute left-1/2 -translate-x-1/2 -top-12 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md border border-gray-200"
         >
-          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.5 4.5L4.5 13.5" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M4.5 4.5L13.5 13.5" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
+          <X className="w-6 h-6 text-gray-700" />
         </button>
         {/* Header */}
         <div className="flex justify-between items-center mb-2 pt-2">
