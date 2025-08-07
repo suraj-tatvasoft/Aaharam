@@ -50,16 +50,18 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
             Clear Cart
           </button>
         </div>
-        <div className="h-1 bg-gray-200"></div>
+        <div className="h-1" style={{ background: '#F5F5F5' }}></div>
         {/* Cart Items */}
-        <div className="mb-2 max-h-48 divide-y divide-gray-200 overflow-y-auto">
+        <div className="flex max-h-48 flex-col gap-4 overflow-y-auto px-4 py-5">
           {cartItems.map((item) => (
-            <div key={item.id} className="flex items-center gap-2 py-2">
-              <img src={item.image} alt={item.name} className="h-10 w-10 rounded-lg object-cover" />
+            <div key={item.id} className="flex items-center gap-3">
+              <img src={item.image} alt={item.name} className="h-[46px] w-[46px] rounded-[16px] object-cover" />
               <div className="flex-1">
                 <div className="text-sm font-medium">{item.name}</div>
-                <div className="text-xs text-gray-500">₹{item.price}</div>
               </div>
+              <span className="mr-2 text-base font-medium text-[#212121]" style={{ minWidth: 36, textAlign: 'right' }}>
+                ₹{item.price}
+              </span>
               {/* Quantity Selector */}
               <div
                 style={{
@@ -114,8 +116,9 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
             </div>
           ))}
         </div>
+        <div className="h-1" style={{ background: '#F5F5F5' }}></div>
         {/* Bill Section */}
-        <div className="mb-2 rounded-lg bg-white py-4">
+        <div className="bg-white p-4">
           <div className="mb-3 text-sm font-semibold">Bill</div>
           <div className="my-3 h-[2px] bg-gray-100"></div>
           <div className="space-y-3">
@@ -125,7 +128,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
                   <span>{item.name}</span>
                   <span>₹{item.price * item.quantity}</span>
                 </div>
-                {index < cartItems.length - 1 && <div className="h-[2px] w-full bg-gray-100"></div>}
               </React.Fragment>
             ))}
           </div>
@@ -133,32 +135,35 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
             <span>Total</span>
             <span>₹{total}</span>
           </div>
-          <div className="mt-3 h-[2px] bg-gray-100"></div>
         </div>
+        <div className="h-1" style={{ background: '#F5F5F5' }}></div>
+
         {/* Generate Token Button */}
-        <button
-          className="mt-4 w-full rounded-lg bg-green-600 py-3 font-semibold text-white shadow-md"
-          onClick={() => {
-            // Demo: generate dummy orderId/token/time
-            const now = new Date();
-            const orderId = String(Math.floor(Math.random() * 100000));
-            const tokenNumber = Math.floor(Math.random() * 100) + 1;
-            const date = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: '2-digit' }).replace(/ /g, ' ');
-            const time = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true });
-            setOrder({
-              orderId,
-              tokenNumber,
-              date: date.replace(',', ''),
-              time,
-              items: cartItems
-            });
-            onClearCart();
-            onClose();
-            navigate('/order-detail');
-          }}
-        >
-          Generate Token
-        </button>
+        <div className="p-4">
+          <button
+            className="w-full rounded-lg bg-green-600 py-3 font-semibold text-white shadow-md"
+            onClick={() => {
+              // Demo: generate dummy orderId/token/time
+              const now = new Date();
+              const orderId = String(Math.floor(Math.random() * 100000));
+              const tokenNumber = Math.floor(Math.random() * 100) + 1;
+              const date = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: '2-digit' }).replace(/ /g, ' ');
+              const time = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true });
+              setOrder({
+                orderId,
+                tokenNumber,
+                date: date.replace(',', ''),
+                time,
+                items: cartItems
+              });
+              onClearCart();
+              onClose();
+              navigate('/order-detail');
+            }}
+          >
+            Generate Token
+          </button>
+        </div>
       </div>
     </div>
   );
