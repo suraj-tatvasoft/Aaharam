@@ -39,7 +39,7 @@ const BulkPass: React.FC = () => {
           <button
             className="w-[42px] h-[42px] rounded-full flex items-center justify-center bg-white"
             style={{ backgroundColor: "#EEFFED" }}
-            onClick={() => navigate("/")}
+            onClick={() => navigate(-1)}
             aria-label="Back"
           >
             <img src={backArrow} alt="Back" className="w-4 h-4" />

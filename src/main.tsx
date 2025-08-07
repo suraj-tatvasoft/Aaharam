@@ -3,6 +3,8 @@ import { StrictMode } from 'react';
 import App from './App.tsx'
 import { OrderProvider } from './context/OrderContext';
 import './index.css'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -11,3 +13,5 @@ createRoot(document.getElementById("root")!).render(
     </OrderProvider>
   </StrictMode>
 );
+
+serviceWorkerRegistration.register();
