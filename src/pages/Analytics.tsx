@@ -43,10 +43,10 @@ const Analytics = () => {
               className="object-cover"
             />
             <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-semibold text-success md:text-xl">
-              DD
+              {user.name.slice(0, 1).toUpperCase()}
             </AvatarFallback>
           </Avatar>
-          <h1 className="font-outfit mt-1 px-3 py-1 text-center text-xl font-normal text-[#212121]">Welcome Dhiren Devganiya</h1>
+          <h1 className="font-outfit mt-1 px-3 py-1 text-center text-xl font-normal text-[#212121]">Welcome {user.name}</h1>
         </div>
         {/* Card container */}
         <div className="flex flex-1 flex-col items-center justify-end pb-0">
@@ -119,8 +119,6 @@ const Analytics = () => {
                   Select Your Preferred Lunch Time
                 </Button>
               </div>
-              {/* Bottom Indicator Bar */}
-              {/* <IndicatorBar className="mt-6 mb-2" /> */}
             </div>
           </div>
         </div>
