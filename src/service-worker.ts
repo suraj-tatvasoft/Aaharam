@@ -18,16 +18,16 @@ import { StaleWhileRevalidate, NetworkFirst } from 'workbox-strategies';
 registerRoute(
   ({ request }) => request.destination === 'style',
   new NetworkFirst({
-    cacheName: 'css-cache'
-  })
+    cacheName: 'css-cache',
+  }),
 );
 
 // Cache JS files with a network-first strategy
 registerRoute(
   ({ request }) => request.destination === 'script',
   new NetworkFirst({
-    cacheName: 'js-cache'
-  })
+    cacheName: 'js-cache',
+  }),
 );
 
 declare const self: ServiceWorkerGlobalScope;
@@ -66,7 +66,7 @@ registerRoute(
     // Return true to signal that we want to use the handler.
     return true;
   },
-  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
+  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html'),
 );
 
 // An example runtime caching route for requests that aren't handled by the
@@ -80,9 +80,9 @@ registerRoute(
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
-      new ExpirationPlugin({ maxEntries: 50 })
-    ]
-  })
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  }),
 );
 
 // This allows the web app to trigger skipWaiting via

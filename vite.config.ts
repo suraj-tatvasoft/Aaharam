@@ -7,17 +7,17 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(({ mode }) => ({
   server: {
     host: '::',
-    port: 8000
+    port: 8000,
   },
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate'
-    })
+      registerType: 'autoUpdate',
+    }),
   ].filter(Boolean),
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
-    }
-  }
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
 }));

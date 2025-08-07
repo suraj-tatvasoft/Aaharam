@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
         </OrderProvider>
       </PersistGate>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );
 
 serviceWorkerRegistration.register();
