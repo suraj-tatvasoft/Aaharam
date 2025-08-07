@@ -19,7 +19,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
   return (
     <>
       <TooltipProvider>
-        <header className="bg-white p-4 pt-4 border-b border-border/50 shadow-sm">
+        <header className="bg-white p-4 pt-4  shadow-sm">
           <div className="flex items-center gap-3">
             {/* User Avatar */}
             <div className="w-[42px] h-[42px] rounded-full overflow-hidden border-1 border-[#E5EEE3] flex-shrink-0 md:w-12 md:h-12 cursor-pointer" onClick={() => navigate('/profile')}>
@@ -50,7 +50,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
                     onClick={onMenuClick}
                     aria-label="Open Today's Menu"
                   >
-                    <img src={headerMenuIcon} alt="Menu" className="w-4 h-4" />
+                    <img src={headerMenuIcon} alt="Menu" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="top" align="center" className="bg-black text-white">Today's Menu</TooltipContent>
@@ -61,7 +61,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
                 className="w-[42px] h-[42px] rounded-full relative" style={{ backgroundColor: '#E9FFE4' }}
                 onClick={() => setIsNotificationModalOpen(true)}
               >
-                <img src={headerAlarmIcon} alt="Alarm" className="w-4 h-4" />
+                <img src={headerAlarmIcon} alt="Alarm" />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full text-[8px] text-white flex items-center justify-center">•</span>
               </Button>
             </div>

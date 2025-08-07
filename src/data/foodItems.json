@@ -55,88 +55,47 @@
     "description": "Healthy oats cooked with milk, topped with nuts"
   },
   {
-    "id": "l1",
-    "name": "Idli Sambhar",
-    "price": 40,
-    "image": "https://images.unsplash.com/photo-1670432320633-08b1959aa883?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aWRseXxlbnwwfHwwfHx8MA%3D%3D",
-    "category": "lunch",
-    "description": "Steamed rice cakes served with lentil curry",
-    "available": false,
-    "unavailableReason": "Not available in Jain"
-  },
-  {
     "id": "l2",
     "name": "Regular Thali",
     "price": 80,
     "image": "https://images.unsplash.com/photo-1711153419402-336ee48f2138?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "category": "lunch",
-    "description": "Complete meal with rice, dal, vegetables, roti and pickle"
+    "description": "4 Butter Roti, 2 Sabji, Gujrati Dal, Bhat, Salad, Mango Juice"
   },
   {
     "id": "l3",
-    "name": "Biryani",
-    "price": 120,
+    "name": "Butter Milk",
+    "price": 10,
     "image": "https://plus.unsplash.com/premium_photo-1694141252774-c937d97641da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmlyeWFuaXxlbnwwfHwwfHx8MA%3D%3D",
-    "category": "lunch",
-    "description": "Fragrant basmati rice with spiced vegetables and herbs"
+    "category": "lunch"
   },
   {
     "id": "l4",
-    "name": "Dal Rice",
-    "price": 60,
+    "name": "Butter Roti",
+    "price": 10,
     "image": "https://images.unsplash.com/photo-1615865417491-9941019fbc00?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRhbCUyMHJpY2V8ZW58MHx8MHx8fDA%3D",
-    "category": "lunch",
-    "description": "Comforting lentil curry served with steamed rice"
+    "category": "lunch"
   },
   {
     "id": "l5",
-    "name": "Rajma Chawal",
-    "price": 70,
+    "name": "Sabji",
+    "price": 10,
     "image": "https://t4.ftcdn.net/jpg/10/13/43/19/240_F_1013431972_fWPuctwLIIuus7zvNP5LVXa1taJDgp1r.jpg",
-    "category": "lunch",
-    "description": "Red kidney beans curry with aromatic basmati rice"
+    "category": "lunch"
   },
   {
     "id": "l6",
-    "name": "Chole Bhature",
-    "price": 85,
+    "name": "Dal",
+    "price": 10,
     "image": "https://t3.ftcdn.net/jpg/16/20/42/36/360_F_1620423605_tV0QaXOlFL0rnIeEGiG6c7m5kez0fbtS.webp",
-    "category": "lunch",
-    "description": "Spicy chickpea curry with deep-fried bread"
+    "category": "lunch"
   },
   {
     "id": "l7",
-    "name": "Paneer Butter Masala",
-    "price": 110,
+    "name": "Rice",
+    "price": 10,
     "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFuZWVyJTIwbWFzYWxhfGVufDB8fDB8fHww",
-    "category": "lunch",
-    "description": "Cottage cheese in rich tomato and butter gravy"
-  },
-  {
-    "id": "l8",
-    "name": "Fish Curry Rice",
-    "price": 130,
-    "image": "https://media.istockphoto.com/id/1421262778/photo/goa-food-indian-traditional-goan-pomfret-or-butter-fish-curry-hot-and-spicy-homemade-fish.jpg?s=612x612&w=0&k=20&c=eC_kOB7AVTZ6MMtnCu0jYAMbiscQiAPe_ILHMy9O5Nw=",
-    "category": "lunch",
-    "description": "Fresh fish cooked in coconut curry with rice",
-    "available": false,
-    "unavailableReason": "Not available in Jain"
-  },
-  {
-    "id": "l9",
-    "name": "Veg Pulav",
-    "price": 65,
-    "image": "https://images.unsplash.com/photo-1630409346824-4f0e7b080087?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVnJTIwYmlyaXlhbml8ZW58MHx8MHx8fDA%3D",
-    "category": "lunch",
-    "description": "Basmati rice stir fried with assorted vegetables"
-  },
-  {
-    "id": "l10",
-    "name": "Methi Thepla & Curd",
-    "price": 60,
-    "image": "https://www.shutterstock.com/shutterstock/photos/2580562355/display_1500/stock-photo-methi-thepla-traditional-gujarati-vegetarian-breakfast-with-fenugreeek-leaves-and-wheat-flour-2580562355.jpg",
-    "category": "lunch",
-    "description": "Spicy fenugreek flatbreads served with cool yogurt"
+    "category": "lunch"
   },
   {
     "id": "b7",

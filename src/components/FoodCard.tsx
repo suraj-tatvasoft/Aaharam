@@ -59,7 +59,7 @@ const FoodCard = ({
                 }}
               >{name}</h3>
               {description && (
-                <p className="mt-2 line-clamp-1" style={{
+                <p className="mt-2 line-clamp-2" style={{
                   fontFamily: 'Outfit',
                   fontWeight: 300,
                   fontStyle: 'normal',
