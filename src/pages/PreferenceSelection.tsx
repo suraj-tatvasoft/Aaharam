@@ -31,7 +31,7 @@ const PreferenceSelection = () => {
     if (selected) {
       dispatch(updateUser({ preferredLunchTime: selected }));
     }
-    navigate(-1);
+    navigate('/food-delivery');
   };
 
   return (

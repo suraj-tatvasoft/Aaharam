@@ -68,7 +68,6 @@ const Profile = () => {
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.user);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = React.useState(false);
-  const [isNotificationModalOpen, setIsNotificationModalOpen] = React.useState(false);
 
   const handleLogout = () => {
     // Add your logout logic here
@@ -104,7 +103,7 @@ const Profile = () => {
                 className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#E9FFE5]"
                 aria-label="Notifications"
                 type="button"
-                onClick={() => setIsNotificationModalOpen(true)}
+                onClick={() => navigate('/notifications')}
               >
                 <img src={notificationIcon} alt="Notifications" className="h-5 w-5" />
               </button>
@@ -156,8 +155,6 @@ const Profile = () => {
       </div>
 
       <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)} onLogout={handleLogout} />
-      {/* Notification Modal */}
-      <NotificationModal isOpen={isNotificationModalOpen} onClose={() => setIsNotificationModalOpen(false)} />
     </Container>
   );
 };

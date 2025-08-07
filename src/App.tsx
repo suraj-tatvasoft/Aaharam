@@ -2,13 +2,10 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
-import React from 'react';
 import MonthlyPassSummary from '@/pages/MonthlyPassSummary';
-import Navigation from './components/Navigation';
 import Analytics from './pages/Analytics';
 import PreferenceSelection from './pages/PreferenceSelection';
 import Login from './pages/Login';
-import NotFound from './pages/NotFound';
 import FoodDelivery from './pages/FoodDelivery';
 import SplashScreen from './components/SplashScreen';
 import OnBoarding from './components/OnBoarding';
@@ -32,7 +29,6 @@ const App = () => (
     <Toaster />
     <BrowserRouter>
       <ScrollToTop />
-      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/analytics" element={<Analytics />} />
