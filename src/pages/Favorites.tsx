@@ -42,8 +42,8 @@ const Favorites: React.FC = () => {
             key={item.name}
             className="flex items-center bg-white rounded-2xl mb-4 px-4 py-3 shadow-sm gap-3"
           >
-            <div className="w-[46px] h-[46px] rounded-xl flex items-center justify-center bg-[#E9FFE4] overflow-hidden">
-              <img src={item.image} alt={item.name} className="w-10 h-10 object-cover rounded-[10px]" />
+            <div className="w-[46px] h-[46px] rounded-[12px] flex items-center justify-center bg-[#E9FFE4] overflow-hidden">
+              <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-[12px]" />
             </div>
             <div className="flex-1 flex flex-col justify-center min-w-0">
               <span className="font-outfit font-normal text-[16px] leading-[20px] text-[#212121] truncate">{item.name}</span>
