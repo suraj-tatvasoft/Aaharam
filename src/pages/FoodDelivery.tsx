@@ -47,10 +47,14 @@ interface CartItem {
   };
 }
 
+import { useRef, useEffect } from 'react';
+
 const FoodDelivery = () => {
+  // Ref for the scrollable items container
+  const itemsContainerRef = useRef<HTMLDivElement | null>(null);
+
   const [activeCategory, setActiveCategory] = useState('breakfast');
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
-  const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [isModifierModalOpen, setIsModifierModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<{
@@ -178,6 +182,14 @@ const FoodDelivery = () => {
     }
     setFavorites(newFavorites);
   };
+
+  // Smooth scroll to top on activeCategory change
+  useEffect(() => {
+    if (itemsContainerRef.current) {
+      itemsContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [activeCategory]);
+
   return (
     <Container>
       <div className="flex h-full max-h-full flex-col overflow-hidden bg-white">
@@ -188,7 +200,10 @@ const FoodDelivery = () => {
               <CategoryTabs activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
               <PromoBar />
               {/* Food Items List */}
-              <div className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7] p-4">
+              <div
+                ref={itemsContainerRef}
+                className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7] p-4"
+              >
                 {/* Accordion UI for Sides */}
                 {activeCategory === 'sides' ? (
                   <AccordionSides
@@ -255,7 +270,6 @@ const FoodDelivery = () => {
           </div>
           {/* Modals */}
           <MenuModal isOpen={isMenuModalOpen} onClose={() => setIsMenuModalOpen(false)} />
-          <NotificationModal isOpen={isNotificationModalOpen} onClose={() => setIsNotificationModalOpen(false)} />
         </div>
       </div>
       {/* Floating Cart Button */}

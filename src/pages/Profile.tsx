@@ -15,6 +15,7 @@ import rules from '@/assets/rule.svg';
 import logout from '@/assets/logout.svg';
 import profileAccordion from '@/assets/profile-accordion.svg';
 import LogoutModal from '@/components/modals/LogoutModal';
+import NotificationModal from '@/components/modals/NotificationModal';
 
 // --- Types ---
 type User = {
@@ -80,6 +81,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const [user] = React.useState<User>(USER);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = React.useState(false);
+  const [isNotificationModalOpen, setIsNotificationModalOpen] = React.useState(false);
 
   const handleLogout = () => {
     // Add your logout logic here
@@ -115,7 +117,7 @@ const Profile = () => {
                 className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#E9FFE5]"
                 aria-label="Notifications"
                 type="button"
-                onClick={() => navigate('/notifications')}
+                onClick={() => setIsNotificationModalOpen(true)}
               >
                 <img src={notificationIcon} alt="Notifications" className="h-5 w-5" />
               </button>
@@ -167,6 +169,8 @@ const Profile = () => {
       </div>
 
       <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)} onLogout={handleLogout} />
+      {/* Notification Modal */}
+      <NotificationModal isOpen={isNotificationModalOpen} onClose={() => setIsNotificationModalOpen(false)} />
     </Container>
   );
 };
