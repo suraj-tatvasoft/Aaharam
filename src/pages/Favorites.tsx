@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { useToast } from '@/hooks/use-toast';
-import { Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import EmptyState from '@/components/EmptyState';
+import { Heart } from 'lucide-react';
 
 const FAVORITES = [
   {
@@ -47,28 +48,32 @@ const Favorites: React.FC = () => {
   return (
     <PageLayout title="My Favorites">
       <div className="scrollbar-hide mx-auto w-full flex-1 overflow-y-auto px-4 pb-4 pt-4">
-        {FAVORITES.map((item, idx) => (
-          <div key={item.name} className="mb-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm">
-            <div className="flex h-[46px] w-[46px] items-center justify-center overflow-hidden rounded-[12px] bg-[#E9FFE4]">
-              <img src={item.image} alt={item.name} className="h-full w-full rounded-[12px] object-cover" />
+        {FAVORITES.length === 0 ? (
+          <EmptyState />
+        ) : (
+          FAVORITES.map((item, index) => (
+            <div key={index} className="mb-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm">
+              <div className="flex h-[46px] w-[46px] items-center justify-center overflow-hidden rounded-[12px] bg-[#E9FFE4]">
+                <img src={item.image} alt={item.name} className="h-full w-full rounded-[12px] object-cover" />
+              </div>
+              <div className="flex min-w-0 flex-1 flex-col justify-center">
+                <span className="font-outfit truncate text-[16px] font-normal leading-[20px] text-[#212121]">{item.name}</span>
+              </div>
+              <span className="font-outfit mr-2 text-[14px] font-normal leading-[18px] text-[#212121]">₹{item.price}</span>
+              <button className="font-outfit rounded-[8px] border border-[#38963B] px-3 py-[6px] text-[14px] font-medium leading-[18px] text-[#38963B] transition-colors hover:bg-[#E9FFE5]">
+                Add
+              </button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => handleToggleFavorite(item.name)}
+                className="h-8 w-8 text-muted-foreground hover:bg-transparent hover:text-destructive md:h-10 md:w-10"
+              >
+                <Heart className={`h-4 w-4 md:h-5 md:w-5 ${favorites.has(item.name) ? 'fill-destructive text-destructive' : ''}`} />
+              </Button>
             </div>
-            <div className="flex min-w-0 flex-1 flex-col justify-center">
-              <span className="font-outfit truncate text-[16px] font-normal leading-[20px] text-[#212121]">{item.name}</span>
-            </div>
-            <span className="font-outfit mr-2 text-[14px] font-normal leading-[18px] text-[#212121]">₹{item.price}</span>
-            <button className="font-outfit rounded-[8px] border border-[#38963B] px-3 py-[6px] text-[14px] font-medium leading-[18px] text-[#38963B] transition-colors hover:bg-[#E9FFE5]">
-              Add
-            </button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => handleToggleFavorite(item.name)}
-              className="h-8 w-8 text-muted-foreground hover:bg-transparent hover:text-destructive md:h-10 md:w-10"
-            >
-              <Heart className={`h-4 w-4 md:h-5 md:w-5 ${favorites.has(item.name) ? 'fill-destructive text-destructive' : ''}`} />
-            </Button>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </PageLayout>
   );
