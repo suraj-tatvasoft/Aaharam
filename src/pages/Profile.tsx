@@ -36,7 +36,7 @@ type MenuItemConfig = {
 // --- Constants ---
 const USER: User = {
     name: "Dhiren Devganiya",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
     passType: "Regular Thali - Without Butter Milk",
     passExpiry: "31st July",
 };
