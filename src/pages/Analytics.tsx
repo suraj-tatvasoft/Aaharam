@@ -50,7 +50,7 @@ const Analytics = () => {
         {/* Card container */}
         <div className="flex-1 flex flex-col justify-end items-center pb-0">
           <div className="w-full flex flex-col flex-1 justify-end items-center">
-            <div className="bg-white rounded-t-3xl shadow-xl px-5 pt-8 pb-0 w-full relative z-10 mt-[-16px] flex flex-col flex-1">
+            <div className="bg-white rounded-t-3xl shadow-xl px-4 pt-8 pb-0 w-full relative z-10 mt-[-16px] flex flex-col flex-1">
               <div className="text-center mb-5">
                 <div className="text-[14px] font-normal text-[#141414] font-outfit">
                   Let’s check how crowded it gets during lunch hours.
@@ -142,7 +142,7 @@ const Analytics = () => {
                 </div>
               </div>
               {/* Action Button pinned to bottom of card */}
-              <div className="mt-auto pb-7 pt-4">
+              <div className="mt-auto pb-4 pt-4">
                 <Button
                   className="w-full h-11 font-medium text-base bg-[#212121] text-white rounded-lg font-outfit shadow-sm hover:bg-[#181818] transition-colors"
                   size="lg"

@@ -24,9 +24,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   const navigate = useNavigate();
   return (
     <Container>
-      <div className={`overflow-hidden bg-[#F7F7F7] flex flex-1 flex-col items-center w-full pt-0 ${className}`}>
+      <div className={`overflow-hidden bg-[#F7F7F7] flex flex-1 flex-col items-center w-full ${className}`}>
         {/* Top Bar */}
-        <div className="flex items-center w-full pt-6 pb-6 px-4 bg-[#FFFFFF]">
+        <div className="flex items-center w-full pt-4 pb-4 px-4 bg-[#FFFFFF]">
           {showBackButton && (
             <button
               onClick={onBack || (() => navigate(-1))}

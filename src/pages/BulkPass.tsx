@@ -30,15 +30,14 @@ const BulkPass: React.FC = () => {
   return (
     <Container>
       <div
-        className="flex-1 relative px-4 pt-4 pb-20 flex flex-col"
+        className="flex-1 relative px-4 pt-4 pb-4 flex flex-col"
         style={{
           background: "linear-gradient(180deg, #DAFFD9 0%, #FFFFFF 132.38%)",
         }}
       >
         <div className="flex items-center justify-between mb-4">
           <button
-            className="w-[42px] h-[42px] rounded-full flex items-center justify-center bg-white"
-            style={{ backgroundColor: "#EEFFED" }}
+            className="w-[42px] h-[42px] rounded-full flex items-center justify-center bg-[#EEFFED]"
             onClick={() => navigate(-1)}
             aria-label="Back"
           >
@@ -69,22 +68,22 @@ const BulkPass: React.FC = () => {
         </div>
 
         <div className="flex flex-col items-center text-center mb-6">
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-xs font-medium text-[#212121]">
             Exclusive discount on
           </span>
-          <span className="text-3xl font-bold text-black mt-1">BULK PASS</span>
-          <span className="text-sm text-gray-600 mt-1">
+          <span className="text-3xl font-semibold text-[#212121] mt-1">BULK PASS</span>
+          <span className="text-xs text-[#212121] mt-1">
             Grab ₹220 Discount on Lunch Meal
           </span>
         </div>
 
         <div className="mb-2">
-          <span className="font-medium text-base text-black">
+          <span className="font-medium text-base text-[#212121]">
             Recommended for you
           </span>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-1 flex-col">
           {thalis.map((thali, idx) => (
             <div
               key={idx}
@@ -97,21 +96,21 @@ const BulkPass: React.FC = () => {
               />
               <div className="flex flex-col flex-1 justify-between">
                 <div>
-                  <div className="font-medium text-black text-base mb-1">
+                  <div className="font-medium text-[#212121] text-base mb-1">
                     {thali.title}
                   </div>
-                  <div className="text-xs text-gray-500 mb-2">{thali.desc}</div>
+                  <div className="text-xs text-[#797979] mb-2">{thali.desc}</div>
                 </div>
                 <div className="flex items-center justify-between mt-2">
                   <div className="flex items-center">
-                    <span className="text-black font-semibold text-base">
+                    <span className="text-[#212121] font-semibold text-base">
                       ₹{thali.price}
                     </span>
-                    <span className="line-through text-gray-500 ml-2 text-sm">
+                    <span className="line-through text-[#797979] ml-2 text-sm">
                       ₹{thali.original}
                     </span>
                   </div>
-                  <button className="w-16 h-8 text-sm border border-green-500 text-green-500 rounded-md flex items-center justify-center hover:bg-green-50 transition">
+                  <button className="w-16 h-8 text-sm border border-[#38963B] text-[#38963B] rounded-md flex items-center justify-center hover:bg-[#38963B] hover:text-white transition">
                     Add
                   </button>
                 </div>
@@ -121,8 +120,7 @@ const BulkPass: React.FC = () => {
         </div>
 
         <button
-          className="absolute bottom-4 left-4 right-4 bg-green-600 text-white text-center py-3 rounded-lg shadow-lg font-bold text-base z-50"
-          style={{ minWidth: 220 }}
+          className="w-full bg-green-600 text-white text-center py-3 rounded-lg shadow-lg font-bold text-base"
           onClick={() => setActivationOpen(true)}
         >
           Buy Monthly Pass - ₹1540

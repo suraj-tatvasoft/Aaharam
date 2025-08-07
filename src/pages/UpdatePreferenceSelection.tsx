@@ -23,41 +23,26 @@ const UpdatePreferenceSelection = () => {
             <div className="w-full flex flex-col flex-1 px-0">
                 {/* Card pinned to top */}
                 <div className="flex flex-col rounded-2xl px-0 pt-2 pb-2 mx-2 flex-1">
-                    <div className="font-medium text-base px-2 pt-2 pb-2 text-[#212121] flex-none" style={{ letterSpacing: 0 }}>Select Your Time Slot</div>
-                    <form className="flex-1 flex flex-col gap-0 px-2 overflow-y-auto scrollbar-hide" onSubmit={e => {
+                    <div className="font-medium text-base px-4 pt-2 pb-2 text-[#212121] flex-none" style={{ letterSpacing: 0 }}>Select Your Time Slot</div>
+                    <form className="flex-1 flex flex-col overflow-y-auto gap-3 scrollbar-hide px-4" onSubmit={e => {
                         e.preventDefault();
                     }}>
-                        {TIME_SLOTS.map((slot, idx) => {
-                            const checked = selected === slot;
-                            return (
-                                <label
-                                    key={slot}
-                                    className="flex items-center justify-between py-2 px-0 cursor-pointer"
-                                >
-                                    <span className="font-outfit font-normal text-sm text-[#212121] select-none">
-                                        {slot}
-                                    </span>
-                                    <span className="flex items-center justify-center relative ml-3">
-                                        <span className="flex items-center justify-center ml-3">
-                                            <label className={`relative flex items-center justify-center w-[14px] h-[14px] rounded-full cursor-pointer transition-colors duration-150 ${checked ? 'bg-[#E9FFE5]' : ''}`}>
-                                                <input
-                                                    type="radio"
-                                                    name="timeSlot"
-                                                    value={slot}
-                                                    checked={checked}
-                                                    onChange={() => setSelected(slot)}
-                                                    className={`appearance-none w-[14px] h-[14px] rounded-full border border-solid transition-all duration-150 cursor-pointer bg-white ${checked ? 'border-[#43A047]' : 'border-[#B5B5B5]'}`}
-                                                />
-                                                {checked && (
-                                                    <span className="absolute top-[2px] left-[2px] w-[10px] h-[10px] rounded-full bg-[#43A047] border border-white pointer-events-none" />
-                                                )}
-                                            </label>
-                                        </span>
-
-                                    </span>
-                                </label>
-                            );
-                        })}
+                        {TIME_SLOTS.map((slot) => (
+                            <label
+                                key={slot}
+                                className="flex items-center justify-between py-[6px] cursor-pointer"
+                            >
+                                <span className="text-[14px] font-light text-[#212121]">{slot}</span>
+                                <input
+                                    type="radio"
+                                    name="timeSlot"
+                                    value={slot}
+                                    checked={selected === slot}
+                                    onChange={() => setSelected(slot)}
+                                    className="form-radio w-[14px] h-[14px] accent-[#38963B] border border-[#38963B] bg-white"
+                                />
+                            </label>
+                        ))}
                     </form>
                 </div>
                 {/* Action buttons pinned to bottom */}

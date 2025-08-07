@@ -10,8 +10,8 @@ const PANTRY_HOURS = [
 const FoodPantryHours = () => {
   return (
     <PageLayout title="Food Pantry Hours">
-      <div className="w-full flex-1 flex flex-col items-center pt-4">
-        <div className="w-full flex flex-col gap-4 px-4 items-center mt-2">
+      <div className="w-full flex-1 flex flex-col items-center p-4">
+        <div className="w-full flex flex-col gap-4 items-center">
           {PANTRY_HOURS.map((item) => (
             <div
               key={item.label}

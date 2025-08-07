@@ -37,8 +37,8 @@ const notifications = [
 const Notifications: React.FC = () => {
     return (
         <PageLayout title="Notifications">
-            <div className="flex-1 flex w-full flex-col items-center py-4 px-2">
-                <div className="w-full max-w-full flex flex-col gap-4 px-4 items-center">
+            <div className="flex-1 flex w-full flex-col items-center p-4">
+                <div className="w-full max-w-full flex flex-col gap-4 items-center">
                     {notifications.map((n, i) => (
                         <div
                             key={i}
