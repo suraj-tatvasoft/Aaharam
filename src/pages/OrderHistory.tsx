@@ -21,13 +21,13 @@ export const ORDERS = [
   { id: 12547, amount: 200, date: '18th Apr 25', status: 'Completed' },
   { id: 45575, amount: 10, date: '18th Apr 25', status: 'Rejected' },
   { id: 78451, amount: 400, date: '18th Apr 25', status: 'Completed' },
-  { id: 45523, amount: 300, date: '18th Apr 25', status: 'No Show' },
+  // { id: 45523, amount: 300, date: '18th Apr 25', status: 'No Show' },
   { id: 45878, amount: 200, date: '18th Apr 25', status: 'Completed' },
   { id: 27211, amount: 110, date: '18th Apr 25', status: 'Completed' },
   { id: 27220, amount: 110, date: '18th Apr 25', status: 'Cancelled' },
   { id: 27213, amount: 110, date: '18th Apr 25', status: 'Completed' },
   { id: 27214, amount: 110, date: '18th Apr 25', status: 'Completed' },
-  { id: 27215, amount: 110, date: '18th Apr 25', status: 'No Show' },
+  // { id: 27215, amount: 110, date: '18th Apr 25', status: 'No Show' },
   { id: 27216, amount: 110, date: '18th Apr 25', status: 'Rejected' }
 ];
 
