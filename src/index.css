@@ -1,4 +1,4 @@
-@import url("./fonts/outfit.css");
+@import url('./fonts/outfit.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -108,8 +108,10 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+    font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
   }
 }
 
@@ -128,7 +130,9 @@ All colors MUST be HSL.
 .fade-enter-active {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 400ms, transform 400ms;
+  transition:
+    opacity 400ms,
+    transform 400ms;
 }
 .fade-exit {
   opacity: 1;
@@ -137,7 +141,9 @@ All colors MUST be HSL.
 .fade-exit-active {
   opacity: 0;
   transform: scale(1.02);
-  transition: opacity 400ms, transform 400ms;
+  transition:
+    opacity 400ms,
+    transform 400ms;
 }
 
 html,
@@ -146,4 +152,8 @@ body {
 }
 #root {
   height: 100%;
+}
+
+.recharts-layer.recharts-pie-sector path:focus-within {
+  outline: none;
 }

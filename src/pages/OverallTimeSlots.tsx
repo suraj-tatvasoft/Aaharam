@@ -75,6 +75,8 @@ const OverallTimeSlots = () => {
                 );
               }}
               labelLine={false}
+              activeShape={null}
+              stroke="none"
             >
               {data.map((entry, index) => (
                 <Cell

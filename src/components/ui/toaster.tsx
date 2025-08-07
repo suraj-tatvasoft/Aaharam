@@ -1,16 +1,9 @@
-import { useToast } from "@/hooks/use-toast"
-import CustomToastIcon from "@/components/ui/CustomToastIcon";
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from "@/components/ui/toast"
+import { useToast } from '@/hooks/use-toast';
+import CustomToastIcon from '@/components/ui/CustomToastIcon';
+import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/components/ui/toast';
 
 export function Toaster() {
-  const { toasts } = useToast()
+  const { toasts } = useToast();
 
   return (
     <ToastProvider>
@@ -22,18 +15,16 @@ export function Toaster() {
                 <CustomToastIcon className="flex-shrink-0" />
                 <div className="grid gap-1">
                   {title && <ToastTitle>{title}</ToastTitle>}
-                  {description && (
-                    <ToastDescription>{description}</ToastDescription>
-                  )}
+                  {description && <ToastDescription>{description}</ToastDescription>}
                 </div>
               </div>
             </div>
             {action}
             <ToastClose />
           </Toast>
-        )
+        );
       })}
       <ToastViewport />
     </ToastProvider>
-  )
+  );
 }

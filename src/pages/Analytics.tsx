@@ -43,15 +43,21 @@ const Analytics = () => {
               DD
             </AvatarFallback>
           </Avatar>
-          <h1 className="text-xl font-normal text-center px-3 py-1 mt-1 text-[#212121] font-outfit">Welcome Dhiren Devganiya</h1>
+          <h1 className="text-xl font-normal text-center px-3 py-1 mt-1 text-[#212121] font-outfit">
+            Welcome Dhiren Devganiya
+          </h1>
         </div>
         {/* Card container */}
         <div className="flex-1 flex flex-col justify-end items-center pb-0">
           <div className="w-full flex flex-col flex-1 justify-end items-center">
             <div className="bg-white rounded-t-3xl shadow-xl px-5 pt-8 pb-0 w-full relative z-10 mt-[-16px] flex flex-col flex-1">
               <div className="text-center mb-5">
-                <div className="text-[14px] font-normal text-[#141414] font-outfit">Let’s check how crowded it gets during lunch hours.</div>
-                <div className="text-[14px] font-normal text-[#141414] font-outfit">Select your preferred lunch time before using Aaharam.</div>
+                <div className="text-[14px] font-normal text-[#141414] font-outfit">
+                  Let’s check how crowded it gets during lunch hours.
+                </div>
+                <div className="text-[14px] font-normal text-[#141414] font-outfit">
+                  Select your preferred lunch time before using Aaharam.
+                </div>
               </div>
               <div className="flex flex-col items-center flex-1 justify-start bg-white">
                 <div className="w-[360px] h-[360px] flex items-center justify-center mx-auto mb-8">
@@ -62,9 +68,17 @@ const Analytics = () => {
                       nameKey="name"
                       innerRadius={120}
                       outerRadius={180}
-                      label={({ cx, cy, midAngle, innerRadius, outerRadius, index }) => {
+                      label={({
+                        cx,
+                        cy,
+                        midAngle,
+                        innerRadius,
+                        outerRadius,
+                        index,
+                      }) => {
                         const RADIAN = Math.PI / 180;
-                        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+                        const radius =
+                          innerRadius + (outerRadius - innerRadius) * 0.5;
                         const x = cx + radius * Math.cos(-midAngle * RADIAN);
                         const y = cy + radius * Math.sin(-midAngle * RADIAN);
                         return (
@@ -95,9 +109,14 @@ const Analytics = () => {
                         );
                       }}
                       labelLine={false}
+                      activeShape={null}
+                      stroke="none"
                     >
                       {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
                       ))}
                     </Pie>
                   </PieChart>
@@ -105,10 +124,15 @@ const Analytics = () => {
                 {/* Screenshot-style Legend: 2 columns, 4 rows */}
                 <div className="grid grid-cols-2 gap-y-3 gap-x-8 w-[311px] mx-auto mb-2">
                   {data.map((entry, index) => (
-                    <div key={entry.name} className="flex flex-row items-center gap-2">
+                    <div
+                      key={entry.name}
+                      className="flex flex-row items-center gap-2"
+                    >
                       <span
                         className="inline-block w-2 h-2 rounded-full"
-                        style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                        style={{
+                          backgroundColor: COLORS[index % COLORS.length],
+                        }}
                       />
                       <span className="font-outfit font-normal text-[12px] leading-5 text-[#141414]">
                         {entry.name} ({entry.value}%)
@@ -122,7 +146,7 @@ const Analytics = () => {
                 <Button
                   className="w-full h-11 font-medium text-base bg-[#212121] text-white rounded-lg font-outfit shadow-sm hover:bg-[#181818] transition-colors"
                   size="lg"
-                  onClick={() => navigate('/preference-selection')}
+                  onClick={() => navigate("/preference-selection")}
                 >
                   Select Your Preferred Lunch Time
                 </Button>
