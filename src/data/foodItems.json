@@ -5,7 +5,6 @@
     "price": 15,
     "image": "https://plus.unsplash.com/premium_photo-1674406481284-43eba097a291?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "category": "breakfast",
-    "description": "Aromatic spiced tea with ginger and cardamom",
     "available": true
   },
   {
@@ -13,32 +12,31 @@
     "name": "Poha",
     "price": 40,
     "image": "https://www.shutterstock.com/shutterstock/photos/1282013134/display_1500/stock-photo-aloo-kanda-poha-or-tarri-pohe-with-spicy-chana-masala-curry-selective-focus-1282013134.jpg",
-    "category": "breakfast",
-    "description": "Flattened rice with onions, curry leaves and spices"
+    "category": "breakfast"
   },
   {
     "id": "b3",
-    "name": "Aloo Paratha",
-    "price": 45,
+    "name": "Idli Sambhaar",
+    "price": 40,
     "image": "https://images.unsplash.com/photo-1707424963059-6a7a559cae28?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "category": "breakfast",
-    "description": "Stuffed flatbread with spiced potato filling"
+    "description": "Not available in Jain"
   },
   {
     "id": "b4",
-    "name": "Upma",
-    "price": 35,
+    "name": "Khaman Dhokla",
+    "price": 55,
     "image": "https://plus.unsplash.com/premium_photo-1675798917853-11d04d997979?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "category": "breakfast",
-    "description": "Semolina cooked with vegetables and tempering"
+    "description": "Not available in Jain"
   },
   {
     "id": "b5",
-    "name": "Dosa",
+    "name": "Masala Dosa",
     "price": 50,
     "image": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "category": "breakfast",
-    "description": "Crispy fermented crepe served with sambar and chutney"
+    "description": "Not available in Jain"
   },
   {
     "id": "b6",
@@ -47,63 +45,6 @@
     "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=400&h=300&fit=crop",
     "category": "breakfast",
     "description": "Fluffy pancakes with maple syrup and butter"
-  },
-  {
-    "id": "b7",
-    "name": "Vada Pav",
-    "price": 30,
-    "image": "https://media.istockphoto.com/id/1444922691/photo/bombay-vada-pav-isolated-on-wooden-board-side-view-of-indian-food.jpg?s=1024x1024&w=is&k=20&c=9fTH42v-D8aaezuX6C1XXjUn3xQKZIF0orYcTNFlHIU=",
-    "category": "evening-snacks",
-    "description": "Spicy potato fritter in a bun with chutneys",
-    "available": true,
-    "modifiers": [
-      {
-        "id": "chutney_extra",
-        "name": "Oil",
-        "price": 0
-      },
-      {
-        "id": "mirchi",
-        "name": "Butter",
-        "price": 5
-      },
-      {
-        "id": "Cheese",
-        "name": "Cheese",
-        "price": 10
-      },
-      {
-        "id": "Mayo",
-        "name": "Mayo",
-        "price": 10
-      },
-      {
-        "id": "Schezwan",
-        "name": "Schezwan",
-        "price": 10
-      }
-    ],
-    "availableFor": [
-      "jain",
-      "regular"
-    ],
-    "sideTitle": ""
-  },
-  {
-    "id": "b8",
-    "name": "Sandwich",
-    "price": 55,
-    "image": "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=400&h=300&fit=crop",
-    "category": "breakfast",
-    "description": "Grilled sandwich with fresh vegetables and cheese"
-  },
-  {
-    "id": "b9",
-    "name": "Sabudana Khichdi",
-    "price": 38,
-    "image": "https://www.shutterstock.com/shutterstock/photos/1787304494/display_1500/stock-photo-sabudana-khichdi-khichadi-is-an-indian-fasting-recipe-or-vrat-food-consumed-during-navratri-1787304494.jpg",
-    "category": "breakfast",
-    "description": "Pearl sago stir fried with potatoes, peanuts and spices"
   },
   {
     "id": "b10",
@@ -198,23 +139,81 @@
     "description": "Spicy fenugreek flatbreads served with cool yogurt"
   },
   {
-    "id": "s1",
-    "name": "Khaman Dhokla",
-    "price": 55,
-    "image": "https://images.unsplash.com/photo-1714799263291-272975db795a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGhva2xhfGVufDB8fDB8fHww",
+    "id": "b7",
+    "name": "Vada Pav",
+    "price": 30,
+    "image": "https://media.istockphoto.com/id/1444922691/photo/bombay-vada-pav-isolated-on-wooden-board-side-view-of-indian-food.jpg?s=1024x1024&w=is&k=20&c=9fTH42v-D8aaezuX6C1XXjUn3xQKZIF0orYcTNFlHIU=",
     "category": "evening-snacks",
-    "description": "Steamed gram flour sponge cake with tempering",
-    "available": false,
-    "unavailableReason": "Not available in Jain"
+    "available": true,
+    "modifiers": [
+      {
+        "id": "chutney_extra",
+        "name": "Oil",
+        "price": 0
+      },
+      {
+        "id": "mirchi",
+        "name": "Butter",
+        "price": 5
+      },
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
+      }
+    ],
+    "availableFor": [
+      "jain",
+      "regular"
+    ]
   },
   {
-    "id": "e1",
-    "name": "Samosa",
-    "price": 25,
-    "image": "https://www.cookwithmanali.com/wp-content/uploads/2020/06/Samosa-500x500.jpg",
+    "id": "s9",
+    "name": "Kuttchi Dabeli",
+    "price": 40,
+    "image": "https://pipingpotcurry.com/wp-content/uploads/2023/05/Dabeli-Recipe-Piping-Pot-Curry.jpg",
     "category": "evening-snacks",
-    "description": "Crispy fried pastry with spicy potato filling",
-    "available": true
+    "modifiers": [
+      {
+        "id": "chutney_extra",
+        "name": "Oil",
+        "price": 0
+      },
+      {
+        "id": "mirchi",
+        "name": "Butter",
+        "price": 5
+      },
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
+      }
+    ],
+    "availableFor": [
+      "jain",
+      "regular"
+    ]
   },
   {
     "id": "s2",
@@ -222,31 +221,75 @@
     "price": 20,
     "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&h=300&fit=crop",
     "category": "evening-snacks",
-    "description": "Crispy pastry filled with spiced potatoes and peas"
+    "description": "Not available in Jain",
+    "modifiers": [
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
+      }
+    ],
+    "availableFor": [
+      "regular"
+    ]
   },
   {
-    "id": "s3",
-    "name": "Pakora",
-    "price": 35,
-    "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&h=300&fit=crop",
+    "id": "s1",
+    "name": "Masala Puff",
+    "price": 55,
+    "image": "https://images.unsplash.com/photo-1714799263291-272975db795a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGhva2xhfGVufDB8fDB8fHww",
     "category": "evening-snacks",
-    "description": "Mixed vegetable fritters with mint chutney"
+    "description": "Not available for 1 day",
+    "available": false
   },
   {
-    "id": "s4",
-    "name": "Pav Bhaji",
-    "price": 65,
-    "image": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&h=300&fit=crop",
+    "id": "b8",
+    "name": "Sandwich",
+    "price": 55,
+    "image": "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=400&h=300&fit=crop",
     "category": "evening-snacks",
-    "description": "Spiced mashed vegetables served with buttered bread"
-  },
-  {
-    "id": "s5",
-    "name": "Chaat",
-    "price": 45,
-    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop",
-    "category": "evening-snacks",
-    "description": "Tangy street food with crispy base and chutneys"
+    "description": "Grilled sandwich with fresh vegetables and cheese",
+    "modifiers": [
+      {
+        "id": "chutney_extra",
+        "name": "Oil",
+        "price": 0
+      },
+      {
+        "id": "mirchi",
+        "name": "Butter",
+        "price": 5
+      },
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
+      }
+    ],
+    "availableFor": [
+      "jain",
+      "regular"
+    ]
   },
   {
     "id": "s6",
@@ -254,15 +297,28 @@
     "price": 30,
     "image": "https://images.unsplash.com/photo-1591465619339-60fce055bc82?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a2FjaG9yaXxlbnwwfHwwfHx8MA%3D%3D",
     "category": "evening-snacks",
-    "description": "Deep-fried pastry with spiced lentil filling"
-  },
-  {
-    "id": "s7",
-    "name": "Spring Rolls",
-    "price": 55,
-    "image": "https://images.unsplash.com/photo-1669340781012-ae89fbac9fc3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8U3ByaW5nJTIwUm9sbHN8ZW58MHx8MHx8fDA%3D",
-    "category": "evening-snacks",
-    "description": "Crispy rolls filled with fresh vegetables"
+    "description": "Deep-fried pastry with spiced lentil filling",
+    "modifiers": [
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
+      }
+    ],
+    "availableFor": [
+      "jain",
+      "regular"
+    ]
   },
   {
     "id": "s8",
@@ -270,23 +326,38 @@
     "price": 50,
     "image": "https://plus.unsplash.com/premium_photo-1673769108070-580fe90b8de7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW9tb3xlbnwwfHwwfHx8MA%3D%3D",
     "category": "evening-snacks",
-    "description": "Steamed dumplings with spicy tomato chutney"
-  },
-  {
-    "id": "s9",
-    "name": "Dabeli",
-    "price": 40,
-    "image": "https://pipingpotcurry.com/wp-content/uploads/2023/05/Dabeli-Recipe-Piping-Pot-Curry.jpg",
-    "category": "evening-snacks",
-    "description": "Kutchi street food with potato masala in bun and peanuts"
-  },
-  {
-    "id": "s10",
-    "name": "Masala Corn",
-    "price": 30,
-    "image": "https://images.unsplash.com/photo-1634467524884-897d0af5e104?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29ybnxlbnwwfHwwfHx8MA%3D%3D",
-    "category": "evening-snacks",
-    "description": "Sweet corn kernels tossed in butter, lime and masala"
+    "description": "Steamed dumplings with spicy tomato chutney",
+    "modifiers": [
+      {
+        "id": "chutney_extra",
+        "name": "Oil",
+        "price": 0
+      },
+      {
+        "id": "mirchi",
+        "name": "Butter",
+        "price": 5
+      },
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
+      }
+    ],
+    "availableFor": [
+      "jain",
+      "regular"
+    ]
   },
   {
     "id": "masala_masti_chips",

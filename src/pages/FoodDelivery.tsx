@@ -163,9 +163,9 @@ const FoodDelivery = () => {
   };
 
   const handleClearCart = () => {
-  setCart({});
-  setIsCartModalOpen(false);
-};
+    setCart({});
+    setIsCartModalOpen(false);
+  };
   const handleGenerateToken = () => {
     toast({ title: "Token generated!", description: "Your order has been placed." });
     setCart({});
@@ -195,7 +195,6 @@ const FoodDelivery = () => {
         <div className="flex-1 h-full flex bg-background">
           <div className="bg-background shadow-lg flex flex-col overflow-hidden">
             <Header onMenuClick={() => setIsMenuModalOpen(true)} />
-              
             <main className="flex flex-col overflow-y-hidden flex-1">
               <CategoryTabs
                 activeCategory={activeCategory}
@@ -203,7 +202,7 @@ const FoodDelivery = () => {
               />
               <PromoBar />
               {/* Food Items List */}
-              <div className="p-4 space-y-2 bg-[#F7F7F7] w-full flex-1 overflow-y-auto scrollbar-hide">
+              <div className="p-4 space-y-4 bg-[#F7F7F7] w-full flex-1 overflow-y-auto scrollbar-hide">
                 {/* Accordion UI for Sides */}
                 {activeCategory === "sides" ? (
                   <AccordionSides
