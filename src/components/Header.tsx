@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { Search, QrCode, Menu } from 'lucide-react';
+import { Search } from 'lucide-react';
 import headerMenuIcon from '@/assets/header-menu.svg';
 import headerAlarmIcon from '@/assets/header-alarm.svg';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import NotificationModal from '@/components/modals/NotificationModal';
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +12,6 @@ export interface HeaderProps {
 
 const Header = ({ onMenuClick }: HeaderProps) => {
   const navigate = useNavigate();
-  const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
 
   return (
     <>
@@ -66,7 +63,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
                 size="icon"
                 className="relative h-[42px] w-[42px] rounded-full"
                 style={{ backgroundColor: '#E9FFE4' }}
-                onClick={() => setIsNotificationModalOpen(true)}
+                onClick={() => navigate('/notifications')}
               >
                 <img src={headerAlarmIcon} alt="Alarm" />
                 <span className="absolute -right-1 -top-1 flex h-3 w-3 items-center justify-center rounded-full bg-destructive text-[8px] text-white">
@@ -77,8 +74,6 @@ const Header = ({ onMenuClick }: HeaderProps) => {
           </div>
         </header>
       </TooltipProvider>
-
-      <NotificationModal isOpen={isNotificationModalOpen} onClose={() => setIsNotificationModalOpen(false)} />
     </>
   );
 };

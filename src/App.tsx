@@ -1,6 +1,7 @@
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import React from 'react';
 import MonthlyPassSummary from '@/pages/MonthlyPassSummary';
 import Navigation from './components/Navigation';
@@ -30,6 +31,7 @@ const App = () => (
   <TooltipProvider>
     <Toaster />
     <BrowserRouter>
+      <ScrollToTop />
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
