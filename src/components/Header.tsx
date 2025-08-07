@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 export interface HeaderProps {
   onMenuClick?: () => void;
@@ -24,8 +26,8 @@ const Header = ({ onMenuClick }: HeaderProps) => {
               onClick={() => navigate('/profile')}
             >
               <img
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
-                alt="User profile"
+                src={useSelector((state: RootState) => state.user.avatarUrl)}
+                alt={useSelector((state: RootState) => state.user.name) || 'User profile'}
                 className="h-full w-full object-cover"
               />
             </div>

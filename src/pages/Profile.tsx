@@ -1,5 +1,7 @@
 import React from 'react';
 import Container from '@/components/Container';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { useNavigate } from 'react-router-dom';
 import notificationIcon from '@/assets/header-alarm.svg';
@@ -17,14 +19,6 @@ import profileAccordion from '@/assets/profile-accordion.svg';
 import LogoutModal from '@/components/modals/LogoutModal';
 import NotificationModal from '@/components/modals/NotificationModal';
 
-// --- Types ---
-type User = {
-  name: string;
-  avatar: string;
-  passType: string;
-  passExpiry: string;
-};
-
 type MenuItemConfig = {
   icon: string;
   label: string;
@@ -35,13 +29,6 @@ type MenuItemConfig = {
 };
 
 // --- Constants ---
-const USER: User = {
-  name: 'Dhiren Devganiya',
-  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
-  passType: 'Regular Thali - Without Butter Milk',
-  passExpiry: '31st July'
-};
-
 const MENU_ITEMS: MenuItemConfig[] = [
   { icon: paymentQR, label: 'Payment QR', color: 'bg-[#FFF7F2]', iconBg: 'bg-[#FFE6D6]' },
   { icon: orderHistory, label: 'Order History', color: 'bg-[#F2F8FF]', iconBg: 'bg-[#D6E9FF]' },
@@ -79,7 +66,7 @@ export const MenuItem: React.FC<MenuItemConfig> = ({ icon, label, color, iconBg,
 // --- Main Profile Page ---
 const Profile = () => {
   const navigate = useNavigate();
-  const [user] = React.useState<User>(USER);
+  const user = useSelector((state: RootState) => state.user);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = React.useState(false);
   const [isNotificationModalOpen, setIsNotificationModalOpen] = React.useState(false);
 
@@ -123,14 +110,14 @@ const Profile = () => {
               </button>
             </div>
             <Avatar className="border-1 z-10 mt-6 h-[50px] w-[50px] border-[#E5E7EB]">
-              <AvatarImage src={user.avatar} alt={user.name} />
+              <AvatarImage src={user.avatarUrl} alt={user.name} />
             </Avatar>
             <div className="pb-2 pt-3 text-lg font-medium text-[#212121]">{user.name}</div>
           </div>
 
           {/* Pass Info */}
           <div
-            className="mx-0 mt-0 flex w-full cursor-pointer flex-row items-center justify-between bg-[#A7E6B9] px-6 py-2 transition-colors hover:bg-[#bdf2c9]"
+            className="mx-0 mt-0 flex w-full cursor-pointer flex-row items-center justify-between bg-[#A7E6B9] px-6 py-2 transition-colors"
             onClick={() => navigate('/bulk-pass')}
           >
             <div className="flex flex-col items-start gap-1">

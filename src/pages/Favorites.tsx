@@ -18,11 +18,10 @@ const FAVORITES = [
     image:
       'https://www.shutterstock.com/shutterstock/photos/1282013134/display_1500/stock-photo-aloo-kanda-poha-or-tarri-pohe-with-spicy-chana-masala-curry-selective-focus-1282013134.jpg'
   },
-  { name: 'Khaman Dhokla', price: 60, image: 'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Vada Pav', price: 25, image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&h=300&fit=crop' },
-  { name: 'Sandwich', price: 55, image: 'https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=400&h=300&fit=crop' }
+  { name: 'Khaman Dhokla', price: 60, image: 'https://t4.ftcdn.net/jpg/12/64/08/69/240_F_1264086991_7NJfBilVorYRiiyNjLVP4PXyI7tsFBDC.jpg' },
+  { name: 'Vada Pav', price: 25, image: 'https://media.istockphoto.com/id/1444922691/photo/bombay-vada-pav-isolated-on-wooden-board-side-view-of-indian-food.jpg?s=1024x1024&w=is&k=20&c=9fTH42v-D8aaezuX6C1XXjUn3xQKZIF0orYcTNFlHIU=' },
+  { name: 'Sandwich', price: 55, image: 'https://t3.ftcdn.net/jpg/01/45/44/54/240_F_145445465_Ka0OYPvrhIRDMOAIiv3rLvyvgyPUd8Bn.jpg' }
 ];
-
 const Favorites: React.FC = () => {
   const [favorites, setFavorites] = useState<Set<string>>(new Set(FAVORITES.map((f) => f.name)));
   const { toast } = useToast();

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@/components/Container';
-import IndicatorBar from '@/components/IndicatorBar';
 import { useNavigate } from 'react-router-dom';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/store';
+import { updateUser } from '@/store/slice/userSlice';
 
 const TIME_SLOTS = [
   '12:00 PM - 12:30 PM',
@@ -15,13 +17,20 @@ const TIME_SLOTS = [
 ];
 
 const PreferenceSelection = () => {
+  const userPreferred = useSelector((state: RootState) => state.user.preferredLunchTime);
   const [selected, setSelected] = useState<string | null>(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (userPreferred) setSelected(userPreferred);
+  }, [userPreferred]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // You can handle the submit logic here
-    // For now, just go back or show a toast
+    if (selected) {
+      dispatch(updateUser({ preferredLunchTime: selected }));
+    }
     navigate(-1);
   };
 

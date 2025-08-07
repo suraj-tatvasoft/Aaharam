@@ -3,9 +3,12 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useNavigate } from 'react-router-dom';
 import Container from '@/components/Container';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const Analytics = () => {
   const navigate = useNavigate();
+  const user = useSelector((state: RootState) => state.user);
   const data = [
     { name: '12:00 PM', value: 24, time: '12:00' },
     { name: '12:30 PM', value: 20, time: '12:30' },
@@ -35,8 +38,8 @@ const Analytics = () => {
         <div className="flex w-full flex-col items-center pb-4 pt-10">
           <Avatar className="mb-3 h-14 w-14 border border-white shadow-lg">
             <AvatarImage
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
-              alt="Dhiren Devganiya"
+              src={user.avatarUrl || ''}
+              alt={user.name || 'User'}
               className="object-cover"
             />
             <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-semibold text-success md:text-xl">

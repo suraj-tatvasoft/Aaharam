@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/store';
+import { updateUser } from '@/store/slice/userSlice';
 
 const TIME_SLOTS = [
   '12:00 PM - 12:30 PM',
@@ -14,10 +17,27 @@ const TIME_SLOTS = [
 ];
 
 const UpdatePreferenceSelection = () => {
-  const [selected, setSelected] = useState<string | null>(TIME_SLOTS[0]);
+  const userPreferred = useSelector((state: RootState) => state.user.preferredLunchTime);
+  const [selected, setSelected] = useState<string | null>(null);
   const { toast } = useToast();
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userPreferred) setSelected(userPreferred);
+    else setSelected(null);
+  }, [userPreferred]);
+
+  const handleUpdate = () => {
+    if (selected) {
+      dispatch(updateUser({ preferredLunchTime: selected }));
+      toast({
+        title: 'My Preferred Lunch Time Slot',
+        description: 'Your lunch time slot has been updated successfully.'
+      });
+    }
+  };
+
   return (
     <PageLayout title="My Preferred Lunch Time Slot">
       <div className="flex w-full flex-1 flex-col px-0">
@@ -52,13 +72,8 @@ const UpdatePreferenceSelection = () => {
           <div className="mb-4 border-t border-[#E0E0E0]"></div>
           <div className="flex flex-col gap-3">
             <button
-              type="submit"
-              onClick={() => {
-                toast({
-                  title: 'My Preferred Lunch Time Slot',
-                  description: 'Your lunch time slot has been updated successfully.'
-                });
-              }}
+              type="button"
+              onClick={handleUpdate}
               className="font-outfit h-11 w-full rounded-[8px] bg-[#38963B] text-center text-[16px] font-medium leading-[20px] text-white shadow-sm transition-colors hover:bg-[#388E3C]"
               disabled={!selected}
             >
