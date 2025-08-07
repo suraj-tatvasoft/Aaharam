@@ -154,6 +154,7 @@ body {
   height: 100%;
 }
 
-.recharts-layer.recharts-pie-sector path:focus-within {
+.recharts-layer.recharts-pie-sector path,
+.recharts-layer.recharts-pie {
   outline: none;
 }
