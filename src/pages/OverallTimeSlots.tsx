@@ -27,65 +27,67 @@ const OverallTimeSlots = () => {
   return (
     <PageLayout title="Overall Time Slots">
       <div className="flex flex-col items-center flex-1 p-4 w-full">
-        <div className="w-[360px] h-[360px] flex items-center justify-center mx-auto mb-8">
-          <PieChart width={360} height={360}>
-            <Pie
-              data={data}
-              dataKey="value"
-              nameKey="name"
-              innerRadius={120}
-              outerRadius={180}
-              label={({
-                cx,
-                cy,
-                midAngle,
-                innerRadius,
-                outerRadius,
-                index,
-              }) => {
-                const RADIAN = Math.PI / 180;
-                const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-                const x = cx + radius * Math.cos(-midAngle * RADIAN);
-                const y = cy + radius * Math.sin(-midAngle * RADIAN);
-                return (
-                  <g>
-                    <text
-                      x={x}
-                      y={y - 8}
-                      textAnchor="middle"
-                      dominantBaseline="central"
-                      fontSize="14"
-                      fontWeight="400"
-                      fill="#212121"
-                    >
-                      {`${data[index].value}%`}
-                    </text>
-                    <text
-                      x={x}
-                      y={y + 8}
-                      textAnchor="middle"
-                      dominantBaseline="central"
-                      fontSize="10"
-                      fontWeight="400"
-                      fill="#212121"
-                    >
-                      {data[index].time}
-                    </text>
-                  </g>
-                );
-              }}
-              labelLine={false}
-              activeShape={null}
-              stroke="none"
-            >
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-          </PieChart>
+        <div className="w-full p-2 aspect-square flex items-center justify-center mx-auto mb-8">
+          <ResponsiveContainer width={360} height={360}>
+            <PieChart>
+              <Pie
+                data={data}
+                dataKey="value"
+                nameKey="name"
+                innerRadius={90}
+                outerRadius={160}
+                label={({
+                  cx,
+                  cy,
+                  midAngle,
+                  innerRadius,
+                  outerRadius,
+                  index,
+                }) => {
+                  const RADIAN = Math.PI / 180;
+                  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+                  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                  return (
+                    <g>
+                      <text
+                        x={x}
+                        y={y - 8}
+                        textAnchor="middle"
+                        dominantBaseline="central"
+                        fontSize="14"
+                        fontWeight="400"
+                        fill="#212121"
+                      >
+                        {`${data[index].value}%`}
+                      </text>
+                      <text
+                        x={x}
+                        y={y + 8}
+                        textAnchor="middle"
+                        dominantBaseline="central"
+                        fontSize="10"
+                        fontWeight="400"
+                        fill="#212121"
+                      >
+                        {data[index].time}
+                      </text>
+                    </g>
+                  );
+                }}
+                labelLine={false}
+                activeShape={null}
+                stroke="none"
+              >
+                {data.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
         </div>
         <div className="grid grid-cols-2 gap-y-3 gap-x-8 w-[311px] mx-auto mb-2">
           {data.map((entry, index) => (
