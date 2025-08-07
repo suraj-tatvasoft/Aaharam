@@ -22,7 +22,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
           <div className="flex items-center gap-3">
             {/* User Avatar */}
             <div
-              className="border-1 h-[42px] w-[42px] flex-shrink-0 cursor-pointer overflow-hidden rounded-full border-[#E5EEE3] md:h-12 md:w-12"
+              className="border-1 h-[42px] w-[42px] flex-shrink-0 cursor-pointer overflow-hidden rounded-full border-[#E5EEE3]"
               onClick={() => navigate('/profile')}
             >
               <img
