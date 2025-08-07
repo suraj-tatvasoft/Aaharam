@@ -158,3 +158,12 @@ body {
 .recharts-layer.recharts-pie {
   outline: none;
 }
+
+.recharts-wrapper{
+  position: relative !important;
+  cursor: default !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 360px !important;
+  max-width: 360px !important;
+}
