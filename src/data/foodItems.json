@@ -18,7 +18,7 @@
     "id": "b3",
     "name": "Idli Sambhaar",
     "price": 40,
-    "image": "https://images.unsplash.com/photo-1707424963059-6a7a559cae28?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "image": "https://t4.ftcdn.net/jpg/04/39/31/29/240_F_439312935_lxOEQSqasYc5GeyHKgYJXWCIFm8gmQUN.jpg",
     "category": "breakfast",
     "description": "Not available in Jain"
   },
@@ -26,7 +26,7 @@
     "id": "b4",
     "name": "Khaman Dhokla",
     "price": 55,
-    "image": "https://plus.unsplash.com/premium_photo-1675798917853-11d04d997979?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "image": "https://t4.ftcdn.net/jpg/12/64/08/69/240_F_1264086991_7NJfBilVorYRiiyNjLVP4PXyI7tsFBDC.jpg",
     "category": "breakfast",
     "description": "Not available in Jain"
   },
@@ -42,7 +42,7 @@
     "id": "b6",
     "name": "Pancakes",
     "price": 60,
-    "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=400&h=300&fit=crop",
+    "image": "https://t3.ftcdn.net/jpg/02/48/37/02/240_F_248370257_DLEhszjnQ8bBwrLJWC4KDA2ivgRVTp3W.jpg",
     "category": "breakfast",
     "description": "Fluffy pancakes with maple syrup and butter"
   },
@@ -50,7 +50,7 @@
     "id": "b10",
     "name": "Oats Porridge",
     "price": 30,
-    "image": "https://www.shutterstock.com/shutterstock/photos/2064829592/display_1500/stock-photo-oatmeal-bowl-oat-porridge-with-banana-blueberry-walnut-chia-seeds-and-almond-milk-for-healthy-2064829592.jpg",
+    "image": "https://t3.ftcdn.net/jpg/02/79/21/24/240_F_279212470_hiJFqSmwZZnejrhlAzgAIwypGiSFZC17.jpg",
     "category": "breakfast",
     "description": "Healthy oats cooked with milk, topped with nuts"
   },
@@ -66,35 +66,35 @@
     "id": "l3",
     "name": "Butter Milk",
     "price": 10,
-    "image": "https://plus.unsplash.com/premium_photo-1694141252774-c937d97641da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmlyeWFuaXxlbnwwfHwwfHx8MA%3D%3D",
+    "image": "https://t3.ftcdn.net/jpg/04/94/26/98/240_F_494269829_Plv0Cdy4U0xTEObr0AdmNngquQmTg75v.jpg",
     "category": "lunch"
   },
   {
     "id": "l4",
     "name": "Butter Roti",
     "price": 10,
-    "image": "https://images.unsplash.com/photo-1615865417491-9941019fbc00?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRhbCUyMHJpY2V8ZW58MHx8MHx8fDA%3D",
+    "image": "https://img.freepik.com/free-photo/delicious-assortment-traditional-roti_23-2149033987.jpg?t=st=1754550331~exp=1754553931~hmac=47770ff415e939a6725c7999156a01a343a8678e087b44c9be832686162d4be5&w=1480",
     "category": "lunch"
   },
   {
     "id": "l5",
     "name": "Sabji",
     "price": 10,
-    "image": "https://t4.ftcdn.net/jpg/10/13/43/19/240_F_1013431972_fWPuctwLIIuus7zvNP5LVXa1taJDgp1r.jpg",
+    "image": "https://as2.ftcdn.net/v2/jpg/02/41/05/79/1000_F_241057989_XlOBf7rVsTPAOkNNiVBpT2IzXbTLJsxh.jpg",
     "category": "lunch"
   },
   {
     "id": "l6",
     "name": "Dal",
     "price": 10,
-    "image": "https://t3.ftcdn.net/jpg/16/20/42/36/360_F_1620423605_tV0QaXOlFL0rnIeEGiG6c7m5kez0fbtS.webp",
+    "image": "https://t3.ftcdn.net/jpg/13/18/73/60/240_F_1318736057_drUvzYuLWDuNsiDhCdXt3xOmDuBhQ0vx.jpg",
     "category": "lunch"
   },
   {
     "id": "l7",
     "name": "Rice",
     "price": 10,
-    "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFuZWVyJTIwbWFzYWxhfGVufDB8fDB8fHww",
+    "image": "https://t4.ftcdn.net/jpg/09/99/28/95/240_F_999289554_lbx5PVbQZigYDYJLBbUCmecsZcnylmv5.jpg",
     "category": "lunch"
   },
   {
@@ -198,7 +198,7 @@
     "id": "s1",
     "name": "Masala Puff",
     "price": 55,
-    "image": "https://images.unsplash.com/photo-1714799263291-272975db795a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGhva2xhfGVufDB8fDB8fHww",
+    "image": "https://t3.ftcdn.net/jpg/00/54/60/80/240_F_54608019_A2KwTv0JqTUZhTW1GQ4t1RNBNl2QAvfB.jpg",
     "category": "evening-snacks",
     "description": "Not available for 1 day",
     "available": false
@@ -207,7 +207,7 @@
     "id": "b8",
     "name": "Sandwich",
     "price": 55,
-    "image": "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=400&h=300&fit=crop",
+    "image": "https://t3.ftcdn.net/jpg/01/45/44/54/240_F_145445465_Ka0OYPvrhIRDMOAIiv3rLvyvgyPUd8Bn.jpg",
     "category": "evening-snacks",
     "description": "Grilled sandwich with fresh vegetables and cheese",
     "modifiers": [
@@ -243,7 +243,7 @@
     "id": "s6",
     "name": "Kachori",
     "price": 30,
-    "image": "https://images.unsplash.com/photo-1591465619339-60fce055bc82?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a2FjaG9yaXxlbnwwfHwwfHx8MA%3D%3D",
+    "image": "https://t4.ftcdn.net/jpg/16/00/16/55/240_F_1600165578_7k1r8TTMmJNNtXFcbxx5SPMrFUWRpOY7.jpg",
     "category": "evening-snacks",
     "description": "Deep-fried pastry with spiced lentil filling",
     "modifiers": [
@@ -401,7 +401,7 @@
     "id": "munch",
     "name": "Munch",
     "price": 10,
-    "image": "https://images.unsplash.com/photo-1598899134739-24c46f58b8e4?w=400&h=300&fit=crop",
+    "image": "https://www.jiomart.com/images/product/original/490804122/munch-nuts-chocolate-30-g-product-images-o490804122-p490804122-0-202303140521.jpg?im=Resize=(420,420)",
     "category": "sides",
     "sideTitle": "Sweets/Chocolates"
   },
@@ -409,7 +409,7 @@
     "id": "amul_dark_chocolate",
     "name": "Amul Dark Chocolate",
     "price": 10,
-    "image": "https://images.unsplash.com/photo-1628840042765-398550f16adf?w=400&h=300&fit=crop",
+    "image": "https://www.jiomart.com/images/product/original/490936920/amul-dark-chocolate-bar-150-g-product-images-o490936920-p490936920-0-202203151009.jpg?im=Resize=(1000,1000)",
     "category": "sides",
     "sideTitle": "Sweets/Chocolates"
   },
@@ -417,7 +417,7 @@
     "id": "kitkat",
     "name": "Kitkat",
     "price": 10,
-    "image": "https://images.unsplash.com/photo-1611565118474-6c2f4b64ccf5?w=400&h=300&fit=crop",
+    "image": "https://www.bbassets.com/media/uploads/p/l/40114578_22-nestle-kitkat-dessert-delight-tempting-truffle-wafer-coated-with-chocolate.jpg",
     "category": "sides",
     "sideTitle": "Sweets/Chocolates"
   },
@@ -425,7 +425,7 @@
     "id": "snickers_chocolate",
     "name": "Snickers Chocolate",
     "price": 10,
-    "image": "https://images.unsplash.com/photo-1615484477689-8e95825fd732?w=400&h=300&fit=crop",
+    "image": "https://m.media-amazon.com/images/S/aplus-media/sota/0f672c4d-6af3-4081-97f3-97626586989e._CR0,0,593,593_PT0_SX300__.png",
     "category": "sides",
     "sideTitle": "Sweets/Chocolates"
   }
