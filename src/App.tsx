@@ -1,6 +1,6 @@
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React from 'react';
 import MonthlyPassSummary from '@/pages/MonthlyPassSummary';
 import Navigation from './components/Navigation';
@@ -54,7 +54,7 @@ const App = () => (
         <Route path="/order-history/:id" element={<OrderHistoryDetail />} />
         <Route path="/order-detail" element={<OrderDetailPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   </TooltipProvider>
