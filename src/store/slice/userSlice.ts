@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IFoodItem } from '../../types/index';
 
 interface UserState {
   id: number;
@@ -8,6 +9,7 @@ interface UserState {
   passType?: string;
   passExpiry?: string;
   preferredLunchTime?: string;
+  favorites: IFoodItem[];
 }
 
 const initialState: UserState = {
@@ -18,6 +20,7 @@ const initialState: UserState = {
   passType: 'Regular Thali - Without Butter Milk',
   passExpiry: '31st July',
   preferredLunchTime: '',
+  favorites: [], // Now an array of FoodItem objects
 };
 
 const userSlice = createSlice({
@@ -33,8 +36,16 @@ const userSlice = createSlice({
     clearUser() {
       return initialState;
     },
+    addFavorite(state, action: PayloadAction<IFoodItem>) {
+      if (!state.favorites.some(item => item.id === action.payload.id)) {
+        state.favorites.push(action.payload);
+      }
+    },
+    removeFavorite(state, action: PayloadAction<string>) {
+      state.favorites = state.favorites.filter(item => item.id !== action.payload);
+    },
   },
 });
 
-export const { setUser, updateUser, clearUser } = userSlice.actions;
+export const { setUser, updateUser, clearUser, addFavorite, removeFavorite } = userSlice.actions;
 export default userSlice.reducer;

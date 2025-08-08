@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../store/slice/userSlice';
 import Container from '@/components/Container';
 import Header from '@/components/Header';
 import CategoryTabs from '@/components/CategoryTabs';
@@ -6,34 +8,12 @@ import PromoBar from '@/components/PromoBar';
 import FoodCard from '@/components/FoodCard';
 import SimpleSideItemCard from './SimpleSideItemCard';
 import MenuModal from '@/components/modals/MenuModal';
-import NotificationModal from '@/components/modals/NotificationModal';
 import CartModal from '@/components/modals/CartModal';
 import ModifierModal from '@/components/modals/ModifierModal';
 import FloatingCartButton from '@/components/FloatingCartButton';
 import { useToast } from '@/hooks/use-toast';
 import foodItemsData from '@/data/foodItems.json';
 import AccordionSides from './AccordionSides';
-// Import food images
-
-interface ModifierOption {
-  id: string;
-  name: string;
-  price: number;
-}
-
-interface FoodItem {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-  description?: string;
-  available?: boolean;
-  unavailableReason?: string;
-  availableFor?: string[]; // e.g., ['jain', 'regular']
-  modifiers?: ModifierOption[];
-  sideTitle?: string;
-}
 
 interface CartItem {
   id: string;
@@ -48,6 +28,7 @@ interface CartItem {
 }
 
 import { useRef, useEffect } from 'react';
+import { IFoodItem, IModifierOption } from '@/types';
 
 const FoodDelivery = () => {
   // Ref for the scrollable items container
@@ -62,13 +43,15 @@ const FoodDelivery = () => {
     name: string;
     price: number;
     image: string;
-    modifiers?: ModifierOption[];
+    modifiers?: IModifierOption[];
   } | null>(null);
   const [cart, setCart] = useState<{ [id: string]: CartItem }>({});
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const dispatch = useDispatch();
+  const reduxFavorites = useSelector((state: any) => state.user.favorites as IFoodItem[]);
+  const favoritesSet = new Set(reduxFavorites.map(item => item.id));
   const { toast } = useToast();
 
-  const foodItems: FoodItem[] = foodItemsData;
+  const foodItems: IFoodItem[] = foodItemsData;
 
   const filteredItems = foodItems.filter((item) => item.category === activeCategory);
 
@@ -166,22 +149,23 @@ const FoodDelivery = () => {
   };
 
   const handleToggleFavorite = (id: string) => {
-    const newFavorites = new Set(favorites);
-    if (newFavorites.has(id)) {
-      newFavorites.delete(id);
+    const item = foodItems.find(item => item.id === id);
+    if (!item) return;
+    if (favoritesSet.has(id)) {
+      dispatch(removeFavorite(id));
       toast({
         title: 'Removed from favorites',
-        description: 'Item removed from your favorites.'
+        description: `${item.name} removed from your favorites.`
       });
     } else {
-      newFavorites.add(id);
+      dispatch(addFavorite(item));
       toast({
         title: 'Added to favorites',
-        description: 'Item added to your favorites.'
+        description: `${item.name} added to your favorites.`
       });
     }
-    setFavorites(newFavorites);
   };
+
 
   // Smooth scroll to top on activeCategory change
   useEffect(() => {
@@ -210,7 +194,7 @@ const FoodDelivery = () => {
                     items={filteredItems}
                     onAddItem={handleAddItem}
                     onToggleFavorite={handleToggleFavorite}
-                    favorites={favorites}
+                    favorites={favoritesSet}
                     cart={cart}
                     onQuantityChange={handleQuantityChange}
                   />
@@ -229,7 +213,7 @@ const FoodDelivery = () => {
                           unavailableReason={item.unavailableReason}
                           onAdd={handleAddItem}
                           onToggleFavorite={handleToggleFavorite}
-                          isFavorite={favorites.has(item.id)}
+                          isFavorite={favoritesSet.has(item.id)}
                           quantity={cart[item.id]?.quantity || 0}
                           onQuantityChange={handleQuantityChange}
                         />
@@ -258,7 +242,7 @@ const FoodDelivery = () => {
                         unavailableReason={item.unavailableReason}
                         onAdd={handleAddItem}
                         onToggleFavorite={handleToggleFavorite}
-                        isFavorite={favorites.has(item.id)}
+                        isFavorite={favoritesSet.has(item.id)}
                         quantity={cart[item.id]?.quantity || 0}
                         onQuantityChange={handleQuantityChange}
                       />

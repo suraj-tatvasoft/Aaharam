@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../store/slice/userSlice';
+import { IFoodItem } from '../types';
 import PageLayout from '@/components/PageLayout';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
@@ -23,34 +26,34 @@ const FAVORITES = [
   { name: 'Sandwich', price: 55, image: 'https://t3.ftcdn.net/jpg/01/45/44/54/240_F_145445465_Ka0OYPvrhIRDMOAIiv3rLvyvgyPUd8Bn.jpg' }
 ];
 const Favorites: React.FC = () => {
-  const [favorites, setFavorites] = useState<Set<string>>(new Set(FAVORITES.map((f) => f.name)));
+  const dispatch = useDispatch();
+  const reduxFavorites = useSelector((state: any) => state.user.favorites as IFoodItem[]);
+  const favoritesSet = new Set(reduxFavorites.map(item => item.id));
   const { toast } = useToast();
 
-  const handleToggleFavorite = (name: string) => {
-    const newFavorites = new Set(favorites);
-    if (newFavorites.has(name)) {
-      newFavorites.delete(name);
+  const handleToggleFavorite = (item: IFoodItem) => {
+    if (favoritesSet.has(item.id)) {
+      dispatch(removeFavorite(item.id));
       toast({
         title: 'Removed from favorites',
-        description: `${name} removed from your favorites.`
+        description: `${item.name} removed from your favorites.`
       });
     } else {
-      newFavorites.add(name);
+      dispatch(addFavorite(item));
       toast({
         title: 'Added to favorites',
-        description: `${name} added to your favorites.`
+        description: `${item.name} added to your favorites.`
       });
     }
-    setFavorites(newFavorites);
   };
 
   return (
     <PageLayout title="My Favorites">
       <div className="scrollbar-hide mx-auto w-full flex-1 overflow-y-auto px-4 pb-4 pt-4">
-        {FAVORITES.length === 0 ? (
+        {reduxFavorites.length === 0 ? (
           <EmptyState />
         ) : (
-          FAVORITES.map((item, index) => (
+          reduxFavorites.map((item, index) => (
             <div key={index} className="mb-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm">
               <div className="flex h-[46px] w-[46px] items-center justify-center overflow-hidden rounded-[12px] bg-[#E9FFE4]">
                 <img src={item.image} alt={item.name} className="h-full w-full rounded-[12px] object-cover" />
@@ -65,10 +68,10 @@ const Favorites: React.FC = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => handleToggleFavorite(item.name)}
+                onClick={() => handleToggleFavorite(item)}
                 className="h-8 w-8 text-muted-foreground hover:bg-transparent hover:text-destructive md:h-10 md:w-10"
               >
-                <Heart className={`h-4 w-4 md:h-5 md:w-5 ${favorites.has(item.name) ? 'fill-destructive text-destructive' : ''}`} />
+                <Heart className={`h-4 w-4 md:h-5 md:w-5 ${favoritesSet.has(item.id) ? 'fill-destructive text-destructive' : ''}`} />
               </Button>
             </div>
           ))
