@@ -177,10 +177,10 @@ const FoodDelivery = () => {
   return (
     <Container>
       <div className="flex h-full max-h-full flex-col overflow-hidden bg-white">
-        <div className="flex h-full flex-1 bg-background">
-          <div className="flex flex-col overflow-hidden bg-background shadow-lg">
+        <div className="flex h-full flex-1 bg-background w-full">
+          <div className="flex flex-col overflow-hidden bg-background shadow-lg w-full">
             <Header onMenuClick={() => setIsMenuModalOpen(true)} />
-            <main className="flex flex-1 flex-col overflow-y-hidden">
+            <main className="flex flex-1 flex-col overflow-y-hidden w-full">
               <CategoryTabs activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
               <PromoBar />
               {/* Food Items List */}
