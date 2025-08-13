@@ -42,16 +42,16 @@ const Notifications: React.FC = () => {
           {notifications.map((n, i) => (
             <div
               key={i}
-              className="flex min-h-[89px] w-full flex-col items-center gap-2 rounded-[16px] bg-white px-4 py-4 shadow-[0_0_20px_0px_#F25D460D]"
+              className="flex min-h-[89px] w-full flex-col items-center gap-4 rounded-[16px] bg-white px-4 py-4 shadow-[0_0_20px_0px_#F25D460D]"
             >
-              <div className="flex w-full flex-col gap-1">
+              <div className="flex w-full flex-col gap-3">
                 <span className="font-outfit text-[16px] font-medium leading-[20px] text-[#212121]">{n.title}</span>
-                <span className="font-outfit text-[14px] font-normal leading-[18px] text-[#4D4D4D] truncate">{n.message}</span>
+                <span className="font-outfit truncate text-[14px] font-normal leading-[10px] text-[#4D4D4D]">{n.message}</span>
               </div>
-              
-              <div className="mt-2 flex w-full flex-row items-center gap-1">
+
+              <div className="flex w-full flex-row items-center gap-1">
                 {n.unread && <span className="inline-block h-[6px] w-[6px] rounded-full bg-[#FF8025]" />}
-                <span className="font-outfit text-[12px] font-light leading-[15px] text-[#494949]">{n.time}</span>
+                <span className="font-outfit text-[12px] font-light leading-[8px] text-[#494949]">{n.time}</span>
               </div>
             </div>
           ))}
