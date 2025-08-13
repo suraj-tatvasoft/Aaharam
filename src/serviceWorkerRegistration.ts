@@ -81,26 +81,32 @@ function registerValidSW(swUrl: string, config?: Config) {
 
 function checkValidServiceWorker(swUrl: string, config?: Config) {
   // Check if the service worker can be found. If it can't reload the page.
+
   fetch(swUrl, {
     headers: { 'Service-Worker': 'script' },
   })
     .then((response) => {
-      // Ensure service worker exists, and that we really are getting a JS file.
+      // Check if the service worker is valid
       const contentType = response.headers.get('content-type');
-      if (response.status === 404 || (contentType != null && contentType.indexOf('javascript') === -1)) {
-        // No service worker found. Probably a different app. Reload the page.
+      const isValidSW = response.status !== 404 && contentType !== null && contentType.includes('javascript');
+
+      if (!isValidSW) {
+        // Use the unregister function to clean up
+        unregister();
+      } else if (config && config.onSuccess) {
+        // If we have a valid service worker and a success callback, call it
         navigator.serviceWorker.ready.then((registration) => {
-          registration.unregister().then(() => {
-            window.location.reload();
-          });
+          config.onSuccess?.(registration);
+          registerValidSW(swUrl, config);
         });
       } else {
-        // Service worker found. Proceed as normal.
         registerValidSW(swUrl, config);
       }
     })
-    .catch(() => {
-      console.log('No internet connection found. App is running in offline mode.');
+    .catch((error) => {
+      console.error('Error during service worker check:', error);
+      // If there's an error, still try to register the service worker
+      registerValidSW(swUrl, config);
     });
 }
 
