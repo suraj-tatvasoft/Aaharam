@@ -19,8 +19,8 @@ export function Toaster() {
                 <div className="letter-spacing-[-1%] text-[16px] font-medium leading-[17px] tracking-[0] text-[#828382]">now</div>
               </div>
               <div className="">
-                {title && <div className="font-normal mb-1 text-[14px] leading-[17px] text-[#2d2c2c]">{title}</div>}
-                {description && <div className="font-normal truncate text-[14px] leading-[17px] text-[#2d2c2c]">{description}</div>}
+                {title && <div className="mb-1 text-[14px] font-normal leading-[17px] text-[#2d2c2c]">{title}</div>}
+                {description && <div className="truncate text-[14px] font-normal leading-[17px] text-[#2d2c2c]">{description}</div>}
               </div>
             </div>
           </Toast>

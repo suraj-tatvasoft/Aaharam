@@ -54,7 +54,7 @@ export const MenuItem: React.FC<MenuItemConfig> = ({ icon, label, iconBg, textCo
       </span>
       {label}
     </div>
-    <img src={profileAccordion} alt="Expand" className="w-[5px] h-[10px]" />
+    <img src={profileAccordion} alt="Expand" className="h-[10px] w-[5px]" />
   </button>
 );
 
