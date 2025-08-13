@@ -44,7 +44,7 @@ const UpdatePreferenceSelection = () => {
         <div className="flex-grow-1 mb-[132px] flex flex-1 flex-col gap-[22px] rounded-br-[22px] bg-[#F7F7F7] p-4">
           <div className="flex-none text-[16px] font-medium leading-[11px] text-[#212121]">Select Your Time Slot</div>
 
-          <form className="scrollbar-hide flex flex-1 flex-col gap-[22px] overflow-y-auto mb-4" onSubmit={(e) => e.preventDefault()}>
+          <form className="scrollbar-hide mb-4 flex flex-1 flex-col gap-[22px] overflow-y-auto" onSubmit={(e) => e.preventDefault()}>
             {TIME_SLOTS.map((slot) => (
               <label key={slot} className="flex cursor-pointer items-center justify-between">
                 <span className="text-[14px] font-light leading-[10px] text-[#212121]">{slot}</span>
