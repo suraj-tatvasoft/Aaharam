@@ -10,7 +10,7 @@ const RulesAndRegulations = () => {
             <CardTitle className="text-[16px] font-medium leading-[11px] tracking-[0] text-[#212121]">Key Rules</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0 text-[#4D4D4D]">
-            <ul className="font-regular list-disc space-y-2 pl-4 text-[14px] leading-[20px]">
+            <ul className="font-normal list-disc space-y-2 pl-4 text-[14px] leading-[20px]">
               <li>Place your order within the specified time slots.</li>
               <li>Meal passes are valid only for regular menu items.</li>
               <li>Collect your order promptly once notified.</li>
@@ -23,7 +23,7 @@ const RulesAndRegulations = () => {
             <CardTitle className="text-[16px] font-medium leading-[11px] tracking-[0] text-[#212121]">Usage Guidelines</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <div className="font-regular space-y-2 text-[14px] leading-[22px] text-[#4D4D4D]">
+            <div className="font-normal space-y-2 text-[14px] leading-[22px] text-[#4D4D4D]">
               <p>
                 Please use the app responsibly and respect the meal timings. Each meal pass is meant for individual use only and cannot be transferred
                 or shared. In case of any issues with your order or if you need assistance, please contact our support team through the app or email
@@ -39,7 +39,7 @@ const RulesAndRegulations = () => {
             <CardTitle className="text-[16px] font-medium leading-[11px] tracking-[0] text-[#212121]">Contact & Support</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <div className="font-regular space-y-2 text-[14px] leading-[22px] text-[#4D4D4D]">
+            <div className="font-normal space-y-2 text-[14px] leading-[22px] text-[#4D4D4D]">
               <p>
                 We value respectful interaction between all users and our support team. If you have any concerns or need assistance, please raise them
                 through the app's support section. Our team is available to help you from 9:00 AM to 10:00 PM every day.

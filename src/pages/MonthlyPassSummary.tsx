@@ -22,7 +22,7 @@ const MonthlyPassSummary: React.FC = () => {
           <button
             className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white"
             style={{ backgroundColor: '#EEFFED' }}
-            onClick={() => navigate('/')}
+            onClick={() => navigate(-1)}
             aria-label="Back"
           >
             <img src={backArrow} alt="Back" className="h-4 w-4" />
