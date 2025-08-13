@@ -31,7 +31,7 @@ const Favorites: React.FC = () => {
 
   return (
     <PageLayout title="My Favorites">
-      <div className="scrollbar-hide mx-auto w-full flex-1 space-y-4 overflow-y-auto p-4">
+      <div className="scrollbar-hide mx-auto h-full w-full flex-1 space-y-4 overflow-y-auto p-4">
         {reduxFavorites.length === 0 ? (
           <EmptyState />
         ) : (

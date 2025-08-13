@@ -12,13 +12,10 @@ const FoodPantryHours = () => {
     <PageLayout title="Food Pantry Hours">
       <div className="flex w-full flex-1 flex-col items-center p-4">
         <div className="flex w-full flex-col items-center gap-4">
-          {PANTRY_HOURS.map((item) => (
-            <div
-              key={item.label}
-              className="flex w-full flex-row items-center justify-between gap-2 rounded-[16px] bg-white px-4 py-[14px] shadow-sm"
-            >
-              <span className="font-outfit text-[14px] font-normal leading-[18px] text-[#212121]">{item.label}</span>
-              <span className="font-outfit text-right text-[14px] font-normal leading-[18px] text-[#212121]">{item.time}</span>
+          {PANTRY_HOURS.map((item, index) => (
+            <div key={index} className="flex w-full flex-row items-center justify-between gap-2 rounded-[16px] bg-white p-[14px]">
+              <span className="text-[14px] font-normal leading-[18px] text-[#212121]">{item.label}</span>
+              <span className="text-right text-[14px] font-normal leading-[18px] text-[#212121]">{item.time}</span>
             </div>
           ))}
         </div>
