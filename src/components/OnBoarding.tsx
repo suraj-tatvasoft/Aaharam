@@ -15,20 +15,20 @@ const onboardingSteps = [
     heading: ['Order', 'what you', 'love most'],
     illustration: chefIllustration,
     alt: 'Chef holding a dish',
-    description: 'Explore morning snacks, lunch, and evening meals— all in one easy-to-use menu.'
+    description: 'Explore morning snacks, lunch, and evening meals— all in one easy-to-use menu.',
   },
   {
     heading: ['Get your', 'token and', 'skip the wait'],
     illustration: onboarding2,
     alt: 'Boy with token kiosk',
-    description: 'Place your order, pay online, and pick up when your token is ready—no chaos, no confusion.'
+    description: 'Place your order, pay online, and pick up when your token is ready—no chaos, no confusion.',
   },
   {
     heading: ['Track,', 'reorder,', 'save time'],
     illustration: onboarding3,
     alt: 'Burger order history',
-    description: 'Access your order history, repeat meals, and download receipts right from your phone.'
-  }
+    description: 'Access your order history, repeat meals, and download receipts right from your phone.',
+  },
 ];
 
 const OnBoarding: React.FC = () => {

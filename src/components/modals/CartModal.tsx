@@ -80,7 +80,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
                   display: 'flex',
                   alignItems: 'center',
                   gap: 6,
-                  opacity: 1
+                  opacity: 1,
                 }}
               >
                 <button
@@ -94,7 +94,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                   }}
                   onClick={() => onQuantityChange(item.id, item.quantity - 1)}
                   disabled={item.quantity === 1}
@@ -113,7 +113,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                   }}
                   onClick={() => onQuantityChange(item.id, item.quantity + 1)}
                 >
@@ -161,7 +161,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
                 tokenNumber,
                 date: date.replace(',', ''),
                 time,
-                items: cartItems
+                items: cartItems,
               });
               onClearCart();
               onClose();

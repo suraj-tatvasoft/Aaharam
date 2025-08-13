@@ -11,7 +11,7 @@ const Progress = React.forwardRef<React.ElementRef<typeof ProgressPrimitive.Root
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />
     </ProgressPrimitive.Root>
-  )
+  ),
 );
 Progress.displayName = ProgressPrimitive.Root.displayName;
 

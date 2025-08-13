@@ -6,32 +6,32 @@ const notifications = [
     title: 'Your Bulk Pass is Activated',
     message: 'Enjoy daily meals without any hassle!',
     time: '20 min ago',
-    unread: true
+    unread: true,
   },
   {
     title: 'Your Token #5629 is Ready',
     message: "It's your turn—please collect your meal.",
     time: '12h ago',
-    unread: false
+    unread: false,
   },
   {
     title: 'Feedback Acknowledged',
     message: 'Your feedback has been acknowledged.',
     time: '12h ago',
-    unread: false
+    unread: false,
   },
   {
     title: 'Bulk Pass Expired',
     message: 'Your meal access has ended. Renew now to conti...',
     time: '16h ago',
-    unread: false
+    unread: false,
   },
   {
     title: 'Your Bulk Pass is Expiring Soon',
     message: 'Renew now to continue enjoying seamless access...',
     time: '16h ago',
-    unread: false
-  }
+    unread: false,
+  },
 ];
 
 const Notifications: React.FC = () => {

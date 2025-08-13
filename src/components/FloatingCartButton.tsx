@@ -27,7 +27,7 @@ const FloatingCartButton: React.FC<FloatingCartButtonProps> = ({ count, onClick 
         position: 'fixed',
         bottom: 32,
         left: '50%',
-        transform: 'translateX(-50%)'
+        transform: 'translateX(-50%)',
       }}
       onClick={onClick}
     >
@@ -43,7 +43,7 @@ const FloatingCartButton: React.FC<FloatingCartButtonProps> = ({ count, onClick 
           width: 36,
           height: 36,
           borderRadius: '50%',
-          background: '#1A932E'
+          background: '#1A932E',
         }}
       >
         <img src={cartIcon} alt="Cart" style={{ width: 20, height: 20 }} />

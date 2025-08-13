@@ -9,7 +9,7 @@ const TABS = [
   { label: 'Completed', count: 78 },
   { label: 'Rejected', count: 4 },
   { label: 'No Show', count: 3 },
-  { label: 'Cancelled', count: 1 }
+  { label: 'Cancelled', count: 1 },
 ];
 
 export const ORDERS = [
@@ -28,7 +28,7 @@ export const ORDERS = [
   { id: 27213, amount: 110, date: '18th Apr 25', status: 'Completed' },
   { id: 27214, amount: 110, date: '18th Apr 25', status: 'Completed' },
   // { id: 27215, amount: 110, date: '18th Apr 25', status: 'No Show' },
-  { id: 27216, amount: 110, date: '18th Apr 25', status: 'Rejected' }
+  { id: 27216, amount: 110, date: '18th Apr 25', status: 'Rejected' },
 ];
 
 const OrderHistory: React.FC = () => {
@@ -41,7 +41,7 @@ const OrderHistory: React.FC = () => {
       tabRefs.current[activeTab]?.scrollIntoView({
         behavior: 'smooth',
         inline: 'center',
-        block: 'nearest'
+        block: 'nearest',
       });
     }
   }, [activeTab]);
@@ -89,7 +89,7 @@ const OrderHistory: React.FC = () => {
               Completed: <CheckCircle2 className="mb-2 h-12 w-12 text-green-400" />,
               Rejected: <XCircle className="mb-2 h-12 w-12 text-red-400" />,
               'No Show': <EyeOff className="mb-2 h-12 w-12 text-gray-400" />,
-              Cancelled: <Ban className="mb-2 h-12 w-12 text-yellow-400" />
+              Cancelled: <Ban className="mb-2 h-12 w-12 text-yellow-400" />,
             };
             if (filteredOrders.length === 0) {
               return (

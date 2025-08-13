@@ -9,7 +9,7 @@ const data = [
   { name: '02:00 PM', value: 9, time: '02:00' },
   { name: '02:30 PM', value: 11, time: '02:30' },
   { name: '03:00 PM', value: 8, time: '03:00' },
-  { name: '03:30 PM', value: 6, time: '03:30' }
+  { name: '03:30 PM', value: 6, time: '03:30' },
 ];
 
 const COLORS = [
@@ -20,7 +20,7 @@ const COLORS = [
   '#D58ED7', // 02:00 PM
   '#FEA9A6', // 02:30 PM
   '#FDD35B', // 03:00 PM
-  '#BB9A6F' // 03:30 PM
+  '#BB9A6F', // 03:30 PM
 ];
 
 const OverallTimeSlots = () => {

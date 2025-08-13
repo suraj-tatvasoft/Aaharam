@@ -42,8 +42,8 @@ const MENU_ITEMS: MenuItemConfig[] = [
     label: 'Logout',
     color: 'bg-[#FFF2F2]',
     iconBg: 'bg-[#FFD6D6]',
-    textColor: 'text-red-500'
-  }
+    textColor: 'text-red-500',
+  },
 ];
 
 // --- Components ---
@@ -142,7 +142,7 @@ const Profile = () => {
               'Food Pantry Hours': '/food-pantry-hours',
               'Feedback / Suggestions': '/feedback',
               'Rules & Regulations': '/rules-and-regulations',
-              'My Preferred Lunch Time Slot': '/update-preference-selection'
+              'My Preferred Lunch Time Slot': '/update-preference-selection',
               // Add more mappings here as needed
             };
             const handleClick = navigationMap[item.label] ? () => navigate(navigationMap[item.label]) : () => handleLogoutClick(item.label);

@@ -11,8 +11,6 @@ export interface IBulkPassMenu {
   };
 }
 
-
-
 export interface IModifierOption {
   id: string;
   name: string;

@@ -11,26 +11,26 @@ const categories = [
     id: 'breakfast',
     name: 'Breakfast',
     icon: breakfastIcon,
-    description: 'Delicious morning options'
+    description: 'Delicious morning options',
   },
   {
     id: 'lunch',
     name: 'Lunch',
     icon: lunchIcon,
-    description: 'Hearty midday meals'
+    description: 'Hearty midday meals',
   },
   {
     id: 'evening-snacks',
     name: 'Evening Snacks',
     icon: eveningSnacksIcon,
-    description: 'Light bites for evening'
+    description: 'Light bites for evening',
   },
   {
     id: 'sides',
     name: 'Sides',
     icon: sidesIcon,
-    description: 'Perfect accompaniments'
-  }
+    description: 'Perfect accompaniments',
+  },
 ];
 
 interface CategoryTabsProps {
@@ -53,7 +53,7 @@ const CategoryTabs = ({ activeCategory, onCategoryChange }: CategoryTabsProps) =
                     'flex min-w-0 flex-1 flex-col items-center gap-1 px-2 py-2 transition-all',
                     activeCategory === category.id
                       ? 'border-b-2 border-green-500 text-primary'
-                      : 'border-b-2 border-transparent text-muted-foreground'
+                      : 'border-b-2 border-transparent text-muted-foreground',
                   )}
                 >
                   <img src={category.icon} alt={category.name + ' icon'} className="object-contain" />

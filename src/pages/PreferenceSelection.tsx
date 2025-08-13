@@ -13,7 +13,7 @@ const TIME_SLOTS = [
   '01:30 PM - 02:00 PM',
   '02:00 PM - 02:30 PM',
   '02:30 PM - 03:00 PM',
-  '03:00 PM - 03:30 PM'
+  '03:00 PM - 03:30 PM',
 ];
 
 const PreferenceSelection = () => {

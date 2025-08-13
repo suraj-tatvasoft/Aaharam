@@ -29,7 +29,7 @@ const BulkPass: React.FC = () => {
           </button>
 
           <div className="flex items-center gap-3">
-            <div className="h-[42px] w-[42px] flex-shrink-0 overflow-hidden rounded-full ">
+            <div className="h-[42px] w-[42px] flex-shrink-0 overflow-hidden rounded-full">
               <img
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
                 alt="User profile"
@@ -91,10 +91,7 @@ const BulkPass: React.FC = () => {
           {BulkPassMenu.map((item, idx) => {
             const isSelected = selectedIdx === idx;
             return (
-              <div
-                key={idx}
-                className={`border-radius-[16px] mb-4 flex rounded-xl bg-white p-1 shadow-[0px_0px_20px_0px_#F25D460D]`}
-              >
+              <div key={idx} className={`border-radius-[16px] mb-4 flex rounded-xl bg-white p-1 shadow-[0px_0px_20px_0px_#F25D460D]`}>
                 <img src={item.image} alt={item.title} className="border-radius-[12px] h-[112px] w-[112px] rounded-md object-cover" />
                 <div className="flex flex-1 flex-col justify-between p-[10px]">
                   <div>
@@ -157,7 +154,7 @@ const BulkPass: React.FC = () => {
                       </span>
                     </div>
                     <button
-                      className={`flex items-center justify-center ${isSelected ? 'bg-[#E9FFE4] border-green-600 text-green-700' : ''}`}
+                      className={`flex items-center justify-center ${isSelected ? 'border-green-600 bg-[#E9FFE4] text-green-700' : ''}`}
                       style={{
                         width: '70px',
                         height: '32px',
@@ -228,9 +225,7 @@ const BulkPass: React.FC = () => {
           }}
           disabled={selectedIdx === null}
         >
-          {selectedIdx === null
-            ? 'Buy Monthly Pass'
-            : `Buy Monthly Pass - ₹${BulkPassMenu[selectedIdx].price.discounted}`}
+          {selectedIdx === null ? 'Buy Monthly Pass' : `Buy Monthly Pass - ₹${BulkPassMenu[selectedIdx].price.discounted}`}
         </button>
       </div>
 

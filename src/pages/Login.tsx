@@ -13,14 +13,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const LoginSchema = Yup.object().shape({
-  username: Yup.string()
-    .trim('No leading or trailing spaces allowed')
-    .strict(true)
-    .required('Username is required'),
-  password: Yup.string()
-    .trim('No leading or trailing spaces allowed')
-    .strict(true)
-    .required('Password is required'),
+  username: Yup.string().trim('No leading or trailing spaces allowed').strict(true).required('Username is required'),
+  password: Yup.string().trim('No leading or trailing spaces allowed').strict(true).required('Password is required'),
 });
 
 const Login = () => {
@@ -70,7 +64,7 @@ const Login = () => {
                     autoComplete="username"
                   />
                   <ErrorMessage name="username" className="mt-1 text-xs text-red-500">
-                    {msg => <div className="mt-1 text-xs text-red-500">{msg}</div>}
+                    {(msg) => <div className="mt-1 text-xs text-red-500">{msg}</div>}
                   </ErrorMessage>
                 </div>
                 {/* Password */}
@@ -100,14 +94,14 @@ const Login = () => {
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </Button>
                   </div>
-                  <ErrorMessage name="password">
-                    {msg => <div className="mt-1 text-xs text-red-500">{msg}</div>}
-                  </ErrorMessage>
+                  <ErrorMessage name="password">{(msg) => <div className="mt-1 text-xs text-red-500">{msg}</div>}</ErrorMessage>
                 </div>
                 {/* Remember Me */}
                 <div className="mb-2 flex items-center">
                   <Checkbox id="remember" checked={rememberMe} onCheckedChange={(checked) => setRememberMe(checked as boolean)} />
-                  <Label htmlFor="remember" className="ml-2 text-sm text-[#212121]">Remember Me</Label>
+                  <Label htmlFor="remember" className="ml-2 text-sm text-[#212121]">
+                    Remember Me
+                  </Label>
                 </div>
                 {/* Login Button */}
                 <Button type="submit" className="h-11 w-full bg-foreground text-lg font-medium text-background hover:bg-foreground/90" size="lg">

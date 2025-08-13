@@ -48,7 +48,7 @@ const FoodDelivery = () => {
   const [cart, setCart] = useState<{ [id: string]: CartItem }>({});
   const dispatch = useDispatch();
   const reduxFavorites = useSelector((state: any) => state.user.favorites as IFoodItem[]);
-  const favoritesSet = new Set(reduxFavorites.map(item => item.id));
+  const favoritesSet = new Set(reduxFavorites.map((item) => item.id));
   const { toast } = useToast();
 
   const foodItems: IFoodItem[] = foodItemsData;
@@ -65,7 +65,7 @@ const FoodDelivery = () => {
       toast({
         title: 'Not available',
         description: item.unavailableReason || 'This item is currently unavailable.',
-        variant: 'destructive'
+        variant: 'destructive',
       });
       return;
     }
@@ -102,8 +102,8 @@ const FoodDelivery = () => {
             ...existingItem,
             quantity: existingItem.quantity + 1,
             // Keep existing modifiers or use new ones if provided
-            modifiers: modifiers || existingItem.modifiers
-          }
+            modifiers: modifiers || existingItem.modifiers,
+          },
         };
       }
 
@@ -116,14 +116,14 @@ const FoodDelivery = () => {
           price,
           image,
           quantity: 1,
-          modifiers
-        }
+          modifiers,
+        },
       };
     });
 
     toast({
       title: 'Added to cart',
-      description: `${name} has been added to your cart.`
+      description: `${name} has been added to your cart.`,
     });
   };
 
@@ -149,23 +149,22 @@ const FoodDelivery = () => {
   };
 
   const handleToggleFavorite = (id: string) => {
-    const item = foodItems.find(item => item.id === id);
+    const item = foodItems.find((item) => item.id === id);
     if (!item) return;
     if (favoritesSet.has(id)) {
       dispatch(removeFavorite(id));
       toast({
         title: 'Removed from favorites',
-        description: `${item.name} removed from your favorites.`
+        description: `${item.name} removed from your favorites.`,
       });
     } else {
       dispatch(addFavorite(item));
       toast({
         title: 'Added to favorites',
-        description: `${item.name} added to your favorites.`
+        description: `${item.name} added to your favorites.`,
       });
     }
   };
-
 
   // Smooth scroll to top on activeCategory change
   useEffect(() => {
@@ -177,17 +176,14 @@ const FoodDelivery = () => {
   return (
     <Container>
       <div className="flex h-full max-h-full flex-col overflow-hidden bg-white">
-        <div className="flex h-full flex-1 bg-background w-full">
-          <div className="flex flex-col overflow-hidden bg-background shadow-lg w-full">
+        <div className="flex h-full w-full flex-1 bg-background">
+          <div className="flex w-full flex-col overflow-hidden bg-background shadow-lg">
             <Header onMenuClick={() => setIsMenuModalOpen(true)} />
-            <main className="flex flex-1 flex-col overflow-y-hidden w-full">
+            <main className="flex w-full flex-1 flex-col overflow-y-hidden">
               <CategoryTabs activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
               <PromoBar />
               {/* Food Items List */}
-              <div
-                ref={itemsContainerRef}
-                className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7] p-4"
-              >
+              <div ref={itemsContainerRef} className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7] p-4">
                 {/* Accordion UI for Sides */}
                 {activeCategory === 'sides' ? (
                   <AccordionSides
@@ -246,7 +242,7 @@ const FoodDelivery = () => {
                         quantity={cart[item.id]?.quantity || 0}
                         onQuantityChange={handleQuantityChange}
                       />
-                    )
+                    ),
                   )
                 )}
               </div>
