@@ -45,31 +45,13 @@ const FoodCard = ({
           <div className="flex justify-between">
             <div className="min-w-0 flex-1">
               <h3
-                className="line-clamp-1"
-                style={{
-                  fontFamily: 'Outfit',
-                  fontWeight: 500,
-                  fontStyle: 'normal',
-                  fontSize: 16,
-                  lineHeight: '100%',
-                  letterSpacing: 0,
-                  color: 'var(--card-foreground)',
-                }}
+                className="line-clamp-1 font-outfit font-normal text-[16px] leading-none tracking-normal text-[#212121]"
               >
                 {name}
               </h3>
               {description && (
                 <p
-                  className="mt-2 line-clamp-2"
-                  style={{
-                    fontFamily: 'Outfit',
-                    fontWeight: 300,
-                    fontStyle: 'normal',
-                    fontSize: 12,
-                    lineHeight: '100%',
-                    letterSpacing: 0,
-                    color: '#797979',
-                  }}
+                  className="mt-3 line-clamp-2 font-outfit font-light text-[12px] leading-none tracking-normal text-[#797979]"
                 >
                   {description}
                 </p>
@@ -79,9 +61,9 @@ const FoodCard = ({
             <button
               type="button"
               onClick={() => onToggleFavorite(id)}
-              className="z-10 flex h-[22px] w-[22px] items-center justify-center p-0 text-muted-foreground hover:bg-transparent hover:text-destructive"
+              className="z-10 flex h-[18px] w-[18px] items-center justify-center p-0 text-muted-foreground hover:bg-transparent hover:text-destructive"
             >
-              <Heart width={22} height={22} className={`${isFavorite ? 'fill-destructive text-destructive' : ''}`} />
+              <Heart width={18} height={18} className={`${isFavorite ? 'fill-destructive text-destructive' : ''}`} />
             </button>
           </div>
           {/* Price and Add button row */}
@@ -151,24 +133,7 @@ const FoodCard = ({
               </div>
             ) : (
               <button
-                style={{
-                  minWidth: 56,
-                  minHeight: 32,
-                  borderRadius: 12,
-                  background: '#fff',
-                  color: available ? '#38963B' : '#A3A3A3',
-                  fontWeight: 500,
-                  fontSize: 16,
-                  border: available ? '1px solid #38963B' : '1px solid #A3A3A3',
-                  padding: '0 20px',
-                  cursor: available ? 'pointer' : 'not-allowed',
-                  transition: 'background 0.2s',
-                  opacity: available ? 1 : 0.5,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: 'none',
-                }}
+                className={`min-w-[50px] min-h-[30px] rounded-lg bg-white font-medium text-sm flex items-center justify-center transition-all duration-200 ${available ? 'text-[#38963B] border border-[#38963B] cursor-pointer' : 'text-[#A3A3A3] border border-[#A3A3A3] cursor-not-allowed opacity-50'}`}
                 onMouseOver={(e) => {
                   if (available) e.currentTarget.style.background = '#E9FFE5';
                 }}

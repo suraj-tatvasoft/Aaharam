@@ -50,14 +50,14 @@ const CategoryTabs = ({ activeCategory, onCategoryChange }: CategoryTabsProps) =
                 <button
                   onClick={() => onCategoryChange(category.id)}
                   className={cn(
-                    'flex min-w-0 flex-1 flex-col items-center gap-1 px-2 py-2 transition-all',
+                    'flex min-w-0 flex-1 flex-col items-center gap-1 px-2 pt-2 pb-4 transition-all text-[#212121]',
                     activeCategory === category.id
-                      ? 'border-b-2 border-green-500 text-primary'
-                      : 'border-b-2 border-transparent text-muted-foreground',
+                      ? 'border-b-2 border-[#38963B] font-medium'
+                      : 'border-b-2 border-transparent font-normal',
                   )}
                 >
                   <img src={category.icon} alt={category.name + ' icon'} className="object-contain" />
-                  <span className="truncate text-xs font-medium md:text-sm">{category.name}</span>
+                  <span className="truncate text-[14px] md:text-sm">{category.name}</span>
                 </button>
               </TooltipTrigger>
               <TooltipContent>

@@ -18,7 +18,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
   return (
     <>
       <TooltipProvider>
-        <header className="bg-white p-4">
+        <header className="bg-white px-4 pb-2 pt-4">
           <div className="flex items-center gap-[6px]">
             {/* User Avatar */}
             <div
