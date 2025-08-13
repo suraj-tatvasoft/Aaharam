@@ -42,7 +42,7 @@ const Notifications: React.FC = () => {
           {notifications.map((n, i) => (
             <div
               key={i}
-              className="flex min-h-[89px] w-full flex-col items-center gap-2 rounded-[16px] bg-white px-4 py-4 shadow-[0_0_20px_rgba(242,93,70,0.05)]"
+              className="flex min-h-[89px] w-full flex-col items-center gap-2 rounded-[16px] bg-white px-4 py-4 shadow-[0_0_20px_0px_#F25D460D]"
             >
               <div className="flex w-full flex-col gap-1">
                 <span className="font-outfit text-[16px] font-medium leading-[20px] text-[#212121]">{n.title}</span>
