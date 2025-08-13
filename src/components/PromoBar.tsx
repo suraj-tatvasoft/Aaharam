@@ -11,11 +11,7 @@ const PromoBar = () => {
 
   return (
     <div className="flex h-8 items-center justify-between px-4" style={{ backgroundColor: '#ADE2A5' }}>
-      <div
-        className="flex cursor-pointer items-center gap-2"
-        role="button"
-        tabIndex={0}
-      >
+      <div className="flex cursor-pointer items-center gap-2" role="button" tabIndex={0}>
         <span className="text-xs font-normal text-[#212121]">Buy Bulk Meal Pass on Discounted Rates</span>
         <ArrowRight className="h-4 w-4 text-[#212121]" />
       </div>

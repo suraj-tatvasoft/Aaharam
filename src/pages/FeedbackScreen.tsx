@@ -14,14 +14,14 @@ const FeedbackScreen = () => {
 
   const user = {
     name: 'Dhiren Devganiya',
-    avatar: 'https://randomuser.me/api/portraits/men/32.jpg'
+    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const files = Array.from(e.target.files).map((file) => ({
         file,
-        preview: URL.createObjectURL(file)
+        preview: URL.createObjectURL(file),
       }));
       setSelectedFiles((prev) => [...prev, ...files]);
     }
@@ -41,7 +41,7 @@ const FeedbackScreen = () => {
       toast({
         title: 'Error',
         description: 'Please enter your feedback before submitting.',
-        variant: 'destructive'
+        variant: 'destructive',
       });
       return;
     }
@@ -60,13 +60,13 @@ const FeedbackScreen = () => {
       // Show success toast
       toast({
         title: 'Feedback Submitted',
-        description: "Thank you for your feedback! We've received it successfully."
+        description: "Thank you for your feedback! We've received it successfully.",
       });
     } catch (error) {
       toast({
         title: 'Error',
         description: 'Failed to submit feedback. Please try again.',
-        variant: 'destructive'
+        variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);

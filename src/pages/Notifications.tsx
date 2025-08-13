@@ -6,32 +6,32 @@ const notifications = [
     title: 'Your Bulk Pass is Activated',
     message: 'Enjoy daily meals without any hassle!',
     time: '20 min ago',
-    unread: true
+    unread: true,
   },
   {
     title: 'Your Token #5629 is Ready',
     message: "It's your turn—please collect your meal.",
     time: '12h ago',
-    unread: false
+    unread: false,
   },
   {
     title: 'Feedback Acknowledged',
     message: 'Your feedback has been acknowledged.',
     time: '12h ago',
-    unread: false
+    unread: false,
   },
   {
     title: 'Bulk Pass Expired',
     message: 'Your meal access has ended. Renew now to conti...',
     time: '16h ago',
-    unread: false
+    unread: false,
   },
   {
     title: 'Your Bulk Pass is Expiring Soon',
     message: 'Renew now to continue enjoying seamless access...',
     time: '16h ago',
-    unread: false
-  }
+    unread: false,
+  },
 ];
 
 const Notifications: React.FC = () => {
@@ -42,7 +42,7 @@ const Notifications: React.FC = () => {
           {notifications.map((n, i) => (
             <div
               key={i}
-              className="flex min-h-[89px] w-full flex-col items-center gap-2 rounded-[16px] bg-white px-4 py-4 shadow-[0_0_20px_rgba(242,93,70,0.05)]"
+              className="flex min-h-[89px] w-full flex-col items-center gap-2 rounded-[16px] bg-white px-4 py-4 shadow-[0_0_20px_0px_#F25D460D]"
             >
               <div className="flex w-full flex-col gap-1">
                 <span className="font-outfit text-[16px] font-medium leading-[20px] text-[#212121]">{n.title}</span>

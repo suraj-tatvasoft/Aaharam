@@ -29,7 +29,7 @@ const FoodCard = ({
   onToggleFavorite,
   isFavorite = false,
   quantity = 0,
-  onQuantityChange
+  onQuantityChange,
 }: FoodCardProps) => {
   return (
     <Card
@@ -53,7 +53,7 @@ const FoodCard = ({
                   fontSize: 16,
                   lineHeight: '100%',
                   letterSpacing: 0,
-                  color: 'var(--card-foreground)'
+                  color: 'var(--card-foreground)',
                 }}
               >
                 {name}
@@ -68,7 +68,7 @@ const FoodCard = ({
                     fontSize: 12,
                     lineHeight: '100%',
                     letterSpacing: 0,
-                    color: '#797979'
+                    color: '#797979',
                   }}
                 >
                   {description}
@@ -94,7 +94,7 @@ const FoodCard = ({
                 fontSize: 14,
                 lineHeight: '100%',
                 letterSpacing: 0,
-                color: 'var(--card-foreground)'
+                color: 'var(--card-foreground)',
               }}
             >
               ₹{price}
@@ -110,7 +110,7 @@ const FoodCard = ({
                   display: 'flex',
                   alignItems: 'center',
                   gap: 6,
-                  opacity: 1
+                  opacity: 1,
                 }}
               >
                 <button
@@ -124,7 +124,7 @@ const FoodCard = ({
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                   }}
                   onClick={() => onQuantityChange(id, quantity - 1)}
                 >
@@ -142,7 +142,7 @@ const FoodCard = ({
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                   }}
                   onClick={() => onQuantityChange(id, quantity + 1)}
                 >
@@ -167,7 +167,7 @@ const FoodCard = ({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: 'none'
+                  boxShadow: 'none',
                 }}
                 onMouseOver={(e) => {
                   if (available) e.currentTarget.style.background = '#E9FFE5';

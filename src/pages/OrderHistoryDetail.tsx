@@ -13,20 +13,20 @@ const MOCK_DETAILS = {
       name: 'Vada pav',
       qty: 2,
       image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=64&q=80',
-      details: ['Butter', 'Less Spicy']
+      details: ['Butter', 'Less Spicy'],
     },
     {
       name: 'Veg. Sandwich',
       qty: 2,
       image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=64&q=80',
-      details: ['Grilled']
-    }
+      details: ['Grilled'],
+    },
   ],
   bill: [
     { name: 'Masala Tea', amount: 30 },
-    { name: 'Poha', amount: 80 }
+    { name: 'Poha', amount: 80 },
   ],
-  total: 110
+  total: 110,
 };
 
 const OrderHistoryDetail: React.FC = () => {
@@ -36,7 +36,7 @@ const OrderHistoryDetail: React.FC = () => {
   const order = orderSummary
     ? {
         ...MOCK_DETAILS,
-        ...orderSummary
+        ...orderSummary,
       }
     : { ...MOCK_DETAILS, id: id || '-', status: 'Completed' };
 

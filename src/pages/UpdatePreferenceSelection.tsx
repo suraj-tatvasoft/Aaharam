@@ -13,7 +13,7 @@ const TIME_SLOTS = [
   '01:30 PM - 02:00 PM',
   '02:00 PM - 02:30 PM',
   '02:30 PM - 03:00 PM',
-  '03:00 PM - 03:30 PM'
+  '03:00 PM - 03:30 PM',
 ];
 
 const UpdatePreferenceSelection = () => {
@@ -33,7 +33,7 @@ const UpdatePreferenceSelection = () => {
       dispatch(updateUser({ preferredLunchTime: selected }));
       toast({
         title: 'My Preferred Lunch Time Slot',
-        description: 'Your lunch time slot has been updated successfully.'
+        description: 'Your lunch time slot has been updated successfully.',
       });
     }
   };

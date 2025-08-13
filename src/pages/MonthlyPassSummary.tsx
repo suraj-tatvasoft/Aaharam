@@ -15,7 +15,7 @@ const MonthlyPassSummary: React.FC = () => {
       <div
         className="flex flex-1 flex-col px-4 pb-8 pt-4"
         style={{
-          background: 'linear-gradient(180deg, #DAFFD9 0%, #FFFFFF 132.38%)'
+          background: 'linear-gradient(180deg, #DAFFD9 0%, #FFFFFF 132.38%)',
         }}
       >
         <div className="mb-6 flex items-center justify-between">

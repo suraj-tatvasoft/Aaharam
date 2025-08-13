@@ -11,7 +11,7 @@ export default function EmptyState({
   title = 'No favorites yet',
   description = 'Add items to your favorites to see them here.',
   icon = <Heart className="mb-2 h-12 w-12 text-gray-300" />,
-  className = ''
+  className = '',
 }: EmptyStateProps) {
   return (
     <div className={`flex h-60 flex-col items-center justify-center text-muted-foreground ${className}`}>

@@ -17,7 +17,7 @@ const Analytics = () => {
     { name: '02:00 PM', value: 9, time: '02:00' },
     { name: '02:30 PM', value: 11, time: '02:30' },
     { name: '03:00 PM', value: 8, time: '03:00' },
-    { name: '03:30 PM', value: 6, time: '03:30' }
+    { name: '03:30 PM', value: 6, time: '03:30' },
   ];
 
   const COLORS = [
@@ -28,7 +28,7 @@ const Analytics = () => {
     '#D58ED7', // 02:00 PM
     '#FEA9A6', // 02:30 PM
     '#FDD35B', // 03:00 PM
-    '#BB9A6F' // 03:30 PM
+    '#BB9A6F', // 03:30 PM
   ];
 
   return (
@@ -37,11 +37,7 @@ const Analytics = () => {
         {/* Top section with avatar and welcome OUTSIDE card */}
         <div className="flex w-full flex-col items-center pb-4 pt-10">
           <Avatar className="mb-3 h-14 w-14 border border-white shadow-lg">
-            <AvatarImage
-              src={user.avatarUrl || ''}
-              alt={user.name || 'User'}
-              className="object-cover"
-            />
+            <AvatarImage src={user.avatarUrl || ''} alt={user.name || 'User'} className="object-cover" />
             <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-semibold text-success md:text-xl">
               {user.name.slice(0, 1).toUpperCase()}
             </AvatarFallback>
@@ -99,7 +95,7 @@ const Analytics = () => {
                       <span
                         className="inline-block h-2 w-2 rounded-full"
                         style={{
-                          backgroundColor: COLORS[index % COLORS.length]
+                          backgroundColor: COLORS[index % COLORS.length],
                         }}
                       />
                       <span className="font-outfit text-[12px] font-normal leading-5 text-[#141414]">

@@ -31,7 +31,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ id, name, price
               display: 'flex',
               alignItems: 'center',
               gap: 6,
-              opacity: 1
+              opacity: 1,
             }}
           >
             <button
@@ -45,7 +45,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ id, name, price
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
               }}
               onClick={() => onQuantityChange(id, quantity - 1)}
               disabled={quantity === 0 || disabled}
@@ -67,7 +67,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ id, name, price
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
               }}
               onClick={() => onQuantityChange(id, quantity + 1)}
               disabled={disabled}
@@ -97,7 +97,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ id, name, price
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: 'none'
+              boxShadow: 'none',
             }}
             onMouseOver={(e) => (e.currentTarget.style.background = '#E9FFE5')}
             onMouseOut={(e) => (e.currentTarget.style.background = '#fff')}

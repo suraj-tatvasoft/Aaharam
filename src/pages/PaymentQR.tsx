@@ -5,7 +5,7 @@ const user = {
   name: 'Itesh Sharma',
   upi: 'test@upi',
   initials: 'IS',
-  qr: 'https://api.qrserver.com/v1/create-qr-code/?data=test@upi&size=200x200' // Placeholder QR
+  qr: 'https://api.qrserver.com/v1/create-qr-code/?data=test@upi&size=200x200', // Placeholder QR
 };
 
 const PaymentQR: React.FC = () => {

@@ -25,7 +25,7 @@ export default function NotificationModal({ isOpen, onClose, onOk }: Notificatio
           {[
             { label: '1 Week', value: '1week' },
             { label: '15 Days', value: '15days' },
-            { label: '1 Month', value: '1month' }
+            { label: '1 Month', value: '1month' },
           ].map((opt, idx, arr) => (
             <React.Fragment key={opt.value}>
               <div className="flex w-full flex-row items-center justify-center gap-2 py-4">

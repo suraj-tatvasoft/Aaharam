@@ -4,7 +4,7 @@ const PANTRY_HOURS = [
   { label: 'Break Fast', time: '08:30 AM - 10:00 AM' },
   { label: 'Lunch', time: '12:00 PM - 03:30 PM' },
   { label: 'Evening Snacks', time: '03:30 PM - 06:30 PM' },
-  { label: 'Sides', time: '08:30 AM - 06:30 PM' }
+  { label: 'Sides', time: '08:30 AM - 06:30 PM' },
 ];
 
 const FoodPantryHours = () => {

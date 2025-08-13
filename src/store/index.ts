@@ -9,11 +9,11 @@ import userReducer from './slice/userSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user',
+  whitelist: [
+    'user',
     //  'notification'
-    ],
+  ],
 };
-
 
 const rootReducer = combineReducers({
   user: userReducer,

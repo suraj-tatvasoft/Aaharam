@@ -37,12 +37,12 @@ const userSlice = createSlice({
       return initialState;
     },
     addFavorite(state, action: PayloadAction<IFoodItem>) {
-      if (!state.favorites.some(item => item.id === action.payload.id)) {
+      if (!state.favorites.some((item) => item.id === action.payload.id)) {
         state.favorites.push(action.payload);
       }
     },
     removeFavorite(state, action: PayloadAction<string>) {
-      state.favorites = state.favorites.filter(item => item.id !== action.payload);
+      state.favorites = state.favorites.filter((item) => item.id !== action.payload);
     },
   },
 });

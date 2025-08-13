@@ -13,7 +13,7 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
     { name: 'Sev Tamatar', quantity: 1 },
     { name: 'Mix Kathol', quantity: 1 },
     { name: 'Dal', quantity: 1 },
-    { name: 'Rice', quantity: 1 }
+    { name: 'Rice', quantity: 1 },
   ];
 
   if (!isOpen) return null;
