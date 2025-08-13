@@ -53,7 +53,7 @@ const Favorites: React.FC = () => {
 
               <Heart
                 onClick={() => handleToggleFavorite(item)}
-                className={`h-4 w-4 cursor-pointer ${favoritesSet.has(item.id) ? 'fill-destructive text-destructive' : ''}`}
+                className={`h-4 w-4 cursor-pointer ${favoritesSet.has(item.id) ? 'fill-[#F53939] text-[#F53939]' : ''}`}
               />
             </div>
           ))
