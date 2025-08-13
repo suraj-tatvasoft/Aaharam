@@ -46,7 +46,7 @@ const PreferenceSelection = () => {
             <span className="text-[18px] font-normal leading-[23px] text-[#212121]">My Preferred Lunch Time Slot</span>
           </div>
           {/* Card Section */}
-          <form className="flex flex-1 flex-col rounded-tr-[22px] px-4 pb-4 pt-5 shadow-sm bg-[#F7F7F7]" onSubmit={handleSubmit}>
+          <form className="flex flex-1 flex-col rounded-tr-[22px] p-4 shadow-sm bg-[#F7F7F7]" onSubmit={handleSubmit}>
             <div className="mb-[22px] text-[16px] font-medium leading-[20px] text-[#212121]">Select Your Time Slot</div>
             <div className="flex flex-1 flex-col gap-6 overflow-y-auto">
               {TIME_SLOTS.map((slot) => (

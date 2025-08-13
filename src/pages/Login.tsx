@@ -56,7 +56,7 @@ const Login = () => {
                     {/* Username */}
                     <div className="space-y-5">
                       <div>
-                        <Label htmlFor="username" className="font-regular mb-2 block text-sm text-[#212121]">
+                        <Label htmlFor="username" className="font-regular mb-[12px] block text-sm text-[#212121]">
                           Username
                         </Label>
                         <Field
@@ -65,7 +65,7 @@ const Login = () => {
                           name="username"
                           type="text"
                           placeholder="Enter your username"
-                          className="h-12"
+                          className="h-[43px] text-[#212121] border-[#21212180] border-[1px] focus-visible:ring-offset-0 focus-visible:border-none placeholder:text-[#212121CC]"
                           autoComplete="username"
                         />
                         <ErrorMessage name="username" className="mt-1 text-xs text-red-500">
@@ -74,7 +74,7 @@ const Login = () => {
                       </div>
                       {/* Password */}
                       <div>
-                        <Label htmlFor="password" className="font-regular mb-2 block text-sm text-[#212121]">
+                        <Label htmlFor="password" className="font-regular mb-[12px] block text-sm text-[#212121]">
                           Password
                         </Label>
                         <div className="relative">
@@ -84,7 +84,7 @@ const Login = () => {
                             name="password"
                             type={showPassword ? 'text' : 'password'}
                             placeholder="Enter your password"
-                            className="h-12 pr-10"
+                            className="h-[43px] text-[#212121] pr-10 border-[#21212180] border-[1px] focus-visible:ring-offset-0 focus-visible:border-none placeholder:text-[#212121CC]"
                             autoComplete="current-password"
                           />
                           <Button
@@ -103,7 +103,7 @@ const Login = () => {
                       </div>
                     </div>
                     {/* Remember Me */}
-                    <div className="my-3 flex items-center">
+                    <div className="my-[14px] flex items-center">
                       <Checkbox
                         className={rememberMe ? 'border-primary' : 'border-black'}
                         id="remember"

@@ -37,13 +37,13 @@ const Analytics = () => {
         {/* Top section with avatar and welcome OUTSIDE card */}
         <div className="flex w-full flex-col items-center bg-white">
           <div className="flex flex-col items-center pb-4 pt-10 bg-[#DFFFEA] rounded-br-[70px] w-full h-full">
-          <Avatar className="mb-3 h-14 w-14 border border-white shadow-lg">
+          <Avatar className="mb-3 h-14 w-14 border border-[#E5EEE3]">
             <AvatarImage src={user.avatarUrl || ''} alt={user.name || 'User'} className="object-cover" />
             <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-semibold text-success md:text-xl">
               {user.name.slice(0, 1).toUpperCase()}
             </AvatarFallback>
           </Avatar>
-          <h1 className="font-outfit mt-1 px-3 py-1 text-center text-xl font-normal text-[#212121]">Welcome {user.name}</h1>
+          <h1 className="font-outfit mt-1 px-3 py-1 text-center text-[18px] font-medium text-[#212121]">Welcome {user.name}</h1>
           </div>
         </div>
         {/* Card container */}
