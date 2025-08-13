@@ -20,8 +20,8 @@ const PaymentQR: React.FC = () => {
           </div>
 
           <div className="mt-0 flex flex-col items-center gap-[10px]">
-            <span className="font-outfit text-center text-[16px] font-medium leading-[12px] text-[#212121]">{user.name}</span>
-            <span className="font-outfit text-center text-[13px] font-normal leading-[10px] text-[#212121]">UPI ID - {user.upi}</span>
+            <span className="text-center text-[16px] font-medium leading-[12px] text-[#212121]">{user.name}</span>
+            <span className="text-center text-[13px] font-normal leading-[10px] text-[#212121]">UPI ID - {user.upi}</span>
           </div>
 
           <img src={user.qr} alt="QR Code" className="h-[200px] w-[200px] rounded" />
