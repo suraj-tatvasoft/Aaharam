@@ -4,6 +4,7 @@ import profileBack from '@/assets/profile-back.svg';
 import Container from '@/components/Container';
 import EmptyState from '@/components/EmptyState';
 import { CheckCircle2, XCircle, EyeOff, Ban } from 'lucide-react';
+import profileAccordion from '@/assets/profile-accordion.svg';
 
 const TABS = [
   { label: 'Completed', count: 78 },
@@ -54,7 +55,7 @@ const OrderHistory: React.FC = () => {
             <button className="mr-2 flex h-9 w-9 items-center justify-center rounded-full bg-[#E9FFE5]" onClick={() => navigate(-1)}>
               <img src={profileBack} alt="Back" className="h-4 w-4" />
             </button>
-            <span className="font-outfit text-lg font-normal text-[#212121]">Order History</span>
+            <span className="text-lg font-normal text-[#212121]">Order History</span>
           </div>
 
           <div className="scrollbar-hide flex max-w-full flex-nowrap justify-start overflow-x-auto whitespace-nowrap border-b border-[#ECECEC] bg-[#FFFFFF]">
@@ -69,12 +70,12 @@ const OrderHistory: React.FC = () => {
                   onClick={() => setActiveTab(idx)}
                 >
                   <div
-                    className={`relative px-2 text-sm font-medium duration-150 ${
+                    className={`relative px-2 text-[14px] font-normal leading-[20px] duration-150 ${
                       activeTab === idx ? 'font-normal text-[#38963B]' : 'font-normal text-[#212121]'
                     }`}
                     style={{ display: 'inline-block' }}
                   >
-                    {tab.label} <span className="text-xs font-normal">({tab.count})</span>
+                    {tab.label} <span>({tab.count})</span>
                   </div>
                 </button>
               );
@@ -103,20 +104,16 @@ const OrderHistory: React.FC = () => {
             return filteredOrders.map((order, i) => (
               <div
                 key={i}
-                className="mb-3 flex cursor-pointer items-center justify-between rounded-[16px] bg-[#FFFFFF] px-4 py-3 shadow-[0_0_20px_rgba(242,93,70,0.05)]"
+                className="mb-3 flex cursor-pointer items-center justify-between rounded-[16px] bg-[#FFFFFF] p-4 shadow-[0_0_20px_0_#F25D460D]"
                 onClick={() => navigate(`/order-history/${order.id}`)}
               >
-                <div>
-                  <div className="font-outfit text-base font-medium text-[#212121]">Order #{order.id}</div>
-                  <div className="font-outfit mt-1 text-[14px] font-medium text-[#212121]">₹{order.amount}</div>
+                <div className="flex flex-col gap-2">
+                  <div className="text-base font-medium text-[#212121]">Order #{order.id}</div>
+                  <div className="text-[14px] font-medium text-[#212121]">₹{order.amount}</div>
                 </div>
-                <div className="flex flex-col items-end">
-                  <span className="font-outfit text-xs font-medium text-[#7C7C7C]">{order.date}</span>
-                  <span className="mt-2 flex h-6 w-6 items-center justify-center">
-                    <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7 15l4-4-4-4" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
+                <div className="flex flex-col items-end gap-2">
+                  <span className="text-[14px] font-light text-[#212121]">{order.date}</span>
+                  <img src={profileAccordion} alt="Expand" className="h-[10px] w-[5px]" />
                 </div>
               </div>
             ));

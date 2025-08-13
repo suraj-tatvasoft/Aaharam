@@ -42,7 +42,7 @@ const OrderHistoryDetail: React.FC = () => {
 
   return (
     <PageLayout title={`Order #${order.id}`}>
-      <div className="font-outfit flex w-full flex-col items-center bg-[#F7F7F7] py-8">
+      <div className="flex w-full flex-col items-center bg-[#F7F7F7] py-8">
         <div className="text-[20px] font-normal text-[#212121]">Token no</div>
         <div className="text-[50px] font-semibold uppercase text-[#212121]">{order.token}</div>
         <div className="flex gap-2 text-[14px] font-light text-[#232323]">
