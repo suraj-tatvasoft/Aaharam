@@ -36,21 +36,21 @@ const PreferenceSelection = () => {
 
   return (
     <Container>
-      <div className="flex flex-1 flex-col bg-[#F7F7F7]">
-        <div className="mx-auto flex w-full flex-1 flex-col">
+      <div className="flex flex-1 flex-col">
+        <div className="mx-auto flex w-full flex-1 flex-col bg-gradient-to-r from-[#F7F7F7] to-white to-50%">
           {/* Header Section */}
-          <div className="flex items-center gap-3 bg-white px-4 pb-4 pt-8">
-            <Avatar className="h-[42px] w-[42px] border border-[#E5EEE3]">
+          <div className="flex flex-grow-1 w-full items-center bg-[#FFFFFF] px-4 pb-4 pt-4 gap-2.5 rounded-bl-[22px]">
+          <Avatar className="h-[42px] w-[42px] border border-[#E5EEE3]">
               <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="User" />
             </Avatar>
             <span className="text-[18px] font-normal leading-[23px] text-[#212121]">My Preferred Lunch Time Slot</span>
           </div>
           {/* Card Section */}
-          <form className="mx-2 flex flex-1 flex-col rounded-t-2xl px-4 pb-4 pt-5 shadow-sm" onSubmit={handleSubmit}>
-            <div className="mb-3 text-[16px] font-medium leading-[20px] text-[#212121]">Select Your Time Slot</div>
-            <div className="flex flex-1 flex-col gap-3 overflow-y-auto">
+          <form className="flex flex-1 flex-col rounded-tr-[22px] px-4 pb-4 pt-5 shadow-sm bg-[#F7F7F7]" onSubmit={handleSubmit}>
+            <div className="mb-[22px] text-[16px] font-medium leading-[20px] text-[#212121]">Select Your Time Slot</div>
+            <div className="flex flex-1 flex-col gap-6 overflow-y-auto">
               {TIME_SLOTS.map((slot) => (
-                <label key={slot} className="flex cursor-pointer items-center justify-between py-[6px]">
+                <label key={slot} className="flex cursor-pointer items-center justify-between">
                   <span className="text-[14px] font-light text-[#212121]">{slot}</span>
                   <input
                     type="radio"
