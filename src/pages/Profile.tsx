@@ -48,13 +48,13 @@ export const MenuItem: React.FC<MenuItemConfig> = ({ icon, label, iconBg, textCo
     type="button"
     onClick={onClick}
   >
-    <span className="flex items-center gap-3 text-start">
-      <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${iconBg}`}>
-        <img src={icon} alt="" className="h-6 w-6" />
+    <div className="flex items-center gap-2.5 text-start">
+      <span className={`flex size-[46px] items-center justify-center rounded-xl ${iconBg}`}>
+        <img src={icon} alt="" className="size-5" />
       </span>
       {label}
-    </span>
-    <img src={profileAccordion} alt="Expand" className="h-4 w-4 opacity-60" />
+    </div>
+    <img src={profileAccordion} alt="Expand" className="w-[5px] h-[10px]" />
   </button>
 );
 
