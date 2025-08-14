@@ -27,17 +27,17 @@ type MenuItemConfig = {
 };
 
 const MENU_ITEMS: MenuItemConfig[] = [
-  { icon: paymentQR, label: 'Payment QR', iconBg: 'bg-[#FFE6D6]' },
-  { icon: orderHistory, label: 'Order History', iconBg: 'bg-[#D6E9FF]' },
-  { icon: favorites, label: 'My Favorites', iconBg: 'bg-[#D6FFE8]' },
-  { icon: lunchSlot, label: 'My Preferred Lunch Time Slot', iconBg: 'bg-[#EAD6FF]' },
-  { icon: pantryHours, label: 'Food Pantry Hours', iconBg: 'bg-[#D6E9FF]' },
-  { icon: feedback, label: 'Feedback / Suggestions', iconBg: 'bg-[#FFFCD6]' },
-  { icon: rules, label: 'Rules & Regulations', iconBg: 'bg-[#EAD6FF]' },
+  { icon: paymentQR, label: 'Payment QR', iconBg: 'bg-[#FFE7D8]' },
+  { icon: orderHistory, label: 'Order History', iconBg: 'bg-[#D9F8FF]' },
+  { icon: favorites, label: 'My Favorites', iconBg: 'bg-[#D9FFDD]' },
+  { icon: lunchSlot, label: 'My Preferred Lunch Time Slot', iconBg: 'bg-[#F2E7FF]' },
+  { icon: pantryHours, label: 'Food Pantry Hours', iconBg: 'bg-[#E5F4FF]' },
+  { icon: feedback, label: 'Feedback / Suggestions', iconBg: 'bg-[#FAFEDC]' },
+  { icon: rules, label: 'Rules & Regulations', iconBg: 'bg-[#FFE3FD]' },
   {
     icon: logout,
     label: 'Logout',
-    iconBg: 'bg-[#FFD6D6]',
+    iconBg: 'bg-[#FFEAE9]',
     textColor: 'text-red-500',
   },
 ];
