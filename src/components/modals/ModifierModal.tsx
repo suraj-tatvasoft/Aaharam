@@ -97,7 +97,7 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
           </div>
           <div className="text-[#212121] font-normal text-[14px]">₹{basePrice}</div>
         </div>
-        <div className='max-h-[400px] overflow-y-auto scroll-smooth'>
+        <div className='max-h-[60vh] overflow-y-auto scroll-smooth'>
           {/* Preparation Type */}
           {availableFor && availableFor.length > 0 && (
             <>
