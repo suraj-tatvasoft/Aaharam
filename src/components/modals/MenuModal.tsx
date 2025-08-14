@@ -16,6 +16,14 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
     { name: 'Rice', quantity: 1 },
   ];
 
+  const faraliMenuItems = [
+    { name: 'Puri', quantity: 6 },
+    { name: 'Bateka Bhaji', quantity: 1 },
+    { name: 'Farali khichadi', quantity: 1 },
+    { name: 'Farali Chevdo', quantity: 1 },
+    { name: 'Dahi', quantity: 1 },
+  ];
+
   if (!isOpen) return null;
 
   return (
@@ -106,7 +114,7 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
 
                   {/* Menu Items */}
                   <div className="space-y-4 py-4">
-                    {menuItems.map((item, index) => (
+                    {(thali === 'Farali Thali' ? faraliMenuItems : menuItems).map((item, index) => (
                       <div key={index} className="flex items-center justify-between text-sm">
                         <span className="text-[16px] font-normal leading-[16px] text-[#212121]">{item.name}</span>
                         <span className="text-[14px] font-normal leading-[16px] text-[#212121]">{item.quantity}</span>
