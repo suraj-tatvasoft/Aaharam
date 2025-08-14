@@ -97,125 +97,119 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
           </div>
           <div className="text-[#212121] font-normal text-[14px]">₹{basePrice}</div>
         </div>
-        {/* Preparation Type */}
-        {availableFor && availableFor.length > 0 && (
-          <>
-            <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
-            <div className="p-4">
-              <div className="mb-4 text-[#212121] font-medium text-[14px]">Choice Of Preparation Type</div>
-              <div className="mb-4 border-b border-[#2121211A]"></div>
-              <div className="flex flex-col gap-[14px]">
-                {availableFor.map((type) => (
-                  <label key={type} className="group flex cursor-pointer items-center justify-between">
-                    <span className="text-sm capitalize text-[#212121] font-light">{type}</span>
-                    <span className="relative flex items-center">
-                      <input
-                        type="radio"
-                        name="prepType"
-                        value={type}
-                        checked={selectedPrepType === type}
-                        onChange={() => handlePrepTypeChange(type)}
-                        className="h-5 w-5 appearance-none rounded-full border border-gray-300 transition-colors checked:border-green-600 checked:bg-white focus:outline-none"
-                      />
-                      {selectedPrepType === type && (
-                        <span className="pointer-events-none absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-600"></span>
-                      )}
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </div>
-          </>
-        )}
-        {/* Extras */}
-        {modifiers.length > 0 && (
-          <>
-            <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
-            <div className="p-4">
-              <div className="mb-4 text-[#212121] font-medium text-[14px]">Extra</div>
-              <div className="mb-4 border-b border-[#2121211A]" />
-              <div className="flex flex-col gap-[14px]">
-                {modifiers.map((mod) => (
-                  <label key={mod.id} className="group flex cursor-pointer items-center">
-                    <span className="flex-1 text-sm capitalize text-[#212121] font-light" style={{ color: '#212121' }}>
-                      {mod.name}
-                    </span>
-                    <span className="ml-2 text-sm text-[#212121] font-light">
-                      ₹{mod.price}
-                    </span>
-                    <span className="relative ml-[6px] flex items-center">
-                      <input
-                        type="checkbox"
-                        checked={selectedOptions.includes(mod.id)}
-                        onChange={() => handleOptionToggle(mod.id)}
-                        className="peer h-5 w-5 appearance-none rounded-[4px] border border-gray-300 bg-white transition-colors checked:border-green-600 checked:bg-green-600 focus:outline-none"
-                        aria-checked={selectedOptions.includes(mod.id)}
-                      />
-                      <span className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                        {selectedOptions.includes(mod.id) && (
-                          <svg className="h-3 w-3 text-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 8.5L7 11.5L12 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
+        <div className='max-h-[400px] overflow-y-auto scroll-smooth'>
+          {/* Preparation Type */}
+          {availableFor && availableFor.length > 0 && (
+            <>
+              <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
+              <div className="p-4">
+                <div className="mb-4 text-[#212121] font-medium text-[14px]">Choice Of Preparation Type</div>
+                <div className="mb-4 border-b border-[#2121211A]"></div>
+                <div className="flex flex-col gap-[14px]">
+                  {availableFor.map((type) => (
+                    <label key={type} className="group flex cursor-pointer items-center justify-between">
+                      <span className="text-sm capitalize text-[#212121] font-light">{type}</span>
+                      <span className="relative flex items-center">
+                        <input
+                          type="radio"
+                          name="prepType"
+                          value={type}
+                          checked={selectedPrepType === type}
+                          onChange={() => handlePrepTypeChange(type)}
+                          className="h-5 w-5 appearance-none rounded-full border border-gray-300 transition-colors checked:border-green-600 checked:bg-white focus:outline-none"
+                        />
+                        {selectedPrepType === type && (
+                          <span className="pointer-events-none absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-600"></span>
                         )}
                       </span>
-                    </span>
-                  </label>
-                ))}
+                    </label>
+                  ))}
+                </div>
               </div>
-            </div>
-          </>
-        )}
-        {/* Cooking Note */}
-        <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
-        <div className="p-4">
-          <label className="mb-2 block text-sm font-normal  text-[#212121]">Add a cooking note (optional)</label>
-          <textarea
-            className="w-full rounded-[10px] border border-[#2121211A] bg-[#ffffff] p-[10px] text-sm focus:outline-green-500 placeholder:text-sm"
-            style={{ minHeight: '80px' }}
-            rows={2}
-            placeholder="Add any special instructions..."
-            value={cookingNote}
-            onChange={(e) => setCookingNote(e.target.value)}
-          />
+            </>
+          )}
+          {/* Extras */}
+          {modifiers.length > 0 && (
+            <>
+              <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
+              <div className="p-4">
+                <div className="mb-4 text-[#212121] font-medium text-[14px]">Extra</div>
+                <div className="mb-4 border-b border-[#2121211A]" />
+                <div className="flex flex-col gap-[14px]">
+                  {modifiers.map((mod) => (
+                    <label key={mod.id} className="group flex cursor-pointer items-center">
+                      <span className="flex-1 text-sm capitalize text-[#212121] font-light" style={{ color: '#212121' }}>
+                        {mod.name}
+                      </span>
+                      <span className="ml-2 text-sm text-[#212121] font-light">
+                        ₹{mod.price}
+                      </span>
+                      <span className="relative ml-[6px] flex items-center">
+                        <input
+                          type="checkbox"
+                          checked={selectedOptions.includes(mod.id)}
+                          onChange={() => handleOptionToggle(mod.id)}
+                          className="peer h-5 w-5 appearance-none rounded-[4px] border border-gray-300 bg-white transition-colors checked:border-green-600 checked:bg-green-600 focus:outline-none"
+                          aria-checked={selectedOptions.includes(mod.id)}
+                        />
+                        <span className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+                          {selectedOptions.includes(mod.id) && (
+                            <svg className="h-3 w-3 text-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4 8.5L7 11.5L12 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          )}
+                        </span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+          {/* Cooking Note */}
+          <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
+          <div className="p-4">
+            <label className="mb-2 block text-sm font-normal  text-[#212121]">Add a cooking note (optional)</label>
+            <textarea
+              className="w-full rounded-[10px] border border-[#2121211A] bg-[#ffffff] p-[10px] text-sm focus:outline-green-500 placeholder:text-sm"
+              style={{ minHeight: '80px' }}
+              rows={2}
+              placeholder="Add any special instructions..."
+              value={cookingNote}
+              onChange={(e) => setCookingNote(e.target.value)}
+            />
+          </div>
+          <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
         </div>
-        <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
         {/* Footer */}
         <div className="sticky bottom-0 left-0 bg-white p-4">
-          <div className="mb-2 flex items-center justify-between">
-            <div className="flex w-full gap-[10px]">
-              <div
-                className="flex h-12 flex-1 items-center justify-between overflow-hidden rounded-lg border"
-                style={{ boxSizing: 'border-box', borderColor: '#38963B' }}
-              >
-                <button
-                  className="flex h-full items-center justify-center px-5 py-0 text-2xl font-bold text-[#38963B] disabled:opacity-40"
-                  style={{ minWidth: '32px' }}
-                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  disabled={quantity === 1}
-                >
-                  <Minus />
-                </button>
-                <span
-                  className="flex h-full items-center justify-center bg-white px-4 py-0 text-lg font-semibold"
-                  style={{ minWidth: '28px', color: '#38963B' }}
-                >
-                  {quantity}
-                </span>
-                <button
-                  className="flex h-full items-center justify-center px-5 py-0 text-2xl font-bold text-[#38963B]"
-                  style={{ minWidth: '32px' }}
-                  onClick={() => setQuantity((q) => q + 1)}
-                >
-                  <Plus />
-                </button>
-              </div>
+          <div className="flex w-full gap-[10px]">
+            <div
+              className="flex h-12 flex-1 items-center justify-between rounded-[8px] border border-[#38963B]"
+            >
               <button
-                className="flex h-12 flex-1 items-center justify-center whitespace-nowrap rounded-[8px] bg-[#38963B] text-[16px] font-medium text-white  transition-colors"
-                onClick={handleAddToCart}
+                className="disabled:opacity-40 ml-5"
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                disabled={quantity === 1}
               >
-                Add Item - ₹{calculateTotalPrice()}
+                <Minus className='text-[#38963B]' />
+              </button>
+              <span className="text-[16px] font-medium text-[#38963B]">
+                {quantity}
+              </span>
+              <button
+                className="disabled:opacity-40 mr-5"
+                onClick={() => setQuantity((q) => q + 1)}
+              >
+                <Plus className='text-[#38963B]' />
               </button>
             </div>
+            <button
+              className="flex h-12 flex-1 items-center justify-center whitespace-nowrap rounded-[8px] bg-[#38963B] text-[16px] font-medium text-white transition-colors"
+              onClick={handleAddToCart}
+            >
+              Add Item - ₹{calculateTotalPrice()}
+            </button>
           </div>
         </div>
       </div>
