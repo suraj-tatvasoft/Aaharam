@@ -35,13 +35,13 @@ const FoodCard = ({
     <Card
       className={`overflow-hidden rounded-[16px] border-border/50 bg-card transition-shadow hover:shadow-sm ${!available ? 'pointer-events-none opacity-90' : ''}`}
     >
-      <div className="flex p-1">
+      <div className="flex items-center p-1">
         {/* Food Image */}
         <div className="h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-[12px]">
           <img src={image} alt={name} className={`h-full w-full object-cover transition-all ${!available ? 'opacity-90 grayscale' : ''}`} />
         </div>
         {/* Food Details */}
-        <div className="flex flex-1 flex-col justify-between p-[10px]">
+        <div className="flex flex-1 flex-col justify-between p-[10px]" style={{ minHeight: '-webkit-fill-available' }}>
           <div className="flex justify-between">
             <div className="min-w-0 flex-1">
               <h3
