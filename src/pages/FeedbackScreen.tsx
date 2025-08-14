@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import PageLayout from '@/components/PageLayout';
 import fileAddIcon from '@/assets/file-add.svg';
@@ -27,13 +25,6 @@ const FeedbackScreen = () => {
     }
   };
 
-  const handleRemoveFile = (index: number) => {
-    const newFiles = [...selectedFiles];
-    URL.revokeObjectURL(newFiles[index].preview); // Clean up the object URL
-    newFiles.splice(index, 1);
-    setSelectedFiles(newFiles);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -49,15 +40,12 @@ const FeedbackScreen = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Clear form
       setFeedback('');
       selectedFiles.forEach((file) => URL.revokeObjectURL(file.preview));
       setSelectedFiles([]);
 
-      // Show success toast
       toast({
         title: 'Feedback Submitted',
         description: "Thank you for your feedback! We've received it successfully.",
@@ -75,12 +63,14 @@ const FeedbackScreen = () => {
 
   return (
     <PageLayout title="Feedback / Suggestions">
-      <div className="relative mx-auto flex w-full max-w-md flex-1 flex-col bg-gray-100 p-4">
-        <div className="flex flex-1 flex-col space-y-6">
-          {/* User Profile Card */}
-          <div className="rounded-2xl bg-white p-2 shadow-sm">
-            <div className="flex items-center space-x-3">
-              <Avatar className="h-12 w-12 rounded-lg">
+      <form
+        onSubmit={handleSubmit}
+        className="relative mx-auto flex h-full w-full max-w-md flex-1 flex-col bg-gradient-to-r from-[#F7F7F7] to-white to-50%"
+      >
+        <div className="flex-grow-1 scrollbar-hide mb-[76px] flex flex-1 flex-col overflow-y-auto rounded-br-[22px] bg-[#F7F7F7]">
+          <div className="m-4 rounded-2xl bg-white p-1">
+            <div className="flex items-center gap-2.5">
+              <Avatar className="size-[46px] rounded-[12px] border border-[#E5EEE3]">
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback>
                   {user.name
@@ -89,98 +79,73 @@ const FeedbackScreen = () => {
                     .join('')}
                 </AvatarFallback>
               </Avatar>
-              <div>
-                <p className="font-medium text-gray-900">{user.name}</p>
-              </div>
+              <p className="font-base font-normal text-[#212121]">{user.name}</p>
             </div>
           </div>
 
-          {/* Divider */}
-          <div className="my-2 h-[2px] bg-white"></div>
+          <div className="h-[4px] bg-white"></div>
 
-          {/* Feedback Form */}
-          <form onSubmit={handleSubmit} className="flex flex-1 flex-col space-y-4">
-            <div className="flex-1">
-              {/* Feedback Textarea */}
-              <div className="space-y-1">
-                <label htmlFor="feedback" className="block text-sm font-semibold text-gray-800">
+          <div className="flex-1 p-4">
+            <div className="flex flex-col gap-4">
+              <div className="space-y-2.5">
+                <label htmlFor="feedback" className="block text-[14px] font-normal leading-[10px] text-[#212121]">
                   Add a feedback / suggestion
                 </label>
-                <Textarea
+                <textarea
                   id="feedback"
                   placeholder="Drop your feedback and suggestion"
-                  className="min-h-[120px] resize-none bg-white"
+                  className="min-h-[120px] w-full resize-none rounded-[8px] border border-[#2121211A] bg-white p-[10px] text-[14px] font-normal leading-[20px] text-[#4D4D4D] outline-none placeholder:text-[12px] placeholder:font-light placeholder:text-[#777777]"
                   value={feedback}
                   onChange={(e) => setFeedback(e.target.value)}
                   required
                 />
               </div>
 
-              {/* Upload Media */}
-              <div className="space-y-1">
-                <label className="block text-sm font-semibold text-gray-800">Upload media</label>
+              <div className="space-y-2.5">
+                <label className="block text-[14px] font-normal leading-[10px] text-[#212121]">Upload media</label>
 
-                {/* Selected Files Grid */}
-                <div className="mb-3 grid grid-cols-3 gap-2">
-                  {selectedFiles.map((file, index) => (
-                    <div key={index} className="relative aspect-square overflow-hidden rounded-lg">
-                      {file.file.type.startsWith('image/') ? (
-                        <img src={file.preview} alt={`Preview ${index}`} className="h-full w-full object-cover" />
-                      ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-gray-100">
-                          <span className="text-xs text-gray-500">Video</span>
-                        </div>
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveFile(index)}
-                        className="absolute right-1 top-1 rounded-full bg-black/70 p-0.5 text-white hover:bg-black/90"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                          <path
-                            fillRule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Upload Button */}
                 {selectedFiles.length < 5 && (
                   <label
                     htmlFor="media-upload"
-                    className="flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 p-4 transition-colors hover:bg-gray-50"
+                    className="flex min-h-[120px] w-full cursor-pointer flex-col items-center justify-center rounded-[8px] border-2 border-dashed border-[#2121211A] p-5"
                   >
-                    <div className="flex flex-col items-center gap-4 text-gray-500">
-                      <img src={fileAddIcon} alt="Upload" className="mr-2 h-6 w-6" />
-                      <span className="text-sm">{selectedFiles.length > 0 ? 'Add more' : 'Upload photo & video'}</span>
-                    </div>
+                    {selectedFiles.length > 0 ? (
+                      <div className="grid grid-cols-3 gap-2.5">
+                        {selectedFiles.map((file, index) => (
+                          <div key={index} className="relative aspect-square overflow-hidden rounded-[6px]">
+                            {file.file.type.startsWith('image/') ? (
+                              <img src={file.preview} alt={`Preview ${index}`} className="h-full w-full object-cover" />
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center bg-gray-100">
+                                <span className="text-xs text-gray-500">Video</span>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center gap-4 text-[#21212199]">
+                        <img src={fileAddIcon} alt="Upload" className="size-[26px]" />
+                        <span className="text-[12px] font-light leading-[8px]">{selectedFiles.length > 0 ? 'Add more' : 'Upload photo & video'}</span>
+                      </div>
+                    )}
                     <input id="media-upload" type="file" className="hidden" accept="image/*,video/*" multiple onChange={handleFileChange} />
                   </label>
                 )}
-
-                {selectedFiles.length > 0 && (
-                  <p className="mt-1 text-xs text-gray-500">
-                    {selectedFiles.length} file{selectedFiles.length !== 1 ? 's' : ''} selected • Max 5 files
-                  </p>
-                )}
               </div>
             </div>
-
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              className="h-12 w-full rounded-xl bg-[#43A047] text-base font-medium text-white hover:bg-[#388E3C]"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Submitting...' : 'Submit'}
-            </Button>
-          </form>
+          </div>
         </div>
-      </div>
+
+        <div className="flex-grow-1 absolute bottom-0 left-0 right-0 flex w-full flex-col gap-3 rounded-tl-[22px] bg-[#FFFFFF] p-4">
+          <button
+            type="submit"
+            className="h-11 w-full rounded-[8px] border border-[#38963B] bg-[#38963B] text-center text-[16px] font-medium leading-[11px] text-white transition-colors hover:bg-[#388E3C]"
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </button>
+        </div>
+      </form>
     </PageLayout>
   );
 };
