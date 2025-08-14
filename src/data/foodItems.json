@@ -129,6 +129,81 @@
         "id": "Schezwan",
         "name": "Schezwan",
         "price": 10
+      },
+      {
+        "id": "Oil",
+        "name": "Oil",
+        "price": 0
+      },
+      {
+        "id": "Butter",
+        "name": "Butter",
+        "price": 5
+      },
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
+      },
+      {
+        "id": "Oil",
+        "name": "Oil",
+        "price": 0
+      },
+      {
+        "id": "Butter",
+        "name": "Butter",
+        "price": 5
+      },
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
+      },
+      {
+        "id": "Oil",
+        "name": "Oil",
+        "price": 0
+      },
+      {
+        "id": "Butter",
+        "name": "Butter",
+        "price": 5
+      },
+      {
+        "id": "Cheese",
+        "name": "Cheese",
+        "price": 10
+      },
+      {
+        "id": "Mayo",
+        "name": "Mayo",
+        "price": 10
+      },
+      {
+        "id": "Schezwan",
+        "name": "Schezwan",
+        "price": 10
       }
     ],
     "availableFor": ["jain", "regular"]
