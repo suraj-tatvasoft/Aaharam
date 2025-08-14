@@ -12,10 +12,10 @@ const SplashScreen: React.FC = () => {
       <div className="flex w-full flex-1 flex-col items-center bg-white">
         <div className="flex w-full flex-1 flex-col justify-between">
           {/* Top Section: Logo & Branding */}
-          <div className="flex flex-1 flex-col items-center justify-center pt-8">
-            <img src={logo} alt="Aaharam Logo" className="animate-fade-in-up mx-auto mb-6 h-auto w-48" />
+          <div className="flex flex-1 gap-5 flex-col items-center justify-center pt-8">
+            <img src={logo} alt="Aaharam Logo" className="animate-fade-in-up mx-auto h-auto w-[250px]" />
             <div className="flex flex-col items-center">
-              <img src={tatvaSoftLogo} alt="TatvaSoft Logo" className="animate-fade-in-up mb-1 h-auto w-auto delay-300" />
+              <img src={tatvaSoftLogo} alt="TatvaSoft Logo" className="animate-fade-in-up h-auto w-auto delay-300" />
             </div>
             {/* Animations: fade-in-up for logo and TatvaSoft logo */}
             <style>
