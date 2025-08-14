@@ -3,6 +3,7 @@ import PageLayout from '@/components/PageLayout';
 import { useParams } from 'react-router-dom';
 import { ORDERS } from './OrderHistory';
 import noShow from '@/assets/no-show.svg';
+import { X } from 'lucide-react';
 
 const MOCK_DETAILS = {
   token: 125,
@@ -42,68 +43,57 @@ const OrderHistoryDetail: React.FC = () => {
 
   return (
     <PageLayout title={`Order #${order.id}`}>
-      <div className="flex w-full flex-col items-center bg-[#F7F7F7] py-8">
-        <div className="text-[20px] font-normal text-[#212121]">Token no</div>
-        <div className="text-[50px] font-semibold uppercase text-[#212121]">{order.token}</div>
-        <div className="flex gap-2 text-[14px] font-light text-[#232323]">
+      <div className="flex w-full flex-col items-center gap-5 py-8">
+        <div className="text-[20px] font-normal leading-[14px] text-[#212121]">Token no</div>
+        <div className="text-[50px] font-semibold leading-[35px] text-[#212121]">{order.token}</div>
+        <div className="flex gap-4 text-[14px] font-light leading-[10px] text-[#212121]">
           <span>{order.date}</span>
           <span>{order.time}</span>
         </div>
         {order.status === 'Completed' ? (
-          <div className="mt-3 flex items-center rounded-full bg-[#E9FFE4] px-4 py-1 text-[12px] text-[#38963B]">
-            Completed
-            <svg className="ml-1" width="14" height="14" fill="none" viewBox="0 0 14 14">
+          <div className="flex h-7 items-center gap-[6px] rounded-full bg-[#E9FFE4] px-[10px] text-[#38963B]">
+            <span className="text-[12px] font-normal leading-[8px]">Completed</span>
+            <svg width="12" height="12" fill="none" viewBox="0 0 14 14">
               <circle cx="7" cy="7" r="7" fill="#38963B" />
               <path d="M4 7l2 2 4-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
         ) : order.status === 'Rejected' ? (
-          <div className="mt-3 flex items-center rounded-full bg-[#FFE9E9] px-4 py-1 text-[12px] font-medium text-[#E74C3C]">
-            Rejected
-            <svg className="ml-1" width="18" height="18" fill="none" viewBox="0 0 18 18">
-              <path d="M6 6l6 6M12 6l-6 6" stroke="#E74C3C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+          <div className="flex h-7 items-center gap-[6px] rounded-full bg-[#FFE9E9] px-[10px] text-[#F53939]">
+            <span className="text-[12px] font-normal leading-[8px]">Rejected</span>
+            <X className="h-[14px] w-[14px]" />
           </div>
         ) : order.status === 'No Show' ? (
-          <div className="mt-3 flex items-center gap-2 rounded-full bg-[#F4EDFF] px-4 py-1 text-[12px] font-medium text-[#A259FF]">
-            No Show
+          <div className="flex h-7 items-center gap-[6px] rounded-full bg-[#F6F0F9] px-[10px] text-[#A168C5]">
+            <span className="text-[12px] font-normal leading-[8px]">No Show</span>
             <img src={noShow} alt="No Show" />
           </div>
         ) : order.status === 'Cancelled' ? (
-          <div className="mt-3 inline-flex items-center rounded-full bg-[#E2E2E2] px-3 py-1 text-[12px] font-medium text-[#212121]">
-            Cancelled
-            <svg
-              className="ml-1 align-middle"
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ display: 'inline', verticalAlign: 'middle' }}
-            >
-              <path d="M6 6l6 6M12 6l-6 6" stroke="#232323" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
+          <div className="flex h-7 items-center gap-[6px] rounded-full bg-[#E2E2E2] px-[10px] text-[#212121]">
+            <span className="text-[12px] font-normal leading-[8px]">Cancelled</span>
+            <X className="h-[14px] w-[14px]" />
           </div>
         ) : null}
       </div>
-      <div className="w-full px-4 pb-4">
-        <div className="mb-2 text-[16px] font-medium text-[#212121]">Items</div>
-        <div className="mb-4 flex flex-col gap-4">
+
+      <div className="flex w-full flex-col gap-4 px-4 pb-4">
+        <div className="text-[16px] font-medium leading-[11px] text-[#212121]">Items</div>
+        <div className="flex flex-col gap-4">
           {order.items.map((item, idx) => (
-            <div key={idx} className="flex flex-col rounded-[16px] bg-white px-4 py-3 shadow-[0_2px_8px_0_rgba(33,33,33,0.04)]">
-              <div className="flex items-center">
-                <img src={item.image} alt={item.name} className="mr-4 h-[46px] w-[46px] rounded-[12px] border border-[#ECECEC] object-cover" />
+            <div key={idx} className="flex flex-col rounded-[16px] bg-white p-1 pr-4">
+              <div className="flex items-center gap-2.5">
+                <img src={item.image} alt={item.name} className="h-[46px] w-[46px] rounded-[12px] object-cover" />
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <span className="text-[16px] font-normal text-[#212121]">{item.name}</span>
-                    <span className="text-[16px] font-normal text-[#232323]">{item.qty}</span>
+                    <span className="text-[14px] font-normal text-[#212121]">{item.qty}</span>
                   </div>
                 </div>
               </div>
               {item.details && item.details.length > 0 && (
-                <div className="mt-2 flex flex-col">
+                <div className="flex flex-col gap-[10px] p-[10px]">
                   {item.details.map((d, i) => (
-                    <span key={i} className="text-[14px] font-normal text-[#494949]">
+                    <span key={i} className="text-[14px] font-normal leading-[10px] text-[#494949]">
                       - {d}
                     </span>
                   ))}
@@ -113,16 +103,18 @@ const OrderHistoryDetail: React.FC = () => {
           ))}
         </div>
 
-        <div className="mb-2 text-[16px] font-medium text-[#212121]">Bill</div>
-        <div className="mb-4 rounded-[16px] bg-white px-4 py-4">
-          {order.bill.map((b, i) => (
-            <div key={i} className="flex justify-between py-1 text-[14px] font-light text-[#212121]">
-              <span>{b.name}</span>
-              <span>₹{b.amount}</span>
-            </div>
-          ))}
-          <div className="my-2 border-t border-[rgba(33,33,33,0.10)]"></div>
-          <div className="flex justify-between text-[14px] font-medium text-[#212121]">
+        <div className="text-[16px] font-medium leading-[11px] text-[#212121]">Bill</div>
+        <div className="flex flex-col gap-4 rounded-[16px] bg-white p-4">
+          <div className="flex flex-col gap-[14px]">
+            {order.bill.map((b, i) => (
+              <div key={i} className="flex justify-between text-[14px] font-light leading-[10px] text-[#212121]">
+                <span>{b.name}</span>
+                <span>₹{b.amount}</span>
+              </div>
+            ))}
+          </div>
+          <div className="border-t border-[#2121211A]"></div>
+          <div className="flex justify-between text-[14px] font-medium leading-[10px] text-[#212121]">
             <span>Total</span>
             <span>₹{order.total}</span>
           </div>
