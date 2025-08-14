@@ -92,39 +92,43 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
           {/* Divider */}
           <div className="h-[4px] w-full bg-[#F7F7F7]" />
 
-          {/* Thali image, name, price */}
-          <div className="flex items-center gap-[10px] px-4 py-[10px]">
-            <div className="h-[46px] w-[46px] overflow-hidden rounded-[7px]">
-              <img src={regularThaliImage} alt="Regular Thali" className="h-full w-full object-cover" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-[16px] font-normal text-[#212121]">Regular Thali</h3>
-            </div>
-            <span className="text-[14px] font-normal text-[#212121]">₹80</span>
-          </div>
+          <div className="max-h-[70vh] flex flex-col gap-[10px] px-4 pt-1 pb-8 overflow-auto scroll-smooth bg-[#F7F7F7]">
+            {["Regular Thali", "Meal - Jain", "Farali Thali"].map((thali) => {
+              return (
+                <div className="bg-white rounded-[10px] p-4">
+                {/* Thali image, name, price */}
+                <div className="flex items-center gap-[10px]">
+                  <div className="h-[46px] w-[46px] overflow-hidden rounded-[7px]">
+                    <img src={regularThaliImage} alt="Regular Thali" className="h-full w-full object-cover" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-[16px] font-normal text-[#212121]">{thali}</h3>
+                  </div>
+                  <span className="text-[14px] font-normal text-[#212121]">₹80</span>
+                </div>
 
-          <div className="h-[4px] w-full bg-[#F7F7F7]" />
+                {/* Menu Items */}
+                <div className="py-4 space-y-4">
+                  {menuItems.map((item, index) => (
+                    <div key={index} className="flex items-center justify-between text-sm">
+                      <span className="text-[16px] font-normal text-[#212121] leading-[16px]">{item.name}</span>
+                      <span className="text-[14px] font-normal text-[#212121] leading-[16px]">{item.quantity}</span>
+                    </div>
+                  ))}
+                </div>
 
-          {/* Menu Items */}
-          <div className="p-4 space-y-4">
-            {menuItems.map((item, index) => (
-              <div key={index} className="flex items-center justify-between text-sm">
-                <span className="text-[16px] font-normal text-[#212121] leading-[16px]">{item.name}</span>
-                <span className="text-[14px] font-normal text-[#212121] leading-[16px]">{item.quantity}</span>
+                {/* Add Button */}
+                <div>
+                  <button
+                    className="w-full rounded-[8px] border border-[#38963B] bg-white p-4 text-[16px] leading-[16px] font-medium text-[#38963B] transition-colors hover:bg-green-50"
+                    onClick={onClose}
+                  >
+                    Add item
+                  </button>
+                </div>
               </div>
-            ))}
-          </div>
-          {/* Divider */}
-          <div className="h-[4px] w-full bg-[#F7F7F7]" />
-
-          {/* Add Button */}
-          <div className="px-4 pt-4 pb-8">
-            <button
-              className="w-full rounded-[8px] border border-[#38963B] bg-white p-4 text-[16px] leading-[16px] font-medium text-[#38963B] transition-colors hover:bg-green-50"
-              onClick={onClose}
-            >
-              Add item
-            </button>
+              )
+            })}
           </div>
         </div>
       </div>
