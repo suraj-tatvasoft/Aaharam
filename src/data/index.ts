@@ -15,7 +15,8 @@ export const BulkPassMenu: IBulkPassMenu[] = [
     },
   },
   {
-    title: 'Regular Thali - with buttermilk',
+    title: 'Regular Thali',
+    subtitle: 'with buttermilk',
     description: '4 Butter Roti, 2 Sabji, Gujrati Dal, Bhat, Salad, Mango Juice',
     image: thaliImg,
     start_date: '',

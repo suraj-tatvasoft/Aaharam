@@ -17,62 +17,54 @@ import rules from '@/assets/rule.svg';
 import logout from '@/assets/logout.svg';
 import profileAccordion from '@/assets/profile-accordion.svg';
 import LogoutModal from '@/components/modals/LogoutModal';
-import NotificationModal from '@/components/modals/NotificationModal';
 
 type MenuItemConfig = {
   icon: string;
   label: string;
-  color: string;
   iconBg: string;
   textColor?: string;
   onClick?: () => void;
 };
 
-// --- Constants ---
 const MENU_ITEMS: MenuItemConfig[] = [
-  { icon: paymentQR, label: 'Payment QR', color: 'bg-[#FFF7F2]', iconBg: 'bg-[#FFE6D6]' },
-  { icon: orderHistory, label: 'Order History', color: 'bg-[#F2F8FF]', iconBg: 'bg-[#D6E9FF]' },
-  { icon: favorites, label: 'My Favorites', color: 'bg-[#F2FFF6]', iconBg: 'bg-[#D6FFE8]' },
-  { icon: lunchSlot, label: 'My Preferred Lunch Time Slot', color: 'bg-[#F7F2FF]', iconBg: 'bg-[#EAD6FF]' },
-  { icon: pantryHours, label: 'Food Pantry Hours', color: 'bg-[#F2F8FF]', iconBg: 'bg-[#D6E9FF]' },
-  { icon: feedback, label: 'Feedback / Suggestions', color: 'bg-[#FFFFF2]', iconBg: 'bg-[#FFFCD6]' },
-  { icon: rules, label: 'Rules & Regulations', color: 'bg-[#F7F2FF]', iconBg: 'bg-[#EAD6FF]' },
+  { icon: paymentQR, label: 'Payment QR', iconBg: 'bg-[#FFE7D8]' },
+  { icon: orderHistory, label: 'Order History', iconBg: 'bg-[#D9F8FF]' },
+  { icon: favorites, label: 'My Favorites', iconBg: 'bg-[#D9FFDD]' },
+  { icon: lunchSlot, label: 'My Preferred Lunch Time Slot', iconBg: 'bg-[#F2E7FF]' },
+  { icon: pantryHours, label: 'Food Pantry Hours', iconBg: 'bg-[#E5F4FF]' },
+  { icon: feedback, label: 'Feedback / Suggestions', iconBg: 'bg-[#FAFEDC]' },
+  { icon: rules, label: 'Rules & Regulations', iconBg: 'bg-[#FFE3FD]' },
   {
     icon: logout,
     label: 'Logout',
-    color: 'bg-[#FFF2F2]',
-    iconBg: 'bg-[#FFD6D6]',
+    iconBg: 'bg-[#FFEAE9]',
     textColor: 'text-red-500',
   },
 ];
 
-// --- Components ---
-export const MenuItem: React.FC<MenuItemConfig> = ({ icon, label, color, iconBg, textColor, onClick }) => (
+export const MenuItem: React.FC<MenuItemConfig> = ({ icon, label, iconBg, textColor, onClick }) => (
   <button
-    className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 ${color} ${textColor ?? 'text-[#212121]'} justify-between text-base font-normal shadow-sm`}
+    className={`flex w-full items-center gap-3 rounded-xl bg-white py-1 pl-1 pr-4 ${textColor ?? 'text-[#212121]'} justify-between text-base font-normal`}
     type="button"
     onClick={onClick}
   >
-    <span className="flex items-center gap-3">
-      <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${iconBg}`}>
-        <img src={icon} alt="" className="h-6 w-6" />
+    <div className="flex items-center gap-2.5 text-start">
+      <span className={`flex size-[46px] items-center justify-center rounded-xl ${iconBg}`}>
+        <img src={icon} alt="" className="size-5" />
       </span>
       {label}
-    </span>
-    <img src={profileAccordion} alt="Expand" className="h-4 w-4 opacity-60" />
+    </div>
+    <img src={profileAccordion} alt="Expand" className="h-[10px] w-[5px]" />
   </button>
 );
 
-// --- Main Profile Page ---
 const Profile = () => {
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.user);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = React.useState(false);
 
   const handleLogout = () => {
-    // Add your logout logic here
     console.log('User logged out');
-    // For example: Clear auth tokens, redirect to login, etc.
     navigate('/login');
   };
 
@@ -84,57 +76,55 @@ const Profile = () => {
 
   return (
     <Container>
-      <div className="scrollbar-hide flex flex-1 flex-col overflow-hidden bg-[#fff]">
-        <div className="flex-shrink-0">
-          {/* Header */}
-          <div className="relative flex flex-col items-center">
-            <div className="absolute left-4 top-4">
-              <button
-                onClick={() => navigate(-1)}
-                className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#E9FFE5]"
-                aria-label="Back"
-                type="button"
-              >
-                <img src={profileBack} alt="Back" className="h-4 w-4" />
-              </button>
+      <div className="scrollbar-hide flex flex-1 flex-col overflow-hidden bg-[#F7F7F7]">
+        <div className="flex-shrink-0 bg-white">
+          <div className="flex items-start justify-between p-4">
+            <button
+              onClick={() => navigate(-1)}
+              className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#E9FFE5]"
+              aria-label="Back"
+              type="button"
+            >
+              <img src={profileBack} alt="Back" className="h-4 w-4" />
+            </button>
+            <div className="flex flex-col items-center gap-[14px]">
+              <Avatar className="z-10 h-[50px] w-[50px] border border-[#E5EEE3]">
+                <AvatarImage src={user.avatarUrl} alt={user.name} />
+              </Avatar>
+              <div className="text-lg font-medium text-[#212121]">{user.name}</div>
             </div>
-            <div className="absolute right-4 top-4">
-              <button
-                className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#E9FFE5]"
-                aria-label="Notifications"
-                type="button"
-                onClick={() => navigate('/notifications')}
-              >
+            <button
+              className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#E9FFE5]"
+              aria-label="Notifications"
+              type="button"
+              onClick={() => navigate('/notifications')}
+            >
+              <div className="relative">
                 <img src={notificationIcon} alt="Notifications" className="h-5 w-5" />
-              </button>
-            </div>
-            <Avatar className="border-1 z-10 mt-6 h-[50px] w-[50px] border-[#E5E7EB]">
-              <AvatarImage src={user.avatarUrl} alt={user.name} />
-            </Avatar>
-            <div className="pb-2 pt-3 text-lg font-medium text-[#212121]">{user.name}</div>
+                <span className="absolute right-0 top-0 h-2 w-2 rounded-full bg-[#E92E27]"></span>
+              </div>
+            </button>
           </div>
 
-          {/* Pass Info */}
-          <div
-            className="mx-0 mt-0 flex w-full cursor-pointer flex-row items-center justify-between bg-[#A7E6B9] px-6 py-2 transition-colors"
+          {/* <div
+            className="mx-0 mt-0 flex w-full cursor-pointer flex-col gap-2 bg-[#ADE2A5] p-4 transition-colors"
             onClick={() => navigate('/bulk-pass')}
           >
-            <div className="flex flex-col items-start gap-1">
+            <div className="flex flex-row items-center justify-between gap-1">
               <span className="text-base font-normal text-[#212121]">Bulk Pass</span>
-              <span className="text-[12px] text-[#212121]">{user.passType}</span>
+              <div className="flex items-center gap-2.5 text-[12px] font-medium text-[#212121]">
+                <span>Renew Pass</span> <img src={bulkPassNext} alt="Next" className="size-4" />
+              </div>
             </div>
-            <div className="flex flex-col items-end gap-1">
-              <button className="flex items-center gap-2 text-[12px] font-normal text-[#212121]" type="button">
-                Renew Pass <img src={bulkPassNext} alt="Next" className="h-4 w-4" />
-              </button>
-              <span className="text-[12px] text-[#212121]">Expiring on {user.passExpiry}</span>
+            <div className="flex flex-row items-center justify-between gap-1">
+              <span className="text-[12px] leading-[12px] text-[#212121]">{user.passType}</span>
+              <span className="text-[12px] leading-[12px] text-[#212121]">Expiring on {user.passExpiry}</span>
             </div>
-          </div>
+          </div> */}
         </div>
-        {/* Menu List - sticky/scrollable */}
-        <div className="scrollbar-hide mx-auto flex w-full max-w-md flex-1 flex-col gap-3 overflow-y-auto px-4 py-4">
+
+        <div className="scrollbar-hide mx-auto flex w-full max-w-md flex-1 flex-col gap-3 overflow-y-auto p-4">
           {MENU_ITEMS.map((item, idx) => {
-            // Map menu labels to navigation paths
             const navigationMap: Record<string, string> = {
               'Payment QR': '/payment-qr',
               'Order History': '/order-history',
@@ -143,15 +133,11 @@ const Profile = () => {
               'Feedback / Suggestions': '/feedback',
               'Rules & Regulations': '/rules-and-regulations',
               'My Preferred Lunch Time Slot': '/update-preference-selection',
-              // Add more mappings here as needed
             };
             const handleClick = navigationMap[item.label] ? () => navigate(navigationMap[item.label]) : () => handleLogoutClick(item.label);
-            return <MenuItem key={item.label} {...item} onClick={handleClick} />;
+            return <MenuItem key={idx} {...item} onClick={handleClick} />;
           })}
         </div>
-        {/* <div className="mt-2 mb-2">
-                    <IndicatorBar />
-                </div> */}
       </div>
 
       <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)} onLogout={handleLogout} />

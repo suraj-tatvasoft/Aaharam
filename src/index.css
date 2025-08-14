@@ -115,6 +115,15 @@ All colors MUST be HSL.
   }
 }
 
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
 .scrollbar-hide {
   scrollbar-width: none;
 }
@@ -144,14 +153,6 @@ All colors MUST be HSL.
   transition:
     opacity 400ms,
     transform 400ms;
-}
-
-html,
-body {
-  height: 100%;
-}
-#root {
-  height: 100%;
 }
 
 .recharts-layer.recharts-pie-sector path,

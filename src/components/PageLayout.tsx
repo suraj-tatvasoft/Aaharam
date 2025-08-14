@@ -17,8 +17,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({ title, children, showBackButton
   const navigate = useNavigate();
   return (
     <Container>
-      <div className={`flex w-full flex-1 flex-col items-center overflow-hidden bg-gradient-to-r from-[#F7F7F7] to-white to-50%  ${className}`}>
-        <div className="flex flex-grow-1 w-full items-center bg-[#FFFFFF] px-4 pb-4 pt-4 gap-2.5 rounded-bl-[22px]">
+      <div className={`flex h-full w-full flex-1 flex-col items-center overflow-hidden bg-gradient-to-r from-[#F7F7F7] to-white to-50% ${className}`}>
+        <div className="flex-grow-1 flex w-full items-center gap-2.5 rounded-bl-[22px] bg-[#FFFFFF] px-4 pb-4 pt-4">
           {showBackButton && (
             <button
               onClick={onBack || (() => navigate(-1))}
@@ -26,13 +26,17 @@ const PageLayout: React.FC<PageLayoutProps> = ({ title, children, showBackButton
               aria-label="Back"
               type="button"
             >
-              <img src={profileBack} alt="Back" className="h-4 w-4" />
+              <img src={profileBack} alt="Back" className="size-3.5" />
             </button>
           )}
           <span className="text-[18px] font-normal leading-[23px] text-[#212121]">{title}</span>
         </div>
 
-        <div className={`scrollbar-hide flex flex-grow-1 w-full flex-1 flex-col items-center overflow-y-auto rounded-tr-[22px] bg-[#F7F7F7] ${contentClassName}`}>{children}</div>
+        <div
+          className={`scrollbar-hide flex-grow-1 flex h-full w-full flex-1 flex-col items-center overflow-y-auto rounded-tr-[22px] bg-[#F7F7F7] ${contentClassName}`}
+        >
+          {children}
+        </div>
       </div>
     </Container>
   );

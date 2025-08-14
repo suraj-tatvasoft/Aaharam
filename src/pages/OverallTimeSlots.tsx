@@ -26,8 +26,8 @@ const COLORS = [
 const OverallTimeSlots = () => {
   return (
     <PageLayout title="Overall Time Slots">
-      <div className="flex w-full flex-1 flex-col items-center p-4">
-        <div className="mx-auto mb-8 flex aspect-square w-full items-center justify-center p-2">
+      <div className="flex h-full w-full flex-1 flex-col items-center">
+        <div className="mx-auto flex aspect-square w-full items-center justify-center">
           <ResponsiveContainer width={360} height={360}>
             <PieChart>
               <Pie
@@ -63,11 +63,11 @@ const OverallTimeSlots = () => {
             </PieChart>
           </ResponsiveContainer>
         </div>
-        <div className="mx-auto mb-2 grid w-[311px] grid-cols-2 gap-x-8 gap-y-3">
+        <div className="mb-2 grid w-full grid-cols-2 gap-x-2.5 gap-y-3 p-4">
           {data.map((entry, index) => (
-            <div key={entry.name} className="flex flex-row items-center gap-2">
+            <div key={entry.name} className="flex flex-row items-center gap-2.5">
               <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: COLORS[index % COLORS.length] }} />
-              <span className="font-outfit text-[12px] font-normal leading-5 text-[#141414]">
+              <span className="text-[12px] font-normal leading-5 text-[#141414]">
                 {entry.name} ({entry.value}%)
               </span>
             </div>

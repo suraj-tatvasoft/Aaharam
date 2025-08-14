@@ -40,21 +40,14 @@ const UpdatePreferenceSelection = () => {
 
   return (
     <PageLayout title="My Preferred Lunch Time Slot">
-      <div className="flex w-full flex-1 flex-col px-0">
-        {/* Card pinned to top */}
-        <div className="mx-2 flex flex-1 flex-col rounded-2xl px-0 pb-2 pt-2">
-          <div className="flex-none px-4 pb-2 pt-2 text-base font-medium text-[#212121]" style={{ letterSpacing: 0 }}>
-            Select Your Time Slot
-          </div>
-          <form
-            className="scrollbar-hide flex flex-1 flex-col gap-3 overflow-y-auto px-4"
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
+      <div className="relative mx-auto flex h-full w-full max-w-md flex-1 flex-col bg-gradient-to-r from-[#F7F7F7] to-white to-50%">
+        <div className="flex-grow-1 scrollbar-hide mb-[132px] flex flex-1 flex-col gap-[22px] overflow-y-auto rounded-br-[22px] bg-[#F7F7F7] p-4">
+          <div className="flex-none text-[16px] font-medium leading-[11px] text-[#212121]">Select Your Time Slot</div>
+
+          <form className="flex flex-1 flex-col gap-[22px]" onSubmit={(e) => e.preventDefault()}>
             {TIME_SLOTS.map((slot) => (
-              <label key={slot} className="flex cursor-pointer items-center justify-between py-[6px]">
-                <span className="text-[14px] font-light text-[#212121]">{slot}</span>
+              <label key={slot} className="flex cursor-pointer items-center justify-between">
+                <span className="text-[14px] font-light leading-[10px] text-[#212121]">{slot}</span>
                 <input
                   type="radio"
                   name="timeSlot"
@@ -67,27 +60,24 @@ const UpdatePreferenceSelection = () => {
             ))}
           </form>
         </div>
-        {/* Action buttons pinned to bottom */}
-        <div className="w-full flex-none bg-white px-2 pb-4 pt-2">
-          <div className="mb-4 border-t border-[#E0E0E0]"></div>
-          <div className="flex flex-col gap-3">
-            <button
-              type="button"
-              onClick={handleUpdate}
-              className="font-outfit h-11 w-full rounded-[8px] bg-[#38963B] text-center text-[16px] font-medium leading-[20px] text-white shadow-sm transition-colors hover:bg-[#388E3C]"
-              disabled={!selected}
-            >
-              Update My Preferred Time Slot
-            </button>
-            <button
-              type="button"
-              className="font-outfit h-11 w-full rounded-[8px] border border-[#38963B] bg-white text-center text-base font-medium leading-[20px] text-[#38963B] shadow-sm transition-colors hover:bg-[#E9FFE5]"
-              onClick={() => navigate('/overall-time-slots')}
-              style={{ letterSpacing: 0.2 }}
-            >
-              View Overall Time Slots
-            </button>
-          </div>
+
+        <div className="flex-grow-1 absolute bottom-0 left-0 right-0 flex w-full flex-col gap-3 rounded-tl-[22px] bg-[#FFFFFF] p-4">
+          <button
+            type="button"
+            onClick={handleUpdate}
+            className="h-11 w-full rounded-[8px] border border-[#38963B] bg-[#38963B] text-center text-[16px] font-medium leading-[11px] text-white transition-colors hover:bg-[#388E3C]"
+            disabled={!selected}
+          >
+            Update My Preferred Time Slot
+          </button>
+          <button
+            type="button"
+            className="h-11 w-full rounded-[8px] border border-[#38963B] bg-white text-center text-[16px] font-medium leading-[11px] text-[#38963B] transition-colors hover:bg-[#E9FFE5]"
+            onClick={() => navigate('/overall-time-slots')}
+            style={{ letterSpacing: 0.2 }}
+          >
+            View Overall Time Slots
+          </button>
         </div>
       </div>
     </PageLayout>
