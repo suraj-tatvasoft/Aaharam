@@ -45,17 +45,9 @@ const FoodCard = ({
         <div className="flex flex-1 flex-col justify-between p-[10px]" style={{ minHeight: '-webkit-fill-available' }}>
           <div className="flex justify-between">
             <div className="min-w-0 flex-1">
-              <h3
-                className="line-clamp-1 font-outfit font-normal text-[16px] leading-[16px] tracking-normal text-[#212121]"
-              >
-                {name}
-              </h3>
+              <h3 className="font-outfit line-clamp-1 text-[16px] font-normal leading-[16px] tracking-normal text-[#212121]">{name}</h3>
               {description && (
-                <p
-                  className="mt-3 line-clamp-2 font-outfit font-light text-[12px] leading-[12px] tracking-normal text-[#797979]"
-                >
-                  {description}
-                </p>
+                <p className="font-outfit mt-3 line-clamp-2 text-[12px] font-light leading-[12px] tracking-normal text-[#797979]">{description}</p>
               )}
             </div>
             {/* Favorite Button - absolutely positioned top right */}
@@ -83,16 +75,16 @@ const FoodCard = ({
               ₹{price}
             </span>
             {quantity > 0 && onQuantityChange ? (
-              <div className="w-[92px] h-8 rounded-lg px-2.5 py-1 bg-[#38963B] flex items-center gap-1.5">
+              <div className="flex h-8 w-[92px] items-center gap-1.5 rounded-lg bg-[#38963B] px-2.5 py-1">
                 <button
-                  className="text-white text-lg w-[22px] h-[22px] border-none bg-none cursor-pointer flex items-center justify-center"
+                  className="flex h-[22px] w-[22px] cursor-pointer items-center justify-center border-none bg-none text-lg text-white"
                   onClick={() => onQuantityChange(id, quantity - 1)}
                 >
                   <Minus size={18} className="text-white" />
                 </button>
-                <span className="w-6 text-center text-white font-medium">{quantity}</span>
+                <span className="w-6 text-center font-medium text-white">{quantity}</span>
                 <button
-                  className="text-white text-lg w-[22px] h-[22px] border-none bg-none cursor-pointer flex items-center justify-center"
+                  className="flex h-[22px] w-[22px] cursor-pointer items-center justify-center border-none bg-none text-lg text-white"
                   onClick={() => onQuantityChange(id, quantity + 1)}
                 >
                   <Plus size={18} className="text-white" />
@@ -100,7 +92,7 @@ const FoodCard = ({
               </div>
             ) : (
               <button
-                className={`min-w-[50px] min-h-[30px] rounded-lg bg-white font-medium text-sm flex items-center justify-center transition-all duration-200 ${available ? 'text-[#38963B] border border-[#38963B] cursor-pointer' : 'text-[#A3A3A3] border border-[#A3A3A3] cursor-not-allowed opacity-50'}`}
+                className={`flex min-h-[30px] min-w-[50px] items-center justify-center rounded-lg bg-white text-sm font-medium transition-all duration-200 ${available ? 'cursor-pointer border border-[#38963B] text-[#38963B]' : 'cursor-not-allowed border border-[#A3A3A3] text-[#A3A3A3] opacity-50'}`}
                 onMouseOver={(e) => {
                   if (available) e.currentTarget.style.background = '#E9FFE5';
                 }}

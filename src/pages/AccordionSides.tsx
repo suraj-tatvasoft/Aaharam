@@ -64,14 +64,14 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
         <div key={group}>
           {/* Accordion Header */}
           <button
-            className="py-5 px-4 flex w-full items-center justify-between text-left focus:outline-none"
+            className="flex w-full items-center justify-between px-4 py-5 text-left focus:outline-none"
             onClick={() => setOpen(open === group ? null : group)}
           >
             <span className="text-[16px] font-normal text-[#212121]">{group}</span>
             <ChevronDown size={16} className={`transition-transform duration-200 ${open === group ? 'rotate-180' : ''}`} />
           </button>
           {/* 4px white divider */}
-          {open !== group && <div className="w-full h-[4px] bg-white" />}
+          {open !== group && <div className="h-[4px] w-full bg-white" />}
           {/* Accordion Content */}
           {open === group && (
             <div className="flex flex-col gap-4 px-4">

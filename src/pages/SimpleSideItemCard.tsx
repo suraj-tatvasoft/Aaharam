@@ -12,7 +12,17 @@ interface SimpleSideItemCardProps {
   ItemType?: string;
 }
 
-const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ ItemType, id, name, price, image, quantity, onAdd, onQuantityChange, disabled = false }) => {
+const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
+  ItemType,
+  id,
+  name,
+  price,
+  image,
+  quantity,
+  onAdd,
+  onQuantityChange,
+  disabled = false,
+}) => {
   const isSlides = ItemType === 'slides';
   return (
     <div
@@ -30,14 +40,14 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ ItemType, id, n
           borderRadius: '12px',
           width: isSlides ? '66px' : '46px',
           height: isSlides ? '66px' : '46px',
-          margin: '0 10px 0 0'
+          margin: '0 10px 0 0',
         }}
       />
       <div className="flex min-w-0 flex-1 flex-col justify-center">
-        <span className="truncate text-[16px] leading-[16px] font-normal text-[#212121]">{name}</span>
+        <span className="truncate text-[16px] font-normal leading-[16px] text-[#212121]">{name}</span>
       </div>
       <div className="ml-2 flex items-center gap-[10px]">
-        <span className="text-[14px] leading-[14px] font-normal text-[#212121]">₹{price}</span>
+        <span className="text-[14px] font-normal leading-[14px] text-[#212121]">₹{price}</span>
         {quantity > 0 ? (
           <div
             style={{
@@ -99,7 +109,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ ItemType, id, n
           </div>
         ) : (
           <button
-            className={`min-w-[50px] min-h-[30px] rounded-lg bg-white font-medium text-sm flex items-center justify-center transition-all duration-200 ${disabled ? 'text-[#A3A3A3] border border-[#A3A3A3] cursor-not-allowed opacity-50' : 'text-[#38963B] border border-[#38963B] cursor-pointer'}`}
+            className={`flex min-h-[30px] min-w-[50px] items-center justify-center rounded-lg bg-white text-sm font-medium transition-all duration-200 ${disabled ? 'cursor-not-allowed border border-[#A3A3A3] text-[#A3A3A3] opacity-50' : 'cursor-pointer border border-[#38963B] text-[#38963B]'}`}
             onMouseOver={(e) => (e.currentTarget.style.background = '#E9FFE5')}
             onMouseOut={(e) => (e.currentTarget.style.background = '#fff')}
             onClick={() => onAdd(id)}
