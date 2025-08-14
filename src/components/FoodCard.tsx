@@ -82,53 +82,19 @@ const FoodCard = ({
               ₹{price}
             </span>
             {quantity > 0 && onQuantityChange ? (
-              <div
-                style={{
-                  width: 92,
-                  height: 36,
-                  borderRadius: 8,
-                  padding: '4px 10px',
-                  background: '#38963B',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  opacity: 1,
-                }}
-              >
+              <div className="w-[92px] h-8 rounded-lg px-2.5 py-1 bg-[#38963B] flex items-center gap-1.5">
                 <button
-                  style={{
-                    color: '#fff',
-                    fontSize: 18,
-                    width: 22,
-                    height: 22,
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
+                  className="text-white text-lg w-[22px] h-[22px] border-none bg-none cursor-pointer flex items-center justify-center"
                   onClick={() => onQuantityChange(id, quantity - 1)}
                 >
-                  <Minus size={18} color="#fff" />
+                  <Minus size={18} className="text-white" />
                 </button>
-                <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{quantity}</span>
+                <span className="w-6 text-center text-white font-medium">{quantity}</span>
                 <button
-                  style={{
-                    color: '#fff',
-                    fontSize: 18,
-                    width: 22,
-                    height: 22,
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
+                  className="text-white text-lg w-[22px] h-[22px] border-none bg-none cursor-pointer flex items-center justify-center"
                   onClick={() => onQuantityChange(id, quantity + 1)}
                 >
-                  <Plus size={18} color="#fff" />
+                  <Plus size={18} className="text-white" />
                 </button>
               </div>
             ) : (

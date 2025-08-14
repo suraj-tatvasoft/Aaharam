@@ -183,7 +183,11 @@ const FoodDelivery = () => {
               <CategoryTabs activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
               <PromoBar />
               {/* Food Items List */}
-              <div ref={itemsContainerRef} className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7] p-4">
+              <div
+                style={{ padding: activeCategory === 'sides' ? '0' : '16px' }}
+                ref={itemsContainerRef}
+                className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7]"
+              >
                 {/* Accordion UI for Sides */}
                 {activeCategory === 'sides' ? (
                   <AccordionSides

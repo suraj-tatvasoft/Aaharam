@@ -18,7 +18,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ ItemType, id, n
     <div
       style={{
         borderRadius: '16px',
-        padding: isSlides ? '' : '4px 16px 4px 4px',
+        padding: '4px 16px 4px 4px',
       }}
       className={`flex items-center bg-white`}
     >
@@ -28,9 +28,9 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ ItemType, id, n
         className="mr-3rounded-xl object-cover"
         style={{
           borderRadius: '12px',
-          width: isSlides ? '' : '46px',
-          height: isSlides ? '' : '46px',
-          margin: isSlides ? '' : '0 10px 0 0'
+          width: isSlides ? '66px' : '46px',
+          height: isSlides ? '66px' : '46px',
+          margin: '0 10px 0 0'
         }}
       />
       <div className="flex min-w-0 flex-1 flex-col justify-center">
@@ -42,7 +42,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ ItemType, id, n
           <div
             style={{
               width: 92,
-              height: 32,
+              height: 30,
               borderRadius: 8,
               padding: '4px 10px',
               background: '#38963B',
