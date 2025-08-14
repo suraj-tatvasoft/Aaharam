@@ -45,13 +45,13 @@ const FoodCard = ({
           <div className="flex justify-between">
             <div className="min-w-0 flex-1">
               <h3
-                className="line-clamp-1 font-outfit font-normal text-[16px] leading-none tracking-normal text-[#212121]"
+                className="line-clamp-1 font-outfit font-normal text-[16px] leading-[16px] tracking-normal text-[#212121]"
               >
                 {name}
               </h3>
               {description && (
                 <p
-                  className="mt-3 line-clamp-2 font-outfit font-light text-[12px] leading-none tracking-normal text-[#797979]"
+                  className="mt-3 line-clamp-2 font-outfit font-light text-[12px] leading-[12px] tracking-normal text-[#797979]"
                 >
                   {description}
                 </p>

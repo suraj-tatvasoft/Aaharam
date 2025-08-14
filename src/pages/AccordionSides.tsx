@@ -86,6 +86,7 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
                     quantity={cart[item.id]?.quantity || 0}
                     onAdd={onAddItem}
                     onQuantityChange={onQuantityChange}
+                    ItemType="slides"
                   />
                 </div>
               ))}
