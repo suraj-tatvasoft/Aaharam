@@ -33,43 +33,26 @@ const FoodCard = ({
 }: FoodCardProps) => {
   return (
     <Card
-      className={`overflow-hidden rounded-[16px] border-border/50 bg-card transition-shadow hover:shadow-sm ${!available ? 'pointer-events-none opacity-90' : ''}`}
+      style={{ boxShadow: '0px 0px 20px 0px #F25D460D' }}
+      className={`overflow-hidden rounded-[16px] border-border/50 bg-card ${!available ? 'pointer-events-none opacity-90' : ''}`}
     >
-      <div className="flex p-1">
+      <div className="flex items-center p-1">
         {/* Food Image */}
         <div className="h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-[12px]">
           <img src={image} alt={name} className={`h-full w-full object-cover transition-all ${!available ? 'opacity-90 grayscale' : ''}`} />
         </div>
         {/* Food Details */}
-        <div className="flex flex-1 flex-col justify-between p-[10px]">
+        <div className="flex flex-1 flex-col justify-between p-[10px]" style={{ minHeight: '-webkit-fill-available' }}>
           <div className="flex justify-between">
             <div className="min-w-0 flex-1">
               <h3
-                className="line-clamp-1"
-                style={{
-                  fontFamily: 'Outfit',
-                  fontWeight: 500,
-                  fontStyle: 'normal',
-                  fontSize: 16,
-                  lineHeight: '100%',
-                  letterSpacing: 0,
-                  color: 'var(--card-foreground)',
-                }}
+                className="line-clamp-1 font-outfit font-normal text-[16px] leading-[16px] tracking-normal text-[#212121]"
               >
                 {name}
               </h3>
               {description && (
                 <p
-                  className="mt-2 line-clamp-2"
-                  style={{
-                    fontFamily: 'Outfit',
-                    fontWeight: 300,
-                    fontStyle: 'normal',
-                    fontSize: 12,
-                    lineHeight: '100%',
-                    letterSpacing: 0,
-                    color: '#797979',
-                  }}
+                  className="mt-3 line-clamp-2 font-outfit font-light text-[12px] leading-[12px] tracking-normal text-[#797979]"
                 >
                   {description}
                 </p>
@@ -79,9 +62,9 @@ const FoodCard = ({
             <button
               type="button"
               onClick={() => onToggleFavorite(id)}
-              className="z-10 flex h-[22px] w-[22px] items-center justify-center p-0 text-muted-foreground hover:bg-transparent hover:text-destructive"
+              className="z-10 flex h-[18px] w-[18px] items-center justify-center p-0 text-muted-foreground hover:bg-transparent hover:text-destructive"
             >
-              <Heart width={22} height={22} className={`${isFavorite ? 'fill-destructive text-destructive' : ''}`} />
+              <Heart width={18} height={18} className={`${isFavorite ? 'fill-destructive text-destructive' : ''}`} />
             </button>
           </div>
           {/* Price and Add button row */}
@@ -100,75 +83,24 @@ const FoodCard = ({
               ₹{price}
             </span>
             {quantity > 0 && onQuantityChange ? (
-              <div
-                style={{
-                  width: 92,
-                  height: 36,
-                  borderRadius: 8,
-                  padding: '4px 10px',
-                  background: '#38963B',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  opacity: 1,
-                }}
-              >
+              <div className="w-[92px] h-8 rounded-lg px-2.5 py-1 bg-[#38963B] flex items-center gap-1.5">
                 <button
-                  style={{
-                    color: '#fff',
-                    fontSize: 18,
-                    width: 22,
-                    height: 22,
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
+                  className="text-white text-lg w-[22px] h-[22px] border-none bg-none cursor-pointer flex items-center justify-center"
                   onClick={() => onQuantityChange(id, quantity - 1)}
                 >
-                  <Minus size={18} color="#fff" />
+                  <Minus size={18} className="text-white" />
                 </button>
-                <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{quantity}</span>
+                <span className="w-6 text-center text-white font-medium">{quantity}</span>
                 <button
-                  style={{
-                    color: '#fff',
-                    fontSize: 18,
-                    width: 22,
-                    height: 22,
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
+                  className="text-white text-lg w-[22px] h-[22px] border-none bg-none cursor-pointer flex items-center justify-center"
                   onClick={() => onQuantityChange(id, quantity + 1)}
                 >
-                  <Plus size={18} color="#fff" />
+                  <Plus size={18} className="text-white" />
                 </button>
               </div>
             ) : (
               <button
-                style={{
-                  minWidth: 56,
-                  minHeight: 32,
-                  borderRadius: 12,
-                  background: '#fff',
-                  color: available ? '#38963B' : '#A3A3A3',
-                  fontWeight: 500,
-                  fontSize: 16,
-                  border: available ? '1px solid #38963B' : '1px solid #A3A3A3',
-                  padding: '0 20px',
-                  cursor: available ? 'pointer' : 'not-allowed',
-                  transition: 'background 0.2s',
-                  opacity: available ? 1 : 0.5,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: 'none',
-                }}
+                className={`min-w-[50px] min-h-[30px] rounded-lg bg-white font-medium text-sm flex items-center justify-center transition-all duration-200 ${available ? 'text-[#38963B] border border-[#38963B] cursor-pointer' : 'text-[#A3A3A3] border border-[#A3A3A3] cursor-not-allowed opacity-50'}`}
                 onMouseOver={(e) => {
                   if (available) e.currentTarget.style.background = '#E9FFE5';
                 }}

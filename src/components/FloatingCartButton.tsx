@@ -31,7 +31,7 @@ const FloatingCartButton: React.FC<FloatingCartButtonProps> = ({ count, onClick 
       }}
       onClick={onClick}
     >
-      <span style={{ color: '#1A932E', fontWeight: 500, fontSize: 16 }}>
+      <span style={{ color: '#212121', fontWeight: 400, fontSize: 16 }}>
         {count} Item{count > 1 ? 's' : ''}
       </span>
       <span

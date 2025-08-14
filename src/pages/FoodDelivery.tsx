@@ -181,9 +181,13 @@ const FoodDelivery = () => {
             <Header onMenuClick={() => setIsMenuModalOpen(true)} />
             <main className="flex w-full flex-1 flex-col overflow-y-hidden">
               <CategoryTabs activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
-              <PromoBar />
+              {/* <PromoBar /> */}
               {/* Food Items List */}
-              <div ref={itemsContainerRef} className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7] p-4">
+              <div
+                style={{ padding: activeCategory === 'sides' ? '0' : '16px' }}
+                ref={itemsContainerRef}
+                className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7]"
+              >
                 {/* Accordion UI for Sides */}
                 {activeCategory === 'sides' ? (
                   <AccordionSides
@@ -197,7 +201,7 @@ const FoodDelivery = () => {
                 ) : (
                   filteredItems.map((item) =>
                     activeCategory === 'lunch' ? (
-                      item.name === 'Regular Thali' ? (
+                      item.name === 'Meal - Regular' || item.name === 'Meal - Jain' ? (
                         <FoodCard
                           key={item.id}
                           id={item.id}

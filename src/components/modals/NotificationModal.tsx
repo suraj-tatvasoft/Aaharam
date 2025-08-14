@@ -13,10 +13,10 @@ export default function NotificationModal({ isOpen, onClose, onOk }: Notificatio
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-2 backdrop-blur-md">
-      <div className="absolute left-1/2 top-1/2 flex w-[305px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-0 rounded-[16px] bg-[#F5F5F5] p-0 shadow-[0_-6px_20px_rgba(168,168,168,0.4)]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 p-2 backdrop-blur-[2px]">
+      <div style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }} className="absolute left-1/2 top-1/2 flex w-[305px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-0 rounded-[16px] bg-[#F5F5F5] p-0">
         {/* Header */}
-        <div className="flex w-full flex-col items-center rounded-t-[16px] bg-white px-4 pb-2 pt-5 text-center">
+        <div className="flex w-full flex-col items-center rounded-t-[16px] bg-white px-4 py-5 text-center">
           <span className="font-outfit w-full text-center text-[16px] font-medium leading-[20px] text-[#212121]">Mute Meal Notification for</span>
         </div>
         <div className="mt-[1px] h-1 w-full bg-[#F5F5F5]" />
@@ -43,26 +43,26 @@ export default function NotificationModal({ isOpen, onClose, onOk }: Notificatio
                   >
                     {selectedOption === opt.value && <span className="h-2 w-2 rounded-full bg-[#38963B]"></span>}
                   </span>
-                  <span className="font-outfit ml-2 text-[14px] font-light leading-[18px] text-[#212121]">{opt.label}</span>
+                  <span className="font-outfit ml-[2px] text-[14px] font-light leading-[18px] text-[#212121]">{opt.label}</span>
                 </label>
               </div>
-              {idx !== arr.length - 1 && <div className="h-px w-full border-b border-[#F5F5F5]" />}
+              {idx !== arr.length - 1 && <div className="h-[1px] w-full bg-[#F5F5F5]" />}
             </React.Fragment>
           ))}
         </div>
         {/* Divider */}
         <div className="mt-[1px] h-1 w-full bg-[#F5F5F5]" />
         {/* Actions */}
-        <div className="flex w-full flex-row items-center justify-center gap-20 rounded-b-[16px] bg-white px-4 py-4">
+        <div className="flex w-full flex-row items-center justify-center gap-5 rounded-b-[16px] bg-white">
           <button
             onClick={onClose}
-            className="font-outfit bg-transparent px-0 py-0 text-[14px] font-medium leading-[18px] text-[#212121B3] shadow-none"
+            className="min-w-[126px] px-4 py-5 font-outfit bg-transparent text-[14px] font-medium leading-[14px] text-[#212121B3] shadow-none"
           >
             Cancel
           </button>
           <button
             onClick={() => (onOk ? onOk(selectedOption) : onClose())}
-            className="font-outfit bg-transparent px-0 py-0 text-[14px] font-medium leading-[18px] text-[#38963B] shadow-none"
+            className="min-w-[126px] px-4 py-5 font-outfit bg-transparent text-[14px] font-medium leading-[14px] text-[#38963B] shadow-none"
           >
             Ok
           </button>

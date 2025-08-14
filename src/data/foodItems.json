@@ -56,7 +56,15 @@
   },
   {
     "id": "l2",
-    "name": "Regular Thali",
+    "name": "Meal - Regular",
+    "price": 80,
+    "image": "https://images.unsplash.com/photo-1711153419402-336ee48f2138?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": "lunch",
+    "description": "4 Butter Roti, 2 Sabji, Gujrati Dal, Bhat, Salad, Mango Juice"
+  },
+  {
+    "id": "l10",
+    "name": "Meal - Jain",
     "price": 80,
     "image": "https://images.unsplash.com/photo-1711153419402-336ee48f2138?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "category": "lunch",

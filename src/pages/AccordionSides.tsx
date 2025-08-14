@@ -59,23 +59,22 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       {sortedGroups.map((group) => (
-        <div key={group} className="">
+        <div key={group}>
           {/* Accordion Header */}
           <button
-            className="flex w-full items-center justify-between text-left focus:outline-none"
+            className="py-5 px-4 flex w-full items-center justify-between text-left focus:outline-none"
             onClick={() => setOpen(open === group ? null : group)}
-            style={{ fontWeight: 500, fontSize: 16, color: '#212121', letterSpacing: 0 }}
           >
-            <span>{group}</span>
-            <ChevronDown size={20} className={`transition-transform duration-200 ${open === group ? 'rotate-180' : ''}`} />
+            <span className="text-[16px] font-normal text-[#212121]">{group}</span>
+            <ChevronDown size={16} className={`transition-transform duration-200 ${open === group ? 'rotate-180' : ''}`} />
           </button>
           {/* 4px white divider */}
-          {open !== group && <div className="mt-5 w-full" style={{ background: '#fff', height: '4px', borderRadius: '2px' }} />}
+          {open !== group && <div className="w-full h-[4px] bg-white" />}
           {/* Accordion Content */}
           {open === group && (
-            <div className="mt-5 flex flex-col gap-4">
+            <div className="flex flex-col gap-4 px-4">
               {groups[group].map((item, idx) => (
                 <div key={item.id}>
                   <SimpleSideItemCard
@@ -86,6 +85,7 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
                     quantity={cart[item.id]?.quantity || 0}
                     onAdd={onAddItem}
                     onQuantityChange={onQuantityChange}
+                    ItemType="slides"
                   />
                 </div>
               ))}
