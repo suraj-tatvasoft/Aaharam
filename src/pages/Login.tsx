@@ -29,13 +29,13 @@ const Login = () => {
       <div className="flex flex-1 flex-col">
         {/* Top Section: Illustration with light green bg */}
         <div className="flex flex-1 flex-col items-center justify-end bg-white pb-0">
-          <div className="flex h-full w-full items-end justify-center bg-[#DFFFEA] rounded-br-[100px]">
+          <div className="flex h-full w-full items-end justify-center rounded-br-[100px] bg-[#DFFFEA]">
             <img src={loginMain} alt="Login Illustration" className="relative bottom-[-5px]" />
           </div>
         </div>
         {/* Bottom Section: Login Form */}
         <div className="flex-1 bg-[#DFFFEA]">
-          <div className="flex h-full w-full items-end justify-center bg-white rounded-tl-[100px]">
+          <div className="flex h-full w-full items-end justify-center rounded-tl-[100px] bg-white">
             <div className="relative z-10 min-h-[420px] w-full px-4 pb-4 pt-8">
               <h1 className="mb-10 text-center text-2xl font-normal text-[#212121]">Login</h1>
               <Formik
@@ -65,7 +65,7 @@ const Login = () => {
                           name="username"
                           type="text"
                           placeholder="Enter your username"
-                          className="h-[43px] text-[#212121] border-[#21212180] border-[1px] focus-visible:ring-offset-0 focus-visible:border-none placeholder:text-[#212121CC]"
+                          className="h-[43px] border-[1px] border-[#21212180] text-[#212121] placeholder:text-[#212121CC] focus-visible:border-none focus-visible:ring-offset-0"
                           autoComplete="username"
                         />
                         <ErrorMessage name="username" className="mt-1 text-xs text-red-500">
@@ -84,7 +84,7 @@ const Login = () => {
                             name="password"
                             type={showPassword ? 'text' : 'password'}
                             placeholder="Enter your password"
-                            className="h-[43px] text-[#212121] pr-10 border-[#21212180] border-[1px] focus-visible:ring-offset-0 focus-visible:border-none placeholder:text-[#212121CC]"
+                            className="h-[43px] border-[1px] border-[#21212180] pr-10 text-[#212121] placeholder:text-[#212121CC] focus-visible:border-none focus-visible:ring-offset-0"
                             autoComplete="current-password"
                           />
                           <Button

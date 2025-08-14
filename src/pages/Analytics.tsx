@@ -36,19 +36,19 @@ const Analytics = () => {
       <div className="flex flex-1 flex-col">
         {/* Top section with avatar and welcome OUTSIDE card */}
         <div className="flex w-full flex-col items-center bg-white">
-          <div className="flex flex-col items-center pb-4 pt-10 bg-[#DFFFEA] rounded-br-[70px] w-full h-full">
-          <Avatar className="mb-3 h-14 w-14 border border-[#E5EEE3]">
-            <AvatarImage src={user.avatarUrl || ''} alt={user.name || 'User'} className="object-cover" />
-            <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-semibold text-success md:text-xl">
-              {user.name.slice(0, 1).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
-          <h1 className="font-outfit mt-1 px-3 py-1 text-center text-[18px] font-medium text-[#212121]">Welcome {user.name}</h1>
+          <div className="flex h-full w-full flex-col items-center rounded-br-[70px] bg-[#DFFFEA] pb-4 pt-10">
+            <Avatar className="mb-3 h-14 w-14 border border-[#E5EEE3]">
+              <AvatarImage src={user.avatarUrl || ''} alt={user.name || 'User'} className="object-cover" />
+              <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-semibold text-success md:text-xl">
+                {user.name.slice(0, 1).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+            <h1 className="font-outfit mt-1 px-3 py-1 text-center text-[18px] font-medium text-[#212121]">Welcome {user.name}</h1>
           </div>
         </div>
         {/* Card container */}
         <div className="flex-1 bg-[#DFFFEA]">
-          <div className="flex h-full w-full flex-1 px-4 pb-0 pt-6 flex-col items-center justify-end bg-white rounded-tl-[70px]">
+          <div className="flex h-full w-full flex-1 flex-col items-center justify-end rounded-tl-[70px] bg-white px-4 pb-0 pt-6">
             <div className="flex h-full w-full flex-1 flex-col">
               <div className="text-center">
                 <div className="font-outfit text-[14px] font-normal text-[#141414]">Let’s check how crowded it gets during lunch hours.</div>

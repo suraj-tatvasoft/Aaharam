@@ -72,62 +72,59 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
         <div className="flex justify-center">
           <button
             onClick={onClose}
-            className="w-[36px] h-[36px] flex items-center justify-center absolute left-1/2 z-10 -translate-x-1/2 rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none"
-            style={{ top: '-52px', background: '#F5F5F5', boxShadow: "0px 0px 20px 0px #A8A8A866" }}
+            className="absolute left-1/2 z-10 flex h-[36px] w-[36px] -translate-x-1/2 items-center justify-center rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none"
+            style={{ top: '-52px', background: '#F5F5F5', boxShadow: '0px 0px 20px 0px #A8A8A866' }}
             aria-label="Close"
           >
             <X className="h-5 w-5 text-gray-700" />
           </button>
         </div>
-        <div
-          className="bg-white rounded-tl-[30px] rounded-tr-[30px]"
-          style={{ boxShadow: "0px -6px 20px 0px #A8A8A866"}}
-        >
+        <div className="rounded-tl-[30px] rounded-tr-[30px] bg-white" style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
           {/* Heading and date */}
-          <div className="px-4 pb-4 pt-5 flex items-center justify-between">
-            <h3 className="text-[16px] leading-[16px] font-medium text-[#212121]">Today's Lunch Menu</h3>
+          <div className="flex items-center justify-between px-4 pb-4 pt-5">
+            <h3 className="text-[16px] font-medium leading-[16px] text-[#212121]">Today's Lunch Menu</h3>
             <span className="text-[14px] leading-[14px] text-[#212121]">11th July 25, Monday</span>
           </div>
 
           {/* Divider */}
           <div className="h-[4px] w-full bg-[#F7F7F7]" />
 
-          <div className="max-h-[70vh] flex flex-col gap-[10px] px-4 pt-1 pb-8 overflow-auto scroll-smooth bg-[#F7F7F7]">
-            {["Regular Thali", "Meal - Jain", "Farali Thali"].map((thali) => {
+          <div className="flex max-h-[70vh] flex-col gap-[10px] overflow-auto scroll-smooth bg-[#F7F7F7] px-4 pb-8 pt-1">
+            {['Regular Thali', 'Meal - Jain', 'Farali Thali'].map((thali) => {
               return (
-                <div className="bg-white rounded-[10px] p-4">
-                {/* Thali image, name, price */}
-                <div className="flex items-center gap-[10px]">
-                  <div className="h-[46px] w-[46px] overflow-hidden rounded-[7px]">
-                    <img src={regularThaliImage} alt="Regular Thali" className="h-full w-full object-cover" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[16px] font-normal text-[#212121]">{thali}</h3>
-                  </div>
-                  <span className="text-[14px] font-normal text-[#212121]">₹80</span>
-                </div>
-
-                {/* Menu Items */}
-                <div className="py-4 space-y-4">
-                  {menuItems.map((item, index) => (
-                    <div key={index} className="flex items-center justify-between text-sm">
-                      <span className="text-[16px] font-normal text-[#212121] leading-[16px]">{item.name}</span>
-                      <span className="text-[14px] font-normal text-[#212121] leading-[16px]">{item.quantity}</span>
+                <div className="rounded-[10px] bg-white p-4">
+                  {/* Thali image, name, price */}
+                  <div className="flex items-center gap-[10px]">
+                    <div className="h-[46px] w-[46px] overflow-hidden rounded-[7px]">
+                      <img src={regularThaliImage} alt="Regular Thali" className="h-full w-full object-cover" />
                     </div>
-                  ))}
-                </div>
+                    <div className="flex-1">
+                      <h3 className="text-[16px] font-normal text-[#212121]">{thali}</h3>
+                    </div>
+                    <span className="text-[14px] font-normal text-[#212121]">₹80</span>
+                  </div>
 
-                {/* Add Button */}
-                <div>
-                  <button
-                    className="w-full rounded-[8px] border border-[#38963B] bg-white p-4 text-[16px] leading-[16px] font-medium text-[#38963B] transition-colors hover:bg-green-50"
-                    onClick={onClose}
-                  >
-                    Add item
-                  </button>
+                  {/* Menu Items */}
+                  <div className="space-y-4 py-4">
+                    {menuItems.map((item, index) => (
+                      <div key={index} className="flex items-center justify-between text-sm">
+                        <span className="text-[16px] font-normal leading-[16px] text-[#212121]">{item.name}</span>
+                        <span className="text-[14px] font-normal leading-[16px] text-[#212121]">{item.quantity}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Add Button */}
+                  <div>
+                    <button
+                      className="w-full rounded-[8px] border border-[#38963B] bg-white p-4 text-[16px] font-medium leading-[16px] text-[#38963B] transition-colors hover:bg-green-50"
+                      onClick={onClose}
+                    >
+                      Add item
+                    </button>
+                  </div>
                 </div>
-              </div>
-              )
+              );
             })}
           </div>
         </div>

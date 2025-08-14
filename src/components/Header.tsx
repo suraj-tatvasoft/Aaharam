@@ -37,23 +37,23 @@ const Header = ({ onMenuClick }: HeaderProps) => {
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-black" />
               <Input
                 placeholder="Search"
-                className="text-black placeholder:text-black h-[42px] rounded-full border border-[#E5EEE3] bg-white pl-10 focus:border-[#E5EEE3] focus:ring-0 focus-visible:ring-offset-0"
+                className="h-[42px] rounded-full border border-[#E5EEE3] bg-white pl-10 text-black placeholder:text-black focus:border-[#E5EEE3] focus:ring-0 focus-visible:ring-offset-0"
               />
             </div>
 
             {/* Action Buttons - Right Side */}
             <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-[42px] w-[42px] rounded-full"
-                  style={{ backgroundColor: '#E9FFE4' }}
-                  onClick={onMenuClick}
-                  aria-label="Open Today's Menu"
-                >
-                  <img src={headerMenuIcon} alt="Menu" />
-                </Button>
-                <Button
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-[42px] w-[42px] rounded-full"
+                style={{ backgroundColor: '#E9FFE4' }}
+                onClick={onMenuClick}
+                aria-label="Open Today's Menu"
+              >
+                <img src={headerMenuIcon} alt="Menu" />
+              </Button>
+              <Button
                 variant="outline"
                 size="icon"
                 className="relative h-[42px] w-[42px] rounded-full"

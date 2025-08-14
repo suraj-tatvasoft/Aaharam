@@ -39,14 +39,14 @@ const PreferenceSelection = () => {
       <div className="flex flex-1 flex-col">
         <div className="mx-auto flex w-full flex-1 flex-col bg-gradient-to-r from-[#F7F7F7] to-white to-50%">
           {/* Header Section */}
-          <div className="flex flex-grow-1 w-full items-center bg-[#FFFFFF] px-4 pb-4 pt-4 gap-2.5 rounded-bl-[22px]">
-          <Avatar className="h-[42px] w-[42px] border border-[#E5EEE3]">
+          <div className="flex-grow-1 flex w-full items-center gap-2.5 rounded-bl-[22px] bg-[#FFFFFF] px-4 pb-4 pt-4">
+            <Avatar className="h-[42px] w-[42px] border border-[#E5EEE3]">
               <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="User" />
             </Avatar>
             <span className="text-[18px] font-normal leading-[23px] text-[#212121]">My Preferred Lunch Time Slot</span>
           </div>
           {/* Card Section */}
-          <form className="flex flex-1 flex-col rounded-tr-[22px] p-4 shadow-sm bg-[#F7F7F7]" onSubmit={handleSubmit}>
+          <form className="flex flex-1 flex-col rounded-tr-[22px] bg-[#F7F7F7] p-4 shadow-sm" onSubmit={handleSubmit}>
             <div className="mb-[22px] text-[16px] font-medium leading-[20px] text-[#212121]">Select Your Time Slot</div>
             <div className="flex flex-1 flex-col gap-6 overflow-y-auto">
               {TIME_SLOTS.map((slot) => (

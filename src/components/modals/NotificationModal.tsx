@@ -14,7 +14,10 @@ export default function NotificationModal({ isOpen, onClose, onOk }: Notificatio
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 p-2 backdrop-blur-[2px]">
-      <div style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }} className="absolute left-1/2 top-1/2 flex w-[305px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-0 rounded-[16px] bg-[#F5F5F5] p-0">
+      <div
+        style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}
+        className="absolute left-1/2 top-1/2 flex w-[305px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-0 rounded-[16px] bg-[#F5F5F5] p-0"
+      >
         {/* Header */}
         <div className="flex w-full flex-col items-center rounded-t-[16px] bg-white px-4 py-5 text-center">
           <span className="font-outfit w-full text-center text-[16px] font-medium leading-[20px] text-[#212121]">Mute Meal Notification for</span>
@@ -56,13 +59,13 @@ export default function NotificationModal({ isOpen, onClose, onOk }: Notificatio
         <div className="flex w-full flex-row items-center justify-center gap-5 rounded-b-[16px] bg-white">
           <button
             onClick={onClose}
-            className="min-w-[126px] px-4 py-5 font-outfit bg-transparent text-[14px] font-medium leading-[14px] text-[#212121B3] shadow-none"
+            className="font-outfit min-w-[126px] bg-transparent px-4 py-5 text-[14px] font-medium leading-[14px] text-[#212121B3] shadow-none"
           >
             Cancel
           </button>
           <button
             onClick={() => (onOk ? onOk(selectedOption) : onClose())}
-            className="min-w-[126px] px-4 py-5 font-outfit bg-transparent text-[14px] font-medium leading-[14px] text-[#38963B] shadow-none"
+            className="font-outfit min-w-[126px] bg-transparent px-4 py-5 text-[14px] font-medium leading-[14px] text-[#38963B] shadow-none"
           >
             Ok
           </button>

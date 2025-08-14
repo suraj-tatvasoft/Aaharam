@@ -79,11 +79,14 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
     <div className="fixed inset-0 z-50 flex items-end bg-black/10 sm:items-center sm:justify-center" style={{ backdropFilter: 'blur(2px)' }}>
       {/* Floating Close Button */}
       {/* Modal Container */}
-      <div className="relative mx-auto flex w-full max-w-md flex-col rounded-tl-[30px] rounded-tr-[30px] bg-white" style={{ boxShadow: "0px -6px 20px 0px #A8A8A866" }}>
+      <div
+        className="relative mx-auto flex w-full max-w-md flex-col rounded-tl-[30px] rounded-tr-[30px] bg-white"
+        style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}
+      >
         {/* Floating Close Button */}
         <button
           onClick={onClose}
-          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full  p-2 hover:bg-gray-100 focus:outline-none"
+          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full p-2 hover:bg-gray-100 focus:outline-none"
           style={{ top: '-58px', background: '#F5F5F5' }}
           aria-label="Close"
         >
@@ -93,22 +96,22 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
         <div className="flex items-center pb-3 pl-4 pr-4 pt-4">
           {image && <img src={image} alt={itemName} className="mr-[10px] h-[46px] w-[46px] rounded-[12px] object-cover" />}
           <div className="flex-1">
-            <div className="text-[#212121] font-normal">{itemName}</div>
+            <div className="font-normal text-[#212121]">{itemName}</div>
           </div>
-          <div className="text-[#212121] font-normal text-[14px]">₹{basePrice}</div>
+          <div className="text-[14px] font-normal text-[#212121]">₹{basePrice}</div>
         </div>
-        <div className='max-h-[60vh] overflow-y-auto scroll-smooth'>
+        <div className="max-h-[60vh] overflow-y-auto scroll-smooth">
           {/* Preparation Type */}
           {availableFor && availableFor.length > 0 && (
             <>
               <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
               <div className="p-4">
-                <div className="mb-4 text-[#212121] font-medium text-[14px]">Choice Of Preparation Type</div>
+                <div className="mb-4 text-[14px] font-medium text-[#212121]">Choice Of Preparation Type</div>
                 <div className="mb-4 border-b border-[#2121211A]"></div>
                 <div className="flex flex-col gap-[14px]">
                   {availableFor.map((type) => (
                     <label key={type} className="group flex cursor-pointer items-center justify-between">
-                      <span className="text-sm capitalize text-[#212121] font-light">{type}</span>
+                      <span className="text-sm font-light capitalize text-[#212121]">{type}</span>
                       <span className="relative flex items-center">
                         <input
                           type="radio"
@@ -133,17 +136,15 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
             <>
               <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
               <div className="p-4">
-                <div className="mb-4 text-[#212121] font-medium text-[14px]">Extra</div>
+                <div className="mb-4 text-[14px] font-medium text-[#212121]">Extra</div>
                 <div className="mb-4 border-b border-[#2121211A]" />
                 <div className="flex flex-col gap-[14px]">
                   {modifiers.map((mod) => (
                     <label key={mod.id} className="group flex cursor-pointer items-center">
-                      <span className="flex-1 text-sm capitalize text-[#212121] font-light" style={{ color: '#212121' }}>
+                      <span className="flex-1 text-sm font-light capitalize text-[#212121]" style={{ color: '#212121' }}>
                         {mod.name}
                       </span>
-                      <span className="ml-2 text-sm text-[#212121] font-light">
-                        ₹{mod.price}
-                      </span>
+                      <span className="ml-2 text-sm font-light text-[#212121]">₹{mod.price}</span>
                       <span className="relative ml-[6px] flex items-center">
                         <input
                           type="checkbox"
@@ -169,9 +170,9 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
           {/* Cooking Note */}
           <div className="w-full" style={{ background: '#F7F7F7', height: '4px' }} />
           <div className="p-4">
-            <label className="mb-2 block text-sm font-normal  text-[#212121]">Add a cooking note (optional)</label>
+            <label className="mb-2 block text-sm font-normal text-[#212121]">Add a cooking note (optional)</label>
             <textarea
-              className="w-full rounded-[10px] border border-[#2121211A] bg-[#ffffff] p-[10px] text-sm focus:outline-green-500 placeholder:text-sm"
+              className="w-full rounded-[10px] border border-[#2121211A] bg-[#ffffff] p-[10px] text-sm placeholder:text-sm focus:outline-green-500"
               style={{ minHeight: '80px' }}
               rows={2}
               placeholder="Add any special instructions..."
@@ -184,24 +185,13 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
         {/* Footer */}
         <div className="sticky bottom-0 left-0 bg-white p-4">
           <div className="flex w-full gap-[10px]">
-            <div
-              className="flex h-12 flex-1 items-center justify-between rounded-[8px] border border-[#38963B]"
-            >
-              <button
-                className="disabled:opacity-40 ml-5"
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                disabled={quantity === 1}
-              >
-                <Minus className='text-[#38963B]' />
+            <div className="flex h-12 flex-1 items-center justify-between rounded-[8px] border border-[#38963B]">
+              <button className="ml-5 disabled:opacity-40" onClick={() => setQuantity((q) => Math.max(1, q - 1))} disabled={quantity === 1}>
+                <Minus className="text-[#38963B]" />
               </button>
-              <span className="text-[16px] font-medium text-[#38963B]">
-                {quantity}
-              </span>
-              <button
-                className="disabled:opacity-40 mr-5"
-                onClick={() => setQuantity((q) => q + 1)}
-              >
-                <Plus className='text-[#38963B]' />
+              <span className="text-[16px] font-medium text-[#38963B]">{quantity}</span>
+              <button className="mr-5 disabled:opacity-40" onClick={() => setQuantity((q) => q + 1)}>
+                <Plus className="text-[#38963B]" />
               </button>
             </div>
             <button
