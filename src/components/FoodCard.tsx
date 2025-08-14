@@ -36,13 +36,13 @@ const FoodCard = ({
       style={{ boxShadow: '0px 0px 20px 0px #F25D460D' }}
       className={`overflow-hidden rounded-[16px] border-border/50 bg-card ${!available ? 'pointer-events-none opacity-90' : ''}`}
     >
-      <div className="flex items-center p-1">
+      <div className="flex p-1">
         {/* Food Image */}
         <div className="h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-[12px]">
           <img src={image} alt={name} className={`h-full w-full object-cover transition-all ${!available ? 'opacity-90 grayscale' : ''}`} />
         </div>
         {/* Food Details */}
-        <div className="flex flex-1 flex-col justify-between p-[10px]" style={{ minHeight: '-webkit-fill-available' }}>
+        <div className="flex flex-1 flex-col justify-between p-[10px]">
           <div className="flex justify-between">
             <div className="min-w-0 flex-1">
               <h3 className="font-outfit line-clamp-1 text-[16px] font-normal leading-[16px] tracking-normal text-[#212121]">{name}</h3>
