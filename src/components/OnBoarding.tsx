@@ -59,7 +59,7 @@ const OnBoarding: React.FC = () => {
               <div className="flex h-full w-full flex-col">
                 {/* Header (top fixed area) */}
                 <div className="px-4 pb-4 pt-8">
-                  <h1 className="animate-fade-in-up text-left text-2xl font-light leading-tight text-[#101010] sm:text-3xl md:text-4xl">
+                  <h1 className="animate-fade-in-up text-left text-4xl font-light leading-tight text-[#101010] sm:text-3xl md:text-4xl">
                     {heading.map((line, i) => (
                       <span className="block" key={i}>
                         {line}
@@ -100,7 +100,7 @@ const OnBoarding: React.FC = () => {
 
                   {/* Next Button */}
                   <button
-                    className="flex h-14 w-24 items-center justify-center rounded-full bg-black shadow-md transition-transform active:scale-95"
+                    className="flex h-14 w-[100px] items-center justify-center rounded-full bg-black shadow-md transition-transform active:scale-95"
                     onClick={handleNext}
                     aria-label="Next"
                   >
