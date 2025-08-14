@@ -26,7 +26,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ title, children, showBackButton
               aria-label="Back"
               type="button"
             >
-              <img src={profileBack} alt="Back" className="h-4 w-4" />
+              <img src={profileBack} alt="Back" className="size-3.5" />
             </button>
           )}
           <span className="text-[18px] font-normal leading-[23px] text-[#212121]">{title}</span>

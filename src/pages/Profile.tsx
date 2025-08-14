@@ -77,7 +77,7 @@ const Profile = () => {
   return (
     <Container>
       <div className="scrollbar-hide flex flex-1 flex-col overflow-hidden bg-[#F7F7F7]">
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 bg-white">
           <div className="flex items-start justify-between p-4">
             <button
               onClick={() => navigate(-1)}
@@ -106,7 +106,7 @@ const Profile = () => {
             </button>
           </div>
 
-          <div
+          {/* <div
             className="mx-0 mt-0 flex w-full cursor-pointer flex-col gap-2 bg-[#ADE2A5] p-4 transition-colors"
             onClick={() => navigate('/bulk-pass')}
           >
@@ -120,7 +120,7 @@ const Profile = () => {
               <span className="text-[12px] leading-[12px] text-[#212121]">{user.passType}</span>
               <span className="text-[12px] leading-[12px] text-[#212121]">Expiring on {user.passExpiry}</span>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="scrollbar-hide mx-auto flex w-full max-w-md flex-1 flex-col gap-3 overflow-y-auto p-4">
