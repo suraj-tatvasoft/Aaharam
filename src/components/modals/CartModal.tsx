@@ -41,11 +41,11 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full border border-gray-200 p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-          style={{ top: '-58px', background: '#F5F5F5' }}
+          className="w-[36px] h-[36px] flex items-center justify-center absolute left-1/2 z-10 -translate-x-1/2 rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none"
+          style={{ top: '-52px', background: '#F5F5F5', boxShadow: "0px 0px 20px 0px #A8A8A866" }}
           aria-label="Close"
         >
-          <X className="h-6 w-6 text-gray-700" />
+          <X className="h-5 w-5 text-gray-700" />
         </button>
         {/* Header */}
         <div className="flex items-center justify-between px-4 pb-4 pt-5">
@@ -56,97 +56,99 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
         </div>
         <div className="h-1" style={{ background: '#F5F5F5' }}></div>
         {/* Cart Items */}
-        <div className="flex max-h-48 flex-col gap-4 overflow-y-auto px-4 py-5">
-          {cartItems.map((item) => (
-            <div key={item.id} className="flex items-center gap-3">
-              <img src={item.image} alt={item.name} className="h-[46px] w-[46px] rounded-[16px] object-cover" />
-              <div className="flex-1">
-                <div className="text-sm font-medium">{item.name}</div>
-                {item.modifiers && item.modifiers.modifiers && item.modifiers.modifiers.length > 0 && (
-                  <div className="text-xs text-gray-500">{item.modifiers.modifiers.join(', ')}</div>
-                )}
-              </div>
-              <span className="mr-2 text-base font-medium text-[#212121]" style={{ minWidth: 36, textAlign: 'right' }}>
-                ₹{item.price}
-              </span>
-              {/* Quantity Selector */}
-              <div
-                style={{
-                  width: 92,
-                  height: 36,
-                  borderRadius: 8,
-                  padding: '4px 10px',
-                  background: '#38963B',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  opacity: 1,
-                }}
-              >
-                <button
-                  style={{
-                    color: '#fff',
-                    fontSize: 18,
-                    width: 22,
-                    height: 22,
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  onClick={() => onQuantityChange(item.id, item.quantity - 1)}
-                  disabled={item.quantity === 1}
-                >
-                  <Minus size={18} color="#fff" />
-                </button>
-                <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{item.quantity}</span>
-                <button
-                  style={{
-                    color: '#fff',
-                    fontSize: 18,
-                    width: 22,
-                    height: 22,
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  onClick={() => onQuantityChange(item.id, item.quantity + 1)}
-                >
-                  <Plus size={18} color="#fff" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="h-1" style={{ background: '#F5F5F5' }}></div>
-        {/* Bill Section */}
-        <div className="bg-white p-4">
-          <div className="mb-3 text-sm font-semibold">Bill</div>
-          <div className="my-3 h-[2px] bg-gray-100"></div>
-          <div className="space-y-3">
-            {cartItems.map((item, index) => (
-              <React.Fragment key={item.id + '-bill'}>
-                <div className="flex justify-between text-sm">
-                  <span>{item.name}</span>
-                  <span>₹{item.price * item.quantity}</span>
+        <div className='max-h-[60vh] overflow-auto'>
+          <div className="flex flex-col gap-4 px-4 py-5">
+            {cartItems.map((item) => (
+              <div key={item.id} className="flex items-center gap-[10px]">
+                <img src={item.image} alt={item.name} className="h-[46px] w-[46px] rounded-[16px] object-cover" />
+                <div className="flex-1">
+                  <p className="line-clamp-1 text-[16px] leading-[16px] font-normal text-[#212121]">{item.name}</p>
+                  {item.modifiers && item.modifiers.modifiers && item.modifiers.modifiers.length > 0 && (
+                    <p className="text-[14px] leading-[14px] font-normal text-[#212121]">{item.modifiers.modifiers.join(', ')}</p>
+                  )}
                 </div>
-              </React.Fragment>
+                <span className="text-[14px] leading-[14px] font-normal text-[#212121]" style={{ minWidth: 36, textAlign: 'right' }}>
+                  ₹{item.price}
+                </span>
+                {/* Quantity Selector */}
+                <div
+                  style={{
+                    width: 92,
+                    height: 30,
+                    borderRadius: 8,
+                    padding: '4px 10px',
+                    background: '#38963B',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    opacity: 1,
+                  }}
+                >
+                  <button
+                    style={{
+                      color: '#fff',
+                      fontSize: 18,
+                      width: 22,
+                      height: 22,
+                      border: 'none',
+                      background: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    onClick={() => onQuantityChange(item.id, item.quantity - 1)}
+                    disabled={item.quantity === 1}
+                  >
+                    <Minus size={18} color="#fff" />
+                  </button>
+                  <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{item.quantity}</span>
+                  <button
+                    style={{
+                      color: '#fff',
+                      fontSize: 18,
+                      width: 22,
+                      height: 22,
+                      border: 'none',
+                      background: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    onClick={() => onQuantityChange(item.id, item.quantity + 1)}
+                  >
+                    <Plus size={18} color="#fff" />
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
-          <div className="mt-3 flex justify-between border-t border-gray-200 pt-3 text-base font-bold">
-            <span>Total</span>
-            <span>₹{total}</span>
+          <div className="h-1" style={{ background: '#F5F5F5' }}></div>
+          {/* Bill Section */}
+          <div className="bg-white p-4">
+            <div className="text-[14px] leading-[14px] font-medium text-[#212121]">Bill</div>
+            <div className="my-4 h-[4px] bg-[#F7F7F7]"></div>
+            <div className="space-y-4">
+              {cartItems.map((item, index) => (
+                <React.Fragment key={item.id + '-bill'}>
+                  <div className="flex justify-between text-sm">
+                    <span className='text-[14px] leading-[14px] font-light text-[#212121]'>{item.name}</span>
+                    <span className='text-[14px] leading-[14px] font-light text-[#212121]'>₹{item.price * item.quantity}</span>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+            <div className="mt-4 flex justify-between border-t border-gray-200 pt-4 text-base font-bold">
+              <span className='text-[14px] leading-[14px] font-medium text-[#212121]'>Total</span>
+              <span className='text-[14px] leading-[14px] font-medium text-[#212121]'>₹{total}</span>
+            </div>
           </div>
         </div>
         <div className="h-1" style={{ background: '#F5F5F5' }}></div>
 
         {/* Generate Token Button */}
-        <div className="p-4">
+        <div className="px-4 pt-4 pb-8">
           <button
             className="w-full rounded-lg bg-green-600 py-3 font-semibold text-white shadow-md"
             onClick={() => {

@@ -34,10 +34,10 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({ ItemType, id, n
         }}
       />
       <div className="flex min-w-0 flex-1 flex-col justify-center">
-        <span className="truncate text-[16px] font-normal text-[#212121]">{name}</span>
+        <span className="truncate text-[16px] leading-[16px] font-normal text-[#212121]">{name}</span>
       </div>
       <div className="ml-2 flex items-center gap-[10px]">
-        <span className="text-[14px] font-normal text-[#212121]">₹{price}</span>
+        <span className="text-[14px] leading-[14px] font-normal text-[#212121]">₹{price}</span>
         {quantity > 0 ? (
           <div
             style={{
