@@ -56,7 +56,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
         </div>
         <div className="h-1" style={{ background: '#F5F5F5' }}></div>
         {/* Cart Items */}
-        <div className='max-h-[60vh] overflow-auto'>
+        <div className='max-h-[60vh] overflow-auto scroll-smooth'>
           <div className="flex flex-col gap-4 px-4 py-5">
             {cartItems.map((item) => (
               <div key={item.id} className="flex items-center gap-[10px]">

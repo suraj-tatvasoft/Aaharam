@@ -67,7 +67,6 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
       </div>
 
       {/* Mobile bottom sheet */}
-      {/* Mobile bottom sheet */}
       <div className="fixed bottom-0 left-0 right-0 z-50 block sm:hidden">
         {/* Close button above modal, centered */}
         <div className="flex justify-center">

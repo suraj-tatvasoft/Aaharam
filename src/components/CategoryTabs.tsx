@@ -45,25 +45,19 @@ const CategoryTabs = ({ activeCategory, onCategoryChange }: CategoryTabsProps) =
         {/* Category Tabs */}
         <div className="flex justify-between">
           {categories.map((category) => (
-            <Tooltip key={category.id}>
-              <TooltipTrigger asChild>
-                <button
-                  onClick={() => onCategoryChange(category.id)}
-                  className={cn(
-                    'flex min-w-0 flex-1 flex-col items-center gap-1 px-2 pt-2 pb-4 transition-all text-[#212121]',
-                    activeCategory === category.id
-                      ? 'border-b-2 border-[#38963B] font-medium'
-                      : 'border-b-2 border-transparent font-normal',
-                  )}
-                >
-                  <img src={category.icon} alt={category.name + ' icon'} className="object-contain" />
-                  <span className="truncate text-[14px] md:text-sm">{category.name}</span>
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{category.description}</p>
-              </TooltipContent>
-            </Tooltip>
+            <button
+            key={category.id}
+              onClick={() => onCategoryChange(category.id)}
+              className={cn(
+                'flex min-w-0 flex-1 flex-col items-center gap-1 px-2 pt-2 pb-4 transition-all text-[#212121]',
+                activeCategory === category.id
+                  ? 'border-b-2 border-[#38963B] font-medium'
+                  : 'border-b-2 border-[#2121211A] font-normal',
+              )}
+            >
+              <img src={category.icon} alt={category.name + ' icon'} className="object-contain" />
+              <span className="truncate text-[14px] md:text-sm">{category.name}</span>
+            </button>
           ))}
         </div>
       </div>

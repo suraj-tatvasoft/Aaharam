@@ -181,7 +181,7 @@ const FoodDelivery = () => {
             <Header onMenuClick={() => setIsMenuModalOpen(true)} />
             <main className="flex w-full flex-1 flex-col overflow-y-hidden">
               <CategoryTabs activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
-              <PromoBar />
+              {/* <PromoBar /> */}
               {/* Food Items List */}
               <div
                 style={{ padding: activeCategory === 'sides' ? '0' : '16px' }}

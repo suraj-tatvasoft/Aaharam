@@ -43,24 +43,17 @@ const Header = ({ onMenuClick }: HeaderProps) => {
 
             {/* Action Buttons - Right Side */}
             <div className="flex items-center gap-2">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-[42px] w-[42px] rounded-full"
-                    style={{ backgroundColor: '#E9FFE4' }}
-                    onClick={onMenuClick}
-                    aria-label="Open Today's Menu"
-                  >
-                    <img src={headerMenuIcon} alt="Menu" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="top" align="center" className="bg-black text-white">
-                  Today's Menu
-                </TooltipContent>
-              </Tooltip>
-              <Button
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-[42px] w-[42px] rounded-full"
+                  style={{ backgroundColor: '#E9FFE4' }}
+                  onClick={onMenuClick}
+                  aria-label="Open Today's Menu"
+                >
+                  <img src={headerMenuIcon} alt="Menu" />
+                </Button>
+                <Button
                 variant="outline"
                 size="icon"
                 className="relative h-[42px] w-[42px] rounded-full"
