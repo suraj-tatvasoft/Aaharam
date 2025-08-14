@@ -11,6 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import Container from '@/components/Container';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string().trim('No leading or trailing spaces allowed').strict(true).required('Username is required'),
@@ -18,6 +19,8 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
+  // Set theme color for login page
+  useThemeColor('#E1FFE0');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -29,12 +32,12 @@ const Login = () => {
       <div className="flex flex-1 flex-col">
         {/* Top Section: Illustration with light green bg */}
         <div className="flex flex-1 flex-col items-center justify-end bg-white pb-0">
-          <div className="flex h-full w-full items-end justify-center bg-[#DFFFEA] rounded-br-[100px]">
+          <div className="flex h-full w-full items-end justify-center bg-[#E1FFE0] rounded-br-[100px]">
             <img src={loginMain} alt="Login Illustration" className="relative bottom-[-5px]" />
           </div>
         </div>
         {/* Bottom Section: Login Form */}
-        <div className="flex-1 bg-[#DFFFEA]">
+        <div className="flex-1 bg-[#E1FFE0]">
           <div className="flex h-full w-full items-end justify-center bg-white rounded-tl-[100px]">
             <div className="relative z-10 min-h-[420px] w-full px-4 pb-4 pt-8">
               <h1 className="mb-10 text-center text-2xl font-normal text-[#212121]">Login</h1>
