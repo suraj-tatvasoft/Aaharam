@@ -5,8 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import Container from '@/components/Container';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 const Analytics = () => {
+  // Set theme color for analytics page
+  useThemeColor('#E1FFE0');
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.user);
   const data = [
@@ -36,7 +39,7 @@ const Analytics = () => {
       <div className="flex flex-1 flex-col">
         {/* Top section with avatar and welcome OUTSIDE card */}
         <div className="flex w-full flex-col items-center bg-white">
-          <div className="flex h-full w-full flex-col items-center rounded-br-[70px] bg-[#DFFFEA] pb-4 pt-10">
+          <div className="flex h-full w-full flex-col items-center rounded-br-[70px] bg-[#E1FFE0] pb-4 pt-10">
             <Avatar className="mb-3 h-14 w-14 border border-[#E5EEE3]">
               <AvatarImage src={user.avatarUrl || ''} alt={user.name || 'User'} className="object-cover" />
               <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-semibold text-success md:text-xl">
@@ -47,7 +50,7 @@ const Analytics = () => {
           </div>
         </div>
         {/* Card container */}
-        <div className="flex-1 bg-[#DFFFEA]">
+        <div className="flex-1 bg-[#E1FFE0]">
           <div className="flex h-full w-full flex-1 flex-col items-center justify-end rounded-tl-[70px] bg-white px-4 pb-0 pt-6">
             <div className="flex h-full w-full flex-1 flex-col">
               <div className="text-center">
