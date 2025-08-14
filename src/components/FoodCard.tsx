@@ -33,7 +33,8 @@ const FoodCard = ({
 }: FoodCardProps) => {
   return (
     <Card
-      className={`overflow-hidden rounded-[16px] border-border/50 bg-card transition-shadow hover:shadow-sm ${!available ? 'pointer-events-none opacity-90' : ''}`}
+      style={{ boxShadow: '0px 0px 20px 0px #F25D460D' }}
+      className={`overflow-hidden rounded-[16px] border-border/50 bg-card ${!available ? 'pointer-events-none opacity-90' : ''}`}
     >
       <div className="flex items-center p-1">
         {/* Food Image */}

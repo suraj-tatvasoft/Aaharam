@@ -201,7 +201,7 @@ const FoodDelivery = () => {
                 ) : (
                   filteredItems.map((item) =>
                     activeCategory === 'lunch' ? (
-                      item.name === 'Regular Thali' ? (
+                      item.name === 'Meal - Regular' || item.name === 'Meal - Jain' ? (
                         <FoodCard
                           key={item.id}
                           id={item.id}
