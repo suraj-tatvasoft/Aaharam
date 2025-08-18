@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import FoodCard from '@/components/FoodCard';
 import SimpleSideItemCard from './SimpleSideItemCard';
+import chevronDown from '@/assets/chevron_down.svg';
 
 interface ModifierOption {
   id: string;
@@ -67,8 +68,10 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
             className="flex w-full items-center justify-between px-4 py-5 text-left focus:outline-none"
             onClick={() => setOpen(open === group ? null : group)}
           >
-            <span className="text-[16px] font-normal text-[#212121]">{group}</span>
-            <ChevronDown size={16} className={`transition-transform duration-200 ${open === group ? 'rotate-180' : ''}`} />
+            <span className="text-[16px] leading-none font-normal text-[#212121]">{group}</span>
+            <div className={`transition-transform duration-200 ${open === group ? 'rotate-180' : ''}`}>
+              <img src={chevronDown} alt="chevron down" className="size-3.5" />
+            </div>
           </button>
           {/* 4px white divider */}
           {open !== group && <div className="h-[4px] w-full bg-white" />}

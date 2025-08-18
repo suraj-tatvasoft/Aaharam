@@ -22,7 +22,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
           <div className="flex items-center gap-[6px]">
             {/* User Avatar */}
             <div
-              className="border-1 h-[42px] w-[42px] flex-shrink-0 cursor-pointer overflow-hidden rounded-full border-[#E5EEE3]"
+              className="h-[42px] w-[42px] flex-shrink-0 cursor-pointer overflow-hidden rounded-full border-[2px] border-[#E5EEE3]"
               onClick={() => navigate('/profile')}
             >
               <img
@@ -37,7 +37,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-black" />
               <Input
                 placeholder="Search"
-                className="h-[42px] rounded-full border border-[#E5EEE3] bg-white pl-10 text-black placeholder:text-black focus:border-[#E5EEE3] focus:ring-0 focus-visible:ring-offset-0"
+                className="h-[42px] rounded-full font-light text-[14px] border border-[#E5EEE3] bg-white pl-10 text-black placeholder:text-black focus:border-[#E5EEE3] focus:ring-0 focus-visible:ring-offset-0"
               />
             </div>
 
@@ -46,7 +46,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-[42px] w-[42px] rounded-full"
+                className="h-[42px] w-[42px] border-none rounded-full"
                 style={{ backgroundColor: '#E9FFE4' }}
                 onClick={onMenuClick}
                 aria-label="Open Today's Menu"
@@ -56,7 +56,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
               <Button
                 variant="outline"
                 size="icon"
-                className="relative h-[42px] w-[42px] rounded-full"
+                className="relative h-[42px] w-[42px] border-none rounded-full"
                 style={{ backgroundColor: '#E9FFE4' }}
                 onClick={() => navigate('/notifications')}
               >

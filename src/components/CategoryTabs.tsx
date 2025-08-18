@@ -49,7 +49,7 @@ const CategoryTabs = ({ activeCategory, onCategoryChange }: CategoryTabsProps) =
               key={category.id}
               onClick={() => onCategoryChange(category.id)}
               className={cn(
-                'flex min-w-0 flex-1 flex-col items-center gap-1 px-2 pb-4 pt-2 text-[#212121] transition-all',
+                'flex min-w-0 flex-1 flex-col items-center gap-1 px-2 pb-[11px] pt-2 text-[#212121] transition-all',
                 activeCategory === category.id ? 'border-b-2 border-[#38963B] font-medium' : 'border-b-2 border-[#2121211A] font-normal',
               )}
             >
