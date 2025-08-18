@@ -30,18 +30,18 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <Container>
-      <div className="flex flex-1 flex-col">
+    <Container className='h-screen'>
+      <div className="flex h-full flex-col">
         {/* Top Section: Illustration with light green bg */}
         <div className="flex flex-1 flex-col items-center justify-end bg-white pb-0">
-          <div className="flex h-full w-full items-end justify-center rounded-br-[100px] bg-[#E1FFE0]">
-            <img src={loginMain} alt="Login Illustration" className="relative bottom-[-5px]" />
+          <div className="flex h-full w-full items-end justify-center rounded-br-[100px] bg-[#E1FFE0] overflow-hidden">
+            <img src={loginMain} alt="Login Illustration" className="relative bottom-[-0.4rem]" />
           </div>
         </div>
         {/* Bottom Section: Login Form */}
         <div className="flex-1 bg-[#E1FFE0]">
           <div className="flex h-full w-full items-end justify-center rounded-tl-[100px] bg-white">
-            <div className="relative z-10 min-h-[420px] w-full px-4 pb-4 pt-8">
+            <div className="relative z-10 min-h-[420px] tall-md:min-h-full w-full px-4 pb-4 pt-8">
               <h1 className="mb-10 text-center text-2xl font-normal text-[#212121]">Login</h1>
               <Formik
                 initialValues={{ username: '', password: '' }}
@@ -122,7 +122,7 @@ const Login = () => {
                     {/* Login Button */}
                     <Button
                       type="submit"
-                      className="mt-7 h-11 w-full bg-foreground text-[16px] font-medium text-background hover:bg-foreground/90"
+                      className="mt-7 tall-md:mt-4 h-11 w-full bg-foreground text-[16px] font-medium text-background hover:bg-foreground/90"
                       size="lg"
                     >
                       Login

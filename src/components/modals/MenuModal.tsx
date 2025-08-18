@@ -27,9 +27,9 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div style={{ backdropFilter: 'blur(2px)' }} className="fixed inset-0 z-50 flex bg-black/10 p-0 sm:items-center sm:justify-center sm:p-4">
+    <div style={{ backdropFilter: 'blur(2px)' }} className="fixed inset-0 z-50 flex bg-black/10 p-0 sm:items-end sm:justify-center sm:p-4 sm:pb-0">
       {/* Desktop modal */}
-      <div className="relative mx-auto hidden w-full max-w-md rounded-2xl bg-white p-6 shadow-lg sm:block">
+      <div className="relative mx-auto hidden w-full max-w-md rounded-tl-2xl rounded-tr-2xl bg-white p-6 shadow-lg sm:block">
         <button
           onClick={onClose}
           className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full border border-gray-200 p-2 shadow-md hover:bg-gray-100 focus:outline-none"
@@ -39,10 +39,8 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
           <X className="h-6 w-6 text-gray-700" />
         </button>
         <div className="mb-2 flex items-center justify-between">
-          <div>
-            <h3 className="text-xl font-semibold">Today's Lunch Menu</h3>
+            <h3 className="text-xl font-medium">Today's Lunch Menu</h3>
             <p className="mt-1 text-sm text-muted-foreground">11th July 25, Monday</p>
-          </div>
         </div>
         <div className="space-y-6">
           {/* Thali Image and Price */}
@@ -51,16 +49,16 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
               <img src={regularThaliImage} alt="Regular Thali" className="h-full w-full object-cover" />
             </div>
             <div className="flex-1">
-              <h3 className="font-semibold">Regular Thali</h3>
+              <h3>Regular Thali</h3>
             </div>
-            <span className="text-lg font-bold">₹80</span>
+            <span className="text-lg">₹80</span>
           </div>
           {/* Menu Items */}
           <div className="space-y-3">
             {menuItems.map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-muted-foreground">{item.name}</span>
-                <span className="font-medium">{item.quantity}</span>
+                <span className="text-[16px] font-normal leading-[16px] text-[#212121]">{item.name}</span>
+                <span className="text-[14px] font-normal leading-[16px] text-[#212121]">{item.quantity}</span>
               </div>
             ))}
           </div>
