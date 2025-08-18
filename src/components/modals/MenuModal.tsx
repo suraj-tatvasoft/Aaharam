@@ -125,7 +125,7 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
                   {/* Add Button */}
                   <div>
                     <button
-                      className="w-full rounded-[8px] border border-[#38963B] bg-white p-4 text-[16px] font-medium leading-[16px] text-[#38963B] transition-colors hover:bg-green-50"
+                      className="w-full rounded-[8px] border border-[#38963B] bg-white h-[43px] text-[16px] font-medium leading-[16px] text-[#38963B] transition-colors hover:bg-green-50"
                       onClick={onClose}
                     >
                       Add item

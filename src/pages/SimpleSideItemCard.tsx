@@ -28,7 +28,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
     <div
       style={{
         borderRadius: '16px',
-        padding: '4px 16px 4px 4px',
+        padding: isSlides ? '4px 12px 4px 4px' : '4px 16px 4px 4px',
       }}
       className={`flex items-center bg-white`}
     >

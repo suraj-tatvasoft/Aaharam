@@ -46,7 +46,7 @@ const Notifications: React.FC = () => {
             >
               <div className="flex w-full flex-col gap-3">
                 <span className="truncate text-[16px] font-medium leading-[20px] text-[#212121]">{n.title}</span>
-                <span className="truncate text-[14px] font-normal leading-[10px] text-[#4D4D4D]">{n.message}</span>
+                <span className="truncate text-[14px] font-normal leading-none text-[#4D4D4D]">{n.message}</span>
               </div>
 
               <div className="flex w-full flex-row items-center gap-1">
