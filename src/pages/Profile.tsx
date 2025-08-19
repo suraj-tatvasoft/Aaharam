@@ -44,7 +44,7 @@ const MENU_ITEMS: MenuItemConfig[] = [
 
 export const MenuItem: React.FC<MenuItemConfig> = ({ icon, label, iconBg, textColor, onClick }) => (
   <button
-    className={`flex w-full items-center gap-3 rounded-xl bg-white py-1 pl-1 pr-4 ${textColor ?? 'text-[#212121]'} justify-between text-base font-normal`}
+    className={`flex w-full items-center gap-4 rounded-xl bg-white py-1 pl-1 pr-4 ${textColor ?? 'text-[#212121]'} justify-between text-base font-normal`}
     type="button"
     onClick={onClick}
   >
@@ -87,7 +87,7 @@ const Profile = () => {
             >
               <img src={profileBack} alt="Back" className="h-4 w-4" />
             </button>
-            <div className="flex flex-col items-center gap-[14px]">
+            <div className="flex flex-col items-center gap-[5px]">
               <Avatar className="z-10 h-[50px] w-[50px] border border-[#E5EEE3]">
                 <AvatarImage src={user.avatarUrl} alt={user.name} />
               </Avatar>

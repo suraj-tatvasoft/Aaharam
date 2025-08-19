@@ -36,12 +36,11 @@ const FloatingCartButton: React.FC<FloatingCartButtonProps> = ({ count, onClick 
       </span>
       <span
         style={{
-          marginLeft: 8,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          width: 36,
-          height: 36,
+          width: 40,
+          height: 40,
           borderRadius: '50%',
           background: '#1A932E',
         }}

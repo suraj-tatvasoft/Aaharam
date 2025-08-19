@@ -45,21 +45,21 @@ const OnBoarding: React.FC = () => {
   };
 
   return (
-    <Container>
-      <div className="flex flex-1 flex-col items-center bg-white">
+    <Container className="h-dvh overflow-hidden">
+      <div className="h-full bg-white">
         <Swiper
           spaceBetween={50}
           slidesPerView={1}
           onSwiper={(swiper) => (swiperRef.current = swiper)} // 🔥 THIS is key
           onSlideChange={(swiper) => setStep(swiper.activeIndex)}
-          className="w-full flex-1"
+          className="w-full flex-1 h-full "
         >
           {onboardingSteps.map(({ heading, illustration, alt, description }, index) => (
             <SwiperSlide key={index}>
-              <div className="flex h-full w-full flex-col">
+              <div className="flex h-full w-full flex-col justify-between">
                 {/* Header (top fixed area) */}
-                <div className="px-4 pb-4 pt-8">
-                  <h1 className="animate-fade-in-up text-left text-4xl font-light leading-tight text-[#101010] sm:text-3xl md:text-4xl">
+                <div className="px-4 pb-4 pt-8 tall-md:pb-0 tall-md:pt-4">
+                  <h1 className="animate-fade-in-up text-left text-4xl font-light leading-tight tall-md:leading-[1.05] tall-sm:leading-[1] text-[#101010] sm:text-xl md:text-3xl">
                     {heading.map((line, i) => (
                       <span className="block" key={i}>
                         {line}
@@ -69,14 +69,14 @@ const OnBoarding: React.FC = () => {
                 </div>
 
                 {/* Image area - grows to fill center space */}
-                <div className="flex flex-1 items-center justify-center">
-                  <img src={illustration} alt={alt} className="animate-fade-in-up w-full max-w-full object-contain delay-300" />
+                <div className="flex items-center justify-center flex-1">
+                  <img src={illustration} alt={alt} className="animate-fade-in-up w-full max-w-full object-cover delay-300" />
                 </div>
 
                 {/* Bottom fixed area */}
-                <div className="flex flex-col items-center gap-7 px-4 pb-6">
+                <div className="flex flex-col items-center gap-7 px-4 pb-6 tall-md:gap-2">
                   {/* Pagination Dots */}
-                  <div className="flex flex-col items-center gap-6">
+                  <div className="flex flex-col items-center gap-6 tall-md:gap-0">
                     <div className="mb-4 flex items-center justify-center gap-2">
                       {[0, 1, 2].map((i) => (
                         <button
