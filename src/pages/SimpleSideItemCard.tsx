@@ -1,4 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+// Animated Number Component
+const AnimatedNumber = ({ value, direction }: { value: number; direction?: 'up' | 'down' }) => {
+  return (
+    <div className="relative w-6 h-[28px] overflow-hidden">
+      <div
+        key={`${value}-${direction}`}
+        className={`absolute inset-0 flex items-center justify-center text-center font-medium text-white transition-transform duration-200 ease-out ${
+          direction === 'down' ? 'animate-in slide-in-from-top' : 'animate-in slide-in-from-bottom'
+        }`}
+      >
+        {value}
+      </div>
+    </div>
+  );
+};
 
 interface SimpleSideItemCardProps {
   id: string;
@@ -23,12 +39,22 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
   onQuantityChange,
   disabled = false,
 }) => {
+  const [prevQuantity, setPrevQuantity] = useState(quantity);
+  const [direction, setDirection] = useState<'up' | 'down'>('up');
+
+  useEffect(() => {
+    if (quantity !== prevQuantity) {
+      setDirection(quantity > prevQuantity ? 'up' : 'down');
+      setPrevQuantity(quantity);
+    }
+  }, [quantity, prevQuantity]);
+
   const isSlides = ItemType === 'slides';
   return (
     <div
       style={{
         borderRadius: '16px',
-        padding: isSlides ? '4px 12px 4px 4px' : '4px 16px 4px 4px',
+        padding: isSlides ? '3px 12px 3px 4px' : '3px 16px 3px 4px',
       }}
       className={`flex items-center bg-white`}
     >
@@ -41,6 +67,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
           width: isSlides ? '66px' : '46px',
           height: isSlides ? '66px' : '46px',
           margin: '0 10px 0 0',
+          backgroundColor: '#DEE7EF',
         }}
       />
       <div className="flex min-w-0 flex-1 flex-col justify-center">
@@ -83,7 +110,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
                 <rect x="4" y="8.25" width="10" height="1.5" rx="0.75" fill="white" />
               </svg>
             </button>
-            <span style={{ width: 24, textAlign: 'center', color: '#fff', fontWeight: 500 }}>{quantity}</span>
+            <AnimatedNumber value={quantity} direction={direction} />
             <button
               style={{
                 color: '#fff',
@@ -109,8 +136,8 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
           </div>
         ) : (
           <button
-            className={`flex min-h-[30px] min-w-[50px] items-center justify-center rounded-lg bg-white text-sm font-medium transition-all duration-200 ${disabled ? 'cursor-not-allowed border border-[#A3A3A3] text-[#A3A3A3] opacity-50' : 'cursor-pointer border border-[#38963B] text-[#38963B]'}`}
-            onMouseOver={(e) => (e.currentTarget.style.background = '#E9FFE5')}
+            className={`flex min-h-[30px] min-w-[50px] items-center justify-center rounded-lg bg-white hover:text-white text-sm font-medium transition-all duration-200 ${disabled ? 'cursor-not-allowed border border-[#A3A3A3] text-[#A3A3A3] opacity-50' : 'cursor-pointer border border-[#38963B] text-[#38963B]'}`}
+            onMouseOver={(e) => (e.currentTarget.style.background = '#38963B')}
             onMouseOut={(e) => (e.currentTarget.style.background = '#fff')}
             onClick={() => onAdd(id)}
             disabled={disabled}

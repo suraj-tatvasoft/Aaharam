@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Minus, Plus, X } from 'lucide-react';
 
+// Animated Number Component
+const AnimatedNumber = ({ value, direction }: { value: number; direction?: 'up' | 'down' }) => {
+  return (
+    <div className="relative w-6 h-[22px] overflow-hidden">
+      <div
+        key={`${value}-${direction}`}
+        className={`absolute inset-0 flex items-center justify-center text-center font-medium text-[#38963B] transition-transform duration-200 ease-out ${
+          direction === 'down' ? 'animate-in slide-in-from-top' : 'animate-in slide-in-from-bottom'
+        }`}
+      >
+        {value}
+      </div>
+    </div>
+  );
+};
+
 interface ModifierOption {
   id: string;
   name: string;
@@ -33,6 +49,17 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
   const [quantity, setQuantity] = useState(1);
   const [cookingNote, setCookingNote] = useState('');
   const [selectedPrepType, setSelectedPrepType] = useState<string>('');
+  const [isClosing, setIsClosing] = useState(false);
+  const [prevQuantity, setPrevQuantity] = useState(1);
+  const [direction, setDirection] = useState<'up' | 'down'>('up');
+  
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      onClose();
+    }, 250);
+  };
 
   useEffect(() => {
     setSelectedOptions([]);
@@ -42,6 +69,20 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
       setSelectedPrepType(availableFor.includes('regular') ? 'regular' : availableFor[0]);
     }
   }, [availableFor]);
+  
+  useEffect(() => {
+    if (!isOpen) {
+      setIsClosing(false);
+    }
+  }, [isOpen]);
+  
+  // Track quantity changes for animations
+  useEffect(() => {
+    if (quantity !== prevQuantity) {
+      setDirection(quantity > prevQuantity ? 'up' : 'down');
+      setPrevQuantity(quantity);
+    }
+  }, [quantity, prevQuantity]);
 
   const handleOptionToggle = (optionId: string) => {
     setSelectedOptions((prev) => (prev.includes(optionId) ? prev.filter((id) => id !== optionId) : [...prev, optionId]));
@@ -70,23 +111,25 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
     for (let i = 0; i < quantity; i++) {
       onAddToCart(grouped, calculateTotalPrice() / quantity);
     }
-    onClose();
+    handleClose();
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end bg-black/10 sm:items-center sm:justify-center" style={{ backdropFilter: 'blur(2px)' }}>
+    <div className="fixed inset-0 z-50 flex items-end bg-black/10 sm:justify-center" style={{ backdropFilter: 'blur(2px)' }}>
       {/* Floating Close Button */}
       {/* Modal Container */}
       <div
-        className="relative mx-auto flex w-full max-w-md flex-col rounded-tl-[30px] rounded-tr-[30px] bg-white"
+        className={`relative mx-auto flex w-full max-w-md flex-col rounded-tl-[30px] rounded-tr-[30px] bg-white transition-transform duration-300 ease-out ${
+          isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
+        }`}
         style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}
       >
         {/* Floating Close Button */}
         <button
-          onClick={onClose}
-          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full p-2 hover:bg-gray-100 focus:outline-none"
+          onClick={handleClose}
+          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full p-2 hover:bg-gray-100 focus:outline-none transition-all duration-200 hover:scale-105"
           style={{ top: '-58px', background: '#F5F5F5' }}
           aria-label="Close"
         >
@@ -100,7 +143,7 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
           </div>
           <div className="text-[14px] font-normal text-[#212121]">₹{basePrice}</div>
         </div>
-        <div className="max-h-[60vh] overflow-y-auto scroll-smooth">
+        <div className="scrollbar-hide max-h-[60vh] overflow-y-auto scroll-smooth">
           {/* Preparation Type */}
           {availableFor && availableFor.length > 0 && (
             <>
@@ -122,7 +165,7 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
                           className="h-5 w-5 appearance-none rounded-full border border-gray-300 transition-colors checked:border-green-600 checked:bg-white focus:outline-none"
                         />
                         {selectedPrepType === type && (
-                          <span className="pointer-events-none absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-600"></span>
+                          <span className="pointer-events-none absolute left-1/2 top-1/2 h-[14px] w-[14px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-600"></span>
                         )}
                       </span>
                     </label>
@@ -153,9 +196,9 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
                           className="peer h-5 w-5 appearance-none rounded-[4px] border border-gray-300 bg-white transition-colors checked:border-green-600 checked:bg-green-600 focus:outline-none"
                           aria-checked={selectedOptions.includes(mod.id)}
                         />
-                        <span className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+                        <span className="pointer-events-none absolute h-5 w-5 left-0 top-0 flex items-center justify-center">
                           {selectedOptions.includes(mod.id) && (
-                            <svg className="h-3 w-3 text-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg className="h-4 w-4 text-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M4 8.5L7 11.5L12 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           )}
@@ -185,17 +228,17 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
         {/* Footer */}
         <div className="sticky bottom-0 left-0 bg-white p-4">
           <div className="flex w-full gap-[10px]">
-            <div className="flex h-12 flex-1 items-center justify-between rounded-[8px] border border-[#38963B]">
+            <div className="flex h-[44px] flex-1 items-center justify-between rounded-[8px] border border-[#38963B]">
               <button className="ml-5 disabled:opacity-40" onClick={() => setQuantity((q) => Math.max(1, q - 1))} disabled={quantity === 1}>
                 <Minus className="text-[#38963B]" />
               </button>
-              <span className="text-[16px] font-medium text-[#38963B]">{quantity}</span>
+              <AnimatedNumber value={quantity} direction={direction} />
               <button className="mr-5 disabled:opacity-40" onClick={() => setQuantity((q) => q + 1)}>
                 <Plus className="text-[#38963B]" />
               </button>
             </div>
             <button
-              className="flex h-12 flex-1 items-center justify-center whitespace-nowrap rounded-[8px] bg-[#38963B] text-[16px] font-medium text-white transition-colors"
+              className="flex h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-[8px] bg-[#38963B] text-[16px] font-medium text-white transition-colors"
               onClick={handleAddToCart}
             >
               Add Item - ₹{calculateTotalPrice()}

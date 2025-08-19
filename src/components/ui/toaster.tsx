@@ -13,7 +13,7 @@ export function Toaster() {
             <div className="flex flex-col gap-2">
               <div className="flex w-full items-start justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <img src={mainLogo} alt="Aaharam Logo" className="h-[22px] w-[22px] rounded-[6px] bg-white" />
+                  <img src={mainLogo} alt="Aaharam Logo" className="p-[2px] h-[22px] w-[22px] rounded-[6px] bg-white" />
                   <div className="text-[16px] text-[#969895]">Aaharam</div>
                 </div>
                 <div className="letter-spacing-[-1%] text-[16px] font-medium leading-[17px] tracking-[0] text-[#828382]">now</div>

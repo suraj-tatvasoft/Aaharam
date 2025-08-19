@@ -48,7 +48,7 @@ const BulkPass: React.FC = () => {
 
         <div className="mb-4 flex flex-col items-center gap-4 text-center text-[#212121]">
           <span className="text-[12px] font-medium leading-[8px]">Exclusive discount on</span>
-          <span className="text-[36px] font-semibold leading-[25px]">BULK PASS</span>
+          <span className="text-[36px] font-medium leading-[25px]">BULK PASS</span>
           <span className="mt-1 text-[12px] font-medium leading-[8px]">Grab ₹220 Discount on Lunch Meal</span>
         </div>
 

@@ -65,7 +65,7 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
         <div key={group}>
           {/* Accordion Header */}
           <button
-            className="flex w-full items-center justify-between px-4 py-5 text-left focus:outline-none"
+            className="flex w-full items-center justify-between px-4 py-[18px] text-left focus:outline-none"
             onClick={() => setOpen(open === group ? null : group)}
           >
             <span className="text-[16px] leading-none font-normal text-[#212121]">{group}</span>
@@ -73,11 +73,8 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
               <img src={chevronDown} alt="chevron down" className="size-3.5" />
             </div>
           </button>
-          {/* 4px white divider */}
-          {open !== group && <div className="h-[4px] w-full bg-white" />}
-          {/* Accordion Content */}
           {open === group && (
-            <div className="flex flex-col gap-4 px-4">
+            <div className="flex flex-col gap-4 px-4 pb-4">
               {groups[group].map((item, idx) => (
                 <div key={item.id}>
                   <SimpleSideItemCard
@@ -94,6 +91,11 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
               ))}
             </div>
           )}
+          <div className="h-[4px] w-full bg-white" />
+          {/* 4px white divider */}
+          {/* {open !== group && <div className="h-[4px] w-full bg-white" />} */}
+          {/* Accordion Content */}
+          
         </div>
       ))}
     </div>

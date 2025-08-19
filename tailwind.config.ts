@@ -94,7 +94,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       screens:{
-        'tall-sm': { raw: '(max-height: 600px)' },
+        'tall-sm': { raw: '(max-height: 650px)' },
         'tall-md': { raw: '(max-height: 750px)' },
         'tall-lg': { raw: '(max-height: 1000px)' },
       }

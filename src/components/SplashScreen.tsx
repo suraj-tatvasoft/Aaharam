@@ -8,11 +8,11 @@ import tatvaSoftLogo from '@/assets/main-logo-tatvasoft.svg';
 
 const SplashScreen: React.FC = () => {
   return (
-    <Container className="h-screen">
+    <Container className="h-dvh overflow-hidden">
       <div className="flex w-full flex-1 flex-col items-center bg-white">
         <div className="flex w-full flex-1 flex-col justify-between">
           {/* Top Section: Logo & Branding */}
-          <div className="flex flex-1 flex-col items-center justify-center gap-5 pt-8">
+          <div className="flex flex-1 flex-col items-center justify-center gap-5 pt-8 tall-md:pt-4">
             <img src={logo} alt="Aaharam Logo" className="animate-fade-in-up mx-auto h-auto w-[250px]" />
             <div className="flex flex-col items-center">
               <img src={tatvaSoftLogo} alt="TatvaSoft Logo" className="animate-fade-in-up h-auto w-auto delay-300" />

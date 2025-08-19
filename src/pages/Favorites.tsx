@@ -42,12 +42,12 @@ const Favorites: React.FC = () => {
               </div>
 
               <div className="flex min-w-0 flex-1 flex-col justify-center">
-                <span className="truncate text-[16px] font-normal leading-[11px] text-[#212121]">{item.name}</span>
+                <span className="truncate text-[16px] font-normal leading-normal text-[#212121]">{item.name}</span>
               </div>
 
-              <span className="text-[14px] font-normal leading-[10px] text-[#212121]">₹{item.price}</span>
+              <span className="text-[14px] font-normal leading-normal text-[#212121]">₹{item.price}</span>
 
-              <button className="h-[30px] w-[50px] rounded-[8px] border border-[#38963B] text-[14px] font-medium leading-[10px] text-[#38963B]">
+              <button className="h-[30px] w-[50px] rounded-[8px] border border-[#38963B] text-[14px] font-medium leading-[10px] text-[#38963B] hover:bg-[#38963B] hover:text-white">
                 Add
               </button>
 

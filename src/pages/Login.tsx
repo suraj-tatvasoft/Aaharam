@@ -30,7 +30,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <Container className='h-screen'>
+    <Container className='h-dvh'>
       <div className="flex h-full flex-col">
         {/* Top Section: Illustration with light green bg */}
         <div className="flex flex-1 flex-col items-center justify-end bg-white pb-0">
@@ -41,8 +41,8 @@ const Login = () => {
         {/* Bottom Section: Login Form */}
         <div className="flex-1 bg-[#E1FFE0]">
           <div className="flex h-full w-full items-end justify-center rounded-tl-[100px] bg-white">
-            <div className="relative z-10 min-h-[420px] tall-md:min-h-full w-full px-4 pb-4 pt-8">
-              <h1 className="mb-10 text-center text-2xl font-normal text-[#212121]">Login</h1>
+            <div className="relative z-10 min-h-[420px] tall-md:min-h-full w-full px-4 pb-4 pt-8 tall-sm:pt-4">
+              <h1 className="mb-10 text-center text-[26px] font-normal text-[#212121] tall-sm:mb-4">Login</h1>
               <Formik
                 initialValues={{ username: '', password: '' }}
                 validationSchema={LoginSchema}
@@ -108,7 +108,7 @@ const Login = () => {
                       </div>
                     </div>
                     {/* Remember Me */}
-                    <div className="my-[14px] flex items-center">
+                    <div className="my-[14px] flex items-center tall-sm:mb-[4px]">
                       <Checkbox
                         className={rememberMe ? 'border-primary' : 'border-black'}
                         id="remember"

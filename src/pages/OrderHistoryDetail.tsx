@@ -45,7 +45,7 @@ const OrderHistoryDetail: React.FC = () => {
     <PageLayout title={`Order #${order.id}`}>
       <div className="flex w-full flex-col items-center gap-5 py-8">
         <div className="text-[20px] font-medium leading-[14px] text-[#212121]">Token no</div>
-        <div className="text-[50px] font-semibold leading-[35px] text-[#212121]">{order.token}</div>
+        <div className="text-[50px] font-medium leading-[35px] text-[#212121]">{order.token}</div>
         <div className="flex gap-4 text-[14px] font-light leading-[10px] text-[#212121]">
           <span>{order.date}</span>
           <span>{order.time}</span>

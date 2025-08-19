@@ -30,11 +30,14 @@ interface CartItem {
 import { useRef, useEffect } from 'react';
 import { IFoodItem, IModifierOption } from '@/types';
 
+const categories = ['breakfast', 'lunch', 'evening-snacks', 'sides'];
+
 const FoodDelivery = () => {
   // Ref for the scrollable items container
   const itemsContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [activeCategory, setActiveCategory] = useState('breakfast');
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [isModifierModalOpen, setIsModifierModalOpen] = useState(false);
@@ -54,6 +57,22 @@ const FoodDelivery = () => {
   const foodItems: IFoodItem[] = foodItemsData;
 
   const filteredItems = foodItems.filter((item) => item.category === activeCategory);
+
+  // Get current category index for slider position
+  const getCurrentIndex = () => categories.indexOf(activeCategory);
+
+  // Handle smooth category change
+  const handleCategoryChange = (newCategory: string) => {
+    if (newCategory === activeCategory || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setActiveCategory(newCategory);
+    
+    // Reset transition state after animation completes
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
+  };
 
   // Cart handlers
   const handleAddItem = (id: string) => {
@@ -180,76 +199,104 @@ const FoodDelivery = () => {
           <div className="flex w-full flex-col overflow-hidden bg-background shadow-lg">
             <Header onMenuClick={() => setIsMenuModalOpen(true)} />
             <main className="flex w-full flex-1 flex-col overflow-y-hidden">
-              <CategoryTabs activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
+              <CategoryTabs activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
               {/* <PromoBar /> */}
-              {/* Food Items List */}
-              <div
-                style={{ padding: activeCategory === 'sides' ? '0' : '16px' }}
-                ref={itemsContainerRef}
-                className="scrollbar-hide w-full flex-1 space-y-4 overflow-y-auto bg-[#F7F7F7]"
-              >
-                {/* Accordion UI for Sides */}
-                {activeCategory === 'sides' ? (
-                  <AccordionSides
-                    items={filteredItems}
-                    onAddItem={handleAddItem}
-                    onToggleFavorite={handleToggleFavorite}
-                    favorites={favoritesSet}
-                    cart={cart}
-                    onQuantityChange={handleQuantityChange}
-                  />
-                ) : (
-                  filteredItems.map((item) =>
-                    activeCategory === 'lunch' ? (
-                      item.name === 'Meal - Regular' || item.name === 'Meal - Jain' ? (
-                        <FoodCard
-                          key={item.id}
-                          id={item.id}
-                          name={item.name}
-                          price={item.price}
-                          image={item.image}
-                          description={item.description}
-                          available={item.available}
-                          unavailableReason={item.unavailableReason}
-                          onAdd={handleAddItem}
-                          onToggleFavorite={handleToggleFavorite}
-                          isFavorite={favoritesSet.has(item.id)}
-                          quantity={cart[item.id]?.quantity || 0}
-                          onQuantityChange={handleQuantityChange}
-                        />
-                      ) : (
-                        <SimpleSideItemCard
-                          key={item.id}
-                          id={item.id}
-                          name={item.name}
-                          price={item.price}
-                          image={item.image}
-                          quantity={cart[item.id]?.quantity || 0}
-                          onAdd={handleAddItem}
-                          onQuantityChange={handleQuantityChange}
-                          disabled={item.available === false}
-                        />
-                      )
-                    ) : (
-                      <FoodCard
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        price={item.price}
-                        image={item.image}
-                        description={item.description}
-                        available={item.available}
-                        unavailableReason={item.unavailableReason}
-                        onAdd={handleAddItem}
-                        onToggleFavorite={handleToggleFavorite}
-                        isFavorite={favoritesSet.has(item.id)}
-                        quantity={cart[item.id]?.quantity || 0}
-                        onQuantityChange={handleQuantityChange}
-                      />
-                    ),
-                  )
-                )}
+              {/* Food Items List - Slider Container */}
+              <div className="relative w-full flex-1 overflow-hidden bg-[#F7F7F7]">
+                <div 
+                  className="flex h-full transition-transform duration-500 ease-in-out"
+                  style={{ 
+                    transform: `translateX(-${getCurrentIndex() * 100}%)`,
+                    width: `100%`
+                  }}
+                >
+                  {categories.map((category) => {
+                    const categoryItems = foodItems.filter((item) => item.category === category);
+                    return (
+                      <div 
+                        key={category}
+                        className="h-full flex-shrink-0"
+                        style={{ 
+                          width: '100%',
+                          padding: category === 'sides' ? '0' : '16px' 
+                        }}
+                      >
+                        <div
+                          ref={category === activeCategory ? itemsContainerRef : null}
+                          className="scrollbar-hide h-full space-y-4 overflow-y-auto"
+                        >
+                          <div className="flex flex-col justify-between space-y-4 h-full">
+                            <div className="space-y-4">
+                              {category === 'sides' ? (
+                                <AccordionSides
+                                  items={categoryItems}
+                                  onAddItem={handleAddItem}
+                                  onToggleFavorite={handleToggleFavorite}
+                                  favorites={favoritesSet}
+                                  cart={cart}
+                                  onQuantityChange={handleQuantityChange}
+                                />
+                              ) : (
+                                categoryItems.map((item) =>
+                                  category === 'lunch' ? (
+                                    item.name === 'Meal - Regular' || item.name === 'Meal - Jain' ? (
+                                      <FoodCard
+                                        key={item.id}
+                                        id={item.id}
+                                        name={item.name}
+                                        price={item.price}
+                                        image={item.image}
+                                        description={item.description}
+                                        available={item.available}
+                                        unavailableReason={item.unavailableReason}
+                                        onAdd={handleAddItem}
+                                        onToggleFavorite={handleToggleFavorite}
+                                        isFavorite={favoritesSet.has(item.id)}
+                                        quantity={cart[item.id]?.quantity || 0}
+                                        onQuantityChange={handleQuantityChange}
+                                      />
+                                    ) : (
+                                      <SimpleSideItemCard
+                                        key={item.id}
+                                        id={item.id}
+                                        name={item.name}
+                                        price={item.price}
+                                        image={item.image}
+                                        quantity={cart[item.id]?.quantity || 0}
+                                        onAdd={handleAddItem}
+                                        onQuantityChange={handleQuantityChange}
+                                        disabled={item.available === false}
+                                      />
+                                    )
+                                  ) : (
+                                    <FoodCard
+                                      key={item.id}
+                                      id={item.id}
+                                      name={item.name}
+                                      price={item.price}
+                                      image={item.image}
+                                      description={item.description}
+                                      available={item.available}
+                                      unavailableReason={item.unavailableReason}
+                                      onAdd={handleAddItem}
+                                      onToggleFavorite={handleToggleFavorite}
+                                      isFavorite={favoritesSet.has(item.id)}
+                                      quantity={cart[item.id]?.quantity || 0}
+                                      onQuantityChange={handleQuantityChange}
+                                    />
+                                  ),
+                                )
+                              )}
+                            </div>
+                            <p className={`text-[12px] font-light leading-normal text-[#797979] italic pb-4 ${category === 'sides' ? 'px-4' : ''}`}>*Images of food items are for illustrative purposes only.</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+              
             </main>
           </div>
           {/* Modals */}

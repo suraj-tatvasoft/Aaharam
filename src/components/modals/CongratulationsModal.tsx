@@ -15,7 +15,7 @@ const CongratulationsModal: React.FC<CongratulationsModalProps> = ({ isOpen, onC
     <div style={{ backdropFilter: 'blur(8px)' }} className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
       <div className="w-11/12 max-w-sm rounded-xl bg-white" style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
         <div className="py-5">
-          <h3 className="mb-3 px-6 text-center text-lg font-semibold">Congratulations</h3>
+          <h3 className="mb-3 px-6 text-center text-lg font-medium">Congratulations</h3>
           <div className="mb-4 h-1 w-full" style={{ background: '#E5E7EB', height: '4px', borderRadius: '2px' }} />
           <div className="mb-4 flex justify-center">
             <img src={celebration} alt="Celebration" />

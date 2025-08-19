@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '@/components/Container';
 import { useNavigate } from 'react-router-dom';
-import headerHome from '@/assets/header-home.svg';
+import profileBack from '@/assets/profile-back.svg';
 import notificationIcon from '@/assets/header-alarm.svg';
 
 interface OrderItem {
@@ -36,11 +36,11 @@ const OrderDetail: React.FC<OrderDetailProps> = ({ orderId, tokenNumber, date, t
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => navigate('/food-delivery')}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E9FFE4]"
+              className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#E9FFE4]"
               aria-label="Back"
               type="button"
             >
-              <img src={headerHome} alt="Back" className="size-5" />
+              <img src={profileBack} alt="Back" className="h-4 w-4" />
             </button>
             <span className="text-[18px] font-normal leading-[23px] text-[#212121]">Order #{orderId}</span>
           </div>
@@ -62,7 +62,7 @@ const OrderDetail: React.FC<OrderDetailProps> = ({ orderId, tokenNumber, date, t
             <div className="flex-grow-1 scrollbar-hide mb-[76px] flex flex-1 flex-col overflow-y-auto rounded-br-[22px] bg-[#F7F7F7]">
               <div className="flex w-full flex-col items-center gap-5 py-8">
                 <div className="text-[20px] font-medium leading-[14px] text-[#212121]">Token no</div>
-                <div className="text-[50px] font-semibold leading-[35px] text-[#212121]">{tokenNumber}</div>
+                <div className="text-[50px] font-medium leading-[35px] text-[#212121]">{tokenNumber}</div>
                 <div className="flex gap-4 text-[14px] font-light leading-[10px] text-[#212121]">
                   <span>{date}</span>
                   <span>{time}</span>
@@ -118,7 +118,7 @@ const OrderDetail: React.FC<OrderDetailProps> = ({ orderId, tokenNumber, date, t
               <button
                 type="button"
                 onClick={onCancel}
-                className="h-11 w-full rounded-[8px] border border-[#38963B] bg-white text-center text-[16px] font-medium leading-[11px] text-[#38963B] transition-colors hover:bg-[#E9FFE5]"
+                className="h-11 w-full rounded-[8px] border border-[#38963B] bg-white text-center text-[16px] font-medium leading-[11px] text-[#38963B] transition-colors hover:bg-[#38963B] hover:text-white"
               >
                 Cancel your Order
               </button>

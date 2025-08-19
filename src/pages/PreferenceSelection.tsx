@@ -79,7 +79,7 @@ const PreferenceSelection = () => {
                         : 'border-[#D1D5DB] bg-white'
                     }`}>
                       {selected === slot && (
-                        <div className="h-full w-full rounded-full bg-[#FFFFFF] border border-[#38963B]"></div>
+                        <div className="h-full w-full rounded-full bg-[#FFFFFF] border-2 border-[#38963B]"></div>
                       )}
                     </div>
                   </div>

@@ -39,14 +39,14 @@ const Analytics = () => {
       <div className="flex flex-1 flex-col">
         {/* Top section with avatar and welcome OUTSIDE card */}
         <div className="flex w-full flex-col items-center bg-white">
-          <div className="flex h-full w-full flex-col items-center rounded-br-[70px] bg-[#E1FFE0] pb-4 pt-10">
-            <Avatar className="mb-3 h-14 w-14 border border-[#E5EEE3]">
+          <div className="flex h-full w-full flex-col items-center rounded-br-[70px] bg-[#E1FFE0] pb-3 pt-10 tall-md:pt-4">
+            <Avatar className="mb-[5px] h-14 w-14 border border-[#E5EEE3]">
               <AvatarImage src={user.avatarUrl || ''} alt={user.name || 'User'} className="object-cover" />
-              <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-semibold text-success md:text-xl">
+              <AvatarFallback className="bg-gradient-to-br from-success/20 to-success/30 text-lg font-medium text-success md:text-xl">
                 {user.name.slice(0, 1).toUpperCase()}
               </AvatarFallback>
             </Avatar>
-            <h1 className="font-outfit mt-1 px-3 py-1 text-center text-[18px] font-medium text-[#212121]">Welcome {user.name}</h1>
+            <h1 className="font-outfit mt-1 px-3 py-1 text-center text-[18px] font-medium text-[#212121] tall-md:px-0 tall-md:py-0 tall-md:mt-0">Welcome {user.name}</h1>
           </div>
         </div>
         {/* Card container */}
@@ -58,7 +58,7 @@ const Analytics = () => {
                 <div className="font-outfit text-[14px] font-normal text-[#141414]">Select your preferred lunch time before using Aaharam.</div>
               </div>
               <div className="flex flex-1 flex-col items-center justify-start">
-                <div className="mx-auto flex aspect-square w-full items-center justify-center p-2">
+                <div className="mx-auto flex aspect-square w-full items-center justify-center">
                   <ResponsiveContainer width={360} height={360}>
                     <PieChart>
                       <Pie
@@ -94,7 +94,7 @@ const Analytics = () => {
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
-                <div className="mx-auto mb-2 grid w-full max-w-[311px] grid-cols-2 gap-x-8 gap-y-3">
+                <div className="mx-auto mb-2 grid w-full max-w-[350px] grid-cols-3 gap-x-3 gap-y-3">
                   {data.map((entry, index) => (
                     <div key={entry.name} className="flex flex-row items-center gap-2">
                       <span
@@ -113,7 +113,7 @@ const Analytics = () => {
               {/* Action Button pinned to bottom of card */}
               <div className="mt-auto pb-4 pt-4">
                 <Button
-                  className="font-outfit h-11 w-full rounded-lg bg-[#212121] text-base font-medium text-white shadow-sm transition-colors hover:bg-[#181818]"
+                  className="font-outfit h-11 w-full rounded-lg bg-[#212121] hover:bg-[#181818] text-base font-medium text-white shadow-sm transition-colors"
                   size="lg"
                   onClick={() => navigate('/preference-selection')}
                 >

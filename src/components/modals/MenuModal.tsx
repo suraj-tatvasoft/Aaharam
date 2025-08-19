@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import regularThaliImage from '@/assets/regular-thali.jpg';
 
@@ -8,6 +8,22 @@ interface MenuModalProps {
 }
 
 const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
+  const [isClosing, setIsClosing] = useState(false);
+  
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      onClose();
+    }, 250);
+  };
+  
+  useEffect(() => {
+    if (!isOpen) {
+      setIsClosing(false);
+    }
+  }, [isOpen]);
+  
   const menuItems = [
     { name: 'Butter Roti', quantity: 4 },
     { name: 'Sev Tamatar', quantity: 1 },
@@ -29,10 +45,12 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
   return (
     <div style={{ backdropFilter: 'blur(2px)' }} className="fixed inset-0 z-50 flex bg-black/10 p-0 sm:items-end sm:justify-center sm:p-4 sm:pb-0">
       {/* Desktop modal */}
-      <div className="relative mx-auto hidden w-full max-w-md rounded-tl-2xl rounded-tr-2xl bg-white p-6 shadow-lg sm:block">
+      <div className={`relative mx-auto sm:hidden hidden w-full max-w-md rounded-tl-2xl rounded-tr-2xl bg-white p-6 shadow-lg sm:block transition-transform duration-300 ease-out ${
+        isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
+      }`}>
         <button
-          onClick={onClose}
-          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full border border-gray-200 p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+          onClick={handleClose}
+          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full border border-gray-200 p-2 shadow-md hover:bg-gray-100 focus:outline-none transition-all duration-200 hover:scale-105"
           style={{ top: '-58px', background: '#F5F5F5' }}
           aria-label="Close"
         >
@@ -65,7 +83,7 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
           {/* Add Button */}
           <button
             className="w-full rounded-xl border border-green-500 bg-white px-4 py-3 text-base font-medium text-green-600 transition-colors hover:bg-green-50"
-            onClick={onClose}
+            onClick={handleClose}
           >
             Add item
           </button>
@@ -73,19 +91,21 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
       </div>
 
       {/* Mobile bottom sheet */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 block sm:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 block max-w-md mx-auto">
         {/* Close button above modal, centered */}
         <div className="flex justify-center">
           <button
-            onClick={onClose}
-            className="absolute left-1/2 z-10 flex h-[36px] w-[36px] -translate-x-1/2 items-center justify-center rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none"
+            onClick={handleClose}
+            className="absolute left-1/2 z-10 flex h-[36px] w-[36px] -translate-x-1/2 items-center justify-center rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none transition-all duration-200 hover:scale-105"
             style={{ top: '-52px', background: '#F5F5F5', boxShadow: '0px 0px 20px 0px #A8A8A866' }}
             aria-label="Close"
           >
             <X className="h-5 w-5 text-gray-700" />
           </button>
         </div>
-        <div className="rounded-tl-[30px] rounded-tr-[30px] bg-white" style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
+        <div className={`rounded-tl-[30px] rounded-tr-[30px] bg-white transition-transform duration-300 ease-out ${
+          isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
+        }`} style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
           {/* Heading and date */}
           <div className="flex items-center justify-between px-4 pb-4 pt-5">
             <h3 className="text-[16px] font-medium leading-[16px] text-[#212121]">Today's Lunch Menu</h3>
@@ -95,7 +115,7 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
           {/* Divider */}
           <div className="h-[4px] w-full bg-[#F7F7F7]" />
 
-          <div className="flex max-h-[70vh] flex-col gap-[10px] overflow-auto scroll-smooth bg-[#F7F7F7] px-4 pb-8 pt-1">
+          <div className="flex max-h-[70vh] flex-col gap-[10px] overflow-auto scroll-smooth bg-[#F7F7F7] px-4 pb-4 pt-1">
             {['Regular Thali', 'Meal - Jain', 'Farali Thali'].map((thali) => {
               return (
                 <div className="rounded-[10px] bg-white p-4">
@@ -123,8 +143,8 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
                   {/* Add Button */}
                   <div>
                     <button
-                      className="w-full rounded-[8px] border border-[#38963B] bg-white h-[43px] text-[16px] font-medium leading-[16px] text-[#38963B] transition-colors hover:bg-green-50"
-                      onClick={onClose}
+                      className="w-full rounded-[8px] border border-[#38963B] bg-white h-[44px] text-[16px] font-medium leading-[16px] text-[#38963B] transition-colors hover:bg-[#38963B] hover:text-white"
+                      onClick={handleClose}
                     >
                       Add item
                     </button>
