@@ -6,6 +6,7 @@ import Container from '@/components/Container';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { useThemeColor } from '@/hooks/useThemeColor';
+import DineInImg from '@/assets/dine-in-img.svg';
 
 const Analytics = () => {
   // Set theme color for analytics page
@@ -58,7 +59,7 @@ const Analytics = () => {
                 <div className="font-outfit text-[14px] font-normal text-[#141414]">Select your preferred lunch time before using Aaharam.</div>
               </div>
               <div className="flex flex-1 flex-col items-center justify-start">
-                <div className="mx-auto flex aspect-square w-full items-center justify-center">
+                <div className="mx-auto flex aspect-square w-full items-center justify-center relative">
                   <ResponsiveContainer width={360} height={360}>
                     <PieChart>
                       <Pie
@@ -93,6 +94,16 @@ const Analytics = () => {
                       </Pie>
                     </PieChart>
                   </ResponsiveContainer>
+                  {/* Center image */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none w-[90px] h-[90px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                    <img 
+                      src={DineInImg} 
+                      alt="Dine In" 
+                      width="90px"
+                      height="90px"
+                      className="w-[90px] h-[90px]"
+                    />
+                  </div>
                 </div>
                 <div className="mx-auto mb-2 grid w-full max-w-[350px] grid-cols-3 gap-x-3 gap-y-3">
                   {data.map((entry, index) => (

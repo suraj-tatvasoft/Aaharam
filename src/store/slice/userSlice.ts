@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IFoodItem } from '../../types/index';
+import employeeImg from '../../assets/employee-img.png';
 
 interface UserState {
   id: number;
@@ -16,7 +17,7 @@ const initialState: UserState = {
   id: 1,
   name: 'Dhiren Devganiya',
   email: 'dhiren.devganiya@tatvasoft.com',
-  avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
+  avatarUrl: employeeImg,
   passType: 'Regular Thali - Without Butter Milk',
   passExpiry: '31st July',
   preferredLunchTime: '',

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import PageLayout from '@/components/PageLayout';
 import fileAddIcon from '@/assets/file-add.svg';
+import crossIcon from '@/assets/white-cross-icon.svg';
 import { useToast } from '@/components/ui/use-toast';
 
 const FeedbackScreen = () => {
@@ -23,6 +24,15 @@ const FeedbackScreen = () => {
       }));
       setSelectedFiles((prev) => [...prev, ...files]);
     }
+  };
+
+  const removeFile = (index: number) => {
+    setSelectedFiles((prev) => {
+      const newFiles = [...prev];
+      URL.revokeObjectURL(newFiles[index].preview);
+      newFiles.splice(index, 1);
+      return newFiles;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -86,7 +96,7 @@ const FeedbackScreen = () => {
           <div className="h-[4px] bg-white"></div>
 
           <div className="flex-1 p-4">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               <div className="space-y-2.5">
                 <label htmlFor="feedback" className="block text-[14px] font-normal leading-[10px] text-[#212121]">
                   Add a feedback / suggestion
@@ -94,7 +104,7 @@ const FeedbackScreen = () => {
                 <textarea
                   id="feedback"
                   placeholder="Drop your feedback and suggestion"
-                  className="min-h-[120px] w-full resize-none rounded-[8px] border border-[#2121211A] bg-white p-[10px] text-[14px] font-normal leading-[20px] text-[#4D4D4D] outline-none placeholder:text-[12px] placeholder:font-light placeholder:text-[#777777]"
+                  className="min-h-[120px] w-full resize-none rounded-[8px] border border-[#2121211A] bg-white px-[10px] py-[5px] text-[14px] font-light leading-normal text-[#4d4d4d] outline-none placeholder:text-[12px] placeholder:font-light placeholder:text-[#777777] focus:placeholder-opacity-0 focus:placeholder-transparent"
                   value={feedback}
                   onChange={(e) => setFeedback(e.target.value)}
                   required
@@ -104,33 +114,40 @@ const FeedbackScreen = () => {
               <div className="space-y-2.5">
                 <label className="block text-[14px] font-normal leading-[10px] text-[#212121]">Upload media</label>
 
-                {selectedFiles.length < 5 && (
-                  <label
-                    htmlFor="media-upload"
-                    className="flex min-h-[120px] w-full cursor-pointer flex-col items-center justify-center rounded-[8px] border-2 border-dashed border-[#2121211A] p-5"
-                  >
-                    {selectedFiles.length > 0 ? (
-                      <div className="grid grid-cols-3 gap-2.5">
-                        {selectedFiles.map((file, index) => (
-                          <div key={index} className="relative aspect-square overflow-hidden rounded-[6px]">
-                            {file.file.type.startsWith('image/') ? (
-                              <img src={file.preview} alt={`Preview ${index}`} className="h-full w-full object-cover" />
-                            ) : (
-                              <div className="flex h-full w-full items-center justify-center bg-gray-100">
-                                <span className="text-xs text-gray-500">Video</span>
-                              </div>
-                            )}
-                          </div>
-                        ))}
+                <label
+                  htmlFor="media-upload"
+                  className="flex min-h-[120px] w-full cursor-pointer flex-col items-center justify-center rounded-[8px] border-2 border-dashed border-[#2121211A] p-5"
+                >
+                  <div className="flex flex-col items-center gap-4 text-[#21212199]">
+                    <img src={fileAddIcon} alt="Upload" className="size-[26px]" />
+                    <span className="text-[12px] font-light leading-[8px]">Upload photo & video</span>
+                  </div>
+                  <input id="media-upload" type="file" className="hidden" accept="image/*,video/*" multiple onChange={handleFileChange} />
+                </label>
+
+                {selectedFiles.length > 0 && (
+                  <div className="flex flex-wrap gap-2.5 mt-4">
+                    {selectedFiles.map((file, index) => (
+                      <div key={index} className="relative">
+                        <div className="w-[75px] h-[75px] overflow-hidden rounded-[8px] relative before:content-['*'] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[#2121214D] before:z-10">
+                          {file.file.type.startsWith('image/') ? (
+                            <img src={file.preview} alt={`Preview ${index}`} height="75px" width="75px" className="object-cover rounded-[8px]" style={{width:"75px",height:"75px"}} />
+                          ) : (
+                            <div className="flex h-full w-full items-center justify-center bg-gray-100">
+                              <span className="text-xs text-gray-500">Video</span>
+                            </div>
+                          )}
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(index)}
+                          className="z-20 absolute -top-[5px] -right-[5px] w-4 h-4 flex items-center justify-center bg-[#212121B3] rounded-full"
+                        >
+                          <img src={crossIcon} alt="Close" height="8px" width="8px"/>
+                        </button>
                       </div>
-                    ) : (
-                      <div className="flex flex-col items-center gap-4 text-[#21212199]">
-                        <img src={fileAddIcon} alt="Upload" className="size-[26px]" />
-                        <span className="text-[12px] font-light leading-[8px]">{selectedFiles.length > 0 ? 'Add more' : 'Upload photo & video'}</span>
-                      </div>
-                    )}
-                    <input id="media-upload" type="file" className="hidden" accept="image/*,video/*" multiple onChange={handleFileChange} />
-                  </label>
+                    ))}
+                  </div>
                 )}
               </div>
             </div>

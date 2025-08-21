@@ -168,3 +168,6 @@ body {
   max-height: 360px !important;
   max-width: 360px !important;
 }
+.modal-open .overflow-y-auto{
+  overflow: hidden;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Minus, Plus, X } from 'lucide-react';
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 
 // Animated Number Component
 const AnimatedNumber = ({ value, direction }: { value: number; direction?: 'up' | 'down' }) => {
@@ -52,6 +53,9 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
   const [isClosing, setIsClosing] = useState(false);
   const [prevQuantity, setPrevQuantity] = useState(1);
   const [direction, setDirection] = useState<'up' | 'down'>('up');
+  
+  // Lock body scroll when modal is open
+  useBodyScrollLock(isOpen);
   
   const handleClose = () => {
     setIsClosing(true);
@@ -117,7 +121,7 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end bg-black/10 sm:justify-center" style={{ backdropFilter: 'blur(2px)' }}>
+    <div className="fixed inset-0 z-50 flex items-end bg-black/10 sm:justify-center" style={{ backdropFilter: 'blur(5px)' }}>
       {/* Floating Close Button */}
       {/* Modal Container */}
       <div
@@ -129,8 +133,10 @@ const ModifierModal: React.FC<ModifierModalProps> = ({ isOpen, onClose, item, on
         {/* Floating Close Button */}
         <button
           onClick={handleClose}
-          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full p-2 hover:bg-gray-100 focus:outline-none transition-all duration-200 hover:scale-105"
-          style={{ top: '-58px', background: '#F5F5F5' }}
+          className={`absolute left-1/2 z-10 -translate-x-1/2 rounded-full p-2 hover:bg-gray-100 focus:outline-none transition-all duration-300 ease-out hover:scale-105 ${
+            isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
+          }`}
+          style={{ top: '-58px', background: '#fff' }}
           aria-label="Close"
         >
           <X className="h-5 w-5" style={{ color: '#212121' }} />

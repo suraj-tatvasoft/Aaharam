@@ -74,7 +74,7 @@ const OnBoarding: React.FC = () => {
                 </div>
 
                 {/* Bottom fixed area */}
-                <div className="flex flex-col items-center gap-7 px-4 pb-6 tall-md:gap-2">
+                <div className="flex flex-col items-center gap-7 px-4 pb-6 tall-md:gap-3">
                   {/* Pagination Dots */}
                   <div className="flex flex-col items-center gap-6 tall-md:gap-0">
                     <div className="mb-4 flex items-center justify-center gap-2">
@@ -100,7 +100,7 @@ const OnBoarding: React.FC = () => {
 
                   {/* Next Button */}
                   <button
-                    className="flex h-14 w-[100px] items-center justify-center rounded-full bg-black shadow-md transition-transform active:scale-95"
+                    className="flex h-11 w-[100px] items-center justify-center rounded-full bg-black shadow-md transition-transform active:scale-95"
                     onClick={handleNext}
                     aria-label="Next"
                   >

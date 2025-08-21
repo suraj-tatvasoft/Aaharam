@@ -74,7 +74,7 @@ const AccordionSides: React.FC<AccordionSidesProps> = ({ items, onAddItem, onTog
             </div>
           </button>
           {open === group && (
-            <div className="flex flex-col gap-4 px-4 pb-4">
+            <div className="flex flex-col gap-[10px] px-4 pb-4">
               {groups[group].map((item, idx) => (
                 <div key={item.id}>
                   <SimpleSideItemCard
