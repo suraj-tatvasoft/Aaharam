@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import regularThaliImage from '@/assets/regular-thali.jpg';
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 
 interface MenuModalProps {
   isOpen: boolean;
@@ -10,12 +11,15 @@ interface MenuModalProps {
 const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   
+  // Lock body scroll when modal is open
+  useBodyScrollLock(isOpen);
+  
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
       setIsClosing(false);
       onClose();
-    }, 250);
+    }, 300);
   };
   
   useEffect(() => {
@@ -43,69 +47,25 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div style={{ backdropFilter: 'blur(2px)' }} className="fixed inset-0 z-50 flex bg-black/10 p-0 sm:items-end sm:justify-center sm:p-4 sm:pb-0">
-      {/* Desktop modal */}
-      <div className={`relative mx-auto sm:hidden hidden w-full max-w-md rounded-tl-2xl rounded-tr-2xl bg-white p-6 shadow-lg sm:block transition-transform duration-300 ease-out ${
+    <div
+      style={{ backdropFilter: 'blur(5px)' }}
+      className="fixed inset-0 z-50 flex items-end bg-black/10 p-0 sm:justify-center sm:px-4 pt-4 pb-0"
+    >
+      {/* Modal Container */}
+      <div className={`relative mx-auto w-full max-w-md rounded-t-[30px] bg-white shadow-lg transition-transform duration-300 ease-out ${
         isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
-      }`}>
+      }`} style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
+        {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute left-1/2 z-10 -translate-x-1/2 rounded-full border border-gray-200 p-2 shadow-md hover:bg-gray-100 focus:outline-none transition-all duration-200 hover:scale-105"
-          style={{ top: '-58px', background: '#F5F5F5' }}
+          className={`absolute left-1/2 z-10 flex h-[36px] w-[36px] -translate-x-1/2 items-center justify-center rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none transition-all duration-300 ease-out hover:scale-105 ${
+            isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
+          }`}
+          style={{ top: '-52px', background: '#fff' }}
           aria-label="Close"
         >
-          <X className="h-6 w-6 text-gray-700" />
+          <X className="h-5 w-5 text-gray-700" />
         </button>
-        <div className="mb-2 flex items-center justify-between">
-            <h3 className="text-xl font-medium">Today's Lunch Menu</h3>
-            <p className="mt-1 text-sm text-muted-foreground">11th July 25, Monday</p>
-        </div>
-        <div className="space-y-6">
-          {/* Thali Image and Price */}
-          <div className="flex items-center gap-4">
-            <div className="h-16 w-16 overflow-hidden rounded-lg">
-              <img src={regularThaliImage} alt="Regular Thali" className="h-full w-full object-cover" />
-            </div>
-            <div className="flex-1">
-              <h3>Regular Thali</h3>
-            </div>
-            <span className="text-lg">₹80</span>
-          </div>
-          {/* Menu Items */}
-          <div className="space-y-3">
-            {menuItems.map((item, index) => (
-              <div key={index} className="flex items-center justify-between">
-                <span className="text-[16px] font-normal leading-[16px] text-[#212121]">{item.name}</span>
-                <span className="text-[14px] font-normal leading-[16px] text-[#212121]">{item.quantity}</span>
-              </div>
-            ))}
-          </div>
-          {/* Add Button */}
-          <button
-            className="w-full rounded-xl border border-green-500 bg-white px-4 py-3 text-base font-medium text-green-600 transition-colors hover:bg-green-50"
-            onClick={handleClose}
-          >
-            Add item
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile bottom sheet */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 block max-w-md mx-auto">
-        {/* Close button above modal, centered */}
-        <div className="flex justify-center">
-          <button
-            onClick={handleClose}
-            className="absolute left-1/2 z-10 flex h-[36px] w-[36px] -translate-x-1/2 items-center justify-center rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none transition-all duration-200 hover:scale-105"
-            style={{ top: '-52px', background: '#F5F5F5', boxShadow: '0px 0px 20px 0px #A8A8A866' }}
-            aria-label="Close"
-          >
-            <X className="h-5 w-5 text-gray-700" />
-          </button>
-        </div>
-        <div className={`rounded-tl-[30px] rounded-tr-[30px] bg-white transition-transform duration-300 ease-out ${
-          isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
-        }`} style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
           {/* Heading and date */}
           <div className="flex items-center justify-between px-4 pb-4 pt-5">
             <h3 className="text-[16px] font-medium leading-[16px] text-[#212121]">Today's Lunch Menu</h3>
@@ -115,7 +75,7 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
           {/* Divider */}
           <div className="h-[4px] w-full bg-[#F7F7F7]" />
 
-          <div className="flex max-h-[70vh] flex-col gap-[10px] overflow-auto scroll-smooth bg-[#F7F7F7] px-4 pb-4 pt-1">
+          <div className="flex max-h-[70vh] flex-col gap-[10px] overflow-auto scroll-smooth bg-[#F7F7F7] px-4 pb-4 pt-1 scrollbar-hide">
             {['Regular Thali', 'Meal - Jain', 'Farali Thali'].map((thali) => {
               return (
                 <div className="rounded-[10px] bg-white p-4">
@@ -153,7 +113,6 @@ const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
               );
             })}
           </div>
-        </div>
       </div>
     </div>
   );

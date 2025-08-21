@@ -14,7 +14,7 @@ export default function EmptyState({
   className = '',
 }: EmptyStateProps) {
   return (
-    <div className={`flex h-60 flex-col items-center justify-center text-muted-foreground ${className}`}>
+    <div className={`flex h-full flex-col items-center justify-center text-muted-foreground ${className}`}>
       {icon}
       <span className="mb-1 text-lg font-medium">{title}</span>
       <span className="max-w-xs text-center text-sm">{description}</span>

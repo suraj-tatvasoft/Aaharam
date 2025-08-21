@@ -133,16 +133,18 @@ const OrderHistory: React.FC = () => {
                   }}
                 >
                   <div className="scrollbar-hide h-full space-y-4 overflow-y-auto">
-                    <div className="flex flex-col justify-between space-y-4 h-full">
-                      <div className="space-y-4">
-                        {filteredOrders.length === 0 ? (
-                          <EmptyState
-                            title={`No ${tab.label} Orders`}
-                            description={`You have no ${tab.label.toLowerCase()} orders yet.`}
-                            icon={tabIconMap[tab.label as keyof typeof tabIconMap]}
-                          />
-                        ) : (
-                          filteredOrders.map((order, i) => (
+                    {filteredOrders.length === 0 ? (
+                      <div className="h-full">
+                        <EmptyState
+                          title={`No ${tab.label} Orders`}
+                          description={`You have no ${tab.label.toLowerCase()} orders yet.`}
+                          icon={tabIconMap[tab.label as keyof typeof tabIconMap]}
+                        />
+                      </div>
+                    ) : (
+                      <div className="flex flex-col justify-between space-y-4 h-full">
+                        <div className="space-y-4">
+                          {filteredOrders.map((order, i) => (
                             <div
                               key={i}
                               className="mb-3 flex cursor-pointer items-center justify-between rounded-[16px] bg-[#FFFFFF] p-4 shadow-[0_0_20px_0_#F25D460D]"
@@ -157,10 +159,10 @@ const OrderHistory: React.FC = () => {
                                 <img src={profileAccordion} alt="Expand" className="h-[10px] w-[5px]" />
                               </div>
                             </div>
-                          ))
-                        )}
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               );

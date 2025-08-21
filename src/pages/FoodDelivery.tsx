@@ -14,6 +14,9 @@ import FloatingCartButton from '@/components/FloatingCartButton';
 import { useToast } from '@/hooks/use-toast';
 import foodItemsData from '@/data/foodItems.json';
 import AccordionSides from './AccordionSides';
+import QuoteImg from '@/assets/quote-img.svg';
+import AnimatedPeopleImg from '@/assets/animated-people-img.svg';
+import DisclaimerIcon from '@/assets/disclaimer-icon.svg';
 
 interface CartItem {
   id: string;
@@ -37,6 +40,15 @@ const FoodDelivery = () => {
   const itemsContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [activeCategory, setActiveCategory] = useState('breakfast');
+  
+  // Quote rotation state
+  const quotes = [
+    "We can't make everyone happy, but we can make food that does.",
+    "There is no better feeling than a warm pizza box on your lap.",
+    "Good Food, Good Life."
+  ];
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+  const [isQuoteTransitioning, setIsQuoteTransitioning] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
@@ -192,6 +204,20 @@ const FoodDelivery = () => {
     }
   }, [activeCategory]);
 
+  // Quote rotation effect with smooth transition
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsQuoteTransitioning(true);
+      
+      setTimeout(() => {
+        setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
+        setIsQuoteTransitioning(false);
+      }, 300); // Half of transition duration for fade out, then fade in
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [quotes.length]);
+
   return (
     <Container>
       <div className="flex h-full max-h-full flex-col overflow-hidden bg-white">
@@ -218,7 +244,8 @@ const FoodDelivery = () => {
                         className="h-full flex-shrink-0"
                         style={{ 
                           width: '100%',
-                          padding: category === 'sides' ? '0' : '16px' 
+                          padding: category === 'sides' ? '0' : '16px',
+                          paddingBottom: category === 'sides' ? '0' : '0', 
                         }}
                       >
                         <div
@@ -226,7 +253,7 @@ const FoodDelivery = () => {
                           className="scrollbar-hide h-full space-y-4 overflow-y-auto"
                         >
                           <div className="flex flex-col justify-between space-y-4 h-full">
-                            <div className="space-y-4">
+                            <div className="space-y-[10px]">
                               {category === 'sides' ? (
                                 <AccordionSides
                                   items={categoryItems}
@@ -288,7 +315,32 @@ const FoodDelivery = () => {
                                 )
                               )}
                             </div>
-                            <p className={`text-[12px] font-light leading-normal text-[#797979] italic pb-4 ${category === 'sides' ? 'px-4' : ''}`}>*Images of food items are for illustrative purposes only.</p>
+                            <p className={`text-[12px] text-center font-light leading-normal text-[#797979] ${category === 'sides' ? 'px-4' : ''}`}><span className='inline-flex items-center mr-[3px] relative h-[12px] w-[12px] top-[2px]'><img className='h-[12px] w-[12px]' src={DisclaimerIcon} alt="disclaimer icon" /></span>Images of food items are for illustrative purposes only.</p>
+                            {/* Quote Section */}
+                              <div className={`relative ${category === 'sides' ? '!-mt-[45px]' : ''}`}>
+                                {/* Quote Text */}
+                                <div className="flex items-center justify-center relative z-[1] text-center min-h-[60px]">
+                                  <p className={`font-outfit text-[16px] text-[#212121] leading-relaxed max-w-[285px] mx-auto transition-opacity duration-600 ease-in-out ${isQuoteTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+                                    "{quotes[currentQuoteIndex]}"
+                                  </p>
+                                  <div className="absolute inset-0 flex items-start justify-center top-0 -z-[1]">
+                                    <img 
+                                      src={QuoteImg} 
+                                      alt="Quote" 
+                                      className="w-[46px] h-[60px]"
+                                    />
+                                </div>
+                                </div>
+                                
+                                {/* Animated People Image */}
+                                <div className="flex justify-center">
+                                  <img 
+                                    src={AnimatedPeopleImg} 
+                                    alt="Happy people enjoying food" 
+                                    className="w-[337px] h-auto"
+                                  />
+                                </div>
+                              </div>
                           </div>
                         </div>
                       </div>

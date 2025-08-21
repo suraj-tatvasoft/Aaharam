@@ -53,7 +53,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
   return (
     <div
       style={{
-        borderRadius: '16px',
+        borderRadius: '10px',
         padding: isSlides ? '3px 12px 3px 4px' : '3px 16px 3px 4px',
       }}
       className={`flex items-center bg-white`}
@@ -63,7 +63,7 @@ const SimpleSideItemCard: React.FC<SimpleSideItemCardProps> = ({
         alt={name}
         className="mr-3rounded-xl object-cover"
         style={{
-          borderRadius: '12px',
+          borderRadius: '6px',
           width: isSlides ? '66px' : '46px',
           height: isSlides ? '66px' : '46px',
           margin: '0 10px 0 0',

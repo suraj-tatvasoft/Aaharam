@@ -66,7 +66,7 @@ const FoodCard = ({
       <div className="flex p-1">
         {/* Food Image */}
         <div className="h-[110px] w-[110px] flex-shrink-0 overflow-hidden rounded-[12px]">
-          <img src={image} alt={name} height="100%" width="100%" className={`h-full w-full object-cover transition-all ${!available ? 'opacity-90 grayscale' : ''}`} />
+          <img src={image} alt={name} height="110px" width="110px" className={`h-full w-full object-cover transition-all ${!available ? 'opacity-90 grayscale' : ''}`} />
         </div>
         {/* Food Details */}
         <div className="flex flex-1 flex-col justify-between py-[5px] px-[10px]">

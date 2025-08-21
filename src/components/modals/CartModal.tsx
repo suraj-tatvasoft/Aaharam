@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import { Minus, Plus } from 'lucide-react';
 import { useOrder } from '@/context/OrderContext';
 import { useNavigate } from 'react-router-dom';
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 
 // Animated Number Component
 const AnimatedNumber = ({ value, direction }: { value: number; direction?: 'up' | 'down' }) => {
@@ -48,6 +49,9 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
   const [quantityDirections, setQuantityDirections] = useState<{ [key: string]: 'up' | 'down' }>({});
   const [prevQuantities, setPrevQuantities] = useState<{ [key: string]: number }>({});
   
+  // Lock body scroll when modal is open
+  useBodyScrollLock(isOpen);
+  
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -84,18 +88,20 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
 
   return (
     <div
-      style={{ backdropFilter: 'blur(2px)' }}
+      style={{ backdropFilter: 'blur(5px)' }}
       className="fixed inset-0 z-50 flex items-end bg-black/10 p-0 sm:justify-center sm:px-4 pt-4 pb-0"
     >
       {/* Modal Container */}
       <div className={`relative mx-auto w-full max-w-md rounded-t-[30px] bg-white shadow-lg transition-transform duration-300 ease-out ${
         isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
-      }`}>
+      }`} style={{ boxShadow: '0px -6px 20px 0px #A8A8A866' }}>
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute left-1/2 z-10 flex h-[36px] w-[36px] -translate-x-1/2 items-center justify-center rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none transition-all duration-200 hover:scale-105"
-          style={{ top: '-52px', background: '#F5F5F5', boxShadow: '0px 0px 20px 0px #A8A8A866' }}
+          className={`absolute left-1/2 z-10 flex h-[36px] w-[36px] -translate-x-1/2 items-center justify-center rounded-full border border-gray-200 shadow-md hover:bg-gray-100 focus:outline-none transition-all duration-300 ease-out hover:scale-105 ${
+            isClosing ? 'animate-out slide-out-to-bottom' : 'animate-in slide-in-from-bottom'
+          }`}
+          style={{ top: '-52px', background: '#fff' }}
           aria-label="Close"
         >
           <X className="h-5 w-5 text-gray-700" />
@@ -109,7 +115,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
         </div>
         <div className="h-1" style={{ background: '#F5F5F5' }}></div>
         {/* Cart Items */}
-        <div className="max-h-[60vh] overflow-auto scroll-smooth">
+        <div className="max-h-[60vh] overflow-auto scroll-smooth scrollbar-hide">
           <div className="flex flex-col gap-4 px-4 py-4">
             {cartItems.map((item) => (
               <div key={item.id} className="flex items-center gap-[10px]">
@@ -201,7 +207,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onQua
         <div className="h-1" style={{ background: 'rgba(33, 33, 33, 0.1)' }}></div>
 
         {/* Generate Token Button */}
-        <div className="px-4 pb-8 pt-4">
+        <div className="px-4 pb-4 pt-4">
           <button
             className="w-full rounded-lg bg-green-600 py-3 font-medium text-white shadow-md"
             onClick={() => {

@@ -25,7 +25,7 @@ const shakeAnimationStyles = `
   }
   
   .bell-shake {
-    animation: bellShake 0.8s ease-in-out infinite;
+    animation: bellShake 0.2s ease-in-out;
   }
 `;
 
@@ -44,12 +44,10 @@ export interface HeaderProps {
 const Header = ({ onMenuClick }: HeaderProps) => {
   const navigate = useNavigate();
   const [isShaking, setIsShaking] = useState(false);
-  const [notificationCount, setNotificationCount] = useState(0);
+  const [notificationCount, setNotificationCount] = useState(3); // Demo: Set to 3 for testing
 
-  // Only trigger shake when there are actual notifications
+  // Trigger shake animation periodically when there are notifications
   useEffect(() => {
-    // You can replace this with actual notification logic from your store/API
-    // For now, this is a demo that only shakes when notifications exist
     if (notificationCount > 0) {
       const interval = setInterval(() => {
         setIsShaking(true);
@@ -57,8 +55,8 @@ const Header = ({ onMenuClick }: HeaderProps) => {
         // Stop shaking after animation completes
         setTimeout(() => {
           setIsShaking(false);
-        }, 200);
-      }, 3000); // Shake every 3 seconds when notifications exist
+        }, 600); // Match animation duration
+      }, 4000); // Shake every 4 seconds when notifications exist
 
       return () => clearInterval(interval);
     }
@@ -109,10 +107,10 @@ const Header = ({ onMenuClick }: HeaderProps) => {
                 style={{ backgroundColor: '#E9FFE4' }}
                 onClick={() => navigate('/notifications')}
               >
-                <div className={`relative ${isShaking && notificationCount > 0 ? 'bell-shake' : ''}`}>
-                  <img src={headerAlarmIcon} alt="Alarm" />
+                <div className={`relative ${isShaking ? 'bell-shake' : ''}`}>
+                  <img src={headerAlarmIcon} alt="Alarm" className="h-5 w-5" />
                   {notificationCount > 0 && (
-                    <span className="absolute -right-0 -top-0 flex h-2 w-2 items-center justify-center rounded-full bg-destructive text-white" />
+                    <span className="absolute right-0 top-0 h-2 w-2 rounded-full bg-[#E92E27]" />
                   )}
                 </div>
               </Button>

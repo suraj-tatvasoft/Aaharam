@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@/components/Container';
 import { useNavigate } from 'react-router-dom';
 import profileBack from '@/assets/profile-back.svg';
 import notificationIcon from '@/assets/header-alarm.svg';
+import QuoteImg from '@/assets/quote-img.svg';
+import AnimatedPeopleImg from '@/assets/animated-people-img.svg';
+import WhiteTickIcon from '@/assets/white-tick-icon.svg';
+import WhiteCloseIcon from '@/assets/white-close-icon.svg';
+import NoShowIcon from '@/assets/no-show-icon.svg';
 
 interface OrderItem {
   id: string;
@@ -16,18 +21,87 @@ interface OrderItem {
   };
 }
 
+type OrderStatus = 'completed' | 'rejected' | 'no-show' | 'canceled';
+
 interface OrderDetailProps {
   orderId: string;
   tokenNumber: number;
   date: string;
   time: string;
   items: OrderItem[];
+  status?: OrderStatus;
   onCancel?: () => void;
 }
 
-const OrderDetail: React.FC<OrderDetailProps> = ({ orderId, tokenNumber, date, time, items, onCancel }) => {
+const OrderDetail: React.FC<OrderDetailProps> = ({ orderId, tokenNumber, date, time, items, status = 'completed', onCancel }) => {
   const navigate = useNavigate();
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  
+  // Quote rotation state
+  const quotes = [
+    "We can't make everyone happy, but we can make food that does.",
+    "There is no better feeling than a warm pizza box on your lap.",
+    "Good Food, Good Life."
+  ];
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+  const [isQuoteTransitioning, setIsQuoteTransitioning] = useState(false);
+
+  // Quote rotation effect with smooth transition
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsQuoteTransitioning(true);
+      
+      setTimeout(() => {
+        setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
+        setIsQuoteTransitioning(false);
+      }, 300); // Half of transition duration for fade out, then fade in
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [quotes.length]);
+
+  // Status configuration
+  const getStatusConfig = (status: OrderStatus) => {
+    switch (status) {
+      case 'completed':
+        return {
+          text: 'Completed',
+          bgColor: '#38963B',
+          textColor: '#fff',
+          icon: WhiteTickIcon
+        };
+      case 'rejected':
+        return {
+          text: 'Rejected',
+          bgColor: '#F53939',
+          textColor: '#fff',
+          icon: WhiteCloseIcon
+        };
+      case 'no-show':
+        return {
+          text: 'No Show',
+          bgColor: '#A168C5',
+          textColor: '#fff',
+          icon: NoShowIcon
+        };
+      case 'canceled':
+        return {
+          text: 'Canceled',
+          bgColor: '#878787',
+          textColor: '#fff',
+          icon: WhiteCloseIcon
+        };
+      default:
+        return {
+          text: 'Completed',
+          bgColor: '#38963B',
+          textColor: '#fff',
+          icon: WhiteTickIcon
+        };
+    }
+  };
+
+  const statusConfig = getStatusConfig(status);
 
   return (
     <Container>
@@ -68,12 +142,12 @@ const OrderDetail: React.FC<OrderDetailProps> = ({ orderId, tokenNumber, date, t
                   <span>{time}</span>
                 </div>
 
-                <div className="flex h-7 items-center gap-[6px] rounded-full bg-[#E9FFE4] px-[10px] text-[#38963B]">
-                  <span className="text-[12px] font-normal leading-[8px]">Completed</span>
-                  <svg width="12" height="12" fill="none" viewBox="0 0 14 14">
-                    <circle cx="7" cy="7" r="7" fill="#38963B" />
-                    <path d="M4 7l2 2 4-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                <div 
+                  className="flex h-7 items-center gap-[6px] rounded-full px-[10px]"
+                  style={{ backgroundColor: statusConfig.bgColor, color: statusConfig.textColor }}
+                >
+                  <span className="text-[12px] font-normal leading-normsl">{statusConfig.text}</span>
+                  <img src={statusConfig.icon} alt={`${status} icon`} className="w-3 h-3" />
                 </div>
               </div>
 
@@ -109,6 +183,23 @@ const OrderDetail: React.FC<OrderDetailProps> = ({ orderId, tokenNumber, date, t
                   <div className="flex justify-between text-[14px] font-medium leading-[10px] text-[#212121]">
                     <span>Total</span>
                     <span>₹{total}</span>
+                  </div>
+                </div>
+                
+                {/* Quote Section */}
+                <div className="relative px-4 pb-4">
+                  {/* Quote Text */}
+                  <div className="flex items-center justify-center relative z-[1] text-center mb-6 min-h-[60px]">
+                    <p className={`font-outfit text-[16px] text-[#212121] leading-relaxed max-w-[285px] mx-auto transition-opacity duration-600 ease-in-out ${isQuoteTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+                      "{quotes[currentQuoteIndex]}"
+                    </p>
+                    <div className="absolute inset-0 flex items-start justify-center top-0 -z-[1]">
+                      <img 
+                        src={QuoteImg} 
+                        alt="Quote" 
+                        className="w-[46px] h-[60px]"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

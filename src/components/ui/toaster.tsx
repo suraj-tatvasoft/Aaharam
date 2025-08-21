@@ -1,27 +1,28 @@
 import { useToast } from '@/hooks/use-toast';
-import mainLogo from '@/assets/main-logo.svg';
 import { Toast, ToastProvider, ToastViewport } from '@/components/ui/toast';
 
 export function Toaster() {
-  const { toasts } = useToast();
+  const { toasts, dismiss } = useToast();
 
   return (
     <ToastProvider>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
-          <Toast key={id} {...props} className="block rounded-[14px] bg-[#e3e2e3] p-3 bg-blend-luminosity shadow-none backdrop-blur-[102px]">
-            <div className="flex flex-col gap-2">
-              <div className="flex w-full items-start justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <img src={mainLogo} alt="Aaharam Logo" className="p-[2px] h-[22px] w-[22px] rounded-[6px] bg-white" />
-                  <div className="text-[16px] text-[#969895]">Aaharam</div>
-                </div>
-                <div className="letter-spacing-[-1%] text-[16px] font-medium leading-[17px] tracking-[0] text-[#828382]">now</div>
+          <Toast key={id} {...props} className="relative block bg-[#F0FFEF] rounded-[16px] pt-[14px] pb-[12px] px-[14px] border-0" style={{ boxShadow:'0px 3px 0px #38963B, 0px 6px 12px rgba(0, 20, 62, 0.16)'}}>
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex-1">
+                {title && <div className="text-[14px] font-medium leading-normal text-[#212121]">{title}</div>}
+                {description && <div className="text-[14px] font-light leading-normal text-[#666666]">{description}</div>}
               </div>
-              <div className="">
-                {title && <div className="mb-1 text-[14px] font-normal leading-[17px] text-[#2d2c2c]">{title}</div>}
-                {description && <div className="truncate text-[14px] font-normal leading-[17px] text-[#2d2c2c]">{description}</div>}
-              </div>
+              <button
+                onClick={() => dismiss(id)}
+                className="flex-shrink-0 text-[#999999] hover:text-[#666666] transition-colors"
+                aria-label="Close"
+              >
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 7L7 1M7 7L1 1" stroke="#212121" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </button>
             </div>
           </Toast>
         );

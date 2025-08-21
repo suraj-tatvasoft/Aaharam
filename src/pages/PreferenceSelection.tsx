@@ -5,6 +5,7 @@ import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
 import { updateUser } from '@/store/slice/userSlice';
+import employeeImg from '../assets/employee-img.png';
 
 const TIME_SLOTS = [
   '12:00 PM - 12:30 PM',
@@ -41,7 +42,7 @@ const PreferenceSelection = () => {
           {/* Header Section */}
           <div className="flex-grow-1 flex w-full items-center gap-2.5 rounded-bl-[22px] bg-[#FFFFFF] px-4 pb-4 pt-4">
             <Avatar className="h-[42px] w-[42px] border border-[#E5EEE3]">
-              <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="User" />
+              <AvatarImage src={employeeImg} alt="User" />
             </Avatar>
             <span className="text-[18px] font-normal leading-[23px] text-[#212121]">My Preferred Lunch Time Slot</span>
           </div>

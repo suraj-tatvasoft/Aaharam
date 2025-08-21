@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@/components/Container';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
@@ -17,6 +17,34 @@ import rules from '@/assets/rule.svg';
 import logout from '@/assets/logout.svg';
 import profileAccordion from '@/assets/profile-accordion.svg';
 import LogoutModal from '@/components/modals/LogoutModal';
+
+// Add shake animation styles
+const shakeAnimationStyles = `
+  @keyframes bellShake {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(-10deg); }
+    20% { transform: rotate(10deg); }
+    30% { transform: rotate(-10deg); }
+    40% { transform: rotate(10deg); }
+    50% { transform: rotate(-5deg); }
+    60% { transform: rotate(5deg); }
+    70% { transform: rotate(-5deg); }
+    80% { transform: rotate(5deg); }
+    90% { transform: rotate(0deg); }
+  }
+  
+  .bell-shake {
+    animation: bellShake 0.6s ease-in-out;
+  }
+`;
+
+// Inject styles if not already present
+if (typeof document !== 'undefined' && !document.getElementById('bell-shake-styles-profile')) {
+  const style = document.createElement('style');
+  style.id = 'bell-shake-styles-profile';
+  style.textContent = shakeAnimationStyles;
+  document.head.appendChild(style);
+}
 
 type MenuItemConfig = {
   icon: string;
@@ -62,6 +90,24 @@ const Profile = () => {
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.user);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = React.useState(false);
+  const [isShaking, setIsShaking] = useState(false);
+  const [notificationCount, setNotificationCount] = useState(3); // Demo: Set to 3 for testing
+
+  // Trigger shake animation periodically when there are notifications
+  useEffect(() => {
+    if (notificationCount > 0) {
+      const interval = setInterval(() => {
+        setIsShaking(true);
+        
+        // Stop shaking after animation completes
+        setTimeout(() => {
+          setIsShaking(false);
+        }, 600); // Match animation duration
+      }, 4000); // Shake every 4 seconds when notifications exist
+
+      return () => clearInterval(interval);
+    }
+  }, [notificationCount]);
 
   const handleLogout = () => {
     console.log('User logged out');
@@ -99,9 +145,11 @@ const Profile = () => {
               type="button"
               onClick={() => navigate('/notifications')}
             >
-              <div className="relative">
+              <div className={`relative ${isShaking ? 'bell-shake' : ''}`}>
                 <img src={notificationIcon} alt="Notifications" className="h-5 w-5" />
-                <span className="absolute right-0 top-0 h-2 w-2 rounded-full bg-[#E92E27]"></span>
+                {notificationCount > 0 && (
+                  <span className="absolute right-0 top-0 h-2 w-2 rounded-full bg-[#E92E27]" />
+                )}
               </div>
             </button>
           </div>
