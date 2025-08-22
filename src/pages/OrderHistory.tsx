@@ -7,10 +7,10 @@ import { CheckCircle2, XCircle, EyeOff, Ban } from 'lucide-react';
 import profileAccordion from '@/assets/profile-accordion.svg';
 
 const TABS = [
-  { label: 'Completed', count: 78 },
-  { label: 'Rejected', count: 4 },
-  { label: 'No Show', count: 3 },
-  { label: 'Cancelled', count: 1 },
+  { label: 'Completed'},
+  { label: 'Rejected'},
+  { label: 'No Show'},
+  { label: 'Cancelled'},
 ];
 
 export const ORDERS = [
@@ -37,6 +37,7 @@ const OrderHistory: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const tabRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
+  const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
 
   const handleTabChange = (newTabIndex: number) => {
     if (newTabIndex === activeTab || isTransitioning) return;
@@ -50,6 +51,22 @@ const OrderHistory: React.FC = () => {
     }, 500);
   };
 
+  const updateIndicatorPosition = () => {
+    const activeTabElement = tabRefs.current[activeTab];
+    if (activeTabElement) {
+      const tabContainer = activeTabElement.parentElement;
+      if (tabContainer) {
+        const containerRect = tabContainer.getBoundingClientRect();
+        const tabRect = activeTabElement.getBoundingClientRect();
+        
+        setIndicatorStyle({
+          width: tabRect.width,
+          left: tabRect.left - containerRect.left,
+        });
+      }
+    }
+  };
+
   React.useEffect(() => {
     if (tabRefs.current[activeTab]) {
       tabRefs.current[activeTab]?.scrollIntoView({
@@ -57,7 +74,23 @@ const OrderHistory: React.FC = () => {
         inline: 'center',
         block: 'nearest',
       });
+      
+      // Update indicator position after scroll
+      setTimeout(() => {
+        updateIndicatorPosition();
+      }, 100);
     }
+  }, [activeTab]);
+
+  React.useEffect(() => {
+    updateIndicatorPosition();
+    
+    const handleResize = () => {
+      updateIndicatorPosition();
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [activeTab]);
 
   return (
@@ -72,35 +105,37 @@ const OrderHistory: React.FC = () => {
           </div>
 
           <div className="bg-[#FFFFFF] relative">
-            <div className="flex justify-between relative">
-              {/* Animated underline indicator */}
-              <div 
-                className="absolute bottom-0 h-[2px] bg-[#38963B] transition-all duration-300 ease-out"
-                style={{
-                  width: `${100 / TABS.length}%`,
-                  left: `${(activeTab * 100) / TABS.length}%`,
-                }}
-              />
-              
-              {TABS.map((tab, idx) => {
-                return (
-                  <button
-                    key={tab.label}
-                    ref={(el) => (tabRefs.current[idx] = el)}
-                    onClick={() => handleTabChange(idx)}
-                    className="flex min-w-0 flex-1 flex-col items-center gap-1 px-2 pb-[11px] pt-2 text-[#212121] transition-all duration-300 ease-out transform relative z-10"
-                  >
-                    <span className={`truncate text-[14px] transition-all duration-300 ease-out ${
-                      activeTab === idx ? 'font-medium text-[#212121]' : 'font-normal text-[#212121]'
-                    }`}>
-                      {tab.label} <span>({tab.count})</span>
-                    </span>
-                  </button>
-                );
-              })}
-              
-              {/* Background border for inactive tabs */}
-              <div className="absolute bottom-0 w-full h-[2px] bg-[#2121211A]" />
+            {/* Background border for inactive tabs - moved outside scrollable container */}
+            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#2121211A] z-0" />
+            
+            <div className="relative scrollbar-hide w-full overflow-x-auto">
+              <div className="flex min-w-max">
+                {/* Animated underline indicator */}
+                <div 
+                  className="absolute bottom-0 h-[2px] bg-[#38963B] transition-all duration-300 ease-out z-10"
+                  style={{
+                    width: `${indicatorStyle.width}px`,
+                    left: `${indicatorStyle.left}px`,
+                  }}
+                />
+                
+                {TABS.map((tab, idx) => {
+                  return (
+                    <button
+                      key={tab.label}
+                      ref={(el) => (tabRefs.current[idx] = el)}
+                      onClick={() => handleTabChange(idx)}
+                      className="flex min-w-[80px] flex-shrink-0 flex-col items-center gap-1 px-4 pb-[11px] pt-2 text-[#212121] transition-all duration-300 ease-out transform relative z-20"
+                    >
+                      <span className={`whitespace-nowrap text-[14px] transition-all duration-300 ease-out ${
+                        activeTab === idx ? 'font-medium text-[#212121]' : 'font-normal text-[#212121]'
+                      }`}>
+                        {tab.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
